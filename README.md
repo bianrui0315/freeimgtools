@@ -1,8 +1,8 @@
-# ImageFlow
+# Free Image Tools
 
 Free online image tools — compress, convert, and resize images entirely in the browser.
 
-**Live site:** https://imageflow.pages.dev (replace with your domain)
+**Live site:** https://freeimgtools.net
 
 ## Features
 
