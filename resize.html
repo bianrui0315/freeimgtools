@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Resizer — Resize Photos Online Free | ImageFlow</title>
+  <meta name="description" content="Resize images online for free. Set custom dimensions or use presets for Instagram, Twitter, LinkedIn, Open Graph. Batch resize multiple images. No upload required.">
+  <meta name="keywords" content="image resizer, resize image online, resize photo free, image dimensions, instagram image size, social media image size, resize PNG JPG">
+  <link rel="canonical" href="https://imageflow.pages.dev/resize.html">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">ImageFlow</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/convert.html">Convert</a></li>
+      <li><a href="/resize.html" class="active">Resize</a></li>
+      <li><a href="/ai.html">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Image Resizer</h1>
+  <p class="page-desc">Resize to exact pixels, scale by percentage, or use ready-made social media presets.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>Resizing runs entirely in your browser. Nothing is uploaded or stored.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" multiple>
+        <span class="upload-icon">📐</span>
+        <h3>Drop images to resize</h3>
+        <p>or click to browse · select multiple files for batch resize</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+          <span class="format-tag">AVIF</span>
+        </div>
+      </div>
+
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span>
+        </div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <div id="results-section" class="hidden" style="margin-top:1.5rem;">
+        <div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;">
+          <span>Multiple files resized</span>
+          <button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">↓ Download All (ZIP)</button>
+        </div>
+        <div id="results-grid" class="results-grid"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Resize Settings</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">Preset</div>
+          <select id="preset" style="max-width:160px;">
+            <option value="custom">Custom</option>
+            <optgroup label="Web">
+              <option value="web-full">Full HD 1920×1080</option>
+              <option value="web-hd">HD 1280×720</option>
+              <option value="thumb">Thumbnail 300×300</option>
+            </optgroup>
+            <optgroup label="Instagram">
+              <option value="ig-square">Square 1080×1080</option>
+              <option value="ig-portrait">Portrait 1080×1350</option>
+              <option value="ig-story">Story 1080×1920</option>
+            </optgroup>
+            <optgroup label="Other social">
+              <option value="twitter">Twitter/X 1200×675</option>
+              <option value="og">Open Graph 1200×630</option>
+              <option value="linkedin">LinkedIn 1200×627</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Width (px)</div>
+          <input type="number" id="width" placeholder="e.g. 800" min="1" max="10000"
+            style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;outline:none;">
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Height (px)</div>
+          <input type="number" id="height" placeholder="e.g. 600" min="1" max="10000"
+            style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;outline:none;">
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Lock aspect ratio
+            <span class="setting-hint">Auto-calculate other dimension</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="lock-aspect" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Fit mode
+            <span class="setting-hint">When both dimensions set</span>
+          </div>
+          <select id="fit-mode">
+            <option value="contain">Contain (letterbox)</option>
+            <option value="cover">Cover (crop center)</option>
+            <option value="exact">Exact (stretch)</option>
+          </select>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>
+            Resize Images
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Social media size reference -->
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Social media image size cheat sheet</h2>
+    <div style="display:grid;gap:0.5rem;font-size:0.85rem;">
+      <div class="card" style="padding:0.85rem 1.25rem;display:flex;justify-content:space-between;align-items:center;">
+        <strong>Instagram Square</strong><span style="color:var(--text-muted);">1080 × 1080 px</span>
+      </div>
+      <div class="card" style="padding:0.85rem 1.25rem;display:flex;justify-content:space-between;align-items:center;">
+        <strong>Instagram Portrait</strong><span style="color:var(--text-muted);">1080 × 1350 px</span>
+      </div>
+      <div class="card" style="padding:0.85rem 1.25rem;display:flex;justify-content:space-between;align-items:center;">
+        <strong>Instagram Story / Reel</strong><span style="color:var(--text-muted);">1080 × 1920 px</span>
+      </div>
+      <div class="card" style="padding:0.85rem 1.25rem;display:flex;justify-content:space-between;align-items:center;">
+        <strong>Twitter / X Card</strong><span style="color:var(--text-muted);">1200 × 675 px</span>
+      </div>
+      <div class="card" style="padding:0.85rem 1.25rem;display:flex;justify-content:space-between;align-items:center;">
+        <strong>Facebook / Open Graph</strong><span style="color:var(--text-muted);">1200 × 630 px</span>
+      </div>
+      <div class="card" style="padding:0.85rem 1.25rem;display:flex;justify-content:space-between;align-items:center;">
+        <strong>LinkedIn Post</strong><span style="color:var(--text-muted);">1200 × 627 px</span>
+      </div>
+      <div class="card" style="padding:0.85rem 1.25rem;display:flex;justify-content:space-between;align-items:center;">
+        <strong>YouTube Thumbnail</strong><span style="color:var(--text-muted);">1280 × 720 px</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+    <a href="/compress.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">🗜️ Image Compressor</h3>
+      <p>Reduce file size up to 80%</p>
+    </a>
+    <a href="/convert.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">🔄 Format Converter</h3>
+      <p>PNG to JPG, WebP, AVIF</p>
+    </a>
+    <a href="/ai.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">✨ AI Alt Text</h3>
+      <p>Generate SEO image descriptions</p>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 ImageFlow · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/convert.html">Convert</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/resize.js"></script>
+</body>
+</html>

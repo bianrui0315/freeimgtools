@@ -1,0 +1,8 @@
+name = "imageflow"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "."
+
+# Workers AI binding — enables AI features (alt text, classification)
+# This is free to use on Cloudflare Pages
+[ai]
+binding = "AI"

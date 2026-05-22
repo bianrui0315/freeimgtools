@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Format Converter — PNG to JPG, WebP, AVIF Free | ImageFlow</title>
+  <meta name="description" content="Convert images between JPG, PNG, WebP and AVIF online for free. Batch convert multiple files. No upload — all processing happens in your browser, 100% private.">
+  <meta name="keywords" content="image converter, PNG to JPG, JPG to WebP, PNG to WebP, AVIF converter, image format converter online free, batch image conversion">
+  <link rel="canonical" href="https://imageflow.pages.dev/convert.html">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">ImageFlow</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/convert.html" class="active">Convert</a></li>
+      <li><a href="/resize.html">Resize</a></li>
+      <li><a href="/ai.html">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Image Format Converter</h1>
+  <p class="page-desc">Convert JPG, PNG, WebP, or AVIF — individually or in bulk. Everything runs in your browser.</p>
+
+  <!-- Quick-link pills for SEO + UX -->
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+    <a href="?from=png&to=jpg" class="badge" style="text-decoration:none;cursor:pointer;">PNG → JPG</a>
+    <a href="?from=jpg&to=png" class="badge" style="text-decoration:none;cursor:pointer;">JPG → PNG</a>
+    <a href="?from=png&to=webp" class="badge" style="text-decoration:none;cursor:pointer;">PNG → WebP</a>
+    <a href="?from=jpg&to=webp" class="badge" style="text-decoration:none;cursor:pointer;">JPG → WebP</a>
+    <a href="?from=png&to=avif" class="badge" style="text-decoration:none;cursor:pointer;">PNG → AVIF</a>
+    <a href="?from=jpg&to=avif" class="badge" style="text-decoration:none;cursor:pointer;">JPG → AVIF</a>
+  </div>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>All format conversion runs locally in your browser. Nothing is uploaded or stored.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" multiple>
+        <span class="upload-icon">🔄</span>
+        <h3>Drop images to convert</h3>
+        <p>or click to browse — select multiple files for batch conversion</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+          <span class="format-tag">AVIF</span>
+          <span class="format-tag">GIF</span>
+          <span class="format-tag">BMP</span>
+        </div>
+      </div>
+
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span>
+        </div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <div id="results-section" class="hidden" style="margin-top:1.5rem;">
+        <div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;">
+          <span id="bulk-count"></span>
+          <button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">↓ Download All (ZIP)</button>
+        </div>
+        <div id="results-grid" class="results-grid"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Conversion Settings</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Convert to
+          </div>
+          <select id="target-format">
+            <option value="jpg">JPEG (.jpg)</option>
+            <option value="png">PNG (.png)</option>
+            <option value="webp" selected>WebP (.webp)</option>
+            <option value="avif">AVIF (.avif)</option>
+          </select>
+        </div>
+
+        <div class="setting-row" id="quality-wrap">
+          <div class="setting-label">
+            Quality
+            <span class="setting-hint">For JPEG / WebP / AVIF</span>
+          </div>
+          <div class="slider-wrap">
+            <input type="range" id="quality" min="10" max="100" value="90">
+            <span class="slider-val" id="quality-val">90</span>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>
+            Convert Images
+          </button>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <div style="background:var(--bg);border-radius:var(--radius);padding:1rem;">
+            <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">
+              💡 <strong>WebP</strong> is ideal for web images — smaller file, great browser support.<br><br>
+              💡 <strong>AVIF</strong> offers the best compression but requires Chrome 85+, Safari 16+, or Firefox 113+.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Format comparison table -->
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Which format should I use?</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="background:var(--bg);">
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Format</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Best For</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Transparency</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">JPEG</td>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Photos, complex images</td>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">No</td>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Medium</td>
+          </tr>
+          <tr>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">PNG</td>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Logos, screenshots, lossless</td>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Yes ✓</td>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Large</td>
+          </tr>
+          <tr>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">WebP</td>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Web images (recommended)</td>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Yes ✓</td>
+            <td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Small ✓</td>
+          </tr>
+          <tr>
+            <td style="padding:0.6rem 1rem;font-weight:600;">AVIF</td>
+            <td style="padding:0.6rem 1rem;color:var(--text-muted);">Modern web, best compression</td>
+            <td style="padding:0.6rem 1rem;color:var(--success);">Yes ✓</td>
+            <td style="padding:0.6rem 1rem;color:var(--success);font-weight:600;">Smallest ✓✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+    <a href="/compress.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">🗜️ Image Compressor</h3>
+      <p>Reduce file size with quality control</p>
+    </a>
+    <a href="/resize.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">📐 Image Resizer</h3>
+      <p>Resize with social media presets</p>
+    </a>
+    <a href="/ai.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">✨ AI Alt Text</h3>
+      <p>Generate SEO-friendly image descriptions</p>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 ImageFlow · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/resize.html">Resize</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/convert.js"></script>
+</body>
+</html>

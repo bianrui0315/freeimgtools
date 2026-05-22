@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Compressor — Reduce Image File Size Free | ImageFlow</title>
+  <meta name="description" content="Compress JPG, PNG, WebP and AVIF images online for free. No upload — all processing happens in your browser. Reduce file size up to 80% with adjustable quality.">
+  <meta name="keywords" content="image compressor, compress image online, reduce image size, compress PNG, compress JPG, online image compression free">
+  <link rel="canonical" href="https://imageflow.pages.dev/compress.html">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">ImageFlow</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html" class="active">Compress</a></li>
+      <li><a href="/convert.html">Convert</a></li>
+      <li><a href="/resize.html">Resize</a></li>
+      <li><a href="/ai.html">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Image Compressor</h1>
+  <p class="page-desc">Reduce image file size with adjustable quality. Batch compress multiple images and download as ZIP.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>Compression runs entirely in your browser. No upload, no server, no storage. Completely private.</p>
+    </div>
+  </div>
+
+  <!-- Main layout -->
+  <div class="two-col">
+
+    <!-- Left: upload + results -->
+    <div>
+      <!-- Upload zone -->
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" multiple>
+        <span class="upload-icon">🗜️</span>
+        <h3>Drop images here</h3>
+        <p>or click to browse — JPG, PNG, WebP, AVIF accepted</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+          <span class="format-tag">AVIF</span>
+          <span class="format-tag">GIF</span>
+          <span class="format-tag">BMP</span>
+        </div>
+      </div>
+
+      <!-- File queue -->
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span>
+          <button id="clear-btn" class="btn btn-secondary" style="padding:0.35rem 0.75rem;font-size:0.8rem;">✕ Clear all</button>
+        </div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <!-- Results -->
+      <div id="results-section" class="hidden" style="margin-top:1.5rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <h2 style="font-size:1.1rem;font-weight:700;">Results</h2>
+        </div>
+        <div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;">
+          <span id="bulk-count"></span>
+          <button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">↓ Download All (ZIP)</button>
+        </div>
+        <div id="results-grid" class="results-grid"></div>
+      </div>
+
+      <!-- Compare slider (single image mode) -->
+      <div id="compare-section" class="hidden" style="margin-top:1.5rem;">
+        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.75rem;color:var(--text-muted);">BEFORE / AFTER COMPARISON</h3>
+        <div class="compare-wrap" id="compare-wrap">
+          <img id="compare-before" src="" alt="original">
+          <div class="compare-after" id="compare-after">
+            <img id="compare-after-img" src="" alt="compressed" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;">
+          </div>
+          <div class="compare-divider" id="compare-divider"></div>
+          <div class="compare-handle" id="compare-handle">↔</div>
+          <span class="compare-label before">Original</span>
+          <span class="compare-label after">Compressed</span>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;margin-top:0.5rem;">Drag the divider to compare</p>
+      </div>
+    </div>
+
+    <!-- Right: settings -->
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Settings</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Output Format
+            <span class="setting-hint">Keep original or convert</span>
+          </div>
+          <select id="format">
+            <option value="original">Keep original</option>
+            <option value="jpg">JPEG</option>
+            <option value="png">PNG</option>
+            <option value="webp" selected>WebP (recommended)</option>
+            <option value="avif">AVIF (best compression)</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Quality
+            <span class="setting-hint">Lower = smaller file</span>
+          </div>
+          <div class="slider-wrap">
+            <input type="range" id="quality" min="10" max="100" value="82">
+            <span class="slider-val" id="quality-val">82</span>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Strip EXIF data
+            <span class="setting-hint">Remove GPS, camera info</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="strip-exif" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>
+            Compress Images
+          </button>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <div style="background:var(--bg);border-radius:var(--radius);padding:1rem;">
+            <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">
+              💡 <strong>Tip:</strong> WebP typically reduces file size by 25–35% vs JPEG. AVIF by 40–50%. Both are supported by all modern browsers.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ad slot (sidebar) -->
+      <!--
+      <div class="ad-slot" style="margin-top:1.5rem;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+      -->
+    </div>
+  </div>
+
+  <!-- Ad slot below results -->
+  <!--
+  <div class="ad-slot" style="margin-top:2rem;">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  -->
+
+  <!-- Related tools -->
+  <div class="divider"></div>
+  <h2 class="section-title" style="font-size:1.1rem;">Other tools</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+    <a href="/convert.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">🔄 Format Converter</h3>
+      <p>Convert between JPG, PNG, WebP, AVIF</p>
+    </a>
+    <a href="/resize.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">📐 Image Resizer</h3>
+      <p>Resize with social media presets</p>
+    </a>
+    <a href="/ai.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">✨ AI Alt Text</h3>
+      <p>Generate SEO-friendly image descriptions</p>
+    </a>
+  </div>
+
+  <!-- SEO content -->
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">How to compress images online — without losing quality</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>Image compression reduces file size by removing redundant or imperceptible data. <strong>Lossy compression</strong> (JPEG, WebP, AVIF) discards some image data to achieve significant size reduction, while <strong>lossless compression</strong> (PNG) reorganizes data without any quality loss.</p>
+      <p>For web images, a quality setting of 75–85% typically produces results visually indistinguishable from the original while cutting file size by 50–70%. For images that will be printed or edited, use quality 90+.</p>
+      <p>Converting to <strong>WebP</strong> can reduce JPEG file sizes by 25–35% at the same visual quality. <strong>AVIF</strong> goes even further — typically 40–50% smaller than JPEG — and is now supported by all major browsers.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 ImageFlow · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/convert.html">Convert</a></li>
+      <li><a href="/resize.html">Resize</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/compress.js"></script>
+</body>
+</html>

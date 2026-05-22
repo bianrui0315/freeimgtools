@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Image Tools — Alt Text Generator & Image Classification | ImageFlow</title>
+  <meta name="description" content="Generate SEO-friendly alt text for images using AI. Automatically classify and tag images. Powered by Cloudflare Workers AI. Free to use.">
+  <meta name="keywords" content="AI alt text generator, image alt text, SEO image description, image classification, image tagging, AI image analysis">
+  <link rel="canonical" href="https://imageflow.pages.dev/ai.html">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">ImageFlow</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/convert.html">Convert</a></li>
+      <li><a href="/resize.html">Resize</a></li>
+      <li><a href="/ai.html" class="active">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">AI Image Tools</h1>
+  <p class="page-desc">Powered by Cloudflare Workers AI — generate alt text and classify images automatically.</p>
+
+  <!-- Note about AI privacy -->
+  <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+    <span style="font-size:1.5rem;flex-shrink:0;">ℹ️</span>
+    <div>
+      <h4 style="font-weight:700;font-size:0.9rem;color:#92400e;margin-bottom:0.2rem;">AI features require a brief server request</h4>
+      <p style="font-size:0.82rem;color:#b45309;">Unlike our other tools, AI analysis sends your image to Cloudflare's edge AI network for inference. Images are processed and immediately discarded — Cloudflare does not store them. All other tools remain 100% client-side.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+
+    <div>
+      <!-- Upload -->
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*">
+        <span class="upload-icon">✨</span>
+        <h3>Drop an image to analyze</h3>
+        <p>or click to browse · one image at a time</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div id="preview-wrap" class="hidden" style="margin-top:1.5rem;">
+        <div class="card" style="padding:1rem;text-align:center;">
+          <img id="img-preview" src="" alt="preview"
+            style="max-width:100%;max-height:300px;object-fit:contain;border-radius:0.5rem;">
+        </div>
+      </div>
+
+      <!-- AI action buttons -->
+      <div id="ai-actions" class="hidden" style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+        <button id="alt-btn" class="btn btn-primary" data-label="✨ Generate Alt Text">
+          ✨ Generate Alt Text
+        </button>
+        <button id="classify-btn" class="btn btn-secondary" data-label="🏷️ Classify Image">
+          🏷️ Classify Image
+        </button>
+      </div>
+
+      <!-- Alt text result -->
+      <div id="alt-result" class="hidden" style="margin-top:1rem;">
+        <div class="ai-result">
+          <h4>AI-Generated Alt Text</h4>
+          <p id="alt-text"></p>
+          <div style="margin-top:0.85rem;display:flex;gap:0.5rem;">
+            <button id="copy-alt" class="btn btn-secondary" style="padding:0.35rem 0.85rem;font-size:0.8rem;">
+              📋 Copy
+            </button>
+          </div>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">
+          Review and edit the alt text as needed before using it. AI output may not be perfect.
+        </p>
+      </div>
+
+      <!-- Classification result -->
+      <div id="classify-result" class="hidden" style="margin-top:1rem;">
+        <div class="ai-result">
+          <h4>Image Classification</h4>
+          <div id="classify-tags"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: info panel -->
+    <div>
+      <div class="card" style="padding:1.5rem;position:sticky;top:80px;">
+        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:1rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">About these tools</h3>
+
+        <div style="display:grid;gap:1.25rem;">
+          <div>
+            <strong style="font-size:0.9rem;display:block;margin-bottom:0.3rem;">✨ Alt Text Generator</strong>
+            <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">Uses Cloudflare's <code style="background:var(--bg);padding:0.1rem 0.3rem;border-radius:0.3rem;">@cf/unum/uform-gen2-qwen-500m</code> vision model to generate a concise, SEO-friendly alt text description for your image.</p>
+          </div>
+
+          <div>
+            <strong style="font-size:0.9rem;display:block;margin-bottom:0.3rem;">🏷️ Image Classifier</strong>
+            <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">Uses <code style="background:var(--bg);padding:0.1rem 0.3rem;border-radius:0.3rem;">@cf/microsoft/resnet-50</code> to identify objects and categories in the image with confidence scores.</p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div>
+            <strong style="font-size:0.9rem;display:block;margin-bottom:0.3rem;">Why alt text matters</strong>
+            <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">Alt text improves accessibility for screen readers and signals image content to search engines. Images with descriptive alt text rank better in Google Image Search.</p>
+          </div>
+
+          <div style="background:var(--primary-light);border-radius:var(--radius);padding:1rem;">
+            <p style="font-size:0.78rem;color:var(--primary);line-height:1.6;">
+              <strong>Note:</strong> This feature requires the site to be deployed to Cloudflare Pages with the AI binding enabled. Running locally will show a placeholder.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Use cases section -->
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">When to use AI alt text</h2>
+    <div style="display:grid;gap:0.75rem;">
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.25rem;flex-shrink:0;">📝</span>
+        <div>
+          <strong style="font-size:0.9rem;display:block;margin-bottom:0.2rem;">Blog posts and articles</strong>
+          <span style="font-size:0.82rem;color:var(--text-muted);">Quickly generate alt text for all images in a post to improve accessibility and SEO.</span>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.25rem;flex-shrink:0;">🛍️</span>
+        <div>
+          <strong style="font-size:0.9rem;display:block;margin-bottom:0.2rem;">E-commerce product images</strong>
+          <span style="font-size:0.82rem;color:var(--text-muted);">Scale alt text generation across hundreds of product images without manual effort.</span>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.25rem;flex-shrink:0;">📸</span>
+        <div>
+          <strong style="font-size:0.9rem;display:block;margin-bottom:0.2rem;">Portfolio and gallery sites</strong>
+          <span style="font-size:0.82rem;color:var(--text-muted);">Make image-heavy sites accessible and discoverable in search.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+    <a href="/compress.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">🗜️ Image Compressor</h3>
+      <p>Reduce file size up to 80%</p>
+    </a>
+    <a href="/convert.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">🔄 Format Converter</h3>
+      <p>PNG to JPG, WebP, AVIF</p>
+    </a>
+    <a href="/resize.html" class="tool-card">
+      <h3 style="font-size:0.95rem;">📐 Image Resizer</h3>
+      <p>Resize with social media presets</p>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 ImageFlow · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/convert.html">Convert</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/ai.js"></script>
+</body>
+</html>
