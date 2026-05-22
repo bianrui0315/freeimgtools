@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JPG to PNG Converter — Free Online, No Upload Required</title>
+  <meta name="description" content="Convert JPG to PNG online for free. No upload — conversion runs in your browser. Batch convert JPEG files to PNG with transparency support.">
+  <meta name="keywords" content="JPG to PNG, JPEG to PNG converter, convert JPG to PNG online free, JPG to PNG no upload">
+  <link rel="canonical" href="https://freeimgtools.net/jpg-to-png.html">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JPG to PNG Converter",
+    "url": "https://freeimgtools.net/jpg-to-png.html",
+    "description": "Free online JPG to PNG converter. No upload required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/convert.html" class="active">Convert</a></li>
+      <li><a href="/resize.html">Resize</a></li>
+      <li><a href="/ai.html">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">JPG to PNG Converter</h1>
+  <p class="page-desc">Convert JPG/JPEG images to PNG instantly — free, private, no upload needed. Lossless output with transparency support.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>JPG to PNG conversion runs entirely in your browser. Nothing is uploaded or stored.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/jpeg,image/*" multiple>
+        <span class="upload-icon">🔄</span>
+        <h3>Drop JPG files here</h3>
+        <p>or click to browse · select multiple files for batch conversion</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span style="color:var(--text-muted);font-size:0.85rem;">→</span>
+          <span class="format-tag" style="background:var(--primary-light);border-color:#c7d2fe;color:var(--primary);">PNG</span>
+        </div>
+      </div>
+
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span>
+        </div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <div id="results-section" class="hidden" style="margin-top:1.5rem;">
+        <div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;">
+          <span id="bulk-count"></span>
+          <button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">↓ Download All (ZIP)</button>
+        </div>
+        <div id="results-grid" class="results-grid"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Conversion Settings</h3>
+        <div class="setting-row">
+          <div class="setting-label">Convert to</div>
+          <select id="target-format"><option value="png" selected>PNG (.png)</option></select>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>Convert to PNG</button>
+        </div>
+        <div style="margin-top:1rem;background:var(--bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">
+            💡 PNG is lossless — converting JPG to PNG won't recover lost quality from the original JPG compression, but the PNG output will not degrade further.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Why convert JPG to PNG?</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p><strong>Transparency support.</strong> PNG supports transparent backgrounds — essential for logos, icons, and graphics that need to sit on different coloured backgrounds.</p>
+      <p><strong>Lossless editing.</strong> If you need to edit and re-save an image multiple times, PNG prevents generation loss. Each save of a JPG slightly degrades quality.</p>
+      <p><strong>Screenshots and graphics.</strong> PNG preserves sharp edges and text better than JPG, making it ideal for screenshots, UI mockups, and diagrams.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Frequently Asked Questions</h2>
+    <div style="display:grid;gap:0.75rem;">
+      <details class="card" style="padding:1.25rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Does converting JPG to PNG improve quality?</summary>
+        <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">No — once quality is lost in a JPG, converting to PNG won't recover it. PNG is lossless, so it won't degrade the image further, but it also can't restore what JPG compression removed.</p>
+      </details>
+      <details class="card" style="padding:1.25rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Will the PNG file be larger than the JPG?</summary>
+        <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Yes, typically 2–5× larger. PNG uses lossless compression, which preserves all image data at the cost of larger file size.</p>
+      </details>
+      <details class="card" style="padding:1.25rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Can I convert multiple JPG files at once?</summary>
+        <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Yes — select or drag multiple files. All converted PNGs download as a single ZIP file.</p>
+      </details>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Other conversions</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/png-to-jpg.html" class="tool-card"><h3 style="font-size:0.9rem;">PNG → JPG</h3><p>Reduce photo file size</p></a>
+    <a href="/jpg-to-webp.html" class="tool-card"><h3 style="font-size:0.9rem;">JPG → WebP</h3><p>30% smaller than JPG</p></a>
+    <a href="/png-to-webp.html" class="tool-card"><h3 style="font-size:0.9rem;">PNG → WebP</h3><p>Modern web format</p></a>
+    <a href="/compress.html" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress Images</h3><p>Reduce file size up to 80%</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/convert.html">Convert</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/convert.js"></script>
+</body>
+</html>

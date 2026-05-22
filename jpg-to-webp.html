@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JPG to WebP Converter — Free Online, No Upload Required</title>
+  <meta name="description" content="Convert JPG to WebP online for free. WebP files are 25-35% smaller than JPEG. No upload — runs entirely in your browser. Batch convert multiple files.">
+  <meta name="keywords" content="JPG to WebP, JPEG to WebP converter, convert JPG to WebP online free, JPG WebP converter">
+  <link rel="canonical" href="https://freeimgtools.net/jpg-to-webp.html">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JPG to WebP Converter",
+    "url": "https://freeimgtools.net/jpg-to-webp.html",
+    "description": "Free online JPG to WebP converter. No upload required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/convert.html" class="active">Convert</a></li>
+      <li><a href="/resize.html">Resize</a></li>
+      <li><a href="/ai.html">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">JPG to WebP Converter</h1>
+  <p class="page-desc">Convert JPEG images to WebP — 25–35% smaller file size, same visual quality. Free, private, no upload needed.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>JPG to WebP conversion runs entirely in your browser. Nothing is uploaded or stored.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/jpeg,image/*" multiple>
+        <span class="upload-icon">🔄</span>
+        <h3>Drop JPG files here</h3>
+        <p>or click to browse · select multiple files for batch conversion</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span style="color:var(--text-muted);font-size:0.85rem;">→</span>
+          <span class="format-tag" style="background:var(--primary-light);border-color:#c7d2fe;color:var(--primary);">WebP</span>
+        </div>
+      </div>
+
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span>
+        </div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <div id="results-section" class="hidden" style="margin-top:1.5rem;">
+        <div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;">
+          <span id="bulk-count"></span>
+          <button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">↓ Download All (ZIP)</button>
+        </div>
+        <div id="results-grid" class="results-grid"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Conversion Settings</h3>
+        <div class="setting-row">
+          <div class="setting-label">Convert to</div>
+          <select id="target-format"><option value="webp" selected>WebP (.webp)</option></select>
+        </div>
+        <div class="setting-row" id="quality-wrap">
+          <div class="setting-label">Quality<span class="setting-hint">Lower = smaller file</span></div>
+          <div class="slider-wrap">
+            <input type="range" id="quality" min="10" max="100" value="85">
+            <span class="slider-val" id="quality-val">85</span>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>Convert to WebP</button>
+        </div>
+        <div style="margin-top:1rem;background:var(--success-bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:#065f46;line-height:1.6;">
+            ✓ WebP is recommended by Google for web images. Converting your JPGs to WebP can improve PageSpeed scores.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">JPG vs WebP — what's the difference?</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="background:var(--bg);">
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);"></th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">JPG</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">WebP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">File size</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Baseline</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);font-weight:600;">25–35% smaller ✓</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Transparency</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">No</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Yes ✓</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Browser support</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Universal</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">95%+ ✓</td></tr>
+          <tr><td style="padding:0.6rem 1rem;font-weight:600;">Google PageSpeed</td><td style="padding:0.6rem 1rem;color:var(--text-muted);">Neutral</td><td style="padding:0.6rem 1rem;color:var(--success);">Recommended ✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Other conversions</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/png-to-webp.html" class="tool-card"><h3 style="font-size:0.9rem;">PNG → WebP</h3><p>Keep transparency, reduce size</p></a>
+    <a href="/png-to-jpg.html" class="tool-card"><h3 style="font-size:0.9rem;">PNG → JPG</h3><p>Reduce large PNG photos</p></a>
+    <a href="/jpg-to-png.html" class="tool-card"><h3 style="font-size:0.9rem;">JPG → PNG</h3><p>Lossless with transparency</p></a>
+    <a href="/compress.html" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress Images</h3><p>Reduce file size up to 80%</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress.html">Compress</a></li>
+      <li><a href="/convert.html">Convert</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/convert.js"></script>
+</body>
+</html>
