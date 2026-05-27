@@ -2,61 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://freeimgtools.net/</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://freeimgtools.net/compress.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://freeimgtools.net/compress</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://freeimgtools.net/convert.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://freeimgtools.net/convert</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://freeimgtools.net/resize.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://freeimgtools.net/resize</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://freeimgtools.net/ai.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://freeimgtools.net/ai</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeimgtools.net/png-to-jpg.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://freeimgtools.net/png-to-jpg</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://freeimgtools.net/jpg-to-png.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://freeimgtools.net/jpg-to-png</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://freeimgtools.net/png-to-webp.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://freeimgtools.net/png-to-webp</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://freeimgtools.net/jpg-to-webp.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://freeimgtools.net/jpg-to-webp</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://freeimgtools.net/privacy.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://freeimgtools.net/privacy</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
