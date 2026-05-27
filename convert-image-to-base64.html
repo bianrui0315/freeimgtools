@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert Image to Base64 String — Free Online Tool</title>
+  <meta name="description" content="Convert any image to a Base64-encoded string for use in HTML, CSS, JSON, or code. Get the data URI or raw base64. Free, runs entirely in your browser.">
+  <meta name="keywords" content="convert image to base64, image to base64 string, base64 encoder, data uri generator, image base64 online, base64 image css">
+  <link rel="canonical" href="https://freeimgtools.net/convert-image-to-base64">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image to Base64 Converter",
+    "url": "https://freeimgtools.net/convert-image-to-base64",
+    "description": "Convert any image to a Base64 string for use in HTML, CSS, or JSON. Free, no upload required.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert" class="active">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Convert Image to Base64 String</h1>
+  <p class="page-desc">Encode any image as a Base64 data URI for use in HTML, CSS, JSON, or email. Free, private, instant — no upload needed.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>Base64 encoding is done locally using the browser's FileReader API. Nothing is uploaded.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*">
+        <span class="upload-icon">🔢</span>
+        <h3>Drop an image here</h3>
+        <p>or click to browse — JPG, PNG, WebP, SVG, GIF accepted</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+          <span class="format-tag">SVG</span>
+        </div>
+      </div>
+
+      <div id="result-section" class="hidden" style="margin-top:1.5rem;">
+        <div class="card" style="padding:1.25rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+            <div>
+              <span id="file-name" style="font-weight:600;font-size:0.9rem;"></span>
+              <span id="file-info" style="color:var(--text-muted);font-size:0.8rem;margin-left:0.75rem;"></span>
+            </div>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <button id="copy-uri-btn" class="btn btn-primary" style="padding:0.4rem 0.9rem;font-size:0.82rem;">Copy data URI</button>
+              <button id="copy-b64-btn" class="btn btn-secondary" style="padding:0.4rem 0.9rem;font-size:0.82rem;">Copy base64 only</button>
+              <button id="download-btn" class="btn btn-secondary" style="padding:0.4rem 0.9rem;font-size:0.82rem;">↓ Download .txt</button>
+            </div>
+          </div>
+
+          <div style="margin-bottom:0.5rem;">
+            <label style="font-size:0.78rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Data URI (full)</label>
+            <textarea id="uri-output" readonly
+              style="width:100%;height:100px;font-family:monospace;font-size:0.72rem;border:1.5px solid var(--border);border-radius:0.5rem;padding:0.6rem;resize:vertical;background:var(--bg);color:var(--text);line-height:1.5;margin-top:0.25rem;box-sizing:border-box;"></textarea>
+          </div>
+
+          <div id="usage-examples" style="margin-top:1rem;display:grid;gap:0.75rem;">
+            <div>
+              <label style="font-size:0.78rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">HTML usage</label>
+              <pre id="html-example" style="font-size:0.72rem;background:var(--bg);border:1.5px solid var(--border);border-radius:0.5rem;padding:0.6rem;overflow-x:auto;margin-top:0.25rem;white-space:pre-wrap;word-break:break-all;"></pre>
+            </div>
+            <div>
+              <label style="font-size:0.78rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">CSS usage</label>
+              <pre id="css-example" style="font-size:0.72rem;background:var(--bg);border:1.5px solid var(--border);border-radius:0.5rem;padding:0.6rem;overflow-x:auto;margin-top:0.25rem;white-space:pre-wrap;word-break:break-all;"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>About Base64</h3>
+        <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;display:grid;gap:0.75rem;">
+          <p>Base64 encodes binary image data as ASCII text, making it safe to embed in HTML, CSS, JSON, XML, or email without file attachments.</p>
+          <div style="background:var(--bg);border-radius:var(--radius);padding:0.75rem;font-size:0.78rem;">
+            <p style="font-weight:600;margin-bottom:0.5rem;">Data URI format:</p>
+            <code style="font-family:monospace;font-size:0.72rem;word-break:break-all;">data:[mime];base64,[data]</code>
+          </div>
+          <div style="background:#fef3c7;border-radius:var(--radius);padding:0.75rem;font-size:0.78rem;">
+            <p style="font-weight:600;margin-bottom:0.25rem;">⚠️ File size note</p>
+            <p>Base64 encoding increases file size by ~33%. Use it for small icons and logos, not large photos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">When to use Base64 image encoding</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>Base64 encoding converts binary image data into a text string that can be embedded directly into code. This eliminates the need for a separate image file and the HTTP request to fetch it, which can improve performance for small, frequently-used images.</p>
+      <p><strong>Common use cases:</strong> embedding small icons or logos in CSS (saves one HTTP request per icon), inlining images in HTML emails (many email clients block external images), embedding images in JSON API responses, data URIs in SVG files, and testing with image data without needing a file server.</p>
+      <p><strong>When not to use it:</strong> Base64 encoding increases data size by approximately 33% compared to the binary file. For large photos, this overhead is significant — use a regular image URL instead. Base64 is best for images under 10KB.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What is the difference between a data URI and a base64 string?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">A data URI is the full string including the MIME type prefix: <code style="font-family:monospace;font-size:0.85em;">data:image/png;base64,iVBOR...</code>. The base64 string is only the encoded data part after the comma. Use the full data URI in src attributes and CSS; use the raw base64 string when an API expects it without the prefix.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I decode base64 back to an image?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — in a browser, paste the data URI into an img src and the browser renders it. Most programming languages have built-in base64 decode functions: <code style="font-family:monospace;font-size:0.85em;">atob()</code> in JavaScript, <code style="font-family:monospace;font-size:0.85em;">base64.b64decode()</code> in Python.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Is my image private?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes. The FileReader API reads your file locally — no data is sent anywhere. The base64 string is generated entirely in your browser's memory.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Why does base64 output look random and very long?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Base64 represents every 3 bytes of binary data as 4 ASCII characters. An average 50KB PNG becomes ~67KB of base64 text — which is why it looks long. This is expected behavior.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/compress" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress Images</h3><p>Reduce size before encoding</p></a>
+    <a href="/png-to-jpg" class="tool-card"><h3 style="font-size:0.9rem;">PNG → JPG</h3><p>Smaller file for base64 embedding</p></a>
+    <a href="/convert" class="tool-card"><h3 style="font-size:0.9rem;">🔄 Format Converter</h3><p>Convert to optimal format first</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const zone = document.getElementById('upload-zone');
+  const input = document.getElementById('file-input');
+  const resultSection = document.getElementById('result-section');
+
+  // Drag and drop
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const files = [...e.dataTransfer.files].filter(f => f.type.startsWith('image/'));
+    if (files.length) processFile(files[0]);
+  });
+  zone.addEventListener('click', () => input.click());
+  input.addEventListener('change', e => {
+    if (e.target.files[0]) processFile(e.target.files[0]);
+  });
+
+  function processFile(file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const dataUri = e.target.result;
+      const base64 = dataUri.split(',')[1];
+      const b64Length = base64.length;
+      const approxBytes = Math.round(b64Length * 0.75);
+
+      document.getElementById('file-name').textContent = file.name;
+      document.getElementById('file-info').textContent =
+        `Original: ${formatBytes(file.size)} · Encoded: ${formatBytes(approxBytes)} (+${Math.round((b64Length / (file.size * 4/3) - 1)*100 + 33)}% approx)`;
+
+      document.getElementById('uri-output').value = dataUri;
+
+      const shortUri = dataUri.length > 80 ? dataUri.substring(0, 80) + '...' : dataUri;
+      document.getElementById('html-example').textContent = `<img src="${shortUri}" alt="image">`;
+      document.getElementById('css-example').textContent = `.element {\n  background-image: url("${shortUri}");\n}`;
+
+      resultSection.classList.remove('hidden');
+
+      // Copy buttons
+      document.getElementById('copy-uri-btn').onclick = () => copyText(dataUri, 'copy-uri-btn', 'Copied!');
+      document.getElementById('copy-b64-btn').onclick = () => copyText(base64, 'copy-b64-btn', 'Copied!');
+      document.getElementById('download-btn').onclick = () => {
+        const blob = new Blob([dataUri], { type: 'text/plain' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = file.name.replace(/\.[^.]+$/, '') + '_base64.txt';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      };
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function copyText(text, btnId, label) {
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById(btnId);
+      const orig = btn.textContent;
+      btn.textContent = label;
+      setTimeout(() => btn.textContent = orig, 1500);
+    }).catch(() => {
+      // fallback
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    });
+  }
+
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extract Color Palette from Image — Free Online Tool</title>
+  <meta name="description" content="Upload any image to extract its dominant colors and color palette. Get hex codes and RGB values instantly. Free, runs in your browser — no upload needed.">
+  <meta name="keywords" content="extract color palette from image, image color palette, dominant colors from image, color picker from image, hex color from image, image color extractor">
+  <link rel="canonical" href="https://freeimgtools.net/extract-color-palette">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image Color Palette Extractor",
+    "url": "https://freeimgtools.net/extract-color-palette",
+    "description": "Extract dominant color palette from any image. Get hex codes and RGB values. Free, no upload required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert" class="active">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Extract Color Palette from Image</h1>
+  <p class="page-desc">Upload any photo, illustration, or screenshot to extract its dominant colors. Get hex codes and RGB values with one click. Free, private, instant.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>Color extraction uses the browser's Canvas API — nothing is uploaded or stored.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*">
+        <span class="upload-icon">🎨</span>
+        <h3>Drop an image here</h3>
+        <p>or click to browse — JPG, PNG, WebP accepted</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+        </div>
+      </div>
+
+      <div id="result-section" class="hidden" style="margin-top:1.5rem;">
+        <div class="card" style="padding:1.25rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem;">
+            <h3 style="font-size:1rem;font-weight:700;margin:0;">Extracted Palette</h3>
+            <button id="download-palette-btn" class="btn btn-secondary" style="padding:0.4rem 0.9rem;font-size:0.82rem;">↓ Download Palette PNG</button>
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1rem;">Click any swatch to copy its hex code</p>
+          <div id="palette-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.75rem;"></div>
+          <canvas id="palette-canvas" style="display:none;"></canvas>
+          <canvas id="work-canvas" style="display:none;"></canvas>
+        </div>
+        <div class="card" style="padding:1rem 1.25rem;margin-top:1rem;">
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+            <img id="thumb" src="" alt="preview" style="width:80px;height:80px;object-fit:cover;border-radius:0.5rem;flex-shrink:0;">
+            <div id="image-info" style="font-size:0.82rem;color:var(--text-muted);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Palette Settings</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">Number of colors</div>
+          <select id="color-count" style="max-width:120px;">
+            <option value="4">4 colors</option>
+            <option value="6" selected>6 colors</option>
+            <option value="8">8 colors</option>
+            <option value="10">10 colors</option>
+          </select>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <button id="extract-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>
+            Extract Palette
+          </button>
+        </div>
+
+        <div style="margin-top:1rem;background:var(--bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">
+            💡 <strong>Tip:</strong> For brand colors from a logo, use 4–6 colors. For complex photos and artwork, 8–10 colors gives a more complete palette.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">When to extract a color palette from an image</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>Color palette extraction is a fundamental task for designers, developers, and content creators. When building a website or app, you might want to match your UI colors to a brand photograph or hero image. When designing marketing materials, you might need the exact hex codes from a product photo to maintain brand consistency.</p>
+      <p>Other common uses: finding the exact shade of a color in a reference image, building a mood board with extracted tones, creating a consistent color scheme from multiple images, or identifying the dominant colors in a competitor's branding.</p>
+      <p>This tool samples pixel colors across the image, groups similar colors together using a quantization algorithm, and returns the most representative dominant colors. The result is a concise palette you can immediately use in design tools, CSS, or code.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">How accurate is the color extraction?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">The tool uses a median-cut quantization algorithm that groups the most similar pixel colors and returns the centroid of each group. For most photos, the extracted colors closely represent the visual impression of the image. For logos and flat-design images with few distinct colors, the accuracy is very high.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I use the extracted hex codes in CSS?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — click any swatch to copy its hex code directly to your clipboard. Paste it anywhere: CSS variables, Figma, Adobe XD, Canva, or your design system.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Why doesn't the palette match the exact colors I see?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Color quantization averages groups of similar colors, so the extracted swatches represent the dominant color regions rather than any single pixel. If you need the exact hex of a specific pixel, use the eyedropper tool in your browser's DevTools (F12 → Computed → color picker).</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are my images private?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — the Canvas API reads your image pixels locally in the browser. No image data is sent anywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/compress" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress Images</h3><p>Reduce image file size</p></a>
+    <a href="/convert" class="tool-card"><h3 style="font-size:0.9rem;">🔄 Format Converter</h3><p>PNG, JPG, WebP, AVIF</p></a>
+    <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">📐 Image Resizer</h3><p>Resize to exact dimensions</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const zone = document.getElementById('upload-zone');
+  const input = document.getElementById('file-input');
+  const resultSection = document.getElementById('result-section');
+  const workCanvas = document.getElementById('work-canvas');
+  const workCtx = workCanvas.getContext('2d');
+  const extractBtn = document.getElementById('extract-btn');
+  const colorCountSel = document.getElementById('color-count');
+  let currentImg = null;
+
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const files = [...e.dataTransfer.files].filter(f => f.type.startsWith('image/'));
+    if (files.length) loadImage(files[0]);
+  });
+  zone.addEventListener('click', () => input.click());
+  input.addEventListener('change', e => { if (e.target.files[0]) loadImage(e.target.files[0]); });
+  extractBtn.addEventListener('click', () => { if (currentImg) extractPalette(currentImg); });
+
+  function loadImage(file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const img = new Image();
+      img.onload = function () {
+        currentImg = img;
+        document.getElementById('thumb').src = e.target.result;
+        document.getElementById('image-info').innerHTML =
+          `<strong>${file.name}</strong><br>${img.width} × ${img.height}px · ${formatBytes(file.size)}`;
+        extractBtn.disabled = false;
+        extractPalette(img);
+        resultSection.classList.remove('hidden');
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function extractPalette(img) {
+    const n = parseInt(colorCountSel.value);
+    const maxDim = 100; // sample at small size for speed
+    const scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+    const sw = Math.max(1, Math.round(img.width * scale));
+    const sh = Math.max(1, Math.round(img.height * scale));
+    workCanvas.width = sw;
+    workCanvas.height = sh;
+    workCtx.drawImage(img, 0, 0, sw, sh);
+    const data = workCtx.getImageData(0, 0, sw, sh).data;
+
+    // Collect all opaque pixels
+    const pixels = [];
+    for (let i = 0; i < data.length; i += 4) {
+      if (data[i + 3] > 128) {
+        pixels.push([data[i], data[i + 1], data[i + 2]]);
+      }
+    }
+
+    const palette = medianCut(pixels, n);
+    renderPalette(palette);
+  }
+
+  // Simple median cut quantization
+  function medianCut(pixels, n) {
+    let buckets = [pixels];
+    while (buckets.length < n) {
+      // Find the bucket with the largest range
+      let maxRange = -1, maxIdx = 0;
+      buckets.forEach((b, i) => {
+        const r = range(b);
+        if (r > maxRange) { maxRange = r; maxIdx = i; }
+      });
+      const bucket = buckets.splice(maxIdx, 1)[0];
+      const [b1, b2] = splitBucket(bucket);
+      buckets.push(b1, b2);
+    }
+    return buckets.map(average).sort((a, b) => luminance(b) - luminance(a));
+  }
+
+  function range(pixels) {
+    let rMin=255,rMax=0,gMin=255,gMax=0,bMin=255,bMax=0;
+    for (const [r,g,b] of pixels) {
+      if(r<rMin)rMin=r; if(r>rMax)rMax=r;
+      if(g<gMin)gMin=g; if(g>gMax)gMax=g;
+      if(b<bMin)bMin=b; if(b>bMax)bMax=b;
+    }
+    return Math.max(rMax-rMin, gMax-gMin, bMax-bMin);
+  }
+
+  function splitBucket(pixels) {
+    let rMin=255,rMax=0,gMin=255,gMax=0,bMin=255,bMax=0;
+    for (const [r,g,b] of pixels) {
+      if(r<rMin)rMin=r; if(r>rMax)rMax=r;
+      if(g<gMin)gMin=g; if(g>gMax)gMax=g;
+      if(b<bMin)bMin=b; if(b>bMax)bMax=b;
+    }
+    const rR=rMax-rMin, gR=gMax-gMin, bR=bMax-bMin;
+    let ch = 0;
+    if (gR>=rR && gR>=bR) ch=1; else if (bR>=rR) ch=2;
+    pixels.sort((a,b)=>a[ch]-b[ch]);
+    const mid = Math.floor(pixels.length/2);
+    return [pixels.slice(0,mid), pixels.slice(mid)];
+  }
+
+  function average(pixels) {
+    if (!pixels.length) return [128,128,128];
+    const sum = pixels.reduce((acc,[r,g,b])=>[acc[0]+r,acc[1]+g,acc[2]+b],[0,0,0]);
+    return sum.map(v=>Math.round(v/pixels.length));
+  }
+
+  function luminance([r,g,b]) { return 0.299*r + 0.587*g + 0.114*b; }
+
+  function toHex([r,g,b]) {
+    return '#' + [r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');
+  }
+
+  function renderPalette(colors) {
+    const grid = document.getElementById('palette-grid');
+    grid.innerHTML = '';
+    colors.forEach(color => {
+      const hex = toHex(color);
+      const [r,g,b] = color;
+      const lum = luminance(color);
+      const textColor = lum > 128 ? '#1f2937' : '#ffffff';
+
+      const div = document.createElement('div');
+      div.style.cssText = `border-radius:0.75rem;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.1);transition:transform 0.1s;`;
+      div.innerHTML = `
+        <div style="height:80px;background:${hex};"></div>
+        <div style="padding:0.6rem 0.75rem;background:${hex};border-top:1px solid rgba(0,0,0,0.08);">
+          <div style="font-family:monospace;font-size:0.82rem;font-weight:700;color:${textColor};">${hex.toUpperCase()}</div>
+          <div style="font-size:0.72rem;color:${textColor};opacity:0.8;margin-top:0.15rem;">rgb(${r}, ${g}, ${b})</div>
+        </div>`;
+      div.title = 'Click to copy hex';
+      div.addEventListener('click', () => {
+        navigator.clipboard.writeText(hex).then(() => {
+          div.style.transform = 'scale(0.96)';
+          setTimeout(() => div.style.transform = '', 200);
+        }).catch(() => {});
+      });
+      div.addEventListener('mouseenter', () => div.style.transform = 'scale(1.03)');
+      div.addEventListener('mouseleave', () => div.style.transform = '');
+      grid.appendChild(div);
+    });
+
+    // Build downloadable palette PNG
+    buildPaletteImage(colors);
+  }
+
+  function buildPaletteImage(colors) {
+    const pc = document.getElementById('palette-canvas');
+    const sw = 120, sh = 160, pad = 4;
+    pc.width = colors.length * sw + (colors.length + 1) * pad;
+    pc.height = sh + pad * 2;
+    const pCtx = pc.getContext('2d');
+    pCtx.fillStyle = '#f9fafb';
+    pCtx.fillRect(0, 0, pc.width, pc.height);
+    colors.forEach((color, i) => {
+      const hex = toHex(color);
+      const x = pad + i * (sw + pad);
+      pCtx.fillStyle = hex;
+      pCtx.fillRect(x, pad, sw, sh - 24);
+      pCtx.fillStyle = '#1f2937';
+      pCtx.font = '11px monospace';
+      pCtx.textAlign = 'center';
+      pCtx.fillText(hex.toUpperCase(), x + sw/2, sh - 6);
+    });
+  }
+
+  document.getElementById('download-palette-btn').addEventListener('click', () => {
+    const pc = document.getElementById('palette-canvas');
+    pc.toBlob(blob => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'color-palette.png';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }, 'image/png');
+  });
+
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+    return (bytes/(1024*1024)).toFixed(1) + ' MB';
+  }
+})();
+</script>
+</body>
+</html>

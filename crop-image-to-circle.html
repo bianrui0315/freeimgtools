@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Image to Circle — Free Online Circle Crop Tool</title>
+  <meta name="description" content="Crop any image into a perfect circle online for free. Download as PNG with transparent background. Perfect for profile pictures, avatars, and logos. No upload needed.">
+  <meta name="keywords" content="crop image to circle, circle crop tool, circular crop online, profile picture circle, round image crop, crop photo circle free">
+  <link rel="canonical" href="https://freeimgtools.net/crop-image-to-circle">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Circle Image Crop Tool",
+    "url": "https://freeimgtools.net/crop-image-to-circle",
+    "description": "Crop any image to a perfect circle with transparent background. Free, no upload required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize" class="active">Resize</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Crop Image to Circle</h1>
+  <p class="page-desc">Instantly crop any photo into a perfect circle with a transparent background. Download as PNG — ready for LinkedIn, Discord, GitHub, and anywhere else that shows a circular avatar.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>Circle cropping runs entirely in your browser using the Canvas API. Nothing is uploaded or stored.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*">
+        <span class="upload-icon">⭕</span>
+        <h3>Drop your image here</h3>
+        <p>or click to browse — JPG, PNG, WebP accepted</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+        </div>
+      </div>
+
+      <div id="result-section" class="hidden" style="margin-top:1.5rem;">
+        <div class="card" style="padding:1.25rem;text-align:center;">
+          <canvas id="preview-canvas" style="max-width:100%;border-radius:50%;box-shadow:0 4px 16px rgba(0,0,0,0.12);max-height:300px;"></canvas>
+          <div style="margin-top:1.25rem;display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+            <button id="download-btn" class="btn btn-primary btn-lg">↓ Download Circle PNG</button>
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;" id="output-info"></p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Circle Settings</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">Output size</div>
+          <select id="output-size" style="max-width:180px;">
+            <option value="original">Original size</option>
+            <option value="512">512 × 512 px</option>
+            <option value="400">400 × 400 px</option>
+            <option value="256" selected>256 × 256 px</option>
+            <option value="200">200 × 200 px</option>
+            <option value="128">128 × 128 px (Discord emoji)</option>
+          </select>
+        </div>
+
+        <div style="margin-top:1.25rem;background:var(--bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;font-weight:600;margin-bottom:0.5rem;">Common platform sizes:</p>
+          <div style="font-size:0.78rem;color:var(--text-muted);display:grid;gap:0.3rem;">
+            <div style="display:flex;justify-content:space-between;"><span>LinkedIn profile</span><span>400×400</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Twitter/X profile</span><span>400×400</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>GitHub avatar</span><span>200×200+</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Discord avatar</span><span>128×128</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>YouTube profile</span><span>800×800</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem;background:var(--success-bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:#065f46;line-height:1.6;">
+            ✓ Output is always PNG — the only format that supports the transparent background needed for a true circle shape.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Why circle crop for profile pictures?</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>Nearly every major social platform — LinkedIn, Twitter/X, GitHub, Discord, YouTube, Slack, and Instagram — displays profile photos in a circular frame. When you upload a square image, the platform crops it to a circle automatically, but the cropping is centered and may cut off your subject in unexpected ways.</p>
+      <p>Pre-cropping your image to a circle lets you control exactly what shows through the circular frame. You can adjust the composition before uploading, ensuring your face or logo is perfectly centered. The transparent PNG background means the circle edge looks sharp on any background color.</p>
+      <p>This tool uses the browser's Canvas API to apply a circular clip path to your image, then exports it as a PNG with an alpha channel. The result is a perfectly circular image you can use anywhere.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Why is the output always PNG and not JPG?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">JPG does not support transparency. A circle crop requires the areas outside the circle to be transparent — only PNG (and WebP) can represent this. If you save it as JPG, the background becomes solid white or black, destroying the circular shape.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">How do I center the subject of my photo in the circle?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">This tool crops from the center of the image. For best results, make sure your subject is centered in the original photo. If not, crop or resize the photo first using the <a href="/resize">image resizer</a>, then use the circle crop tool.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What size should I choose for LinkedIn?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">LinkedIn recommends 400×400 pixels for profile photos. Select "400 × 400 px" in the output size dropdown for the best result.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are my images private?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — all processing uses the Canvas API in your browser. Your image never leaves your device.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/discord-emoji-size" class="tool-card"><h3 style="font-size:0.9rem;">🎮 Discord Emoji Size</h3><p>Resize to 128×128px</p></a>
+    <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">📐 Image Resizer</h3><p>Set exact pixel dimensions</p></a>
+    <a href="/compress" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress Images</h3><p>Reduce PNG file size</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const zone = document.getElementById('upload-zone');
+  const input = document.getElementById('file-input');
+  const resultSection = document.getElementById('result-section');
+  const canvas = document.getElementById('preview-canvas');
+  const ctx = canvas.getContext('2d');
+  const sizeSelect = document.getElementById('output-size');
+  let currentImg = null;
+
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const files = [...e.dataTransfer.files].filter(f => f.type.startsWith('image/'));
+    if (files.length) loadImage(files[0]);
+  });
+  zone.addEventListener('click', () => input.click());
+  input.addEventListener('change', e => { if (e.target.files[0]) loadImage(e.target.files[0]); });
+  sizeSelect.addEventListener('change', () => { if (currentImg) renderCircle(currentImg); });
+
+  function loadImage(file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const img = new Image();
+      img.onload = function () {
+        currentImg = img;
+        renderCircle(img);
+        resultSection.classList.remove('hidden');
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function renderCircle(img) {
+    const sizeVal = sizeSelect.value;
+    const side = sizeVal === 'original' ? Math.min(img.width, img.height) : parseInt(sizeVal);
+
+    canvas.width = side;
+    canvas.height = side;
+
+    ctx.clearRect(0, 0, side, side);
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(side / 2, side / 2, side / 2, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.clip();
+
+    // Cover: scale image to fill the circle, center it
+    const scale = Math.max(side / img.width, side / img.height);
+    const w = img.width * scale;
+    const h = img.height * scale;
+    const x = (side - w) / 2;
+    const y = (side - h) / 2;
+    ctx.drawImage(img, x, y, w, h);
+    ctx.restore();
+
+    document.getElementById('output-info').textContent = `Output: ${side}×${side}px PNG with transparent background`;
+  }
+
+  document.getElementById('download-btn').addEventListener('click', () => {
+    if (!currentImg) return;
+    canvas.toBlob(blob => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'circle-crop.png';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }, 'image/png');
+  });
+})();
+</script>
+</body>
+</html>

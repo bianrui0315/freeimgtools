@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add White Border to Photo Online — Free Image Frame Tool</title>
+  <meta name="description" content="Add a white border (frame) to any photo online for free. Perfect for Instagram white frame style. Adjust border size and color. No upload — runs in your browser.">
+  <meta name="keywords" content="add white border to photo, white border photo online, instagram white frame, photo frame online free, add border to image, white frame photo">
+  <link rel="canonical" href="https://freeimgtools.net/add-white-border-to-photo">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Add White Border to Photo",
+    "url": "https://freeimgtools.net/add-white-border-to-photo",
+    "description": "Add a white border frame to any photo for free. No upload required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize" class="active">Resize</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Add White Border to Photo</h1>
+  <p class="page-desc">Add a clean white frame around any photo — the classic Instagram white border style. Adjust the border size and color, then download instantly. No upload needed.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>Border processing runs entirely in your browser using the Canvas API. Nothing is uploaded.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*">
+        <span class="upload-icon">🖼️</span>
+        <h3>Drop your photo here</h3>
+        <p>or click to browse — JPG, PNG, WebP accepted</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+        </div>
+      </div>
+
+      <div id="result-section" class="hidden" style="margin-top:1.5rem;">
+        <div class="card" style="padding:1.25rem;text-align:center;">
+          <div style="display:inline-block;max-width:100%;">
+            <canvas id="preview-canvas" style="max-width:100%;max-height:400px;display:block;"></canvas>
+          </div>
+          <div style="margin-top:1.25rem;display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+            <button id="download-jpg-btn" class="btn btn-primary btn-lg">↓ Download JPG</button>
+            <button id="download-png-btn" class="btn btn-secondary">↓ Download PNG</button>
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;" id="output-info"></p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Border Settings</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">Border size<span class="setting-hint">Pixels added on each side</span></div>
+          <div class="slider-wrap">
+            <input type="range" id="border-size" min="5" max="300" value="40">
+            <span class="slider-val" id="border-size-val">40</span>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Border color</div>
+          <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+            <button onclick="setColor('#ffffff')" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;background:#fff;border:2px solid #d1d5db;">White</button>
+            <button onclick="setColor('#000000')" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;background:#000;color:#fff;border:2px solid #d1d5db;">Black</button>
+            <button onclick="setColor('#f5f5f5')" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;background:#f5f5f5;border:2px solid #d1d5db;">Gray</button>
+            <input type="color" id="color-picker" value="#ffffff" style="width:36px;height:32px;border:1.5px solid var(--border);border-radius:0.4rem;cursor:pointer;padding:1px;" title="Custom color">
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;background:var(--bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">
+            💡 <strong>Instagram white border tip:</strong> A 40–80px white border on a square photo gives the classic clean frame look that stands out in feeds.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Why add a white border to photos?</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>Adding a white border or frame around a photo is a popular technique on Instagram and other visual platforms. The white space creates a "museum frame" effect that draws attention to the photo itself, makes dark-edged images stand out against the white feed background, and gives a clean, minimalist aesthetic.</p>
+      <p>White borders also solve a practical problem: square Instagram posts require 1:1 aspect ratio, but most photos are 3:2 (DSLR) or 4:3 (phone). Adding a white border lets you post any photo at its original proportions without cropping — the border fills the square format naturally.</p>
+      <p>This tool adds a uniform border to all four sides of your image using the Canvas API. The output dimensions are your original image size plus 2× the border size on each axis (e.g., a 1080×1080 photo with a 40px border becomes 1160×1160).</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What border size should I use for Instagram?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">For a subtle frame on Instagram, 20–40px is common. For the classic thick border look, try 60–100px. Instagram posts are 1080px wide, so a 40px border on each side adds 80px total — bringing a 1080px image to 1160px, which Instagram will scale down cleanly.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Does adding a border increase the file size?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Slightly — the output image is larger in pixels (original size + border), so the file size increases proportionally. Use our <a href="/compress">image compressor</a> after adding a border if you need a smaller file.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I use a custom border color?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — click the color picker (the small colored square) to choose any custom color. Popular choices are white (#ffffff), black (#000000), cream (#f5f0e8), and pastel tones.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are my photos private?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes. All processing happens locally in your browser — your photo is never uploaded to any server.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/crop-image-to-circle" class="tool-card"><h3 style="font-size:0.9rem;">⭕ Crop to Circle</h3><p>Round profile picture crop</p></a>
+    <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">📐 Image Resizer</h3><p>Resize to Instagram square</p></a>
+    <a href="/compress" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress Images</h3><p>Reduce file size after framing</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const zone = document.getElementById('upload-zone');
+  const input = document.getElementById('file-input');
+  const resultSection = document.getElementById('result-section');
+  const canvas = document.getElementById('preview-canvas');
+  const ctx = canvas.getContext('2d');
+  const borderSlider = document.getElementById('border-size');
+  const borderVal = document.getElementById('border-size-val');
+  const colorPicker = document.getElementById('color-picker');
+  let currentImg = null;
+  let currentColor = '#ffffff';
+
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const files = [...e.dataTransfer.files].filter(f => f.type.startsWith('image/'));
+    if (files.length) loadImage(files[0]);
+  });
+  zone.addEventListener('click', () => input.click());
+  input.addEventListener('change', e => { if (e.target.files[0]) loadImage(e.target.files[0]); });
+
+  borderSlider.addEventListener('input', () => {
+    borderVal.textContent = borderSlider.value;
+    if (currentImg) renderBorder();
+  });
+
+  colorPicker.addEventListener('input', () => {
+    currentColor = colorPicker.value;
+    if (currentImg) renderBorder();
+  });
+
+  window.setColor = function (hex) {
+    currentColor = hex;
+    colorPicker.value = hex;
+    if (currentImg) renderBorder();
+  };
+
+  function loadImage(file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const img = new Image();
+      img.onload = function () {
+        currentImg = img;
+        renderBorder();
+        resultSection.classList.remove('hidden');
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function renderBorder() {
+    const border = parseInt(borderSlider.value);
+    const w = currentImg.width + border * 2;
+    const h = currentImg.height + border * 2;
+    canvas.width = w;
+    canvas.height = h;
+    ctx.fillStyle = currentColor;
+    ctx.fillRect(0, 0, w, h);
+    ctx.drawImage(currentImg, border, border, currentImg.width, currentImg.height);
+    document.getElementById('output-info').textContent =
+      `Output: ${w}×${h}px (original ${currentImg.width}×${currentImg.height} + ${border}px border on each side)`;
+  }
+
+  function download(type) {
+    if (!currentImg) return;
+    const mime = type === 'jpg' ? 'image/jpeg' : 'image/png';
+    const ext = type === 'jpg' ? '.jpg' : '.png';
+    canvas.toBlob(blob => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'bordered-photo' + ext;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }, mime, 0.92);
+  }
+
+  document.getElementById('download-jpg-btn').addEventListener('click', () => download('jpg'));
+  document.getElementById('download-png-btn').addEventListener('click', () => download('png'));
+})();
+</script>
+</body>
+</html>

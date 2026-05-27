@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compress Image to Under 200KB — Free Online Tool</title>
+  <meta name="description" content="Reduce any image file size to under 200KB online for free. Perfect for government forms, visa applications, job portals. No upload — runs in your browser.">
+  <meta name="keywords" content="compress image to under 200kb, reduce image size to 200kb, compress photo 200kb, image file size limit, compress for government form">
+  <link rel="canonical" href="https://freeimgtools.net/compress-image-under-200kb">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Compress Image to Under 200KB",
+    "url": "https://freeimgtools.net/compress-image-under-200kb",
+    "description": "Compress any image to under 200KB for free. No upload required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress" class="active">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Compress Image to Under 200KB</h1>
+  <p class="page-desc">Reduce image file size below 200KB for government portals, visa forms, job applications, and upload limits. Free, private, no upload.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>Compression runs entirely in your browser. No upload, no server, no storage.</p>
+    </div>
+  </div>
+
+  <div style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.875rem;line-height:1.7;">
+    <p><strong>💡 How to target 200KB:</strong> Upload your image, then set quality to <strong>75</strong> and format to <strong>WebP</strong>. Check the output file size shown under the result. If still above 200KB, lower the quality slider in steps of 5 until you hit your target.</p>
+  </div>
+
+  <div class="two-col">
+
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" multiple>
+        <span class="upload-icon">🗜️</span>
+        <h3>Drop images here</h3>
+        <p>or click to browse — JPG, PNG, WebP, AVIF accepted</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+          <span class="format-tag">AVIF</span>
+        </div>
+      </div>
+
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span>
+          <button id="clear-btn" class="btn btn-secondary" style="padding:0.35rem 0.75rem;font-size:0.8rem;">✕ Clear all</button>
+        </div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <div id="results-section" class="hidden" style="margin-top:1.5rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <h2 style="font-size:1.1rem;font-weight:700;">Results</h2>
+        </div>
+        <div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;">
+          <span id="bulk-count"></span>
+          <button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">↓ Download All (ZIP)</button>
+        </div>
+        <div id="results-grid" class="results-grid"></div>
+      </div>
+
+      <div id="compare-section" class="hidden" style="margin-top:1.5rem;">
+        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.75rem;color:var(--text-muted);">BEFORE / AFTER COMPARISON</h3>
+        <div class="compare-wrap" id="compare-wrap">
+          <img id="compare-before" src="" alt="original">
+          <div class="compare-after" id="compare-after">
+            <img id="compare-after-img" src="" alt="compressed" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;">
+          </div>
+          <div class="compare-divider" id="compare-divider"></div>
+          <div class="compare-handle" id="compare-handle">↔</div>
+          <span class="compare-label before">Original</span>
+          <span class="compare-label after">Compressed</span>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;margin-top:0.5rem;">Drag the divider to compare</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Settings</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Output Format
+            <span class="setting-hint">Keep original or convert</span>
+          </div>
+          <select id="format">
+            <option value="original">Keep original</option>
+            <option value="jpg">JPEG</option>
+            <option value="png">PNG</option>
+            <option value="webp" selected>WebP (recommended)</option>
+            <option value="avif">AVIF (best compression)</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Quality
+            <span class="setting-hint">Lower = smaller file</span>
+          </div>
+          <div class="slider-wrap">
+            <input type="range" id="quality" min="10" max="100" value="75">
+            <span class="slider-val" id="quality-val">75</span>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Strip EXIF data
+            <span class="setting-hint">Remove GPS, camera info</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="strip-exif" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>
+            Compress Images
+          </button>
+        </div>
+
+        <div style="margin-top:1rem;background:var(--bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">
+            💡 <strong>Quick guide to 200KB:</strong><br>
+            Quality 75 + WebP → typically achieves 200KB for most photos.<br>
+            Quality 60 + AVIF → even smaller, best compression available.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Why do websites require images under 200KB?</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>Government portals, visa application systems, job boards, and university admissions forms routinely impose strict file size limits — commonly 100KB, 200KB, or 500KB — on uploaded photos and documents. These limits exist to keep storage costs manageable and to ensure forms can be processed quickly.</p>
+      <p>Modern smartphone cameras produce photos of 3–10 MB, which is far too large for most portal uploads. Even a standard 1080p screenshot can be 500KB–2MB. Compression is the fastest way to meet the size requirement without changing the image dimensions.</p>
+      <p>The most effective strategy: convert to <strong>WebP at quality 75</strong>. This typically reduces a 2MB JPEG to under 200KB with no visible quality loss. If the result is still too large, try <strong>AVIF at quality 60</strong> for maximum compression — AVIF is 40–50% smaller than JPEG at the same visual quality.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">How to compress an image to 200KB — 3 steps</h2>
+    <div style="display:grid;gap:0.75rem;font-size:0.875rem;">
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.4rem;flex-shrink:0;">1️⃣</span>
+        <div><strong>Upload your image</strong><br><span style="color:var(--text-muted);">Drag your photo into the upload zone above, or click to browse. JPG, PNG, WebP, and AVIF are all accepted.</span></div>
+      </div>
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.4rem;flex-shrink:0;">2️⃣</span>
+        <div><strong>Set format to WebP, quality to 75</strong><br><span style="color:var(--text-muted);">These defaults are pre-selected. Click "Compress Images" and check the output file size shown under the result.</span></div>
+      </div>
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.4rem;flex-shrink:0;">3️⃣</span>
+        <div><strong>Adjust if needed, then download</strong><br><span style="color:var(--text-muted);">Still above 200KB? Lower the quality slider by 5 and compress again. When you hit your target, click Download.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What quality setting gets me below 200KB?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">It depends on your image. For a typical smartphone photo (3–5MP), WebP at quality 75 usually produces a file between 80–180KB. For large images (12MP+), try quality 65–70. Use AVIF for the smallest possible output.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Should I use JPG, WebP, or AVIF?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">If the upload portal accepts any format, use WebP — it gives the best compression-to-quality ratio for most cases. If the portal specifically requires JPG (common for ID photos), use JPG. AVIF gives the most compression but is newer and may not be accepted everywhere.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are my images private?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — compression happens entirely in your browser using the Canvas API. No image data is ever sent to a server. This is especially important for sensitive documents like ID photos or passport scans.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What if 200KB isn't small enough?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Use the same tool with a lower quality setting. You can also try resizing the image to smaller dimensions first — smaller pixels mean a smaller file. Combine resizing with compression for maximum reduction.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/resize-photo-for-us-visa" class="tool-card"><h3 style="font-size:0.9rem;">📷 US Visa Photo</h3><p>Resize to 2×2 inch requirements</p></a>
+    <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">📐 Image Resizer</h3><p>Reduce dimensions before compressing</p></a>
+    <a href="/convert" class="tool-card"><h3 style="font-size:0.9rem;">🔄 Format Converter</h3><p>Convert to WebP or AVIF</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/compress.js"></script>
+</body>
+</html>

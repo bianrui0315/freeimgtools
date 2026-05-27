@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Emoji Size Converter — Resize to 128×128 Free</title>
+  <meta name="description" content="Resize any image to Discord emoji size (128×128px), server icon (512×512), or profile picture (128×128). Free, instant, no upload required.">
+  <meta name="keywords" content="discord emoji size, discord emoji converter, resize image for discord, discord emoji 128x128, discord server icon size, discord profile picture size">
+  <link rel="canonical" href="https://freeimgtools.net/discord-emoji-size">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Discord Emoji Size Converter",
+    "url": "https://freeimgtools.net/discord-emoji-size",
+    "description": "Resize images to Discord emoji size (128×128px) for free. No upload required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize" class="active">Resize</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Discord Emoji Size Converter</h1>
+  <p class="page-desc">Resize any image to the correct size for Discord emojis, server icons, profile pictures, and stickers. Free, private, no upload.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>All resizing happens in your browser — nothing is uploaded or stored.</p>
+    </div>
+  </div>
+
+  <div style="background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.875rem;line-height:1.7;">
+    <p><strong>🎮 Discord image size guide:</strong> Custom Emoji → <strong>128×128px</strong> (max 256KB) · Server Icon → <strong>512×512px</strong> · Profile Picture → <strong>128×128px</strong> · Server Banner → 960×540px · Sticker → <strong>320×320px</strong></p>
+  </div>
+
+  <div class="two-col">
+
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" multiple>
+        <span class="upload-icon">🎮</span>
+        <h3>Drop your image here</h3>
+        <p>or click to browse · PNG recommended for transparency</p>
+        <div class="formats">
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">WebP</span>
+          <span class="format-tag">GIF</span>
+        </div>
+      </div>
+
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span>
+        </div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <div id="results-section" class="hidden" style="margin-top:1.5rem;">
+        <div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;">
+          <span>Images resized</span>
+          <button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">↓ Download All (ZIP)</button>
+        </div>
+        <div id="results-grid" class="results-grid"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Discord Size Presets</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">Preset</div>
+          <select id="preset" style="max-width:200px;">
+            <option value="custom" selected>Custom Emoji (128×128)</option>
+            <optgroup label="Discord sizes">
+              <option value="custom">Emoji / Profile (128×128)</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Width (px)</div>
+          <input type="number" id="width" value="128" min="1" max="10000"
+            style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;outline:none;">
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Height (px)</div>
+          <input type="number" id="height" value="128" min="1" max="10000"
+            style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;outline:none;">
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Lock aspect ratio
+            <span class="setting-hint">Auto-calculate other dimension</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="lock-aspect">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Fit mode
+          </div>
+          <select id="fit-mode">
+            <option value="cover" selected>Cover (crop center)</option>
+            <option value="contain">Contain (letterbox)</option>
+            <option value="exact">Exact (stretch)</option>
+          </select>
+        </div>
+
+        <div style="margin-top:0.75rem;display:grid;gap:0.5rem;">
+          <p style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">Quick size buttons:</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+            <button onclick="setSize(128,128)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">Emoji 128×128</button>
+            <button onclick="setSize(512,512)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">Server Icon 512×512</button>
+            <button onclick="setSize(320,320)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">Sticker 320×320</button>
+            <button onclick="setSize(960,540)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">Banner 960×540</button>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>
+            Resize for Discord
+          </button>
+        </div>
+        <div style="margin-top:1rem;background:var(--success-bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:#065f46;line-height:1.6;">
+            ✓ Discord custom emojis must be under 256KB. The output PNG from this tool is typically 5–30KB at 128×128.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Complete Discord image size reference</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="background:var(--bg);">
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Asset</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Recommended Size</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Max File Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Custom Emoji</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">128 × 128 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">256 KB</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Profile Picture</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">128 × 128 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">10 MB</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Server Icon</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">512 × 512 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">10 MB</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Server Banner</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">960 × 540 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">10 MB</td></tr>
+          <tr><td style="padding:0.6rem 1rem;font-weight:600;">Sticker</td><td style="padding:0.6rem 1rem;">320 × 320 px</td><td style="padding:0.6rem 1rem;">512 KB</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">How to resize an image for Discord — 3 steps</h2>
+    <div style="display:grid;gap:0.75rem;font-size:0.875rem;">
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.4rem;flex-shrink:0;">1️⃣</span>
+        <div><strong>Upload your image</strong><br><span style="color:var(--text-muted);">Drag your PNG, JPG, or WebP file into the zone above. PNG is best for emojis because it preserves transparency.</span></div>
+      </div>
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.4rem;flex-shrink:0;">2️⃣</span>
+        <div><strong>Click a quick size button</strong><br><span style="color:var(--text-muted);">Choose from Emoji (128×128), Server Icon (512×512), Sticker (320×320), or Banner (960×540). Or type custom dimensions.</span></div>
+      </div>
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.4rem;flex-shrink:0;">3️⃣</span>
+        <div><strong>Resize &amp; download</strong><br><span style="color:var(--text-muted);">Click "Resize for Discord" and download the output. Then upload directly to Discord Server Settings → Emoji.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What size should a Discord emoji be?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Discord recommends 128×128 pixels for custom emojis, with a maximum file size of 256KB. PNG format is recommended because it supports transparency — which lets your emoji have a transparent background that works on any chat background color.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Why does Discord say my emoji is too large?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Discord has a 256KB file size limit for custom emojis. Even at 128×128px, some PNG files can exceed this if the image has many colors or fine detail. Use our <a href="/compress-image-under-200kb">image compressor</a> to bring the file under 256KB.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Does Discord support animated emojis?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — Discord supports animated GIF emojis (requires Discord Nitro to use in other servers). This tool resizes static images; for animated GIFs, upload the GIF directly to Discord — it preserves animation automatically.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are my images private?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes. Everything runs in your browser — no image is ever sent to a server. You can even use this tool offline after the page has loaded.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/crop-image-to-circle" class="tool-card"><h3 style="font-size:0.9rem;">⭕ Crop to Circle</h3><p>Perfect circle for profile pics</p></a>
+    <a href="/compress-image-under-200kb" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress to 200KB</h3><p>Shrink emoji file size</p></a>
+    <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">📐 Image Resizer</h3><p>Custom dimensions &amp; social presets</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/resize.js"></script>
+<script>
+function setSize(w, h) {
+  document.getElementById('width').value = w;
+  document.getElementById('height').value = h;
+}
+</script>
+</body>
+</html>

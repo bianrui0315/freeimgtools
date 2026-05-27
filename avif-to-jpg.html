@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVIF to JPG Converter — Free Online, No Upload Required</title>
+  <meta name="description" content="Convert AVIF images to JPG online for free. AVIF is new and not supported everywhere — convert to universally compatible JPG instantly. No upload needed.">
+  <meta name="keywords" content="avif to jpg, avif to jpeg, convert avif to jpg free, avif converter online, open avif file">
+  <link rel="canonical" href="https://freeimgtools.net/avif-to-jpg">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AVIF to JPG Converter",
+    "url": "https://freeimgtools.net/avif-to-jpg",
+    "description": "Convert AVIF images to JPG online for free. No upload required.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert" class="active">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">AVIF to JPG Converter</h1>
+  <p class="page-desc">Convert AVIF images to JPG — compatible with every app, device, and service. Free, private, no upload needed.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>AVIF to JPG conversion runs entirely in your browser. Nothing is uploaded or stored.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/avif,image/*" multiple>
+        <span class="upload-icon">🔄</span>
+        <h3>Drop AVIF files here</h3>
+        <p>or click to browse · select multiple files for batch conversion</p>
+        <div class="formats">
+          <span class="format-tag">AVIF</span>
+          <span style="color:var(--text-muted);font-size:0.85rem;">→</span>
+          <span class="format-tag" style="background:var(--primary-light);border-color:#c7d2fe;color:var(--primary);">JPG</span>
+        </div>
+      </div>
+
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span>
+        </div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <div id="results-section" class="hidden" style="margin-top:1.5rem;">
+        <div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;">
+          <span id="bulk-count"></span>
+          <button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">↓ Download All (ZIP)</button>
+        </div>
+        <div id="results-grid" class="results-grid"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Conversion Settings</h3>
+        <div class="setting-row">
+          <div class="setting-label">Convert to</div>
+          <select id="target-format"><option value="jpg" selected>JPG (.jpg)</option></select>
+        </div>
+        <div class="setting-row" id="quality-wrap">
+          <div class="setting-label">Quality<span class="setting-hint">Lower = smaller file</span></div>
+          <div class="slider-wrap">
+            <input type="range" id="quality" min="10" max="100" value="90">
+            <span class="slider-val" id="quality-val">90</span>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>Convert to JPG</button>
+        </div>
+        <div style="margin-top:1rem;background:var(--success-bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:#065f46;line-height:1.6;">
+            ✓ JPG works everywhere — Windows, macOS, printers, email clients, and every image editing app.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Why convert AVIF to JPG?</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>AVIF (AV1 Image File Format) is one of the newest image formats, delivering exceptional compression — typically 40–50% smaller than JPEG at equivalent quality. However, it was only recently adopted by browsers and operating systems, and many apps still cannot open .avif files.</p>
+      <p>You will encounter AVIF files when downloading images saved by Google Chrome, Android cameras, or from websites that serve AVIF to supported browsers. When you try to open them in older apps, send them by email, upload to a portal, or print them, they often fail. Converting to JPG solves this instantly.</p>
+      <p>This tool uses your browser's native AVIF decoder (built into Chrome, Firefox, and Safari) to read the file, then re-encodes it as a standard JPEG. No plugins, no server — everything stays on your device.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">AVIF vs JPG — comparison</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="background:var(--bg);">
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);"></th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">AVIF</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">JPG</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">File size</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">40–50% smaller ✓</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Baseline</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Browser support</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Modern only (2021+)</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Universal ✓</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">App &amp; OS support</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Limited</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Universal ✓</td></tr>
+          <tr><td style="padding:0.6rem 1rem;font-weight:600;">Printing</td><td style="padding:0.6rem 1rem;color:var(--text-muted);">Rarely supported</td><td style="padding:0.6rem 1rem;color:var(--success);">Always works ✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Why can't I open my AVIF file in Windows Photo Viewer?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Windows Photo Viewer does not support AVIF natively on older Windows versions. Windows 11 added partial support, but third-party apps may still fail. Converting to JPG fixes compatibility with all Windows versions and apps.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Will I lose quality converting AVIF to JPG?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">At quality 90 (the default), the output JPG is visually indistinguishable from the original for most images. Set the quality slider to 100 for the highest possible fidelity.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I batch convert multiple AVIF files?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — drag multiple files or use the file picker to select several at once. All are converted simultaneously, and a "Download All (ZIP)" button appears for bulk download.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are my AVIF files private?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes. Conversion happens entirely in your browser — no file ever leaves your device. You can turn off Wi-Fi and the tool still works.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Other conversions</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/webp-to-jpg" class="tool-card"><h3 style="font-size:0.9rem;">WebP → JPG</h3><p>Convert modern WebP to JPG</p></a>
+    <a href="/jpg-to-webp" class="tool-card"><h3 style="font-size:0.9rem;">JPG → WebP</h3><p>Smaller files for the web</p></a>
+    <a href="/png-to-jpg" class="tool-card"><h3 style="font-size:0.9rem;">PNG → JPG</h3><p>Reduce photo file size</p></a>
+    <a href="/compress" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress Images</h3><p>Reduce file size up to 80%</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/convert.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resize Photo for US Visa Application — Free Online Tool</title>
+  <meta name="description" content="Resize any photo to US visa and passport requirements: 2×2 inches (600×600px at 300dpi). Free, instant, no upload. Works for DS-160, green card, and passport applications.">
+  <meta name="keywords" content="resize photo for us visa, us visa photo size, passport photo 2x2, ds-160 photo size, resize photo 600x600, visa photo requirements">
+  <link rel="canonical" href="https://freeimgtools.net/resize-photo-for-us-visa">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "US Visa Photo Resizer",
+    "url": "https://freeimgtools.net/resize-photo-for-us-visa",
+    "description": "Resize any photo to US visa application requirements (2×2 inches, 600×600px). Free, no upload.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize" class="active">Resize</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Resize Photo for US Visa Application</h1>
+  <p class="page-desc">Pre-configured for US visa and passport requirements: 2×2 inches (600×600 pixels at 300 DPI). Free, private, instant.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your photos never leave your device</h4>
+      <p>Resizing runs entirely in your browser. No upload, no server, no storage.</p>
+    </div>
+  </div>
+
+  <div style="background:#eff6ff;border:1.5px solid #93c5fd;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.875rem;line-height:1.7;">
+    <p><strong>📋 US Visa &amp; Passport Photo Requirements:</strong> 2 × 2 inches (51 × 51 mm) · <strong>600 × 600 pixels</strong> at 300 DPI · JPEG format · taken within the last 6 months · plain white or off-white background.</p>
+  </div>
+
+  <div class="two-col">
+
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" multiple>
+        <span class="upload-icon">📷</span>
+        <h3>Drop your photo here</h3>
+        <p>or click to browse — JPG, PNG, WebP accepted</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+        </div>
+      </div>
+
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+          <span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span>
+        </div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <div id="results-section" class="hidden" style="margin-top:1.5rem;">
+        <div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;">
+          <span>Photos resized</span>
+          <button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">↓ Download All (ZIP)</button>
+        </div>
+        <div id="results-grid" class="results-grid"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>Resize Settings</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">Preset</div>
+          <select id="preset" style="max-width:160px;">
+            <option value="custom" selected>Custom</option>
+            <optgroup label="US Documents">
+              <option value="custom">US Visa / Passport (600×600)</option>
+            </optgroup>
+            <optgroup label="Other social">
+              <option value="twitter">Twitter/X 1200×675</option>
+              <option value="og">Open Graph 1200×630</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Width (px)</div>
+          <input type="number" id="width" value="600" min="1" max="10000"
+            style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;outline:none;">
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Height (px)</div>
+          <input type="number" id="height" value="600" min="1" max="10000"
+            style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;outline:none;">
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Lock aspect ratio
+            <span class="setting-hint">Auto-calculate other dimension</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="lock-aspect">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
+            Fit mode
+            <span class="setting-hint">When both dimensions set</span>
+          </div>
+          <select id="fit-mode">
+            <option value="cover" selected>Cover (crop center)</option>
+            <option value="contain">Contain (letterbox)</option>
+            <option value="exact">Exact (stretch)</option>
+          </select>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>
+            Resize Photo
+          </button>
+        </div>
+        <div style="margin-top:1rem;background:var(--success-bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:#065f46;line-height:1.6;">
+            ✓ Output is 600×600px. After downloading, verify the file size is under 240KB (DS-160 limit). Use the <a href="/compress-image-under-200kb" style="color:#065f46;text-decoration:underline;">compressor</a> if needed.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">US visa photo requirements — complete guide</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>The US Department of State requires a specific photo format for all visa and passport applications. The requirements are strict: photos that don't meet the specifications are rejected, which can delay your application by weeks.</p>
+      <p>For digital submissions (DS-160, DV Lottery, Green Card), the photo must be <strong>600×600 pixels</strong> (which equals 2×2 inches at 300 DPI), in JPEG format, and under 240KB. The face must occupy 50–69% of the frame from the bottom of the chin to the top of the head.</p>
+      <p>This tool resizes any photo to exactly 600×600 pixels using "cover" mode, which crops the center of your image — ideal for portrait photos where the face is centered. After resizing, use our <a href="/compress-image-under-200kb">image compressor</a> if the file is above 240KB.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Photo size requirements by document type</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="background:var(--bg);">
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Document</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Size</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Digital pixels</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">US Passport</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">2×2 in (51×51mm)</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">600×600 px</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">US Visa (DS-160)</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">2×2 in (51×51mm)</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">600×600 px</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">Green Card (I-485)</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">2×2 in (51×51mm)</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">600×600 px</td></tr>
+          <tr><td style="padding:0.6rem 1rem;">DV Lottery</td><td style="padding:0.6rem 1rem;">2×2 in (51×51mm)</td><td style="padding:0.6rem 1rem;font-weight:600;">600×600 px</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What size is a US visa photo in pixels?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">600×600 pixels (2×2 inches at 300 DPI). The DS-160 portal requires JPEG format with a maximum file size of 240KB. This tool outputs exactly 600×600 pixels.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What DPI should a passport photo be?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">300 DPI for print, which equals 600×600 pixels at 2×2 inches. For digital submissions, the pixel count (600×600) is what matters — DPI metadata is not checked by the portal.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">The file is still above 240KB after resizing — what should I do?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Use our <a href="/compress-image-under-200kb">Compress to 200KB</a> tool after resizing. Set quality to 80 and format to JPEG. A 600×600 JPEG at quality 80 is typically 50–150KB.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Is my photo private?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes. All processing happens in your browser — your photo is never uploaded to any server. This is especially important for identity documents.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/compress-image-under-200kb" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress to 200KB</h3><p>Meet portal file size limits</p></a>
+    <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">📐 Image Resizer</h3><p>Custom dimensions &amp; social media presets</p></a>
+    <a href="/discord-emoji-size" class="tool-card"><h3 style="font-size:0.9rem;">🎮 Discord Emoji Size</h3><p>Resize to 128×128px</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script type="module" src="/js/resize.js"></script>
+</body>
+</html>
