@@ -33,6 +33,7 @@
       <li><a href="/compress">Compress</a></li>
       <li><a href="/convert">Convert</a></li>
       <li><a href="/resize">Resize</a></li>
+      <li><a href="/guides">Guides</a></li>
       <li><a href="/ai">AI Tools</a></li>
     </ul>
   </div>
@@ -54,39 +55,77 @@
   <div style="display:grid;gap:2rem;margin-top:2rem;font-size:0.9rem;line-height:1.8;color:var(--text);">
 
     <section>
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Image processing</h2>
-      <p>All compression, conversion, and resizing operations run <strong>entirely inside your web browser</strong> using the Web Canvas API and JavaScript. Your image files are never transmitted to our servers or any third-party server.</p>
-      <p style="margin-top:0.75rem;">When you use the AI Alt Text feature, your image is temporarily sent to Cloudflare's edge network for AI inference. Cloudflare processes the image in memory and returns a result — no image data is stored or retained by Cloudflare.</p>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">1. Information we collect</h2>
+      <p>We do not collect, store, or process any personally identifiable information. Specifically:</p>
+      <ul style="padding-left:1.25rem;margin-top:0.5rem;display:grid;gap:0.35rem;">
+        <li>We do not require you to create an account.</li>
+        <li>We do not collect your name, email, or contact information.</li>
+        <li>We do not log the files you process.</li>
+        <li>We do not store any images you use with this service.</li>
+      </ul>
     </section>
 
     <section>
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Analytics</h2>
-      <p>We may use anonymized, aggregated analytics (such as Cloudflare Web Analytics, which is privacy-preserving and GDPR-compliant) to understand page usage patterns. This does not involve tracking individual users or storing personal information.</p>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">2. Image processing</h2>
+      <p>All compression, conversion, and resizing operations run <strong>entirely inside your web browser</strong> using the Web Canvas API and JavaScript. Your image files are never transmitted to our servers or any third-party server. You can verify this by using the browser's developer tools network panel — no file upload requests will appear.</p>
+      <p style="margin-top:0.75rem;">The only exception is the <strong>AI Alt Text feature</strong>. When you use that tool, your image is temporarily sent to Cloudflare's edge network for AI inference. Cloudflare processes the image in memory and returns a text description. No image data is stored or retained by Cloudflare after the request completes. Cloudflare's privacy policy applies to that processing: <a href="https://www.cloudflare.com/privacypolicy/" style="color:var(--primary);">cloudflare.com/privacypolicy</a>.</p>
     </section>
 
     <section>
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Advertising</h2>
-      <p>This site displays ads served by Google AdSense. Google may use cookies to serve ads based on your browsing activity. You can opt out of personalized ads at <a href="https://adssettings.google.com" style="color:var(--primary);">adssettings.google.com</a>. We do not share any personal data with Google beyond what is standard for AdSense operation.</p>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">3. Analytics</h2>
+      <p>We may use Cloudflare Web Analytics to understand aggregate page usage patterns (e.g. which tools are most popular, which countries visitors come from). Cloudflare Web Analytics is privacy-preserving: it does not use cookies, does not fingerprint individual users, and does not track you across sites. No personally identifiable information is collected. See <a href="https://www.cloudflare.com/web-analytics/" style="color:var(--primary);">Cloudflare's web analytics documentation</a> for full details.</p>
     </section>
 
     <section>
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Cookies</h2>
-      <p>We do not set first-party cookies. Google AdSense may set third-party cookies for ad personalization.</p>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">4. Advertising — Google AdSense</h2>
+      <p>This site displays advertisements served by <strong>Google AdSense</strong>. Google uses cookies and similar tracking technologies to serve ads based on your prior visits to this and other websites. This is known as interest-based advertising.</p>
+      <p style="margin-top:0.75rem;">You have the following options:</p>
+      <ul style="padding-left:1.25rem;margin-top:0.5rem;display:grid;gap:0.35rem;">
+        <li>Opt out of personalized ads via <a href="https://adssettings.google.com" style="color:var(--primary);">adssettings.google.com</a>.</li>
+        <li>Opt out of third-party vendor use of cookies for personalized advertising via <a href="https://optout.aboutads.info/" style="color:var(--primary);">aboutads.info</a> or <a href="https://optout.networkadvertising.org/" style="color:var(--primary);">networkadvertising.org</a>.</li>
+        <li>Use browser settings or an ad blocker to prevent Google's advertising cookies from being set.</li>
+      </ul>
+      <p style="margin-top:0.75rem;">For more information on how Google uses data when you use our site, see: <a href="https://policies.google.com/technologies/partner-sites" style="color:var(--primary);">How Google uses data from sites that use our services</a>.</p>
     </section>
 
     <section>
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Data retention</h2>
-      <p>Because we do not receive or store your image files, there is no image data to retain. Any anonymized analytics data is retained for up to 90 days.</p>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">5. Cookies</h2>
+      <p>We do not set any first-party cookies from this website. Third-party cookies may be set by:</p>
+      <ul style="padding-left:1.25rem;margin-top:0.5rem;display:grid;gap:0.35rem;">
+        <li><strong>Google AdSense</strong> — for ad personalisation and frequency capping.</li>
+        <li><strong>Cloudflare</strong> — for security and performance (e.g. bot detection).</li>
+      </ul>
+      <p style="margin-top:0.75rem;">You can manage or delete cookies through your browser settings. Removing cookies does not affect your ability to use any tool on this site.</p>
     </section>
 
     <section>
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Children's privacy</h2>
-      <p>This service is not directed at children under 13. We do not knowingly collect any personal information from children.</p>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">6. Hosting and infrastructure</h2>
+      <p>This website is hosted on <strong>Cloudflare Pages</strong>. Cloudflare may collect server-side access logs (IP addresses, request timestamps, URLs) for security and infrastructure purposes. These logs are not accessible to us and are governed by Cloudflare's privacy policy.</p>
     </section>
 
     <section>
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Contact</h2>
-      <p>If you have questions about this privacy policy, please open an issue on our GitHub repository.</p>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">7. Data retention</h2>
+      <p>Because we do not receive or store your image files, there is no image data for us to retain or delete. Aggregate, anonymized analytics data collected by Cloudflare Web Analytics is retained according to Cloudflare's own retention policies.</p>
+    </section>
+
+    <section>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">8. Children's privacy</h2>
+      <p>This service is not directed at children under 13, and we do not knowingly collect any personal information from children. If you are a parent or guardian and believe a child has provided personal information through this site, please contact us and we will take steps to address it.</p>
+    </section>
+
+    <section>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">9. Your rights (GDPR / CCPA)</h2>
+      <p>If you are located in the European Economic Area or California, you have certain rights regarding personal data. Because we do not collect personal data, most of these rights are not applicable in practice. However, if you have questions about data held by third parties (Google, Cloudflare) on our behalf, please consult their respective privacy policies and opt-out mechanisms linked above.</p>
+    </section>
+
+    <section>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">10. Changes to this policy</h2>
+      <p>We may update this privacy policy from time to time. The "Last updated" date at the top of this page will reflect any changes. We encourage you to review this page periodically.</p>
+    </section>
+
+    <section>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">11. Contact</h2>
+      <p>If you have questions or concerns about this privacy policy, please open an issue on our <a href="https://github.com/bianrui0315/imageflow/issues" style="color:var(--primary);">GitHub repository</a> or visit our <a href="/contact" style="color:var(--primary);">Contact page</a>.</p>
     </section>
 
   </div>
@@ -100,19 +139,12 @@
       <li><a href="/compress">Compress</a></li>
       <li><a href="/convert">Convert</a></li>
       <li><a href="/resize">Resize</a></li>
-      <li><a href="/webp-to-jpg">WebP→JPG</a></li>
-      <li><a href="/avif-to-jpg">AVIF→JPG</a></li>
-      <li><a href="/batch-convert-webp-to-png">Batch WebP→PNG</a></li>
-      <li><a href="/compress-image-under-200kb">Under 200KB</a></li>
-      <li><a href="/resize-photo-for-us-visa">US Visa Photo</a></li>
-      <li><a href="/discord-emoji-size">Discord Emoji</a></li>
-      <li><a href="/resize-image-youtube-community-post">YouTube Resize</a></li>
-      <li><a href="/crop-image-to-circle">Circle Crop</a></li>
-      <li><a href="/add-white-border-to-photo">Add Border</a></li>
-      <li><a href="/extract-color-palette">Color Palette</a></li>
-      <li><a href="/convert-image-to-base64">Base64</a></li>
-      <li><a href="/ai">AI Tools</a></li>
-      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
     </ul>
   </div>
 </footer>

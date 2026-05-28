@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JPG, PNG, WebP, AVIF, GIF: Which Image Format Should You Use?</title>
+  <meta name="description" content="A practical comparison of image formats — JPEG, PNG, WebP, AVIF, GIF, and BMP. Understand what each format does well and when to use it.">
+  <meta property="og:title" content="JPG, PNG, WebP, AVIF, GIF: Which Image Format Should You Use?">
+  <meta property="og:description" content="Practical comparison of all major image formats — strengths, weaknesses, transparency support, browser compatibility, and when to use each.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://freeimgtools.net/guides/image-formats">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "JPG, PNG, WebP, AVIF, GIF: Which Image Format Should You Use?",
+    "description": "A practical comparison of image formats — JPEG, PNG, WebP, AVIF, GIF, and BMP. Understand what each format does well and when to use it.",
+    "url": "https://freeimgtools.net/guides/image-formats",
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-27",
+    "author": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeimgtools.net/"},
+      {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://freeimgtools.net/guides"},
+      {"@type": "ListItem", "position": 3, "name": "Image Formats", "item": "https://freeimgtools.net/guides/image-formats"}
+    ]
+  }
+  </script>
+  <style>
+    .guide-body { font-size: 0.95rem; line-height: 1.85; color: var(--text); }
+    .guide-body h2 { font-size: 1.3rem; font-weight: 700; margin: 2.5rem 0 0.75rem; }
+    .guide-body h3 { font-size: 1.05rem; font-weight: 700; margin: 1.75rem 0 0.5rem; }
+    .guide-body p { margin-bottom: 0.85rem; }
+    .guide-body ul, .guide-body ol { padding-left: 1.25rem; margin-bottom: 0.85rem; display: grid; gap: 0.4rem; }
+    .breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .format-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; background: var(--primary); color: #fff; margin-right: 0.4rem; }
+    .good { color: #34C759; }
+    .bad { color: #FF3B30; }
+    .ok { color: #FF9500; }
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.82rem; }
+    .data-table th { background: var(--bg); padding: 0.55rem 0.7rem; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0,0,0,0.1); }
+    .data-table td { padding: 0.55rem 0.7rem; border-bottom: 1px solid rgba(0,0,0,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .callout { background: #f0f7ff; border-left: 3px solid var(--primary); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9rem; }
+    .related-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/guides" class="active">Guides</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page" style="max-width:800px;">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a> › <a href="/guides">Guides</a> › Image Formats
+  </div>
+
+  <h1 class="page-title">JPG, PNG, WebP, AVIF, GIF: Which Image Format Should You Use?</h1>
+  <p class="page-desc">Published May 2026 · Updated May 27, 2026</p>
+
+  <div class="guide-body">
+
+    <h2>Why format choice matters</h2>
+    <p>Choosing the wrong image format has real consequences: a logo saved as JPEG will have visible compression artifacts around the edges; a photograph saved as PNG will be 3–5× larger than necessary; a GIF used for animation is limited to 256 colors and will look worse than the same content in WebP. Format choice affects file size, visual quality, whether transparency works, whether animation works, and how widely your image will render correctly across devices and browsers.</p>
+    <p>There is no single best format for all images. Each one was designed for a different set of constraints. The goal of this guide is to make the decision straightforward.</p>
+
+    <h2>JPEG / JPG <span class="format-badge">Lossy</span></h2>
+    <p>JPEG (Joint Photographic Experts Group) is the most widely supported image format in the world, dating back to 1992. Despite its age, it remains a solid choice for photographic content when modern alternatives are not available.</p>
+
+    <h3>Best uses for JPEG</h3>
+    <ul>
+      <li>Photographs — particularly those with complex color gradients, skin tones, and natural scenes</li>
+      <li>Images where file size matters and transparency is not needed</li>
+      <li>Maximum compatibility — every browser, operating system, and application supports JPEG</li>
+      <li>Email attachments where recipients may view files in software that does not support WebP</li>
+    </ul>
+
+    <h3>Where JPEG falls short</h3>
+    <ul>
+      <li><strong>No transparency support.</strong> JPEG cannot store transparent pixels. Any transparency will be replaced by a solid background (usually white or black, depending on the application).</li>
+      <li><strong>Poor for screenshots and text.</strong> JPEG compression creates visible artifacts (blockiness, fringing) around sharp edges like text and UI elements. A quality-80 JPEG of a screenshot will look noticeably worse than PNG.</li>
+      <li><strong>No animation.</strong> JPEG is a still-image format only.</li>
+      <li><strong>Quality degrades with each save.</strong> Each re-save applies another round of lossy compression. Keep originals in a lossless format.</li>
+    </ul>
+
+    <h3>EXIF metadata</h3>
+    <p>JPEG files can store EXIF metadata — camera settings (ISO, aperture, shutter speed), GPS coordinates, orientation, and more. Many compression tools strip EXIF by default, which reduces file size but removes this data. Check your tool settings if EXIF preservation matters for your workflow.</p>
+
+    <h2>PNG <span class="format-badge" style="background:#34C759;">Lossless</span></h2>
+    <p>PNG (Portable Network Graphics) was designed as an open alternative to GIF and supports full lossless compression. It is the standard format for images that need transparency, sharp edges, or exact color reproduction.</p>
+
+    <h3>Best uses for PNG</h3>
+    <ul>
+      <li>Screenshots, UI mockups, and anything containing readable text</li>
+      <li>Logos, icons, and graphic design elements — especially those with sharp geometric edges</li>
+      <li>Images requiring transparency or a transparent background</li>
+      <li>Source/master files you will edit and export later</li>
+    </ul>
+
+    <h3>PNG-8 vs PNG-24</h3>
+    <p>PNG-8 stores up to 256 colors (like GIF) and supports binary transparency (a pixel is either fully transparent or fully opaque). PNG-24 stores full color depth and supports 8-bit alpha transparency (smooth semi-transparent edges). For most web use, PNG-24 is the correct choice. PNG-8 is rarely used intentionally today — if file size is the concern, WebP lossless is a better option.</p>
+
+    <h3>Where PNG falls short</h3>
+    <ul>
+      <li><strong>Large file sizes for photographs.</strong> PNG lossless compression cannot compete with JPEG for photographic content. A photograph that is 200KB as quality-80 JPEG might be 1.5–3MB as PNG.</li>
+      <li><strong>No animation.</strong> Standard PNG does not support animation. APNG (Animated PNG) exists but has limited toolchain support.</li>
+    </ul>
+
+    <h2>WebP <span class="format-badge">Lossy + Lossless</span></h2>
+    <p>WebP was developed by Google and released in 2010. It supports both lossy and lossless compression, as well as transparency and animation. For web use, it is the most versatile modern format.</p>
+
+    <h3>Best uses for WebP</h3>
+    <ul>
+      <li>Replacing JPEG for photographs — WebP lossy at quality 80 is typically 25–35% smaller than JPEG at comparable quality</li>
+      <li>Replacing PNG for graphics with transparency — WebP lossless is typically 25% smaller than equivalent PNG</li>
+      <li>Any image on a public-facing website targeting modern browsers</li>
+    </ul>
+
+    <h3>WebP browser support</h3>
+    <p>WebP is now supported in all major browsers: Chrome, Firefox, Safari (since 14), Edge, and their mobile counterparts. Safari 14 shipped in September 2020, so the main compatibility concern is users on old iOS devices (pre-iPhone 7 range on iOS 13). For most sites, this is an acceptable trade-off — you can serve WebP with JPEG fallback using the <code>&lt;picture&gt;</code> element if needed.</p>
+
+    <h3>How much smaller is WebP?</h3>
+    <p>For photographs: 25–35% smaller than JPEG at comparable visual quality. For graphics (logos, UI): 25–30% smaller than PNG. The savings vary by image content — smooth gradients and simple graphics compress better; complex textures see less difference.</p>
+
+    <h2>AVIF <span class="format-badge" style="background:#AF52DE;">Lossy + Lossless</span></h2>
+    <p>AVIF (AV1 Image File Format) is based on the AV1 video codec, developed by the Alliance for Open Media. It offers the best compression ratio of any web image format as of 2026, but comes with trade-offs.</p>
+
+    <h3>Best uses for AVIF</h3>
+    <ul>
+      <li>Sites where file size is the top priority and encoding time is not a concern</li>
+      <li>Large hero images and high-quality product photos where the file size savings are most significant</li>
+      <li>Audiences primarily on modern browsers (Chrome 85+, Safari 16+, Firefox 113+)</li>
+    </ul>
+
+    <h3>AVIF compression performance</h3>
+    <p>At comparable visual quality, AVIF is typically 40–50% smaller than JPEG and 15–20% smaller than WebP. This gap is most significant in complex photographic content. For simpler graphics, the difference narrows.</p>
+
+    <h3>AVIF trade-offs</h3>
+    <ul>
+      <li><strong>Encoding is slow.</strong> AVIF encoding can take 10–30× longer than JPEG encoding. For a single image processed once, this is not a problem. For server-side on-the-fly image processing, the CPU cost is significant.</li>
+      <li><strong>Browser support:</strong> Chrome 85+, Safari 16+, Firefox 113+. Not supported in older browsers. Use the <code>&lt;picture&gt;</code> element to provide WebP or JPEG fallback.</li>
+      <li><strong>Toolchain support:</strong> Not all image editing software reads and writes AVIF natively yet.</li>
+    </ul>
+
+    <h2>GIF <span class="format-badge" style="background:#8e8e93;">256 colors</span></h2>
+    <p>GIF (Graphics Interchange Format) dates to 1987. Its defining feature is animation, which made it ubiquitous for short looping clips on the web. However, GIF has severe technical limitations.</p>
+
+    <h3>GIF limitations</h3>
+    <ul>
+      <li><strong>Maximum 256 colors per frame.</strong> GIF is an 8-bit indexed color format. Photographs dithered to 256 colors look noticeably degraded. The format is only suitable for simple graphics.</li>
+      <li><strong>No partial transparency.</strong> GIF supports binary transparency (on or off per pixel), not smooth alpha transparency.</li>
+      <li><strong>Large file sizes for animation.</strong> An animated GIF is typically several times larger than the same content as WebP animated or as a short video.</li>
+    </ul>
+
+    <h3>Better alternatives to GIF</h3>
+    <ul>
+      <li><strong>Animated WebP</strong> — supports full color, smooth transparency, and is typically 30–70% smaller than animated GIF for the same content.</li>
+      <li><strong>Video (MP4, WebM)</strong> — for longer animations or higher quality motion content. A 5-second clip as a looping silent MP4 is almost always smaller than the equivalent GIF and looks dramatically better.</li>
+    </ul>
+    <p>GIF is still in wide use because of social media compatibility and simple sharing workflows, but for images you control on your own site, there is rarely a good reason to use GIF in 2026.</p>
+
+    <h2>BMP</h2>
+    <p>BMP (Bitmap) is an uncompressed or minimally compressed format developed by Microsoft. It stores raw pixel data with no meaningful compression. A 1920×1080 BMP file is approximately 6MB, regardless of image content.</p>
+    <p>BMP has no practical use for web delivery. It is occasionally encountered as an input format (Windows clipboard saves, some older software output) but should be converted to another format for any use beyond local storage. The tools on this site accept BMP as input for conversion but there is no reason to output BMP.</p>
+
+    <h2>Decision table: Format vs. use case</h2>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Use case</th>
+            <th>First choice</th>
+            <th>Fallback</th>
+            <th>Avoid</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Photograph for web</td>
+            <td>WebP</td>
+            <td>JPEG</td>
+            <td>PNG, GIF</td>
+          </tr>
+          <tr>
+            <td>Photo with max compression</td>
+            <td>AVIF</td>
+            <td>WebP</td>
+            <td>JPEG, PNG</td>
+          </tr>
+          <tr>
+            <td>Logo or icon</td>
+            <td>SVG or PNG</td>
+            <td>WebP lossless</td>
+            <td>JPEG, GIF</td>
+          </tr>
+          <tr>
+            <td>Screenshot or UI</td>
+            <td>PNG</td>
+            <td>WebP lossless</td>
+            <td>JPEG, GIF</td>
+          </tr>
+          <tr>
+            <td>Image with transparency</td>
+            <td>WebP</td>
+            <td>PNG</td>
+            <td>JPEG, BMP</td>
+          </tr>
+          <tr>
+            <td>Short animation</td>
+            <td>Animated WebP or MP4</td>
+            <td>GIF (compatibility only)</td>
+            <td>JPEG, PNG</td>
+          </tr>
+          <tr>
+            <td>Email attachment</td>
+            <td>JPEG</td>
+            <td>PNG (if transparency needed)</td>
+            <td>AVIF (compatibility)</td>
+          </tr>
+          <tr>
+            <td>Master/archive file</td>
+            <td>PNG or TIFF</td>
+            <td>JPEG 95+</td>
+            <td>GIF, BMP</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>FAQ</h2>
+    <div style="display:grid;gap:0.5rem;margin-top:1rem;">
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">Is JPG the same as JPEG?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">Yes. JPEG is the format name; JPG is the file extension. Early versions of Windows limited file extensions to three characters, so JPEG files were saved as .jpg. Today the terms are completely interchangeable — the format, the codec, and the compression algorithm are identical.</div>
+      </details>
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">Can I convert a JPEG to PNG to "get the quality back"?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">No. Converting a JPEG to PNG makes it lossless going forward — the PNG file will be larger, and re-saving it as PNG will not degrade quality further — but the compression artifacts from the original JPEG save are baked into the pixel data. Converting to PNG preserves those artifacts; it does not remove them. If you have the original, uncompressed source, use that instead.</div>
+      </details>
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">Should I use WebP for all images on my website?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">WebP is a good default for most web images in 2026, given near-universal browser support. The main exception is if you need compatibility with software or workflows that cannot read WebP (some older email clients, certain CMS thumbnail generators). For a public-facing website targeting general audiences, serving WebP with JPEG/PNG fallback via the HTML picture element is a solid approach.</div>
+      </details>
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">Does AVIF support transparency?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">Yes. AVIF supports full alpha transparency (8-bit and 10-bit alpha channels). It can replace PNG for transparent images, offering better compression in most cases. The trade-off is encoding speed and the fact that browser support, while now broad, is more recent than WebP support.</div>
+      </details>
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">Why is my PNG file larger than my JPEG?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">PNG uses lossless compression — it stores all pixel data exactly. JPEG uses lossy compression — it discards some data to achieve much smaller files. For photographs, PNG will always be significantly larger than a quality-80 JPEG because photographs have very high pixel-to-pixel variation, which lossless compression handles poorly. PNG makes sense for screenshots and graphics; JPEG (or WebP) makes sense for photographs.</div>
+      </details>
+
+    </div>
+
+    <section style="margin-top:3rem;">
+      <h2>Related tools</h2>
+      <div class="related-tools">
+        <a href="/convert" class="tool-card">
+          <div class="tool-icon">🔄</div>
+          <div>
+            <div class="tool-name">Format Converter</div>
+            <div class="tool-desc">Convert between all major formats.</div>
+          </div>
+        </a>
+        <a href="/webp-to-jpg" class="tool-card">
+          <div class="tool-icon">🖼️</div>
+          <div>
+            <div class="tool-name">WebP to JPG</div>
+            <div class="tool-desc">Convert WebP files to JPEG.</div>
+          </div>
+        </a>
+        <a href="/avif-to-jpg" class="tool-card">
+          <div class="tool-icon">🖼️</div>
+          <div>
+            <div class="tool-name">AVIF to JPG</div>
+            <div class="tool-desc">Convert AVIF files to JPEG.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,0.08);">
+      <h2>Other guides</h2>
+      <ul>
+        <li><a href="/guides/image-compression" style="color:var(--primary);">Image Compression Explained: Lossy vs. Lossless, Quality Settings, and File Size Targets</a></li>
+        <li><a href="/guides/web-performance-images" style="color:var(--primary);">Images and Core Web Vitals: a practical optimization guide</a></li>
+        <li><a href="/guides/image-seo" style="color:var(--primary);">Image SEO: alt text, file names, and structured data</a></li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

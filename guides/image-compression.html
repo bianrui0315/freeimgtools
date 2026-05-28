@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Compression Explained: Lossy vs. Lossless, Quality Settings, and File Size Targets</title>
+  <meta name="description" content="A practical guide to image compression — how lossy and lossless compression work, how JPEG quality settings affect output, and what file sizes to target for different use cases.">
+  <meta property="og:title" content="Image Compression Explained: Lossy vs. Lossless, Quality Settings, File Size Targets">
+  <meta property="og:description" content="Understand how image compression works — lossy vs lossless, quality settings, modern formats, and when not to compress.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://freeimgtools.net/guides/image-compression">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Image Compression Explained: Lossy vs. Lossless, Quality Settings, and File Size Targets",
+    "description": "A practical guide to image compression — how lossy and lossless compression work, how JPEG quality settings affect output, and what file sizes to target for different use cases.",
+    "url": "https://freeimgtools.net/guides/image-compression",
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-27",
+    "author": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeimgtools.net/"},
+      {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://freeimgtools.net/guides"},
+      {"@type": "ListItem", "position": 3, "name": "Image Compression", "item": "https://freeimgtools.net/guides/image-compression"}
+    ]
+  }
+  </script>
+  <style>
+    .guide-body { font-size: 0.95rem; line-height: 1.85; color: var(--text); }
+    .guide-body h2 { font-size: 1.3rem; font-weight: 700; margin: 2.5rem 0 0.75rem; }
+    .guide-body h3 { font-size: 1.05rem; font-weight: 700; margin: 1.75rem 0 0.5rem; }
+    .guide-body p { margin-bottom: 0.85rem; }
+    .guide-body ul, .guide-body ol { padding-left: 1.25rem; margin-bottom: 0.85rem; display: grid; gap: 0.4rem; }
+    .breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.875rem; }
+    .data-table th { background: var(--bg); padding: 0.6rem 0.75rem; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0,0,0,0.1); }
+    .data-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .callout { background: #f0f7ff; border-left: 3px solid var(--primary); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9rem; }
+    .callout-warn { background: #fff8f0; border-left-color: #FF9500; }
+    .related-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/guides" class="active">Guides</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page" style="max-width:800px;">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a> › <a href="/guides">Guides</a> › Image Compression
+  </div>
+
+  <h1 class="page-title">Image Compression Explained: Lossy vs. Lossless, Quality Settings, and File Size Targets</h1>
+  <p class="page-desc">Published May 2026 · Updated May 27, 2026</p>
+
+  <div class="guide-body">
+
+    <h2>What is image compression?</h2>
+    <p>A digital image is made up of pixels, and each pixel stores color information — typically as red, green, and blue values (RGB). An uncompressed image stores every one of these values directly. A 1920×1080 image has over two million pixels; at 3 bytes each (8 bits per channel), that is more than 6MB of raw data before any compression.</p>
+    <p>Image compression works by finding and removing redundancy in that pixel data. Adjacent pixels in a photograph are often very similar — a clear blue sky might have thousands of pixels that are nearly the same shade. Compression algorithms exploit this similarity to represent the image with far fewer bits.</p>
+    <p>There are two fundamentally different approaches to removing redundancy: lossy compression and lossless compression.</p>
+
+    <h2>Lossy compression: JPEG, WebP, AVIF</h2>
+    <p>Lossy compression achieves smaller file sizes by permanently discarding some image data. The key word is <em>permanently</em> — once you save a JPEG, the discarded data is gone. Decompressing the file gives you a close approximation of the original, not an exact copy.</p>
+    <p>What gets discarded? Lossy codecs exploit limitations of human vision. The human eye is more sensitive to brightness changes than color changes, and more sensitive to gradual transitions than sharp edges. JPEG (and WebP/AVIF lossy modes) use transforms to separate brightness and color information, then apply more aggressive compression to the color components. High-frequency detail in smooth areas — the kind of detail your eye is least likely to notice — is discarded first.</p>
+
+    <h3>How JPEG quality settings work</h3>
+    <p>JPEG encoders use a <strong>quantization table</strong> to decide how much detail to discard. The "quality" setting (typically 0–100) adjusts how aggressively this table is applied. Higher quality means less data is discarded; lower quality means more is discarded and file sizes shrink further.</p>
+    <p>The relationship between quality setting and file size is not linear:</p>
+    <ul>
+      <li><strong>Quality 90:</strong> Very little visible degradation. File size might be 2–3× larger than quality 80, for a marginal visual improvement.</li>
+      <li><strong>Quality 80:</strong> A good starting point for most web images. Artifacts are minimal on photographs and most users would not notice compression at normal viewing distances.</li>
+      <li><strong>Quality 75:</strong> Noticeably smaller files. Some artifacts may appear in smooth gradients or around high-contrast edges, but are often acceptable for thumbnails and non-critical images.</li>
+      <li><strong>Quality 70 and below:</strong> Compression artifacts become more visible — blocky patterns in smooth areas, ringing around text and edges. Usable for very small thumbnails, but generally not for hero images or product photos.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Practical starting point:</strong> Use quality 80–82 for photographs on web pages. Evaluate the output visually, then adjust up or down based on what you see. Do not pick a number and leave it — the same quality setting produces different visual results depending on image content.
+    </div>
+
+    <h3>WebP and AVIF lossy compression</h3>
+    <p>WebP (developed by Google) and AVIF (based on the AV1 video codec) use more sophisticated compression algorithms than classic JPEG. Both formats analyze larger blocks of the image and use more advanced prediction and entropy coding techniques.</p>
+    <p>At equivalent visual quality, WebP typically produces files 25–35% smaller than JPEG. AVIF goes further — roughly 40–50% smaller than JPEG at comparable quality. This gap is most pronounced on photographic content with smooth gradients.</p>
+
+    <h2>Lossless compression: PNG, WebP lossless</h2>
+    <p>Lossless compression reduces file size without discarding any pixel data. Decompress a lossless file and you get back the exact original, pixel for pixel.</p>
+    <p>Lossless compression works by reorganizing data more efficiently, not by discarding it. Techniques like run-length encoding (representing repeated values as a count and a value) and dictionary-based compression (replacing repeated patterns with shorter codes) are common in lossless image codecs.</p>
+    <p>PNG is the standard lossless format for web images. It uses the DEFLATE compression algorithm, which is similar to what ZIP uses. PNG stores all pixel values exactly but represents them in a more compact form. A solid-color region that might take thousands of bytes as raw data might take just a few dozen bytes as PNG.</p>
+
+    <h3>When to use lossless compression</h3>
+    <ul>
+      <li><strong>Screenshots with text.</strong> Lossy compression creates visible artifacts around text — blurry edges and color fringing. Lossless PNG keeps text sharp.</li>
+      <li><strong>Graphics and illustrations with flat colors.</strong> Logos, icons, and diagrams often compress very well as PNG and would show blocky artifacts as JPEG.</li>
+      <li><strong>Images you will edit and re-save.</strong> Each time you re-save a JPEG, you re-apply lossy compression. Over several saves, quality degrades noticeably. Store masters as PNG or TIFF.</li>
+      <li><strong>Transparency required.</strong> JPEG does not support transparency. PNG supports full 8-bit alpha transparency.</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <strong>Lossless is not always smaller.</strong> For photographs, PNG is typically 3–5× larger than a JPEG at quality 80. Lossless compression removes coding redundancy but cannot discard visual data — photographs have very little coding redundancy, so lossless compression has little to work with.
+    </div>
+
+    <h2>Choosing a quality setting for your use case</h2>
+    <p>There is no universal answer — the right setting depends on what the image is and how it will be used. That said, here are the ranges that work well in practice:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Use case</th>
+          <th>Format</th>
+          <th>Quality range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Web page hero images</td>
+          <td>WebP or JPEG</td>
+          <td>78–85</td>
+        </tr>
+        <tr>
+          <td>Product photos (e-commerce)</td>
+          <td>WebP or JPEG</td>
+          <td>80–88</td>
+        </tr>
+        <tr>
+          <td>Blog post images</td>
+          <td>WebP or JPEG</td>
+          <td>75–82</td>
+        </tr>
+        <tr>
+          <td>Thumbnails</td>
+          <td>WebP or JPEG</td>
+          <td>65–78</td>
+        </tr>
+        <tr>
+          <td>Archival / print originals</td>
+          <td>PNG or JPEG 92+</td>
+          <td>90–95 (or lossless)</td>
+        </tr>
+        <tr>
+          <td>Screenshots / UI mockups</td>
+          <td>PNG</td>
+          <td>Lossless</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>File size targets for common use cases</h2>
+    <p>Hitting a target file size often matters as much as choosing a quality setting. Here are practical targets for the most common scenarios:</p>
+    <ul>
+      <li><strong>Email attachments:</strong> Under 500KB per image is a generally safe limit. Under 200KB is better for newsletters and HTML emails where multiple images appear.</li>
+      <li><strong>Social media uploads:</strong> Platforms like Twitter/X, Instagram, and LinkedIn re-compress images after upload. Uploading under 2MB ensures you are not hitting upload limits, but the platform will re-encode anyway.</li>
+      <li><strong>Web page hero images:</strong> Under 200KB is a good target; under 150KB is better. A full-width hero that takes 800KB will meaningfully hurt your LCP score.</li>
+      <li><strong>Blog and article images:</strong> Under 150KB for inline images; under 100KB for images appearing below the fold.</li>
+      <li><strong>Thumbnails and gallery images:</strong> Under 60KB each. If you have a grid of 12 thumbnails, even at 60KB each that is 720KB total.</li>
+      <li><strong>Favicons:</strong> Under 5KB.</li>
+    </ul>
+    <p>To hit a specific file size target automatically, use the <a href="/compress-image-under-200kb" style="color:var(--primary);">Compress Under 200KB tool</a>, which iterates through quality settings to find the highest quality that still meets the target.</p>
+
+    <h2>Converting to modern formats: WebP and AVIF</h2>
+    <p>Switching from JPEG to WebP is the single highest-return change for most web images. At comparable visual quality, WebP files are typically 25–35% smaller. For a site with 100 images averaging 300KB as JPEG, converting to WebP could save 7–10MB of page weight across the site.</p>
+    <p>AVIF compresses even better — roughly 40–50% smaller than JPEG at comparable quality — but comes with trade-offs:</p>
+    <ul>
+      <li>Encoding is significantly slower. AVIF encoding can take 10–30× longer than JPEG for the same image.</li>
+      <li>Browser support is now broad (Chrome 85+, Safari 16+, Firefox 113+) but not universal. Older Android browsers and some mobile browsers still lack support.</li>
+    </ul>
+    <p>Both WebP and AVIF improve Core Web Vitals scores by reducing the time taken to download and decode images, which feeds directly into your Largest Contentful Paint (LCP) score.</p>
+
+    <h2>When NOT to compress</h2>
+    <p>Compression is not always the right move. Avoid compressing in these situations:</p>
+    <ul>
+      <li><strong>Screenshots with text at small sizes.</strong> Even mild lossy compression creates visible artifacts around small text — compression artifacts that are easy to miss at full size but obvious when reading.</li>
+      <li><strong>Images you plan to edit further.</strong> Edit your master file, then compress at the end. Re-compressing a JPEG introduces a new round of quality loss.</li>
+      <li><strong>Already-compressed files.</strong> Re-compressing a JPEG that was already compressed at quality 75 will not make it significantly smaller — the redundancy has already been removed. You will only degrade quality further.</li>
+      <li><strong>Images for print.</strong> Print output is typically 300 DPI and lossy compression at web quality settings will produce visible artifacts in print.</li>
+      <li><strong>Medical or scientific images.</strong> Any context where accurate pixel values matter — radiography, microscopy, scientific visualization — use lossless formats or no compression.</li>
+    </ul>
+
+    <h2>FAQ</h2>
+    <div style="display:grid;gap:0.5rem;margin-top:1rem;">
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">Does compressing a PNG give you a lossy result?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">PNG compression is always lossless — you can compress a PNG at any setting and the pixel data will be identical when decompressed. The compression level in PNG only affects how much CPU time the encoder spends finding patterns; it does not affect quality. If you want lossy compression of a PNG, you would convert it to JPEG or WebP lossy mode.</div>
+      </details>
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">Can I restore quality after saving a JPEG?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">No. Once you save a JPEG, the discarded data is gone permanently. Increasing the quality setting on a re-save will make the file larger but will not restore lost detail — it just applies less additional compression to the already-degraded image. This is why it is important to keep original, uncompressed masters of photos you might want to re-use.</div>
+      </details>
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">Why does the same quality setting produce different file sizes for different images?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">Image content matters enormously. A photograph of a forest with complex texture and color variation compresses less efficiently than a photograph of a white wall. The forest has less pixel-to-pixel redundancy, so there is less to exploit. This is also why quality settings are just a starting point — you always need to check the output visually and see the actual file size for your specific image.</div>
+      </details>
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">Is WebP always better than JPEG?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">For most web images, WebP gives better results at smaller file sizes. The main exception is very high quality settings (90+), where the difference narrows significantly. WebP also adds transparency support that JPEG lacks. The only reason to prefer JPEG over WebP today is compatibility with very old software or systems that cannot process WebP files.</div>
+      </details>
+
+      <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;">
+        <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;">How does progressive JPEG work?</summary>
+        <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;">A standard (baseline) JPEG loads from top to bottom — you see a partial image as data arrives. A progressive JPEG renders the entire image at low quality first, then multiple passes refine the detail. Progressive JPEGs appear to load faster because users see the full composition immediately. They are usually slightly smaller than baseline JPEGs. However, for most modern web use, serving WebP with appropriate lazy loading is a more impactful optimization.</div>
+      </details>
+
+    </div>
+
+    <section style="margin-top:3rem;">
+      <h2>Related tools</h2>
+      <div class="related-tools">
+        <a href="/compress" class="tool-card">
+          <div class="tool-icon">🗜️</div>
+          <div>
+            <div class="tool-name">Image Compressor</div>
+            <div class="tool-desc">Compress with quality control.</div>
+          </div>
+        </a>
+        <a href="/compress-image-under-200kb" class="tool-card">
+          <div class="tool-icon">📦</div>
+          <div>
+            <div class="tool-name">Compress Under 200KB</div>
+            <div class="tool-desc">Auto-target a specific file size.</div>
+          </div>
+        </a>
+        <a href="/convert" class="tool-card">
+          <div class="tool-icon">🔄</div>
+          <div>
+            <div class="tool-name">Format Converter</div>
+            <div class="tool-desc">Convert to WebP, AVIF, and more.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,0.08);">
+      <h2>Other guides</h2>
+      <ul>
+        <li><a href="/guides/image-formats" style="color:var(--primary);">Which image format should you use? JPG, PNG, WebP, AVIF compared</a></li>
+        <li><a href="/guides/web-performance-images" style="color:var(--primary);">Images and Core Web Vitals: a practical optimization guide</a></li>
+        <li><a href="/guides/image-seo" style="color:var(--primary);">Image SEO: alt text, file names, and structured data</a></li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

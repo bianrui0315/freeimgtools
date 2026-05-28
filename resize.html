@@ -32,6 +32,7 @@
       <li><a href="/compress">Compress</a></li>
       <li><a href="/convert">Convert</a></li>
       <li><a href="/resize" class="active">Resize</a></li>
+      <li><a href="/guides">Guides</a></li>
       <li><a href="/ai">AI Tools</a></li>
     </ul>
   </div>
@@ -196,6 +197,71 @@
     </a>
   </div>
 
+  <!-- Extended content -->
+  <div style="max-width:720px;display:grid;gap:2rem;margin-top:2rem;">
+
+    <section class="section">
+      <h2 class="section-title">How to resize images online</h2>
+      <ol style="display:grid;gap:0.6rem;font-size:0.9rem;line-height:1.7;color:var(--text);padding-left:1.5rem;">
+        <li>Drop your image files onto the upload zone or click to select them. The tool accepts JPG, PNG, WebP, AVIF, GIF, and BMP.</li>
+        <li>Enter the target width and height in pixels. To resize proportionally, enter only one dimension and the other will update automatically when you tab out of the field.</li>
+        <li>Choose a <strong>fit mode</strong>: <em>Fit inside</em> scales the image so it fits within your dimensions without cropping; <em>Cover and crop</em> fills the exact dimensions by cropping the edges; <em>Stretch</em> forces the exact dimensions ignoring aspect ratio.</li>
+        <li>For social media use, select a preset from the quick-pick buttons — the width and height fields update automatically.</li>
+        <li>Click <strong>Resize &amp; Download</strong> to process and save the result.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Understanding resize modes</h2>
+      <div style="display:grid;gap:0.85rem;font-size:0.9rem;line-height:1.8;color:var(--text);">
+        <p><strong>Fit inside (contain)</strong> — The image is scaled down (or up) so that it fits entirely within the target dimensions. No pixels are cropped. The output image may be smaller than the target dimensions if the aspect ratio differs. Best for thumbnails and product images where you cannot crop off any content.</p>
+        <p><strong>Cover and crop (cover)</strong> — The image is scaled so it completely fills the target dimensions, then cropped symmetrically on the excess sides. The output is always exactly the specified dimensions. Best for profile photos, social media posts, and anywhere a specific pixel size is required.</p>
+        <p><strong>Stretch</strong> — Forces the image to exactly the specified dimensions regardless of aspect ratio. This distorts the image. Only appropriate for images where distortion doesn't matter, or when the source and target are the same aspect ratio.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Best practices for resizing</h2>
+      <div style="display:grid;gap:0.85rem;font-size:0.9rem;line-height:1.8;color:var(--text);">
+        <p><strong>Always resize down, not up.</strong> Enlarging an image beyond its original size causes visible blurriness or pixelation because the algorithm must invent pixel data that was never there. If you need a larger image, start from a higher-resolution source.</p>
+        <p><strong>Resize before compressing.</strong> If you need both a smaller file size and smaller dimensions, resize first, then compress. Compressing a large image before resizing wastes quality loss on pixels you'll throw away anyway.</p>
+        <p><strong>Use 2× resolution for high-DPI screens.</strong> On Retina and high-DPI screens, CSS pixels map to 2 physical pixels. An image displayed at 600px wide should ideally be 1200px wide in the source. This is why a product image that looks sharp at 1200px may look blurry on a MacBook or modern phone.</p>
+        <p><strong>After resizing, compress.</strong> Resized images are saved from the Canvas API at a default quality level. Click through to the <a href="/compress" style="color:var(--primary);">Image Compressor</a> to reduce the file size further before uploading.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div style="display:grid;gap:0.6rem;">
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Can I resize without losing quality?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Resizing down (making an image smaller) always results in some loss of detail because pixels are removed. However, for viewing on-screen at the new size, the result looks sharp. Resizing up (enlarging) introduces blur because the algorithm must interpolate between existing pixels.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">How do I resize to exact dimensions without distortion?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Use <em>Cover and crop</em> mode. This scales the image to fill the target size exactly, then crops the edges symmetrically. The image will not be distorted, but some of the original content at the edges may be trimmed.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">What size should I use for Instagram?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Instagram recommends 1080px wide for all post types. For a square post use 1080×1080, for portrait use 1080×1350, for landscape use 1080×566, and for Stories/Reels use 1080×1920. Use the preset buttons on this page to set those dimensions instantly.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Are my images uploaded to a server?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">No. All resizing runs locally in your browser using the Web Canvas API. Your files are never sent to any server. The tool works offline.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Can I batch resize multiple images to the same dimensions?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Yes. Drop multiple files at once, set your target dimensions once, and click Resize. All files will be resized to the same output dimensions and packaged into a ZIP for download.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section">
+      <p style="font-size:0.875rem;color:var(--text-muted);">Related guides: <a href="/guides/web-performance-images" style="color:var(--primary);">Images and Core Web Vitals</a> · <a href="/guides/image-compression" style="color:var(--primary);">Image compression explained</a> · <a href="/guides/image-formats" style="color:var(--primary);">Which image format should I use?</a></p>
+    </section>
+
+  </div>
+
 </div>
 
 <footer>
@@ -206,19 +272,12 @@
       <li><a href="/compress">Compress</a></li>
       <li><a href="/convert">Convert</a></li>
       <li><a href="/resize">Resize</a></li>
-      <li><a href="/webp-to-jpg">WebP→JPG</a></li>
-      <li><a href="/avif-to-jpg">AVIF→JPG</a></li>
-      <li><a href="/batch-convert-webp-to-png">Batch WebP→PNG</a></li>
-      <li><a href="/compress-image-under-200kb">Under 200KB</a></li>
-      <li><a href="/resize-photo-for-us-visa">US Visa Photo</a></li>
-      <li><a href="/discord-emoji-size">Discord Emoji</a></li>
-      <li><a href="/resize-image-youtube-community-post">YouTube Resize</a></li>
-      <li><a href="/crop-image-to-circle">Circle Crop</a></li>
-      <li><a href="/add-white-border-to-photo">Add Border</a></li>
-      <li><a href="/extract-color-palette">Color Palette</a></li>
-      <li><a href="/convert-image-to-base64">Base64</a></li>
-      <li><a href="/ai">AI Tools</a></li>
-      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
     </ul>
   </div>
 </footer>

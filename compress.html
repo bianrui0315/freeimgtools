@@ -32,6 +32,7 @@
       <li><a href="/compress" class="active">Compress</a></li>
       <li><a href="/convert">Convert</a></li>
       <li><a href="/resize">Resize</a></li>
+      <li><a href="/guides">Guides</a></li>
       <li><a href="/ai">AI Tools</a></li>
     </ul>
   </div>
@@ -203,15 +204,106 @@
     </a>
   </div>
 
-  <!-- SEO content -->
-  <section class="section" style="max-width:720px;">
-    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">How to compress images online — without losing quality</h2>
-    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
-      <p>Image compression reduces file size by removing redundant or imperceptible data. <strong>Lossy compression</strong> (JPEG, WebP, AVIF) discards some image data to achieve significant size reduction, while <strong>lossless compression</strong> (PNG) reorganizes data without any quality loss.</p>
-      <p>For web images, a quality setting of 75–85% typically produces results visually indistinguishable from the original while cutting file size by 50–70%. For images that will be printed or edited, use quality 90+.</p>
-      <p>Converting to <strong>WebP</strong> can reduce JPEG file sizes by 25–35% at the same visual quality. <strong>AVIF</strong> goes even further — typically 40–50% smaller than JPEG — and is now supported by all major browsers.</p>
-    </div>
-  </section>
+  <!-- Extended content -->
+  <div style="max-width:720px;display:grid;gap:2rem;">
+
+    <section class="section">
+      <h2 class="section-title">How image compression works</h2>
+      <div style="display:grid;gap:0.85rem;font-size:0.9rem;line-height:1.8;color:var(--text);">
+        <p>Image compression reduces file size by removing or reorganizing pixel data. There are two fundamentally different approaches: <strong>lossy</strong> and <strong>lossless</strong>.</p>
+        <p><strong>Lossy compression</strong> — used by JPEG, WebP, and AVIF — permanently discards image information that the human eye is least sensitive to, particularly fine high-frequency detail in smooth gradients. The quality slider controls how aggressively data is discarded. A quality setting of 80% on a photo typically produces a result visually identical to the original while cutting file size by 60–75%.</p>
+        <p><strong>Lossless compression</strong> — used by PNG and WebP lossless — reorganizes pixel data more efficiently without discarding any of it. The decompressed result is identical to the original. This is ideal for screenshots, diagrams, logos, and any image containing sharp text, because lossy compression creates visible artifacts on high-contrast edges.</p>
+        <p>This tool uses your browser's built-in <code>HTMLCanvasElement.toBlob()</code> API, which implements JPEG and WebP encoding natively. No data ever leaves your device.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Quality settings: what the numbers mean</h2>
+      <div style="display:grid;gap:0.5rem;">
+        <div class="card" style="padding:0.9rem 1.25rem;display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.1rem;font-weight:700;color:var(--primary);min-width:2.5rem;">90+</span>
+          <div>
+            <strong style="font-size:0.9rem;">High fidelity</strong>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">For archival copies, images you'll edit again, or professional print use. File sizes are still 40–60% of uncompressed PNG.</p>
+          </div>
+        </div>
+        <div class="card" style="padding:0.9rem 1.25rem;display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.1rem;font-weight:700;color:var(--green);min-width:2.5rem;">75–85</span>
+          <div>
+            <strong style="font-size:0.9rem;">Web standard — recommended</strong>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Visually indistinguishable from the original on-screen. 60–75% size reduction. The right choice for nearly all website and social media images.</p>
+          </div>
+        </div>
+        <div class="card" style="padding:0.9rem 1.25rem;display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.1rem;font-weight:700;color:var(--orange);min-width:2.5rem;">60–74</span>
+          <div>
+            <strong style="font-size:0.9rem;">Small file, acceptable quality</strong>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Visible compression on close inspection. Use for thumbnails, preview images, or when bandwidth is the primary constraint.</p>
+          </div>
+        </div>
+        <div class="card" style="padding:0.9rem 1.25rem;display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.1rem;font-weight:700;color:var(--text-muted);min-width:2.5rem;">&lt;60</span>
+          <div>
+            <strong style="font-size:0.9rem;">Heavy compression</strong>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Noticeable blocking and ringing artifacts, especially on text and sharp edges. Only appropriate for low-stakes previews or extremely bandwidth-constrained contexts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Format guide: which to choose</h2>
+      <div style="display:grid;gap:0.85rem;font-size:0.9rem;line-height:1.8;color:var(--text);">
+        <p><strong>JPEG</strong> — the safest choice for photos and images with gradients. Universally supported everywhere including email clients, older browsers, and every printing system. No transparency support.</p>
+        <p><strong>WebP</strong> — recommended for all new web projects. 25–35% smaller than JPEG at equivalent visual quality, supports transparency, and is supported by all browsers released after 2020. When in doubt, use WebP for the web.</p>
+        <p><strong>AVIF</strong> — the most efficient format available, 40–50% smaller than JPEG. Supported in Chrome 85+, Safari 16+, and Firefox 113+. Encoding is slower, so it's best for static images rather than bulk conversions.</p>
+        <p><strong>PNG</strong> — use only when you need lossless quality or transparency (logos, screenshots, icons). PNG photos are typically 3–10× the size of an equivalent WebP.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Step-by-step instructions</h2>
+      <ol style="display:grid;gap:0.6rem;font-size:0.9rem;line-height:1.7;color:var(--text);padding-left:1.5rem;">
+        <li>Drag and drop your image files onto the upload zone, or click it to open the file picker. JPG, PNG, WebP, AVIF, GIF, and BMP are all accepted.</li>
+        <li>Each file appears as a result row showing the original size, compressed size, and percentage saved.</li>
+        <li>Adjust the <strong>Quality</strong> slider (default 80) to balance file size against visual quality. Changes apply live — results update immediately.</li>
+        <li>Select an output format. Choosing <em>Same as input</em> compresses without converting. Choosing <em>WebP</em> or <em>AVIF</em> will typically reduce file sizes further.</li>
+        <li>Toggle <strong>Strip EXIF</strong> on to remove GPS location, camera model, and shooting settings from JPEG files. This is on by default for privacy.</li>
+        <li>Click <strong>Download All</strong> to save a ZIP containing all compressed files, or click the individual download icon next to any single result.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div style="display:grid;gap:0.6rem;">
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Will compressing make my image look worse?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">At quality 80 or above, the difference is typically invisible on a screen, even when zooming in. The compression removes data the eye cannot distinguish in normal viewing conditions. If you're compressing an image that will be printed large or edited further, use quality 90+.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Can I compress a WebP or AVIF file?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Yes. The tool accepts WebP and AVIF as inputs. You can compress them further (re-encoding at a lower quality) or convert them to another format simultaneously. Note that re-encoding an already-lossy-compressed image at the same quality does add a second generation of quality loss, so start from the original whenever possible.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">How many images can I compress at once?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">There is no hard limit. Processing happens in your browser using the Canvas API, so the practical limit is your device's available RAM. On a typical laptop you can comfortably process 50–100 images per batch. Very large individual files (over 50 MB) may be slow on older hardware.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Are my images uploaded to a server?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">No. All processing runs locally in your browser using the Web Canvas API. Your files are never transmitted to any server. You can verify this by disconnecting from the internet — the tool will still work perfectly.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Why is PNG compression not reducing the file size much?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">PNG is lossless, so the quality slider has no effect. The browser's PNG encoder applies standard DEFLATE compression, which is already efficient. If you need a much smaller file, convert the PNG to WebP (lossy) — a photo PNG can typically be reduced by 70–80% this way.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section">
+      <p style="font-size:0.875rem;color:var(--text-muted);">Related guides: <a href="/guides/image-compression" style="color:var(--primary);">Complete image compression guide</a> · <a href="/guides/image-formats" style="color:var(--primary);">Which image format should I use?</a> · <a href="/guides/web-performance-images" style="color:var(--primary);">Images and Core Web Vitals</a></p>
+    </section>
+
+  </div>
 
 </div>
 
@@ -223,19 +315,12 @@
       <li><a href="/compress">Compress</a></li>
       <li><a href="/convert">Convert</a></li>
       <li><a href="/resize">Resize</a></li>
-      <li><a href="/webp-to-jpg">WebP→JPG</a></li>
-      <li><a href="/avif-to-jpg">AVIF→JPG</a></li>
-      <li><a href="/batch-convert-webp-to-png">Batch WebP→PNG</a></li>
-      <li><a href="/compress-image-under-200kb">Under 200KB</a></li>
-      <li><a href="/resize-photo-for-us-visa">US Visa Photo</a></li>
-      <li><a href="/discord-emoji-size">Discord Emoji</a></li>
-      <li><a href="/resize-image-youtube-community-post">YouTube Resize</a></li>
-      <li><a href="/crop-image-to-circle">Circle Crop</a></li>
-      <li><a href="/add-white-border-to-photo">Add Border</a></li>
-      <li><a href="/extract-color-palette">Color Palette</a></li>
-      <li><a href="/convert-image-to-base64">Base64</a></li>
-      <li><a href="/ai">AI Tools</a></li>
-      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
     </ul>
   </div>
 </footer>

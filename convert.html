@@ -32,6 +32,7 @@
       <li><a href="/compress">Compress</a></li>
       <li><a href="/convert" class="active">Convert</a></li>
       <li><a href="/resize">Resize</a></li>
+      <li><a href="/guides">Guides</a></li>
       <li><a href="/ai">AI Tools</a></li>
     </ul>
   </div>
@@ -200,6 +201,70 @@
     </a>
   </div>
 
+  <!-- Extended content -->
+  <div style="max-width:720px;display:grid;gap:2rem;margin-top:2rem;">
+
+    <section class="section">
+      <h2 class="section-title">How to convert images online</h2>
+      <ol style="display:grid;gap:0.6rem;font-size:0.9rem;line-height:1.7;color:var(--text);padding-left:1.5rem;">
+        <li>Drop one or more image files onto the upload zone, or click to select them. The tool accepts JPG, PNG, WebP, AVIF, GIF, and BMP.</li>
+        <li>Each file appears in the results list. The output format selector at the top applies to all files — you can choose JPEG, PNG, WebP, or AVIF.</li>
+        <li>If you select a lossy output format (JPEG, WebP, AVIF), a quality slider appears. The default of 80 works well for most web images.</li>
+        <li>Click <strong>Download All</strong> to save a ZIP with all converted files, or click the individual download icon next to any single result.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Common conversion use cases</h2>
+      <div style="display:grid;gap:0.85rem;font-size:0.9rem;line-height:1.8;color:var(--text);">
+        <p><strong>Converting screenshots to WebP</strong> — Screenshots saved as PNG are often 1–5 MB. Converting to WebP at quality 85 typically reduces them to 200–500 KB with no visible difference. Ideal for blog posts and documentation sites.</p>
+        <p><strong>Converting photos from HEIC/AVIF to JPEG</strong> — Photos shot on recent iPhones are saved as HEIC, which many platforms don't accept. If you have a JPEG or WebP version, this converter handles the rest. For HEIC specifically, your device's operating system can batch convert in the Photos app.</p>
+        <p><strong>Preparing images for social media</strong> — Most social platforms accept JPEG and WebP. Converting large PNG exports to JPEG before uploading reduces upload time and avoids platform re-compression artefacts.</p>
+        <p><strong>Converting PNG to JPEG to remove white backgrounds</strong> — Note: this does not technically "remove" the background. PNG images with transparent areas will have those areas filled with white when converted to JPEG, because JPEG has no transparency channel. To actually remove a background, you need a dedicated background-removal tool.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Limitations</h2>
+      <div style="display:grid;gap:0.85rem;font-size:0.9rem;line-height:1.8;color:var(--text);">
+        <p>This tool uses your browser's built-in image encoding (the Canvas API). Browser encoders are generally high quality for web use, but differ slightly from professional encoding tools like ImageMagick, libvips, or Squoosh. For maximum compression efficiency on AVIF, a server-side encoder using libaom produces smaller files at the same visual quality.</p>
+        <p>HEIC and TIFF input is not currently supported, as these formats require additional decoding libraries not built into browsers. HEIC files from iPhone can be converted via macOS Preview, Windows 10 Photos, or the free HEIC Converter app before using this tool.</p>
+        <p>GIF files can be converted to a static image (the first frame), but animated GIF to WebP animated conversion is not supported.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div style="display:grid;gap:0.6rem;">
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Will converting PNG to JPEG lose the transparent background?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Yes. JPEG does not support transparency. Any transparent areas in a PNG will be filled with a solid colour — white by default. If you need to keep transparency, convert to WebP or PNG instead.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Does converting to WebP reduce quality?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Converting from JPEG to WebP at quality 80–85 produces a result that is visually equivalent to the original at a smaller file size. However, converting from one lossy format to another does introduce a second generation of compression. To minimise quality loss, always start from the original uncompressed file or the highest-quality version available.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Is AVIF supported everywhere?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">AVIF is supported in Chrome 85+, Firefox 113+, and Safari 16+. It covers over 90% of web users as of 2025. For maximum compatibility, particularly if you're sending images via email or to users who may use older software, JPEG remains the safest choice.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Can I batch convert hundreds of images at once?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Yes. The tool processes all selected files in your browser. The practical limit is your device's memory. Most computers handle 50–200 images per batch without issue. For very large batches (500+ files), consider splitting them into smaller groups.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">My converted file is larger than the original. Why?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">This can happen when converting a heavily compressed JPEG (say quality 50) to PNG, because PNG is lossless and stores all the pixel data the JPEG was hiding. It also happens when converting a small palette image (like a GIF) to a format that stores full colour per pixel. If size reduction is the goal, try converting to WebP with a quality setting of 75–85.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section">
+      <p style="font-size:0.875rem;color:var(--text-muted);">Related guides: <a href="/guides/image-formats" style="color:var(--primary);">Which image format should I use?</a> · <a href="/guides/image-compression" style="color:var(--primary);">Image compression explained</a> · <a href="/guides/web-performance-images" style="color:var(--primary);">Images and Core Web Vitals</a></p>
+    </section>
+
+  </div>
+
 </div>
 
 <footer>
@@ -210,19 +275,12 @@
       <li><a href="/compress">Compress</a></li>
       <li><a href="/convert">Convert</a></li>
       <li><a href="/resize">Resize</a></li>
-      <li><a href="/webp-to-jpg">WebP→JPG</a></li>
-      <li><a href="/avif-to-jpg">AVIF→JPG</a></li>
-      <li><a href="/batch-convert-webp-to-png">Batch WebP→PNG</a></li>
-      <li><a href="/compress-image-under-200kb">Under 200KB</a></li>
-      <li><a href="/resize-photo-for-us-visa">US Visa Photo</a></li>
-      <li><a href="/discord-emoji-size">Discord Emoji</a></li>
-      <li><a href="/resize-image-youtube-community-post">YouTube Resize</a></li>
-      <li><a href="/crop-image-to-circle">Circle Crop</a></li>
-      <li><a href="/add-white-border-to-photo">Add Border</a></li>
-      <li><a href="/extract-color-palette">Color Palette</a></li>
-      <li><a href="/convert-image-to-base64">Base64</a></li>
-      <li><a href="/ai">AI Tools</a></li>
-      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
     </ul>
   </div>
 </footer>
