@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF to Image Converter — Export PDF Pages as JPG, PNG, WebP</title>
+  <meta name="description" content="Convert any PDF page to a high-quality image. Choose output format (JPG, PNG, WebP), set DPI up to 600, and download instantly. 100% free, runs in your browser.">
+  <link rel="canonical" href="https://freeimgtools.net/pdf-to-image">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "PDF to Image Converter — Free Image Tools",
+    "url": "https://freeimgtools.net/pdf-to-image",
+    "description": "Convert PDF pages to JPG, PNG, or WebP images. Choose DPI, select page number, and download. Free, runs entirely in your browser.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    }
+  }
+  </script>
+  <style>
+    .page-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .page-nav-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--text);
+      transition: background 0.15s, border-color 0.15s;
+      flex-shrink: 0;
+    }
+    .page-nav-btn:hover:not(:disabled) {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+    .page-nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    #page-input {
+      width: 64px;
+      text-align: center;
+      padding: 0.4rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+    #page-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+    .dpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+      gap: 0.5rem;
+    }
+    .dpi-btn {
+      padding: 0.5rem 0.25rem;
+      border: 1.5px solid var(--border);
+      background: var(--bg-elevated);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-align: center;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .dpi-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .dpi-btn.active { border-color: var(--primary); background: var(--primary); color: #fff; }
+    #preview-canvas {
+      max-width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      display: block;
+      margin: 0 auto;
+    }
+    .preview-wrap {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      position: relative;
+    }
+    .preview-placeholder {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+    .format-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .fmt-btn {
+      padding: 0.45rem 1rem;
+      border: 1.5px solid var(--border);
+      background: var(--bg-elevated);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .fmt-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .fmt-btn.active { border-color: var(--primary); background: var(--primary); color: #fff; }
+    .spinner {
+      width: 28px; height: 28px;
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .result-card {
+      display: none;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .result-card.visible { display: block; }
+    .result-img { max-width: 100%; display: block; border-bottom: 1px solid var(--border); }
+    .result-meta { padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .result-info { font-size: 0.85rem; color: var(--text-muted); }
+    .result-info strong { color: var(--text); display: block; font-size: 0.9rem; margin-bottom: 2px; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">PDF to Image</h1>
+  <p class="page-desc">Convert any PDF page to JPG, PNG, or WebP. Choose DPI, pick a page, download instantly — all in your browser.</p>
+
+  <div class="tool-layout">
+
+    <!-- ── Upload ── -->
+    <div id="upload-area">
+      <div class="upload-zone" id="drop-zone">
+        <div class="upload-icon">📄</div>
+        <h3>Drop a PDF here</h3>
+        <p>or click to select a file</p>
+        <input type="file" id="file-input" accept="application/pdf,.pdf" style="display:none">
+      </div>
+    </div>
+
+    <!-- ── Controls (shown after PDF loaded) ── -->
+    <div id="controls" class="card" style="display:none;padding:1.5rem;display:none;flex-direction:column;gap:1.5rem;">
+
+      <!-- PDF info -->
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span style="font-size:1.5rem;">📄</span>
+        <div>
+          <div id="pdf-name" style="font-weight:600;font-size:0.9rem;color:var(--text);"></div>
+          <div id="pdf-info" style="font-size:0.8rem;color:var(--text-muted);"></div>
+        </div>
+        <button id="clear-btn" style="margin-left:auto;padding:0.35rem 0.75rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);font-size:0.8rem;cursor:pointer;font-family:inherit;">✕ Clear</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Page selector -->
+      <div>
+        <label style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.6rem;">Page</label>
+        <div class="page-nav">
+          <button class="page-nav-btn" id="prev-btn" disabled>‹</button>
+          <input type="number" id="page-input" value="1" min="1">
+          <span style="font-size:0.85rem;color:var(--text-muted);">of <span id="page-count">—</span></span>
+          <button class="page-nav-btn" id="next-btn" disabled>›</button>
+          <button class="btn" id="render-btn" style="padding:0.45rem 1rem;font-size:0.85rem;">Preview page</button>
+        </div>
+      </div>
+
+      <!-- DPI selector -->
+      <div>
+        <label style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.6rem;">Resolution (DPI)</label>
+        <div class="dpi-grid">
+          <button class="dpi-btn" data-dpi="72">72</button>
+          <button class="dpi-btn" data-dpi="96">96</button>
+          <button class="dpi-btn active" data-dpi="150">150</button>
+          <button class="dpi-btn" data-dpi="300">300</button>
+          <button class="dpi-btn" data-dpi="600">600</button>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.5rem;">150 DPI is fine for screen. Use 300+ for print.</p>
+      </div>
+
+      <!-- Format selector -->
+      <div>
+        <label style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.6rem;">Output Format</label>
+        <div class="format-row">
+          <button class="fmt-btn active" data-fmt="jpeg">JPG</button>
+          <button class="fmt-btn" data-fmt="png">PNG</button>
+          <button class="fmt-btn" data-fmt="webp">WebP</button>
+        </div>
+      </div>
+
+      <!-- Quality (hidden for PNG) -->
+      <div id="quality-row">
+        <label style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:flex;justify-content:space-between;margin-bottom:0.6rem;">
+          Quality <span id="quality-val" style="color:var(--primary);">90</span>
+        </label>
+        <input type="range" id="quality" class="slider" min="50" max="100" value="90">
+      </div>
+
+      <!-- Preview area -->
+      <div>
+        <label style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.6rem;">Preview</label>
+        <div class="preview-wrap" id="preview-wrap">
+          <div class="preview-placeholder" id="preview-placeholder">
+            <div style="font-size:2rem;margin-bottom:0.5rem;">🖼️</div>
+            <p>Click "Preview page" to render</p>
+          </div>
+          <canvas id="preview-canvas" style="display:none;max-height:400px;width:auto;"></canvas>
+          <div class="spinner" id="spinner" style="display:none;"></div>
+        </div>
+      </div>
+
+      <!-- Download button -->
+      <button class="btn" id="download-btn" disabled style="width:100%;padding:0.85rem;font-size:1rem;">
+        ⬇ Download Image
+      </button>
+
+      <p id="status-msg" style="font-size:0.8rem;color:var(--text-muted);text-align:center;min-height:1.2em;"></p>
+
+    </div>
+
+  </div>
+
+  <!-- Extended content -->
+  <div style="max-width:720px;display:grid;gap:2rem;margin-top:2.5rem;">
+
+    <section class="section">
+      <h2 class="section-title">How to convert a PDF page to an image</h2>
+      <ol style="display:grid;gap:0.6rem;font-size:0.9rem;line-height:1.7;color:var(--text);padding-left:1.5rem;">
+        <li>Drop your PDF onto the upload zone or click to select it.</li>
+        <li>Use the <strong>Page</strong> selector to choose which page to convert. The page count is shown automatically.</li>
+        <li>Click <strong>Preview page</strong> to render it. The preview shows the page at a reduced size.</li>
+        <li>Choose your <strong>DPI</strong>: 150 is fine for screen and web use; 300 is suitable for standard print; 600 is for high-resolution print or archival.</li>
+        <li>Choose an output <strong>format</strong>: JPG for photos and documents with no transparency, PNG for lossless quality or pages with transparent areas, WebP for the smallest file size.</li>
+        <li>Adjust <strong>Quality</strong> if using JPG or WebP. 90 is a good default.</li>
+        <li>Click <strong>Download Image</strong>. The file saves at full DPI resolution.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Which DPI should I choose?</h2>
+      <div style="display:grid;gap:0.5rem;">
+        <div class="card" style="padding:0.9rem 1.25rem;display:grid;grid-template-columns:3.5rem 1fr;gap:0.75rem;align-items:start;">
+          <span style="font-size:1rem;font-weight:700;color:var(--text-muted);">72 DPI</span>
+          <div><strong style="font-size:0.875rem;">Web thumbnails, previews</strong><p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Small file size. Fine for preview images or when bandwidth matters.</p></div>
+        </div>
+        <div class="card" style="padding:0.9rem 1.25rem;display:grid;grid-template-columns:3.5rem 1fr;gap:0.75rem;align-items:start;">
+          <span style="font-size:1rem;font-weight:700;color:var(--text-muted);">96 DPI</span>
+          <div><strong style="font-size:0.875rem;">Screen display</strong><p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Standard screen resolution. Good for embedding in web pages or presentations.</p></div>
+        </div>
+        <div class="card" style="padding:0.9rem 1.25rem;display:grid;grid-template-columns:3.5rem 1fr;gap:0.75rem;align-items:start;">
+          <span style="font-size:1rem;font-weight:700;color:var(--primary);">150 DPI ✦</span>
+          <div><strong style="font-size:0.875rem;">Recommended default</strong><p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Sharp on Retina screens, good for email and social media sharing. Balanced file size.</p></div>
+        </div>
+        <div class="card" style="padding:0.9rem 1.25rem;display:grid;grid-template-columns:3.5rem 1fr;gap:0.75rem;align-items:start;">
+          <span style="font-size:1rem;font-weight:700;color:var(--text);">300 DPI</span>
+          <div><strong style="font-size:0.875rem;">Standard print quality</strong><p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Suitable for printing on A4/Letter. The standard for most document workflows.</p></div>
+        </div>
+        <div class="card" style="padding:0.9rem 1.25rem;display:grid;grid-template-columns:3.5rem 1fr;gap:0.75rem;align-items:start;">
+          <span style="font-size:1rem;font-weight:700;color:var(--text);">600 DPI</span>
+          <div><strong style="font-size:0.875rem;">High-resolution / archival</strong><p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Very large output file. Use for large-format printing or archiving fine detail like technical drawings.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Notes and limitations</h2>
+      <div style="display:grid;gap:0.75rem;font-size:0.9rem;line-height:1.8;color:var(--text);">
+        <p><strong>One page at a time.</strong> This tool converts one PDF page per download. To extract multiple pages, convert them one by one and download each.</p>
+        <p><strong>Password-protected PDFs.</strong> Encrypted or password-locked PDFs cannot be opened. Remove the password protection first using Adobe Acrobat or a PDF unlock tool before converting.</p>
+        <p><strong>File size at high DPI.</strong> A standard A4 page at 600 DPI produces an image of roughly 4960 × 7016 pixels — about 5000 × 7000px. PNG output at that resolution can exceed 30 MB. Use JPG or WebP if file size is a concern.</p>
+        <p><strong>Fonts and vector graphics.</strong> PDF.js renders text and vector elements as bitmaps. The quality of text rendering depends on the fonts embedded in the PDF. Very complex PDFs (CAD drawings, layered illustrations) may render slowly at high DPI.</p>
+        <p><strong>Privacy.</strong> Your PDF never leaves your browser. All rendering happens locally using PDF.js and the HTML Canvas API. No data is uploaded to any server.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div style="display:grid;gap:0.6rem;">
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Can I convert all pages of a PDF at once?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Not currently. The tool processes one page per conversion to keep it fast and private. Select the page number you need, click Preview, then Download. Repeat for any other pages you need.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">What is the maximum PDF file size?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">There is no enforced limit. Since the PDF is processed entirely in your browser, the practical limit is your device's available memory. PDFs up to 50–100 MB work on most modern computers. Very large PDFs with many high-resolution embedded images may be slow to load.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Which output format should I use?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">For most purposes, JPG at quality 90 gives the best balance of sharpness and file size. Use PNG if the PDF contains areas with a transparent background, or if you need pixel-perfect lossless quality. Use WebP for the smallest files — particularly useful if you're embedding the image on a website.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">Is my PDF uploaded to a server?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">No. Everything happens locally in your browser using PDF.js and the Canvas API. Your PDF file never leaves your device and is not sent to any server. You can verify by disconnecting from the internet — the tool continues to work normally.</p>
+        </details>
+        <details class="card" style="padding:1rem 1.25rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:0.9rem;">The PDF looks blurry. What should I do?</summary>
+          <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">Increase the DPI. If you're converting at 72 or 96 DPI, switch to 150 or 300. The preview on-screen is shown at a reduced scale, but the downloaded file is always at full resolution. If the PDF itself was created with low-resolution images, increasing DPI here cannot recover detail that isn't in the source.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section">
+      <p style="font-size:0.875rem;color:var(--text-muted);">Related tools: <a href="/compress" style="color:var(--primary);">Compress the image after converting</a> · <a href="/convert" style="color:var(--primary);">Convert between image formats</a> · <a href="/resize" style="color:var(--primary);">Resize the image</a></p>
+    </section>
+
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- PDF.js 5.x (ES Module) -->
+<script type="module">
+  import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.min.mjs';
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.min.mjs';
+
+  // ── State ─────────────────────────────────────────────────────
+  let pdfDoc      = null;
+  let currentPage = 1;
+  let selectedDpi = 150;
+  let selectedFmt = 'jpeg';
+  let renderedBlob = null;
+  let renderPending = false;
+
+  // ── Elements ──────────────────────────────────────────────────
+  const dropZone      = document.getElementById('drop-zone');
+  const fileInput     = document.getElementById('file-input');
+  const controls     = document.getElementById('controls');
+  const uploadArea   = document.getElementById('upload-area');
+  const pdfName      = document.getElementById('pdf-name');
+  const pdfInfo      = document.getElementById('pdf-info');
+  const pageInput    = document.getElementById('page-input');
+  const pageCount    = document.getElementById('page-count');
+  const prevBtn      = document.getElementById('prev-btn');
+  const nextBtn      = document.getElementById('next-btn');
+  const renderBtn    = document.getElementById('render-btn');
+  const downloadBtn  = document.getElementById('download-btn');
+  const clearBtn     = document.getElementById('clear-btn');
+  const canvas       = document.getElementById('preview-canvas');
+  const placeholder  = document.getElementById('preview-placeholder');
+  const spinner      = document.getElementById('spinner');
+  const qualitySlider = document.getElementById('quality');
+  const qualityVal   = document.getElementById('quality-val');
+  const qualityRow   = document.getElementById('quality-row');
+  const statusMsg    = document.getElementById('status-msg');
+
+  // ── Upload handling ───────────────────────────────────────────
+  dropZone.addEventListener('click', () => fileInput.click());
+
+  dropZone.addEventListener('dragover', e => {
+    e.preventDefault();
+    dropZone.classList.add('drag-over');
+  });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (file && file.type === 'application/pdf') loadPdf(file);
+    else setStatus('Please drop a PDF file.', true);
+  });
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files[0]) loadPdf(fileInput.files[0]);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    pdfDoc = null;
+    renderedBlob = null;
+    fileInput.value = '';
+    controls.style.display = 'none';
+    uploadArea.style.display = '';
+    canvas.style.display = 'none';
+    placeholder.style.display = '';
+    downloadBtn.disabled = true;
+    setStatus('');
+  });
+
+  // ── Load PDF ──────────────────────────────────────────────────
+  async function loadPdf(file) {
+    setStatus('Loading PDF…');
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+      const numPages = pdfDoc.numPages;
+
+      pdfName.textContent = file.name;
+      pdfInfo.textContent = `${numPages} page${numPages !== 1 ? 's' : ''}  ·  ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+      pageCount.textContent = numPages;
+      pageInput.max = numPages;
+      pageInput.value = 1;
+      currentPage = 1;
+      updatePageButtons();
+
+      uploadArea.style.display = 'none';
+      controls.style.display = 'flex';
+
+      setStatus('PDF loaded. Click "Preview page" to render.');
+    } catch (err) {
+      setStatus('Could not open this PDF. It may be password-protected or corrupted.', true);
+    }
+  }
+
+  // ── Page navigation ───────────────────────────────────────────
+  function updatePageButtons() {
+    const n = pdfDoc ? pdfDoc.numPages : 1;
+    prevBtn.disabled = currentPage <= 1;
+    nextBtn.disabled = currentPage >= n;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 1) { currentPage--; pageInput.value = currentPage; updatePageButtons(); }
+  });
+  nextBtn.addEventListener('click', () => {
+    if (currentPage < pdfDoc.numPages) { currentPage++; pageInput.value = currentPage; updatePageButtons(); }
+  });
+  pageInput.addEventListener('change', () => {
+    let v = parseInt(pageInput.value, 10);
+    if (isNaN(v) || v < 1) v = 1;
+    if (pdfDoc && v > pdfDoc.numPages) v = pdfDoc.numPages;
+    currentPage = v;
+    pageInput.value = v;
+    updatePageButtons();
+  });
+
+  // ── DPI buttons ───────────────────────────────────────────────
+  document.querySelectorAll('.dpi-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.dpi-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedDpi = parseInt(btn.dataset.dpi, 10);
+    });
+  });
+
+  // ── Format buttons ────────────────────────────────────────────
+  document.querySelectorAll('.fmt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.fmt-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedFmt = btn.dataset.fmt;
+      qualityRow.style.display = selectedFmt === 'png' ? 'none' : '';
+    });
+  });
+
+  // ── Quality slider ────────────────────────────────────────────
+  qualitySlider.addEventListener('input', () => {
+    qualityVal.textContent = qualitySlider.value;
+  });
+
+  // ── Render page ───────────────────────────────────────────────
+  renderBtn.addEventListener('click', () => renderPage());
+
+  async function renderPage() {
+    if (!pdfDoc || renderPending) return;
+    renderPending = true;
+    renderedBlob = null;
+    downloadBtn.disabled = true;
+    canvas.style.display = 'none';
+    placeholder.style.display = 'none';
+    spinner.style.display = 'block';
+    setStatus(`Rendering page ${currentPage} at ${selectedDpi} DPI…`);
+
+    try {
+      const page = await pdfDoc.getPage(currentPage);
+      const scale = selectedDpi / 96;
+      const viewport = page.getViewport({ scale });
+
+      // Full-res canvas (for download)
+      const fullCanvas = document.createElement('canvas');
+      fullCanvas.width  = Math.round(viewport.width);
+      fullCanvas.height = Math.round(viewport.height);
+      const ctx = fullCanvas.getContext('2d');
+
+      // White background for JPG
+      if (selectedFmt === 'jpeg') {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, fullCanvas.width, fullCanvas.height);
+      }
+
+      await page.render({ canvasContext: ctx, viewport }).promise;
+
+      // Show scaled preview (max 600px wide)
+      const previewScale = Math.min(1, 600 / fullCanvas.width);
+      canvas.width  = Math.round(fullCanvas.width  * previewScale);
+      canvas.height = Math.round(fullCanvas.height * previewScale);
+      const pCtx = canvas.getContext('2d');
+      pCtx.drawImage(fullCanvas, 0, 0, canvas.width, canvas.height);
+
+      spinner.style.display = 'none';
+      canvas.style.display = 'block';
+
+      // Convert full-res to blob
+      const quality = parseInt(qualitySlider.value, 10) / 100;
+      const mimeType = selectedFmt === 'jpeg' ? 'image/jpeg'
+                     : selectedFmt === 'png'  ? 'image/png'
+                     : 'image/webp';
+      renderedBlob = await new Promise(res =>
+        fullCanvas.toBlob(res, mimeType, selectedFmt === 'png' ? undefined : quality)
+      );
+
+      const ext = selectedFmt === 'jpeg' ? 'jpg' : selectedFmt;
+      const kb = (renderedBlob.size / 1024).toFixed(0);
+      setStatus(`Page ${currentPage} rendered: ${fullCanvas.width} × ${fullCanvas.height} px · ${kb} KB`);
+      downloadBtn.disabled = false;
+    } catch (err) {
+      spinner.style.display = 'none';
+      placeholder.style.display = '';
+      setStatus('Render failed. Try a different page or lower DPI.', true);
+    } finally {
+      renderPending = false;
+    }
+  }
+
+  // ── Download ──────────────────────────────────────────────────
+  downloadBtn.addEventListener('click', () => {
+    if (!renderedBlob) return;
+    const ext  = selectedFmt === 'jpeg' ? 'jpg' : selectedFmt;
+    const base = (pdfName.textContent || 'document').replace(/\.pdf$/i, '');
+    const fname = `${base}-page${currentPage}-${selectedDpi}dpi.${ext}`;
+    const url = URL.createObjectURL(renderedBlob);
+    const a = document.createElement('a');
+    a.href = url; a.download = fname; a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // ── Helpers ───────────────────────────────────────────────────
+  function setStatus(msg, isError = false) {
+    statusMsg.textContent = msg;
+    statusMsg.style.color = isError ? 'var(--orange)' : 'var(--text-muted)';
+  }
+</script>
+
+</body>
+</html>
