@@ -7,7 +7,7 @@
   <meta name="description" content="Convert any PDF page to a high-quality image. Choose output format (JPG, PNG, WebP), set DPI up to 600, and download instantly. 100% free, runs in your browser.">
   <link rel="canonical" href="https://freeimgtools.net/pdf-to-image">
   <link rel="stylesheet" href="/css/style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script src="/js/cookie-consent.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -174,7 +174,7 @@
   <h1 class="page-title">PDF to Image</h1>
   <p class="page-desc">Convert any PDF page to JPG, PNG, or WebP. Choose DPI, pick a page, download instantly — all in your browser.</p>
 
-  <div class="tool-layout">
+  <div class="two-col" style="align-items:start;">
 
     <!-- ── Upload ── -->
     <div id="upload-area">
@@ -377,8 +377,20 @@
 <!-- PDF.js 5.x (ES Module) -->
 <script type="module">
   import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.min.mjs';
-  pdfjsLib.GlobalWorkerOptions.workerSrc =
-    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.min.mjs';
+
+  // Use a same-origin blob URL to load the worker as a module — avoids
+  // cross-origin worker restrictions in some browsers/environments
+  const WORKER_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.min.mjs';
+  try {
+    const workerBlob = new Blob(
+      [`import '${WORKER_CDN}';`],
+      { type: 'application/javascript' }
+    );
+    pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(workerBlob);
+  } catch (e) {
+    // Fallback: set CDN URL directly
+    pdfjsLib.GlobalWorkerOptions.workerSrc = WORKER_CDN;
+  }
 
   // ── State ─────────────────────────────────────────────────────
   let pdfDoc      = null;
