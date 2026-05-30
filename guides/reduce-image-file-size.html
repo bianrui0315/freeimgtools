@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Reduce Image File Size Without Losing Quality</title>
+  <meta name="description" content="Practical guide to reducing image file size for web, email, and apps. Covers format choice, compression settings, resizing to display dimensions, and hitting specific file size targets.">
+  <meta property="og:title" content="How to Reduce Image File Size Without Losing Quality">
+  <meta property="og:description" content="Step-by-step guide to reducing image file size — format choice, quality settings, resizing, and hitting specific size targets for web and email.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://freeimgtools.net/guides/reduce-image-file-size">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/cookie-consent.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Reduce Image File Size Without Losing Quality",
+    "description": "Practical guide to reducing image file size for web, email, and apps — format choice, compression settings, resizing, and hitting specific file size targets.",
+    "url": "https://freeimgtools.net/guides/reduce-image-file-size",
+    "datePublished": "2026-05-30",
+    "dateModified": "2026-05-30",
+    "author": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeimgtools.net/"},
+      {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://freeimgtools.net/guides"},
+      {"@type": "ListItem", "position": 3, "name": "Reduce Image File Size", "item": "https://freeimgtools.net/guides/reduce-image-file-size"}
+    ]
+  }
+  </script>
+  <style>
+    .guide-body { font-size: 0.95rem; line-height: 1.85; color: var(--text); }
+    .guide-body h2 { font-size: 1.3rem; font-weight: 700; margin: 2.5rem 0 0.75rem; }
+    .guide-body h3 { font-size: 1.05rem; font-weight: 700; margin: 1.75rem 0 0.5rem; }
+    .guide-body p { margin-bottom: 0.85rem; }
+    .guide-body ul, .guide-body ol { padding-left: 1.25rem; margin-bottom: 0.85rem; display: grid; gap: 0.4rem; }
+    .breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.875rem; }
+    .data-table th { background: var(--bg); padding: 0.6rem 0.75rem; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0,0,0,0.1); }
+    .data-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .callout { background: #f0f7ff; border-left: 3px solid var(--primary); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9rem; }
+    .callout-warn { background: #fff8f0; border-left-color: #FF9500; }
+    .callout-tip { background: #f0fff4; border-left-color: #34C759; }
+    .related-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+    .step-num { display:inline-flex;align-items:center;justify-content:center;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:0.8rem;flex-shrink:0;margin-right:0.5rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/guides" class="active">Guides</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page" style="max-width:800px;">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a> › <a href="/guides">Guides</a> › Reduce Image File Size
+  </div>
+
+  <h1 class="page-title">How to Reduce Image File Size Without Losing Quality</h1>
+  <p class="page-desc">Published May 2026 · Updated May 30, 2026</p>
+
+  <div class="guide-body">
+
+    <h2>Why image file size matters</h2>
+    <p>Large image files cause slow page loads, poor Core Web Vitals scores, failed email uploads, and rejected form submissions. Every extra kilobyte in an image delays the user's experience — and search engines measure and penalize slow pages.</p>
+    <p>The good news is that image file sizes can almost always be reduced dramatically — often by 60–80% — with no visible loss of quality to the human eye. The key is understanding which techniques apply to your situation. This guide walks through each one in order of impact.</p>
+
+    <div class="callout">
+      <strong>Quick wins first:</strong> If you are in a hurry, the two highest-impact steps are (1) convert JPEG to WebP and (2) resize the image to its display dimensions. Together these typically reduce file size by 50–70% with no visible quality change.
+    </div>
+
+    <h2>Step 1 — Resize to display dimensions</h2>
+    <p>The single most impactful thing you can do for most images is to serve them at the actual size they are displayed. A 4000 × 3000 pixel photo served in an 800px-wide blog column sends 25× more pixel data than necessary. The browser scales it down, but the full data was still transferred.</p>
+    <p>The rule: resize to 1× or 2× the display width. If the image is displayed at 800px, serve an 800px version for standard screens and a 1600px version for Retina displays. Using the HTML <code>srcset</code> attribute, the browser picks the right size automatically.</p>
+    <p>For a simpler approach without <code>srcset</code>: resize to approximately 1.5× the maximum display width. A 1200px image covers most single-column layouts on Retina screens without being excessively large.</p>
+
+    <div class="callout callout-tip">
+      Use the <a href="/resize" style="color:var(--primary);">Image Resizer</a> to set exact pixel dimensions. Enter the target width and let the tool calculate the height to preserve the aspect ratio.
+    </div>
+
+    <h3>How much does resizing save?</h3>
+    <p>File size scales roughly with the number of pixels — a 4000px wide image at the same quality has roughly 25× more pixels than an 800px image. In practice, because compression is less efficient at smaller sizes, the actual ratio is usually 10–15×. That is still a 90%+ reduction just from resizing to the correct display width.</p>
+
+    <h2>Step 2 — Switch to a more efficient format</h2>
+    <p>Many images on the web are still JPEG or PNG by default — often because they were exported from design tools or downloaded from stock photo sites years ago. Modern formats compress significantly better.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Format</th>
+          <th>Best for</th>
+          <th>vs. JPEG (typical)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>WebP</strong></td>
+          <td>Photos, illustrations, most web images</td>
+          <td>25–35% smaller</td>
+        </tr>
+        <tr>
+          <td><strong>AVIF</strong></td>
+          <td>Photos where maximum compression is needed</td>
+          <td>40–55% smaller</td>
+        </tr>
+        <tr>
+          <td><strong>PNG → WebP</strong></td>
+          <td>Graphics, logos, images with transparency</td>
+          <td>Varies; 20–50% smaller</td>
+        </tr>
+        <tr>
+          <td><strong>GIF → WebP</strong></td>
+          <td>Simple animations</td>
+          <td>50–80% smaller</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>WebP is the right default choice for most images. Browser support is now near-universal (98%+ globally) and the conversion is lossless in terms of workflow — you keep the original and serve the WebP copy. Convert JPEG and PNG images to WebP using the <a href="/convert" style="color:var(--primary);">Format Converter</a>.</p>
+
+    <div class="callout callout-warn">
+      <strong>PNG is not always smaller than JPEG.</strong> For photographs with complex color gradients, JPEG (and WebP) compress far more efficiently than PNG. PNG excels at images with large flat-color regions, sharp edges, and text. If you have a photographic PNG, convert it to WebP — the size reduction can be dramatic.
+    </div>
+
+    <h2>Step 3 — Adjust compression quality</h2>
+    <p>After format choice and resizing, quality setting is the next lever. JPEG, WebP, and AVIF all use lossy compression with a quality parameter. Higher quality → larger file, lower quality → smaller file with more compression artifacts.</p>
+    <p>The practical range for web images:</p>
+    <ul>
+      <li><strong>Quality 85–90:</strong> Visually indistinguishable from the original for most images. Recommended for hero images, product photos, portfolio work.</li>
+      <li><strong>Quality 75–82:</strong> Minor artifacts may be visible on close inspection in smooth gradients. Acceptable for most content images, thumbnails, blog photos. Files are 20–40% smaller than quality 90.</li>
+      <li><strong>Quality 65–72:</strong> Artifacts become more noticeable, especially around text and high-contrast edges. Suitable only for small thumbnails where file size matters more than quality.</li>
+      <li><strong>Below 65:</strong> Visibly degraded. Avoid for anything other than very small preview icons.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Start at 82 and check the output visually.</strong> Do not pick a quality setting and apply it blindly across all images — the same setting produces very different results on a photo vs. a screenshot vs. a gradient illustration. Always check the result at the size and resolution it will actually be displayed.
+    </div>
+
+    <p>Use the <a href="/compress" style="color:var(--primary);">Image Compressor</a> to adjust quality with a live preview. The tool shows you the compressed file size and savings percentage in real time.</p>
+
+    <h2>Step 4 — Strip metadata</h2>
+    <p>Every JPEG taken with a camera or smartphone contains EXIF metadata — GPS location, camera model, shutter speed, lens information, timestamps, and sometimes a thumbnail copy of the image. This metadata can add 20–50 KB to a photo and is never displayed to users.</p>
+    <p>Compression tools like the one on this site strip EXIF metadata automatically as part of the compression process. If you are processing images with other tools, look for an option to strip or remove metadata. This is safe — the visual content of the image is not affected.</p>
+
+    <h2>Step 5 — Hit a specific file size target</h2>
+    <p>Some platforms impose strict file size limits:</p>
+    <ul>
+      <li>US visa photo portals: typically under 200 KB or 240 KB</li>
+      <li>LinkedIn profile photos: 8 MB maximum, but 500 KB is recommended</li>
+      <li>Email inline images: under 1 MB to avoid being flagged as large attachments</li>
+      <li>Government form uploads: 100–500 KB limits are common</li>
+    </ul>
+    <p>Manually adjusting quality to hit a specific target is tedious. The <a href="/compress-image-under-200kb" style="color:var(--primary);">Compress Under 200KB</a> tool automates this — it binary-searches the quality setting to find the highest quality that keeps the file under your target size. You get the best possible quality within the constraint without manual trial and error.</p>
+
+    <h2>Recommended workflow by use case</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Use case</th>
+          <th>Steps to take</th>
+          <th>Target file size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Website hero image</td>
+          <td>Resize to 1600px wide, convert to WebP, quality 82</td>
+          <td>&lt;200 KB</td>
+        </tr>
+        <tr>
+          <td>Blog inline image</td>
+          <td>Resize to 1200px wide, convert to WebP, quality 80</td>
+          <td>&lt;100 KB</td>
+        </tr>
+        <tr>
+          <td>Product thumbnail</td>
+          <td>Resize to 600×600, WebP, quality 82</td>
+          <td>&lt;50 KB</td>
+        </tr>
+        <tr>
+          <td>Email inline image</td>
+          <td>Resize to max 800px, JPG quality 85</td>
+          <td>&lt;200 KB</td>
+        </tr>
+        <tr>
+          <td>Visa / government upload</td>
+          <td>Use Compress Under 200KB tool with target size</td>
+          <td>Per requirement</td>
+        </tr>
+        <tr>
+          <td>Social media post</td>
+          <td>Resize to platform spec, JPG or WebP quality 85</td>
+          <td>&lt;500 KB</td>
+        </tr>
+        <tr>
+          <td>Logo / icon (with transparency)</td>
+          <td>Keep PNG or convert to WebP with lossless mode</td>
+          <td>&lt;100 KB</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What not to do</h2>
+    <ul>
+      <li><strong>Do not increase quality above 90.</strong> The file size increase is significant (files at quality 95 are often 3–4× larger than quality 82) while the visual improvement is barely perceptible on most screens.</li>
+      <li><strong>Do not re-save JPEGs multiple times.</strong> Each save re-applies lossy compression. Save once from the original source and keep the original as backup. If you need to edit, edit the original and re-export to JPEG.</li>
+      <li><strong>Do not use PNG for photographs.</strong> PNG's lossless compression handles photographic content poorly. A 4000px JPEG photo might be 3 MB; the same image as PNG might be 20 MB.</li>
+      <li><strong>Do not rely on dimension-preserving quality reduction alone for PNG files.</strong> PNG compression does not have a quality slider — you can only reduce PNG file size by removing metadata, reducing bit depth (8-bit instead of 24-bit for simple graphics), or converting to WebP.</li>
+    </ul>
+
+    <h2>Advanced: responsive images with srcset</h2>
+    <p>For websites where load speed is critical, serving a single large image to all devices wastes bandwidth on mobile. The HTML <code>srcset</code> attribute lets you provide multiple sizes and let the browser pick the right one:</p>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;margin:1rem 0;font-size:0.875rem;">
+      <code style="font-family:ui-monospace,monospace;font-size:0.82rem;display:block;white-space:pre-wrap;">&lt;img
+  src="hero-1200.webp"
+  srcset="hero-600.webp 600w, hero-1200.webp 1200w, hero-2400.webp 2400w"
+  sizes="(max-width: 768px) 100vw, 1200px"
+  alt="Hero image"
+  loading="lazy"
+&gt;</code>
+    </div>
+    <p>This tells the browser to load the 600px version on mobile, the 1200px version on desktop, and the 2400px version on large Retina displays. The file size difference between serving the 2400px image to a 600px phone vs. the 600px image is typically 8–15×.</p>
+    <p>Prepare your three sizes with the <a href="/resize" style="color:var(--primary);">Image Resizer</a> and convert each to WebP with the <a href="/convert" style="color:var(--primary);">Format Converter</a>.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        What is the best way to reduce image file size without losing quality?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>The most impactful steps in order: (1) resize the image to match its actual display dimensions — serving a 4000px image in an 800px container sends 25× more data than necessary; (2) convert to WebP, which produces files 25–35% smaller than JPEG at equivalent visual quality; (3) apply lossy compression at quality 80–85, which is visually lossless for most content but significantly smaller than quality 95+.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        How do I reduce image file size for email?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>For email inline images, resize to a maximum width of 800px (most email clients display content in a column narrower than this), save as JPEG at quality 85, and aim for files under 200 KB. Avoid WebP for email — most email clients do not render WebP and will show a broken image placeholder. For email attachments (not inline), JPEG or PNG at a sensible size is best; the file size limit depends on the recipient's email provider but staying under 1 MB per image is a safe rule.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Can I reduce PNG file size without converting to another format?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>Yes, to a limited extent. PNG uses lossless compression, so you cannot reduce quality like JPEG. The options are: strip metadata (saves a small amount); reduce bit depth to 8-bit indexed color for simple graphics with fewer than 256 colors (saves significantly on diagrams and icons); or use more aggressive lossless compression algorithms like PNGQuant or OxiPNG. However, the most impactful reduction for PNG photographs is converting to WebP — the difference can be 50% or more.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        How do I compress a photo to under 200KB for a visa or government application?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>Use the <a href="/compress-image-under-200kb" style="color:var(--primary);">Compress Under 200KB</a> tool — it automatically finds the highest quality JPEG that meets your file size target. This is far easier than manually adjusting quality settings. For US visa photos (which also have strict dimension requirements: 2×2 inches at 300 DPI), use the <a href="/resize-photo-for-us-visa" style="color:var(--primary);">Resize for US Visa</a> tool first, then compress to the size limit.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Does compressing images affect their print quality?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>For print, two factors matter: resolution (DPI) and compression quality. A JPEG at quality 90 printed at 300 DPI is indistinguishable from the uncompressed original in most print workflows. Where quality loss becomes visible is: quality below 80 on very smooth gradients (skin tones, skies); or images that were already compressed once before and are being re-compressed. Always print from the highest DPI version and keep quality at 90+ for print output.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <section style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,0.08);">
+    <h2 class="section-title">Related guides</h2>
+    <div style="display:grid;gap:0.75rem;margin-top:1rem;">
+      <a href="/guides/image-compression" style="display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;background:var(--bg-elevated);border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:1.25rem;flex-shrink:0;">🗜️</span>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text);">Image Compression Explained</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">How lossy and lossless compression work at a technical level</div>
+        </div>
+      </a>
+      <a href="/guides/web-performance-images" style="display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;background:var(--bg-elevated);border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:1.25rem;flex-shrink:0;">⚡</span>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text);">Images and Core Web Vitals</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">LCP, lazy loading, preloading, and srcset for page speed</div>
+        </div>
+      </a>
+      <a href="/guides/image-formats" style="display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;background:var(--bg-elevated);border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:1.25rem;flex-shrink:0;">🖼️</span>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text);">JPG, PNG, WebP, AVIF: Which Format?</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">When to use each format and the trade-offs between them</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,0.08);">
+    <h2 class="section-title">Tools used in this guide</h2>
+    <div class="related-tools">
+      <a href="/compress" class="tool-card">
+        <div class="tool-icon">🗜️</div>
+        <div>
+          <div class="tool-name">Image Compressor</div>
+          <div class="tool-desc">Compress with quality control and live preview.</div>
+        </div>
+      </a>
+      <a href="/compress-image-under-200kb" class="tool-card">
+        <div class="tool-icon">📦</div>
+        <div>
+          <div class="tool-name">Compress Under 200KB</div>
+          <div class="tool-desc">Auto-find the right quality for a size target.</div>
+        </div>
+      </a>
+      <a href="/convert" class="tool-card">
+        <div class="tool-icon">🔄</div>
+        <div>
+          <div class="tool-name">Format Converter</div>
+          <div class="tool-desc">Convert JPEG or PNG to WebP or AVIF.</div>
+        </div>
+      </a>
+      <a href="/resize" class="tool-card">
+        <div class="tool-icon">↔️</div>
+        <div>
+          <div class="tool-name">Image Resizer</div>
+          <div class="tool-desc">Resize to display dimensions with exact control.</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Convert PDF to Image: JPG, PNG, WebP and DPI Guide</title>
+  <meta name="description" content="Learn how to convert PDF pages to JPG, PNG, or WebP images. Understand DPI settings, format trade-offs, and best settings for web, email, print, and archival use.">
+  <meta property="og:title" content="How to Convert PDF to Image: JPG, PNG, WebP and DPI Guide">
+  <meta property="og:description" content="Understand DPI, format choices, and step-by-step instructions for converting PDF pages to images for web, print, or archival use.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://freeimgtools.net/guides/pdf-to-image">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/cookie-consent.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Convert PDF to Image: JPG, PNG, WebP and DPI Explained",
+    "description": "Learn how to convert PDF pages to JPG, PNG, or WebP. Understand DPI settings, format trade-offs, and best settings for web, email, print, and archival use.",
+    "url": "https://freeimgtools.net/guides/pdf-to-image",
+    "datePublished": "2026-05-30",
+    "dateModified": "2026-05-30",
+    "author": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeimgtools.net/"},
+      {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://freeimgtools.net/guides"},
+      {"@type": "ListItem", "position": 3, "name": "PDF to Image Guide", "item": "https://freeimgtools.net/guides/pdf-to-image"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Convert a PDF Page to an Image",
+    "description": "Convert a PDF page to JPG, PNG, or WebP using a browser-based tool. No software installation required.",
+    "step": [
+      {"@type": "HowToStep", "position": 1, "name": "Open the tool", "text": "Go to freeimgtools.net/pdf-to-image in your browser."},
+      {"@type": "HowToStep", "position": 2, "name": "Upload your PDF", "text": "Drop your PDF onto the upload zone or click to select it from your device."},
+      {"@type": "HowToStep", "position": 3, "name": "Select a page", "text": "Use the page navigator to choose which page to convert. The total page count appears automatically."},
+      {"@type": "HowToStep", "position": 4, "name": "Choose DPI", "text": "Select a resolution: 150 DPI for web and email, 300 DPI for print, 600 DPI for archival."},
+      {"@type": "HowToStep", "position": 5, "name": "Choose output format", "text": "Pick JPG for photos and text documents, PNG for lossless quality or transparency, or WebP for the smallest web file size."},
+      {"@type": "HowToStep", "position": 6, "name": "Preview and render", "text": "Click 'Preview page' to render at full resolution. A scaled preview appears on screen."},
+      {"@type": "HowToStep", "position": 7, "name": "Download", "text": "Click 'Download Image' to save the full-resolution file to your device."}
+    ]
+  }
+  </script>
+  <style>
+    .guide-body { font-size: 0.95rem; line-height: 1.85; color: var(--text); }
+    .guide-body h2 { font-size: 1.3rem; font-weight: 700; margin: 2.5rem 0 0.75rem; }
+    .guide-body h3 { font-size: 1.05rem; font-weight: 700; margin: 1.75rem 0 0.5rem; }
+    .guide-body p { margin-bottom: 0.85rem; }
+    .guide-body ul, .guide-body ol { padding-left: 1.25rem; margin-bottom: 0.85rem; display: grid; gap: 0.4rem; }
+    .breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.875rem; }
+    .data-table th { background: var(--bg); padding: 0.6rem 0.75rem; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0,0,0,0.1); }
+    .data-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .callout { background: #f0f7ff; border-left: 3px solid var(--primary); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9rem; }
+    .callout-warn { background: #fff8f0; border-left-color: #FF9500; }
+    .callout-tip { background: #f0fff4; border-left-color: #34C759; }
+    .related-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/guides" class="active">Guides</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page" style="max-width:800px;">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a> › <a href="/guides">Guides</a> › PDF to Image
+  </div>
+
+  <h1 class="page-title">How to Convert PDF to Image: JPG, PNG, WebP and DPI Explained</h1>
+  <p class="page-desc">Published May 2026 · Updated May 30, 2026</p>
+
+  <div class="guide-body">
+
+    <h2>Why convert a PDF to an image?</h2>
+    <p>PDFs are the standard format for distributing documents — but many platforms, workflows, and use cases simply do not accept PDF files. Converting a PDF page to an image gives you a universally compatible file that works everywhere.</p>
+    <p>Common situations where you need a PDF as an image:</p>
+    <ul>
+      <li><strong>Social media and messaging.</strong> Twitter/X, Instagram, WhatsApp, and most chat platforms do not display PDFs inline. Convert the page to a JPG or WebP to share it visually.</li>
+      <li><strong>Presentations and slide decks.</strong> PowerPoint, Google Slides, and Keynote accept images but not embedded PDFs. A PNG at 150 DPI drops cleanly into any slide.</li>
+      <li><strong>CMS and website uploads.</strong> Many content management systems (WordPress, Webflow, Shopify) accept image files in post editors but not PDF uploads. Converting is faster than re-exporting from the source application.</li>
+      <li><strong>Email attachments and previews.</strong> Some email clients cannot render PDF previews inline. A JPG of the first page gives recipients an immediate visual, with the full PDF attached separately.</li>
+      <li><strong>Extracting diagrams, charts, or pages.</strong> When you only need one chart or page from a multi-page PDF, converting that page to an image is faster than using Acrobat or other tools.</li>
+      <li><strong>Archiving document pages as photos.</strong> For long-term storage in photo libraries or backup systems that organize by image type, converting to PNG or TIFF preserves the page content in a broadly supported format.</li>
+      <li><strong>AI and OCR processing.</strong> Many AI tools and OCR services accept images as input but not PDFs. Converting the page lets you run text recognition, content analysis, or AI-powered workflows on it.</li>
+    </ul>
+
+    <h2>Understanding DPI — dots per inch</h2>
+    <p>DPI (dots per inch) is the most important setting to understand when converting a PDF to an image. It controls the output resolution — how many pixels the image contains per inch of document size.</p>
+    <p>A PDF page is defined in a vector space — it has a fixed size (like A4: 8.27 × 11.69 inches) but no inherent pixel count. When you convert it to an image, the conversion software must rasterize (pixelate) it at a specific resolution. DPI is that resolution. Higher DPI → more pixels → sharper image → larger file.</p>
+
+    <h3>DPI and pixel dimensions for a standard A4 page</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>DPI</th>
+          <th>Pixel dimensions (A4)</th>
+          <th>Best use</th>
+          <th>Approx. JPG file size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>72 DPI</strong></td>
+          <td>595 × 842 px</td>
+          <td>Web thumbnails, document previews</td>
+          <td>~50–150 KB</td>
+        </tr>
+        <tr>
+          <td><strong>96 DPI</strong></td>
+          <td>794 × 1123 px</td>
+          <td>Screen display, web embeds</td>
+          <td>~80–250 KB</td>
+        </tr>
+        <tr>
+          <td><strong>150 DPI ✦</strong></td>
+          <td>1240 × 1754 px</td>
+          <td>Recommended default — web, email, social, Retina screens</td>
+          <td>~200–600 KB</td>
+        </tr>
+        <tr>
+          <td><strong>300 DPI</strong></td>
+          <td>2480 × 3508 px</td>
+          <td>Standard print quality, A4/Letter documents</td>
+          <td>~500 KB – 2 MB</td>
+        </tr>
+        <tr>
+          <td><strong>600 DPI</strong></td>
+          <td>4960 × 7016 px</td>
+          <td>Archival, large-format print, technical drawings</td>
+          <td>~2–8 MB</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Start with 150 DPI.</strong> It produces a sharp image at 1240 × 1754 pixels — fine for Retina screens, web use, email, and social media. Only go to 300 DPI if you are printing. 600 DPI is for archival or large-format print; the file sizes are very large and rarely justified for everyday use.
+    </div>
+
+    <h3>A note on scanned PDFs</h3>
+    <p>If your PDF was created by scanning a physical document, the pages are already images embedded inside the PDF. Increasing the DPI setting beyond the original scan resolution will not add detail — you will just get a larger, blurrier file. Most document scanners capture at 200–300 DPI. Setting the conversion to 300 DPI on a scanned PDF will match the original; 600 DPI will only interpolate (artificially enlarge) what is already there.</p>
+
+    <h2>Choosing an output format: JPG, PNG, or WebP</h2>
+    <p>The output format determines how the pixel data is compressed and stored. Each format has different strengths.</p>
+
+    <h3>JPG (JPEG)</h3>
+    <p>JPG is the best default choice for most PDF conversions. It uses lossy compression that produces very small files with minimal visible quality loss at quality 85–95. JPG does not support transparency — the tool automatically fills transparent PDF areas with a white background before converting.</p>
+    <p>Use JPG for: documents with photographs, text-heavy pages like reports or invoices, presentations, any page that does not contain transparency.</p>
+
+    <h3>PNG</h3>
+    <p>PNG is lossless — the image is stored with no quality loss at all. This makes PNG files significantly larger than JPG at the same resolution, but every pixel is reproduced exactly. PNG supports full transparency (alpha channel), which matters when a PDF page has a transparent background or transparent vector elements.</p>
+    <p>Use PNG for: pages with diagrams, icons, or logos with transparency; situations where absolute pixel accuracy matters (e.g. feeding into OCR software or image processing pipelines); archival copies where you want no lossy degradation.</p>
+
+    <h3>WebP</h3>
+    <p>WebP typically produces files 25–35% smaller than JPG at equivalent visual quality, and it supports transparency like PNG. Browser support is now near-universal. The trade-off is that WebP is less universally supported by non-browser software — some older image editors, email clients, and desktop apps may not display WebP correctly.</p>
+    <p>Use WebP for: images destined for websites or web apps; cases where you want the smallest file size and know the file will be displayed in a browser.</p>
+
+    <div class="callout callout-tip">
+      <strong>Quick decision:</strong> Printing or archiving → PNG at 300+ DPI. Sharing on the web or via email → JPG or WebP at 150 DPI. Embedding in a website → WebP at 150 DPI.
+    </div>
+
+    <h2>Step-by-step: converting a PDF page to an image</h2>
+    <ol>
+      <li><strong>Open the tool.</strong> Go to <a href="/pdf-to-image" style="color:var(--primary);">freeimgtools.net/pdf-to-image</a>. No sign-up or software installation required.</li>
+      <li><strong>Upload your PDF.</strong> Drop the file onto the upload zone, or click to open a file picker. The tool reads the PDF directly in your browser — the file is never uploaded to a server.</li>
+      <li><strong>Select the page.</strong> The total page count appears automatically. Use the ‹ › navigation buttons or type a page number directly to navigate to the page you want.</li>
+      <li><strong>Choose DPI.</strong> Select from 72 / 96 / 150 / 300 / 600. The default is 150, which is the right choice for most uses.</li>
+      <li><strong>Choose a format.</strong> JPG (default), PNG, or WebP. The quality slider appears for JPG and WebP — 90 is a good default.</li>
+      <li><strong>Click "Preview page".</strong> The page renders at full resolution. A scaled-down preview appears on screen so you can check the output before downloading.</li>
+      <li><strong>Download.</strong> Click "Download Image". The file saves at full DPI resolution with the filename format: <code>documentname-pageN-DPIdpi.ext</code>.</li>
+    </ol>
+
+    <div class="callout callout-warn">
+      <strong>Password-protected PDFs:</strong> The tool cannot open encrypted PDFs. Remove the password using Adobe Acrobat, your PDF reader's built-in print-to-PDF feature (which strips encryption), or an online PDF unlock tool before converting.
+    </div>
+
+    <h2>Recommended settings by use case</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Use case</th>
+          <th>Format</th>
+          <th>DPI</th>
+          <th>Quality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Embed in a website</td>
+          <td>WebP</td>
+          <td>150</td>
+          <td>85</td>
+        </tr>
+        <tr>
+          <td>Email attachment preview</td>
+          <td>JPG</td>
+          <td>150</td>
+          <td>90</td>
+        </tr>
+        <tr>
+          <td>Social media post (Twitter, LinkedIn)</td>
+          <td>JPG or WebP</td>
+          <td>150</td>
+          <td>90</td>
+        </tr>
+        <tr>
+          <td>Presentation slide (PowerPoint / Google Slides)</td>
+          <td>PNG</td>
+          <td>150</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Standard print (A4/Letter)</td>
+          <td>JPG or PNG</td>
+          <td>300</td>
+          <td>95</td>
+        </tr>
+        <tr>
+          <td>Large-format print / archival</td>
+          <td>PNG</td>
+          <td>600</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>OCR / AI text extraction input</td>
+          <td>PNG</td>
+          <td>300</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Handling common PDF problems</h2>
+
+    <h3>Password-protected or encrypted PDFs</h3>
+    <p>PDF encryption prevents any parser, including browser-based tools, from reading the file content. The simplest fix is to open the PDF in your existing PDF reader, then print it to a new PDF using the system's built-in "Print to PDF" or "Save as PDF" feature — this creates an unencrypted copy. Alternatively, Adobe Acrobat has a Document Properties dialog where you can remove the password if you know it.</p>
+
+    <h3>Scanned documents with low resolution</h3>
+    <p>If a PDF was created by scanning a physical document at 150 DPI, converting it at 300 DPI will not improve sharpness — the raster content inside the PDF is already fixed at 150 DPI. Converting at a higher DPI than the original scan just scales the pixels up (interpolation), making them appear smoother but not sharper. If sharpness is critical, re-scan the original document at a higher resolution.</p>
+
+    <h3>PDFs with complex layouts or embedded fonts</h3>
+    <p>Most PDFs convert cleanly, but some complex documents — especially older PDFs with non-standard font embedding or complex transparency effects — may render with minor differences from how they appear in Acrobat. PDF.js (the rendering engine used here) handles the vast majority of PDFs correctly. For pixel-perfect fidelity on production documents, verify the output visually.</p>
+
+    <h3>Very large PDFs</h3>
+    <p>The tool processes everything in your browser. PDFs with many embedded images or hundreds of pages load into browser memory in full. PDFs up to 50–100 MB work on most modern computers. If a large file causes the browser to slow down or show an out-of-memory error, try closing other tabs and reopening the page.</p>
+
+    <h3>PDFs with transparent backgrounds</h3>
+    <p>When converting to JPG, transparent areas are filled with white automatically. If you need the transparency preserved — for example, a PDF diagram with a transparent background that needs to sit on a colored slide — use PNG or WebP output instead.</p>
+
+    <h2>After converting: what to do with the image</h2>
+    <p>Once you have the image, common next steps:</p>
+    <ul>
+      <li><strong>Compress it</strong> if the file is larger than needed for its use. Our <a href="/compress" style="color:var(--primary);">Image Compressor</a> reduces file size while preserving visual quality.</li>
+      <li><strong>Resize it</strong> if the dimensions need to match a specific platform requirement. Our <a href="/resize" style="color:var(--primary);">Image Resizer</a> supports custom dimensions and social media presets.</li>
+      <li><strong>Convert the format</strong> if you need a different file type. Our <a href="/convert" style="color:var(--primary);">Format Converter</a> handles JPG, PNG, WebP, and AVIF.</li>
+      <li><strong>Compress under a target size</strong> — for example, many visa application portals require images under 200 KB. Use our <a href="/compress-image-under-200kb" style="color:var(--primary);">Compress Under 200KB</a> tool which automatically finds the right quality setting.</li>
+    </ul>
+
+    <h2>Frequently asked questions</h2>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Does converting a PDF to an image reduce quality?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>Converting from PDF to PNG at a sufficient DPI introduces no quality loss — PNG is lossless. Converting to JPG at quality 90+ at 150+ DPI produces images that look visually identical to the original PDF at normal viewing distances. The main risk is converting at too low a DPI (72 or 96) and then enlarging the image later — always convert at the highest DPI you expect to need, since you cannot add resolution back after the fact.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Can I convert all pages of a PDF at once?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>The tool currently converts one page at a time — select the page number, click Preview, then Download. For batch conversion of all pages in a PDF, you would need a desktop tool like Adobe Acrobat, GIMP (with the PDF import plugin), or a command-line tool like ImageMagick (<code>convert -density 150 document.pdf output-%03d.jpg</code>).</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Why does my converted image look blurry?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>The most common cause is too low a DPI setting. At 72 or 96 DPI, an A4 page is only 595–794 pixels wide. If you then display or print it at a larger size, the pixels are stretched and the image looks blurry. Switch to 150 DPI for screen use or 300 DPI for print. If the source PDF was a low-resolution scan, no conversion setting can recover detail that is not in the source — the original document needs to be re-scanned at higher resolution.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        How do I convert a PDF to an image on a Mac or iPhone without installing software?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>On Mac, you can open the PDF in Preview, select the page, and export it as JPEG or PNG via File → Export. On iPhone, you can use the Files app to open the PDF, take a screenshot of the visible page, or share it to Photos. For more control over DPI and format — especially for precise resolution requirements — use this web tool from Safari on either device. It runs entirely in the browser without any app installation.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        What is the best format for using a PDF page on a website?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>WebP at 150 DPI is the best choice for web use. WebP produces files roughly 25–35% smaller than JPG at equivalent visual quality, and browser support is now near-universal. A document page at 150 DPI WebP (quality 85) typically comes in under 200 KB — small enough for fast page loads, sharp enough for Retina displays. After converting, run it through the <a href="/compress" style="color:var(--primary);">image compressor</a> if you want to reduce the file size further.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <section style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,0.08);">
+    <h2 class="section-title">Related guides</h2>
+    <div style="display:grid;gap:0.75rem;margin-top:1rem;">
+      <a href="/guides/image-compression" style="display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;background:var(--bg-elevated);border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:1.25rem;flex-shrink:0;">🗜️</span>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text);">Image Compression Explained</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Lossy vs. lossless, quality settings, file size targets</div>
+        </div>
+      </a>
+      <a href="/guides/image-formats" style="display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;background:var(--bg-elevated);border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:1.25rem;flex-shrink:0;">🖼️</span>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text);">JPG, PNG, WebP, AVIF: Which Format?</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Comparing every major image format for different use cases</div>
+        </div>
+      </a>
+      <a href="/guides/image-seo" style="display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;background:var(--bg-elevated);border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:1.25rem;flex-shrink:0;">🔍</span>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text);">Image SEO Guide</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Alt text, file names, structured data, Google Image Search</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,0.08);">
+    <h2 class="section-title">Related tools</h2>
+    <div class="related-tools">
+      <a href="/pdf-to-image" class="tool-card">
+        <div class="tool-icon">📄</div>
+        <div>
+          <div class="tool-name">PDF to Image</div>
+          <div class="tool-desc">Convert any PDF page to JPG, PNG, or WebP. Choose DPI.</div>
+        </div>
+      </a>
+      <a href="/compress" class="tool-card">
+        <div class="tool-icon">🗜️</div>
+        <div>
+          <div class="tool-name">Image Compressor</div>
+          <div class="tool-desc">Reduce file size after converting.</div>
+        </div>
+      </a>
+      <a href="/convert" class="tool-card">
+        <div class="tool-icon">🔄</div>
+        <div>
+          <div class="tool-name">Format Converter</div>
+          <div class="tool-desc">Convert between JPG, PNG, WebP, and AVIF.</div>
+        </div>
+      </a>
+      <a href="/resize" class="tool-card">
+        <div class="tool-icon">↔️</div>
+        <div>
+          <div class="tool-name">Image Resizer</div>
+          <div class="tool-desc">Resize to exact dimensions or social media presets.</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
