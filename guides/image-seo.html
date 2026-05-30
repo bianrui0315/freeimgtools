@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image SEO Guide: Alt Text, File Names, and Google Image Search</title>
+  <meta name="description" content="A practical guide to image SEO — how to write effective alt text, name image files for search, add structured data, build image sitemaps, and rank in Google Image Search.">
+  <meta property="og:title" content="Image SEO: File Names, Alt Text, Structured Data, and Google Image Search">
+  <meta property="og:description" content="Learn how to optimize images for search engines — alt text, file names, structured data, sitemaps, and Google Image Search ranking factors.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://freeimgtools.net/guides/image-seo">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7946557800571551" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Image SEO: File Names, Alt Text, Structured Data, and Google Image Search",
+    "description": "A practical guide to image SEO — file naming, alt text, structured data, image sitemaps, and how to rank in Google Image Search.",
+    "url": "https://freeimgtools.net/guides/image-seo",
+    "datePublished": "2026-05-29",
+    "dateModified": "2026-05-29",
+    "author": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeimgtools.net/"},
+      {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://freeimgtools.net/guides"},
+      {"@type": "ListItem", "position": 3, "name": "Image SEO", "item": "https://freeimgtools.net/guides/image-seo"}
+    ]
+  }
+  </script>
+  <style>
+    .guide-body { font-size: 0.95rem; line-height: 1.85; color: var(--text); }
+    .guide-body h2 { font-size: 1.3rem; font-weight: 700; margin: 2.5rem 0 0.75rem; }
+    .guide-body h3 { font-size: 1.05rem; font-weight: 700; margin: 1.75rem 0 0.5rem; }
+    .guide-body p { margin-bottom: 0.85rem; }
+    .guide-body ul, .guide-body ol { padding-left: 1.25rem; margin-bottom: 0.85rem; display: grid; gap: 0.4rem; }
+    .breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.875rem; }
+    .data-table th { background: var(--bg); padding: 0.6rem 0.75rem; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0,0,0,0.1); }
+    .data-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .callout { background: #f0f7ff; border-left: 3px solid var(--primary); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9rem; }
+    .callout-warn { background: #fff8f0; border-left-color: #FF9500; }
+    .callout-tip { background: #f0fff4; border-left-color: #34C759; }
+    .related-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+    .example-box { background: var(--bg); border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.875rem; }
+    .example-box code { font-family: ui-monospace, monospace; font-size: 0.82rem; background: rgba(0,0,0,0.05); padding: 0.15rem 0.35rem; border-radius: 4px; }
+    .example-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.4rem; }
+    .example-good { color: #16a34a; }
+    .example-bad { color: #dc2626; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/guides" class="active">Guides</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page" style="max-width:800px;">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a> › <a href="/guides">Guides</a> › Image SEO
+  </div>
+
+  <h1 class="page-title">Image SEO: File Names, Alt Text, Structured Data, and Google Image Search</h1>
+  <p class="page-desc">Published May 2026 · Updated May 29, 2026</p>
+
+  <div class="guide-body">
+
+    <h2>Why image SEO matters</h2>
+    <p>Search engines cannot see images the way humans do. They read the text signals <em>around</em> an image — the file name, alt attribute, surrounding paragraph text, structured data, and page context — to understand what the image depicts and whether it is relevant to a given search query.</p>
+    <p>Getting this right matters for two distinct reasons. First, images with good SEO signals rank in <strong>Google Image Search</strong>, which drives a meaningful share of referral traffic for sites with visual content. Second, search engines use image relevance as one input when assessing overall page quality — a page where images are properly labeled and relevant to the content signals to crawlers that the page was carefully prepared.</p>
+    <p>The good news is that image SEO is mostly a checklist of straightforward practices: file naming conventions, writing accurate alt text, picking the right format and file size, and in some cases adding structured data. None of it requires advanced technical knowledge.</p>
+
+    <h2>Image file names</h2>
+    <p>The file name is one of the first signals a search engine uses to understand an image. Crawlers read the URL path — and a path like <code>/images/IMG_4821.jpg</code> tells them nothing, while <code>/images/apple-watch-ultra-black-titanium.jpg</code> tells them quite a lot.</p>
+
+    <h3>Naming conventions that work</h3>
+    <ul>
+      <li><strong>Use lowercase letters and hyphens to separate words.</strong> Hyphens are treated as word separators by search engines. Underscores are not — <code>red_dress</code> is parsed as a single token, not two words.</li>
+      <li><strong>Be specific but concise.</strong> Two to five words that describe what is actually in the image. Avoid padding with generic words like "photo", "image", or "pic".</li>
+      <li><strong>Include your primary keyword when it naturally fits.</strong> Do not force keywords into every file name — only when it accurately describes the image content.</li>
+      <li><strong>Avoid auto-generated camera names.</strong> Rename files before uploading. <code>DSC00412.jpg</code>, <code>image(3).png</code>, and <code>screenshot-2025-11-07.png</code> are all meaningless to crawlers.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="example-label example-bad">✗ Poor file names</div>
+      <code>IMG_4821.jpg</code> · <code>photo1.png</code> · <code>image-file-2.webp</code> · <code>DSC00412-copy.jpg</code>
+      <div class="example-label example-good" style="margin-top:0.75rem;">✓ Better file names</div>
+      <code>homemade-sourdough-bread.jpg</code> · <code>nike-air-max-90-white.webp</code> · <code>tokyo-skyline-night.jpg</code>
+    </div>
+
+    <div class="callout">
+      <strong>Changing existing file names:</strong> If you rename image files that are already indexed, update all references on the page and add a redirect from the old URL if possible. A broken image URL is worse than a generic one.
+    </div>
+
+    <h2>Alt text</h2>
+    <p>Alt text (the <code>alt</code> attribute on an <code>&lt;img&gt;</code> element) serves two purposes simultaneously: it describes the image to screen readers for visually impaired users, and it provides a primary text signal to search engine crawlers.</p>
+    <p>These two purposes are sometimes in tension — SEO alt text and accessibility alt text are not always written the same way — but they are mostly aligned. Good alt text for accessibility is usually good alt text for SEO.</p>
+
+    <h3>How to write effective alt text</h3>
+    <ul>
+      <li><strong>Describe what is actually in the image.</strong> Imagine you are telling a sighted colleague what the image shows. "A sourdough loaf on a wooden cutting board, sliced in half to show the crumb structure." Not "bread."</li>
+      <li><strong>Keep it concise — aim for under 125 characters.</strong> Screen readers typically cut off alt text at around 125 characters. Most images can be described in one phrase or short sentence.</li>
+      <li><strong>Include relevant keywords naturally.</strong> If the page is about a product, include the product name and variant. But do not stuff multiple keywords into every alt tag — it reads unnaturally and provides no SEO benefit beyond the first few relevant terms.</li>
+      <li><strong>Do not start with "Image of…" or "Photo of…".</strong> Screen readers already announce the element as an image. Starting with those words is redundant.</li>
+      <li><strong>Use <code>alt=""</code> for decorative images.</strong> Spacers, decorative dividers, and purely aesthetic images should have an empty alt attribute, not a description. This tells screen readers to skip them.</li>
+    </ul>
+
+    <div class="example-box">
+      <div class="example-label example-bad">✗ Weak alt text</div>
+      <code>alt="product"</code><br>
+      <code>alt="image of shoes shoes buy shoes online best shoes"</code><br>
+      <code>alt="photo of a dog"</code>
+      <div class="example-label example-good" style="margin-top:0.75rem;">✓ Better alt text</div>
+      <code>alt="Nike Air Max 90 in white and black, right-side view"</code><br>
+      <code>alt="Golden retriever puppy sitting on a park bench"</code><br>
+      <code>alt="Bar chart showing monthly website traffic from Jan–Jun 2026"</code>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>AI alt text generation:</strong> Our <a href="/ai" style="color:var(--primary);">AI Tools page</a> can generate alt text automatically from an uploaded image using Cloudflare Workers AI. It is a useful starting point — review and edit the output before using it, but it captures the subject accurately in most cases.
+    </div>
+
+    <h3>Alt text for different image types</h3>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Image type</th>
+          <th>Alt text approach</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Product photo</td>
+          <td>Brand + product name + key variant (color, size)</td>
+          <td><code>Sony WH-1000XM5 headphones in midnight black</code></td>
+        </tr>
+        <tr>
+          <td>Photograph / scene</td>
+          <td>Subject + action or context + location if relevant</td>
+          <td><code>Aerial view of Santorini cliffs at sunset</code></td>
+        </tr>
+        <tr>
+          <td>Chart or graph</td>
+          <td>Type of chart + what it shows + key conclusion</td>
+          <td><code>Line chart showing 40% revenue growth Q1–Q4 2025</code></td>
+        </tr>
+        <tr>
+          <td>Screenshot</td>
+          <td>What the screenshot is of + the key UI element shown</td>
+          <td><code>Chrome DevTools Network panel showing image load times</code></td>
+        </tr>
+        <tr>
+          <td>Decorative / spacer</td>
+          <td>Empty alt (<code>alt=""</code>)</td>
+          <td><code>alt=""</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Image dimensions and file size</h2>
+    <p>Image SEO is not only about text signals — technical factors affect how images rank and how the page performs overall.</p>
+
+    <h3>Serve images at display size</h3>
+    <p>One of the most common SEO and performance mistakes is serving images at much larger dimensions than they are displayed. A 4000×3000 JPEG served in a 600px-wide blog column is sending three times more data to the browser than needed. Google's crawlers and Lighthouse checks flag this as wasted bandwidth, which directly affects your Page Speed score and LCP (Largest Contentful Paint).</p>
+    <p>The correct approach is to resize images to roughly 1× or 2× their display dimensions (for high-DPI screens), then use <code>srcset</code> to serve different sizes to different devices. For a 600px column on desktop and 100vw on mobile, you might serve a 600px, 900px, and 1200px version and let the browser pick the right one.</p>
+
+    <h3>File size and LCP</h3>
+    <p>LCP is the render time of the largest visible element in the viewport — and it is almost always an image (hero image, featured photo, product shot). LCP is a Core Web Vitals metric and a confirmed Google ranking signal.</p>
+    <p>The practical targets for LCP images:</p>
+    <ul>
+      <li><strong>Under 100KB is ideal</strong> for above-the-fold hero images on desktop.</li>
+      <li><strong>Under 50KB</strong> for mobile-primary layouts where bandwidth is more constrained.</li>
+      <li><strong>WebP or AVIF</strong> format typically achieves these targets 25–50% more easily than JPEG at similar visual quality.</li>
+    </ul>
+    <p>If your hero image is 800KB+, LCP will almost certainly be above 2.5 seconds — the threshold Google considers "good". Compress and convert the image before worrying about any other SEO factor.</p>
+
+    <div class="callout">
+      <strong>Quick wins:</strong> Convert JPEG hero images to WebP with our <a href="/convert" style="color:var(--primary);">format converter</a>, then run them through the <a href="/compress" style="color:var(--primary);">image compressor</a>. Most hero images can be brought under 100KB without any visible quality loss.
+    </div>
+
+    <h2>Structured data for images</h2>
+    <p>Structured data (schema.org markup in JSON-LD format) gives search engines explicit, machine-readable information about an image and its context. While alt text and file names are inferred signals, structured data is a direct declaration.</p>
+
+    <h3>ImageObject schema</h3>
+    <p>The <code>ImageObject</code> type lets you declare properties of an image directly. It is most commonly used as part of a larger schema (like <code>Article</code>, <code>Product</code>, or <code>Recipe</code>) rather than standalone. For example, an article schema can include an <code>image</code> property pointing to the article's featured image:</p>
+
+    <div class="example-box">
+      <code style="display:block;white-space:pre-wrap;">{
+  "@type": "Article",
+  "headline": "How to Make Sourdough Bread",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://example.com/images/sourdough-loaf.jpg",
+    "width": 1200,
+    "height": 800,
+    "caption": "A finished sourdough loaf on a wooden board"
+  }
+}</code>
+    </div>
+
+    <h3>Product images</h3>
+    <p>E-commerce pages benefit the most from structured image data. Google's <strong>Shopping Graph</strong> — which powers product results in Search and Google Shopping — pulls product images from <code>Product</code> schema. High-quality, well-labeled product images with matching structured data are more likely to appear in visual product search results.</p>
+    <p>Key properties for product images: include at least one image URL in the <code>image</code> field of your <code>Product</code> schema. Google recommends images that are at least 160×90 px and no larger than 1920×1080 px, with the product clearly visible against a neutral background.</p>
+
+    <h3>Recipe and how-to images</h3>
+    <p>Recipe and how-to pages that include structured data with images are eligible for Google's <strong>rich results</strong> — the visual cards that appear at the top of search results. Each step in a <code>HowTo</code> schema can include its own image, and recipe schemas can include multiple images for different preparation stages. These rich results can dramatically increase click-through rates compared to plain text listings.</p>
+
+    <h2>Open Graph and social sharing images</h2>
+    <p>When a page is shared on social media (Twitter/X, Facebook, LinkedIn, Slack, iMessage), platforms pull the preview image from the page's Open Graph meta tags. This is separate from search engine indexing but affects click-through rates when links are shared.</p>
+
+    <div class="example-box">
+      <code style="display:block;white-space:pre-wrap;">&lt;meta property="og:image" content="https://example.com/og/article-share.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:image" content="https://example.com/og/article-share.jpg"&gt;</code>
+    </div>
+
+    <p>The standard recommendation is <strong>1200×630 px</strong> for Open Graph images — this renders well across most platforms without cropping. Use a JPEG or WebP at 80–85% quality; most platforms cache these aggressively so file size is less critical than for page images.</p>
+    <p>Use a dedicated share image rather than a content image. Share images look best when designed with a title overlay and enough margin around the edges so platform cropping does not cut off important content.</p>
+
+    <h2>Image sitemaps</h2>
+    <p>A standard XML sitemap tells Google which pages exist. An <strong>image sitemap</strong> (using the <code>image:</code> namespace extension) tells Google which images are on each page, along with their metadata. This helps Google discover images faster — particularly on pages with images loaded via JavaScript, which crawlers handle less reliably.</p>
+
+    <div class="example-box">
+      <code style="display:block;white-space:pre-wrap;">&lt;url&gt;
+  &lt;loc&gt;https://example.com/products/sourdough-starter&lt;/loc&gt;
+  &lt;image:image&gt;
+    &lt;image:loc&gt;https://example.com/img/sourdough-starter-100g.jpg&lt;/image:loc&gt;
+    &lt;image:title&gt;Sourdough starter 100g jar&lt;/image:title&gt;
+    &lt;image:caption&gt;Active sourdough starter in a glass jar with lid&lt;/image:caption&gt;
+  &lt;/image:image&gt;
+&lt;/url&gt;</code>
+    </div>
+
+    <p>Image sitemaps are most valuable for: e-commerce product pages, photo galleries, and any page where images are a primary content type. For a standard blog with a few images per post, the incremental crawl discovery benefit is small.</p>
+
+    <h2>Google Image Search ranking factors</h2>
+    <p>Google Image Search is a separate ranking surface from web search. Understanding how it works helps prioritize image SEO efforts.</p>
+
+    <h3>What Google uses to rank images</h3>
+    <ul>
+      <li><strong>Page quality and relevance.</strong> An image on a high-quality, topically relevant page ranks better than the same image on a thin or unrelated page. The page is the primary signal; the image is secondary.</li>
+      <li><strong>Image content.</strong> Google's vision models analyze what is actually in the image — objects, scenes, text, faces. A file name and alt text that accurately match the visual content reinforces credibility; a mismatch can suppress rankings.</li>
+      <li><strong>Alt text and surrounding text.</strong> The text in and around the image (alt, title, caption, nearby paragraph) gives crawlers context that image analysis alone cannot provide.</li>
+      <li><strong>Image size and quality.</strong> Larger, higher-quality images (not oversized for performance, but genuinely high-resolution content) are preferred in image search results, especially for visual content like photography and product images.</li>
+      <li><strong>SafeSearch signals.</strong> Explicit or sensitive content is filtered based on image analysis and page context.</li>
+    </ul>
+
+    <h3>Practical priorities for image search traffic</h3>
+    <p>If Google Image Search is a traffic goal, focus on:</p>
+    <ul>
+      <li><strong>Unique images.</strong> Stock photos are used across thousands of sites and compete poorly in image search. Original photography ranks far better.</li>
+      <li><strong>Specific, high-intent subjects.</strong> "Homemade sourdough bread crumb structure" is a more winnable query than "bread photo". Long-tail image searches are less competitive and can drive highly targeted traffic.</li>
+      <li><strong>Image quality and resolution.</strong> Google's image search UI shows images at various sizes and rewards images that remain sharp when enlarged. Serve the full-resolution original — do not pre-shrink images intended for image search.</li>
+      <li><strong>Page freshness and backlinks.</strong> Pages with strong backlink profiles and fresh content send more crawl signals to their images. The page SEO foundation matters for image ranking.</li>
+    </ul>
+
+    <h2>Image SEO checklist</h2>
+    <p>A practical reference for auditing or building image SEO on any page:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>What to check</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>File name</td>
+          <td>Descriptive, hyphenated, no camera auto-names</td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td>Alt text</td>
+          <td>Present, accurate, under 125 chars, no stuffing</td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td>File size</td>
+          <td>Hero images &lt;100KB, secondary images &lt;50KB</td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td>Format</td>
+          <td>WebP or AVIF for photographs; PNG for graphics with transparency</td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td>Display dimensions</td>
+          <td>Served at 1×–2× display size, not 5×</td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td>Structured data</td>
+          <td>Product/Article/Recipe schema includes image property</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td>Open Graph image</td>
+          <td>og:image at 1200×630, relevant to page content</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td>LCP image preload</td>
+          <td><code>&lt;link rel="preload" as="image"&gt;</code> for above-fold hero</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td>Image sitemap</td>
+          <td>Add image namespace for e-commerce / gallery pages</td>
+          <td>Low–Medium</td>
+        </tr>
+        <tr>
+          <td>Lazy loading</td>
+          <td><code>loading="lazy"</code> on below-fold images, not on LCP image</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td>CDN / caching</td>
+          <td>Images served with long cache TTL and from edge location</td>
+          <td>Medium</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Frequently asked questions</h2>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Does image alt text directly affect page ranking (not just image search)?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>Yes, indirectly. Alt text is part of the page's overall text content. It contributes to topical relevance signals that search engines use to understand what a page is about. A product page where every image has relevant, descriptive alt text reinforces the topical focus of the page. Keyword-stuffed or missing alt text does not directly penalize rankings, but it is a missed opportunity and can raise accessibility flags in audits.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Does switching from JPEG to WebP affect image search rankings?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>Switching formats does not directly affect image search rankings — Google's crawlers handle WebP, AVIF, PNG, and JPEG equally well. The indirect benefit is that WebP images are smaller, which improves page load time and LCP, both of which are ranking signals. If you change the image URL when converting (e.g., from <code>image.jpg</code> to <code>image.webp</code>), make sure to update all references on the page and consider whether the old URL needs a redirect if it was already indexed.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        How long does it take for images to appear in Google Image Search?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>Typically days to a few weeks for new sites, and hours to days for established domains that Googlebot crawls frequently. Submitting a sitemap via Google Search Console and requesting indexing of the page containing the image speeds this up. Using an image sitemap with the <code>image:</code> namespace extension ensures Googlebot can find all images on the page — particularly useful if images are loaded via JavaScript.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Is the title attribute on images useful for SEO?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>The <code>title</code> attribute appears as a browser tooltip on hover and is occasionally used by some search engines, but it is not a significant SEO factor and should not be prioritized over alt text. Avoid duplicating your alt text in the title attribute — if they are identical, it adds no new information. Use title only when it provides genuinely additional context that cannot fit in the alt text, such as a longer caption or attribution.</p>
+      </div>
+    </details>
+
+    <details style="border:1px solid rgba(0,0,0,0.08);border-radius:12px;background:var(--bg-elevated);overflow:hidden;margin-bottom:0.5rem;">
+      <summary style="padding:1rem 1.25rem;font-weight:600;font-size:0.9rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        Should I compress images that are already indexed in Google Image Search?
+        <span style="color:var(--text-muted);font-size:0.75rem;flex-shrink:0;margin-left:1rem;">▼</span>
+      </summary>
+      <div style="padding:0 1.25rem 1rem;font-size:0.875rem;line-height:1.75;color:var(--text);">
+        <p>Yes, if the quality reduction is minimal. Google prefers images with sufficient resolution — heavily over-compressed images with visible artifacts rank lower in image search because they provide a poor user experience. Aim for the highest quality at the smallest file size: WebP at quality 80–85 typically achieves this. Do not change the URL unless absolutely necessary — keeping the same URL means Google's index entry stays valid without requiring re-crawl.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <section style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,0.08);">
+    <h2 class="section-title">Related guides</h2>
+    <div style="display:grid;gap:0.75rem;margin-top:1rem;">
+      <a href="/guides/image-compression" style="display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;background:var(--bg-elevated);border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:1.25rem;flex-shrink:0;">🗜️</span>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text);">Image Compression Explained</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Lossy vs. lossless, quality settings, file size targets</div>
+        </div>
+      </a>
+      <a href="/guides/image-formats" style="display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;background:var(--bg-elevated);border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:1.25rem;flex-shrink:0;">🖼️</span>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text);">JPG, PNG, WebP, AVIF: Which Format?</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Choosing the right image format for every use case</div>
+        </div>
+      </a>
+      <a href="/guides/web-performance-images" style="display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;background:var(--bg-elevated);border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:1.25rem;flex-shrink:0;">⚡</span>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text);">Images and Core Web Vitals</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">srcset, lazy loading, preloading, and LCP optimization</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,0.08);">
+    <h2 class="section-title">Tools used in this guide</h2>
+    <div class="related-tools">
+      <a href="/ai" class="tool-card">
+        <div class="tool-icon">✨</div>
+        <div>
+          <div class="tool-name">AI Alt Text Generator</div>
+          <div class="tool-desc">Generate descriptive alt text from any image using AI.</div>
+        </div>
+      </a>
+      <a href="/compress" class="tool-card">
+        <div class="tool-icon">🗜️</div>
+        <div>
+          <div class="tool-name">Image Compressor</div>
+          <div class="tool-desc">Reduce file size for faster LCP and better rankings.</div>
+        </div>
+      </a>
+      <a href="/convert" class="tool-card">
+        <div class="tool-icon">🔄</div>
+        <div>
+          <div class="tool-name">Format Converter</div>
+          <div class="tool-desc">Convert JPEG to WebP or AVIF for smaller files.</div>
+        </div>
+      </a>
+      <a href="/resize" class="tool-card">
+        <div class="tool-icon">↔️</div>
+        <div>
+          <div class="tool-name">Image Resizer</div>
+          <div class="tool-desc">Serve images at the correct display dimensions.</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
