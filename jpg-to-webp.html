@@ -130,6 +130,51 @@
     </div>
   </section>
 
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Why convert JPG to WebP?</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>WebP was developed by Google in 2010 specifically to reduce the size of images on the web. For a typical JPEG photo, converting to WebP at the same visual quality produces a file that is 25–35% smaller. On a page with ten images, that can shave 500 KB or more off the total page weight — translating directly into faster load times and better Core Web Vitals scores.</p>
+      <p>Google's PageSpeed Insights and Lighthouse tools both flag JPEG images with a "Serve images in next-gen formats" warning when WebP equivalents are not used. Converting your JPGs to WebP is one of the fastest ways to clear that warning and push your performance score upward. All modern browsers — Chrome, Firefox, Safari 14+, and Edge — support WebP, covering over 95% of global web users.</p>
+      <p>WebP also adds a feature JPEG lacks entirely: <strong>alpha transparency</strong>. If you want a photo with a transparent background, WebP can store the transparency directly in the file — no need for a bulkier PNG. This makes it the ideal format for product images on e-commerce sites, where the background is often removed.</p>
+      <p>This converter runs entirely in your browser. Your JPG files are decoded using the browser's built-in image decoder and re-encoded as WebP via the Canvas API. Nothing is sent to a server — conversion works even offline after the page has loaded.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.85rem;">When to convert JPG to WebP</h2>
+    <div style="display:grid;gap:0.75rem;font-size:0.875rem;line-height:1.8;color:var(--text);">
+      <p>Convert JPG images to WebP when you are publishing them on a website or web application and want the smallest possible file size without visible quality loss. This is most valuable for hero images, product photos, blog post images, and any image that appears above the fold — these directly affect Largest Contentful Paint (LCP), a Core Web Vitals metric that Google uses as a ranking signal.</p>
+      <p>Keep your images as JPG (or convert to JPG) when the destination cannot open WebP files — for example, when uploading to a government portal, attaching to an email for someone on an older device, importing into Microsoft Office, or sending to a photo lab for printing. WebP is a web-delivery format; JPG is a universal exchange format. Choose based on where the image ends up.</p>
+      <p>For the best web performance, convert to WebP at quality 80–85. At these settings the output is visually indistinguishable from the original JPEG for most images, but the file is significantly smaller. Raising quality above 90 increases the file size noticeably while the visual improvement is minimal.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Will converting JPG to WebP reduce image quality?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">At quality 85 (the default), the output WebP is visually identical to the original JPEG for most images. WebP's compression algorithm is more efficient than JPEG's, so it can store the same visual information in fewer bytes. Setting quality below 70 will start to introduce visible compression artifacts on complex photographic images.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I convert multiple JPG files to WebP at once?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — drag multiple files into the upload zone or use the file picker to select several JPGs at once. All files are converted simultaneously in your browser, and a "Download All (ZIP)" button appears so you can grab everything in one click.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Is WebP supported by all browsers?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes, as of 2022. Chrome, Firefox, Edge, and Safari 14+ all support WebP natively. Global WebP support is above 95%. The only notable exceptions are Internet Explorer and very old versions of Safari (pre-2020). For most public websites, WebP is now the recommended default format for photos.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are my photos private when I convert them?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — all conversion happens locally in your browser using the Canvas API. Your images are never uploaded to any server. You can disconnect from the internet after the page loads and the converter will still work.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Does WebP support transparency like PNG?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes. WebP supports an alpha channel for transparency, just like PNG — but with a much smaller file size. If your original JPG does not have transparency, the converted WebP will not have it either (JPEG has no alpha channel). To create a transparent WebP, start from a PNG with transparency and convert it to WebP using the <a href="/png-to-webp" style="color:var(--primary);">PNG to WebP converter</a>.</p>
+      </div>
+    </div>
+  </section>
+
   <div class="divider"></div>
   <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Other conversions</h2>
   <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">

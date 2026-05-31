@@ -112,10 +112,59 @@
   <section class="section" style="max-width:720px;">
     <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Why convert PNG to WebP?</h2>
     <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
-      <p><strong>25–35% smaller files.</strong> WebP compresses better than PNG while maintaining the same visual quality. This means faster page loads and lower bandwidth usage.</p>
-      <p><strong>Transparency preserved.</strong> Unlike JPG, WebP supports alpha transparency — logos and icons convert perfectly.</p>
-      <p><strong>Google recommends it.</strong> Google's Core Web Vitals and PageSpeed Insights recommend WebP as the preferred image format for web.</p>
-      <p><strong>Universal browser support.</strong> WebP is supported by Chrome, Firefox, Safari 14+, and Edge — covering 95%+ of web users.</p>
+      <p>PNG is a lossless format — every pixel is stored exactly, which is great for image quality but produces large files. A typical logo or icon saved as PNG can be several hundred kilobytes; the same image converted to WebP (with lossless compression) is often 25–35% smaller while looking absolutely identical. For web delivery, that size reduction directly speeds up page load times.</p>
+      <p>Unlike JPEG, WebP fully supports alpha transparency. This makes it an ideal drop-in replacement for PNG on web pages: you get the transparency support you need for logos, icons, and UI elements, but at a fraction of the file size. Google's PageSpeed Insights and Lighthouse tools both recommend serving images in WebP format to improve Core Web Vitals scores.</p>
+      <p>WebP is supported by all modern browsers — Chrome, Firefox, Safari 14+, and Edge — covering over 95% of global users. If you are still serving PNG files on your website and your audience primarily uses modern devices, switching to WebP is one of the most impactful and straightforward optimizations available.</p>
+      <p>This converter runs entirely in your browser. Your PNG files are read locally and re-encoded as WebP using the Canvas API. Nothing is uploaded to any server — conversion works even offline once the page is loaded.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">PNG vs WebP vs JPG — which to use</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="background:var(--bg);">
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);"></th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">PNG</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">WebP</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">JPG</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Compression</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Lossless only</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Lossy or lossless ✓</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Lossy only</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">File size</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">Large</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Smallest ✓</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">Medium</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Transparency</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Yes ✓</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Yes ✓</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text-muted);">No</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Browser support</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Universal ✓</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">95%+ (modern)</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);color:var(--success);">Universal ✓</td></tr>
+          <tr><td style="padding:0.6rem 1rem;font-weight:600;">Best for</td><td style="padding:0.6rem 1rem;color:var(--text-muted);">Design, editing, print</td><td style="padding:0.6rem 1rem;color:var(--success);">Web delivery ✓</td><td style="padding:0.6rem 1rem;color:var(--text-muted);">Photos, email, print</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Does converting PNG to WebP lose quality?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">At quality 85 (the default), the output WebP is visually indistinguishable from the original PNG for most images. WebP supports both lossy and lossless modes — lossless WebP is a pixel-perfect copy of the PNG with only a size reduction. To guarantee zero quality loss, set the quality slider to 100.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Is transparency preserved when converting PNG to WebP?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes. WebP supports an alpha channel exactly like PNG. Logos, icons, and graphics with transparent backgrounds convert perfectly — the transparency is carried over to the WebP output with no loss.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I batch convert multiple PNG files to WebP?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — select or drag multiple PNG files at once. All files are processed simultaneously in your browser and a "Download All (ZIP)" button appears so you can download everything in a single click.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are WebP files supported on all devices and apps?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">WebP is supported by all modern browsers (Chrome, Firefox, Safari 14+, Edge) and by macOS and Windows 10/11 natively. However, older apps, some email clients, and certain print services may not open WebP files. For sharing outside of a web context, PNG or JPG is still safer for broad compatibility.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are my files private when I convert them?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — all conversion happens locally in your browser using the Canvas API. Your images are never uploaded to any server. This is especially important for logo files or design assets that are not yet public.</p>
+      </div>
     </div>
   </section>
 
