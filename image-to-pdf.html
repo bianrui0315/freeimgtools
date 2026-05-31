@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-7946557800571551">
+  <title>Image to PDF Converter — Free Online, No Upload Required</title>
+  <meta name="description" content="Convert JPG, PNG, or WebP images to a PDF document online for free. Add multiple images — each becomes a page. Set page size, orientation, and layout. No upload needed.">
+  <meta name="keywords" content="image to pdf, jpg to pdf, png to pdf, convert image to pdf online free, multiple images to pdf, image to pdf no upload, photos to pdf">
+  <link rel="canonical" href="https://freeimgtools.net/image-to-pdf">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/cookie-consent.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Image to PDF Converter",
+    "url": "https://freeimgtools.net/image-to-pdf",
+    "description": "Convert JPG, PNG, and WebP images to a PDF document. Add multiple images as pages. Set page size, orientation, and image fit. Free, runs in your browser.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I convert multiple images into one PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — add as many images as you need. Each image becomes one page of the PDF. Drag and drop the items in the list to reorder the pages before creating the PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my images uploaded to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The entire PDF is generated in your browser using the jsPDF library and the HTML Canvas API. Your images never leave your device and are never sent to any server."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What image formats are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JPG, PNG, WebP, and most other image formats your browser can display. All formats are internally converted to JPEG before embedding in the PDF for maximum compatibility."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    #image-list { display: grid; gap: 0.5rem; }
+    .img-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.85rem;
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      user-select: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .img-item.dragging { opacity: 0.4; }
+    .img-item.drag-target { border-color: var(--primary); background: var(--primary-light); }
+    .img-item-drag { color: var(--text-muted); cursor: grab; font-size: 1.1rem; flex-shrink: 0; line-height: 1; }
+    .img-item-thumb { width: 44px; height: 44px; object-fit: cover; border-radius: 4px; flex-shrink: 0; border: 1px solid var(--border); }
+    .img-item-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+    .img-item-name { font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .img-item-meta { font-size: 0.75rem; color: var(--text-muted); }
+    .img-item-del {
+      flex-shrink: 0;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 22px; height: 22px;
+      cursor: pointer; font-size: 0.6rem;
+      color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .img-item-del:hover { background: #fee2e2; border-color: #ef4444; color: #ef4444; }
+    #pdf-status { font-size: 0.82rem; min-height: 1.2em; margin-top: 0.75rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/image-to-pdf" class="active">Image to PDF</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1 class="page-title">Image to PDF Converter</h1>
+  <p class="page-desc">Turn JPG, PNG, or WebP images into a PDF document — one image per page. Add multiple images, drag to reorder, and choose your page size. Free, private, no upload.</p>
+
+  <div class="privacy-banner">
+    <span class="icon">🔒</span>
+    <div>
+      <h4>Your images never leave your device</h4>
+      <p>PDF generation runs entirely in your browser using jsPDF. Nothing is uploaded or stored on any server.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" multiple style="display:none;">
+        <span class="upload-icon">📄</span>
+        <h3>Drop images here</h3>
+        <p>or click to browse · JPG, PNG, WebP accepted · multiple files OK</p>
+        <div class="formats">
+          <span class="format-tag">JPG</span>
+          <span class="format-tag">PNG</span>
+          <span class="format-tag">WebP</span>
+          <span style="color:var(--text-muted);font-size:0.85rem;">→</span>
+          <span class="format-tag" style="background:var(--primary-light);border-color:#c7d2fe;color:var(--primary);">PDF</span>
+        </div>
+      </div>
+
+      <div id="list-section" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem;">
+          <span id="list-count" style="font-weight:600;font-size:0.875rem;"></span>
+          <button id="clear-btn" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">✕ Clear all</button>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.5rem;">Drag rows to reorder pages.</p>
+        <div id="image-list"></div>
+        <div id="pdf-status"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>PDF Settings</h3>
+
+        <div class="setting-row">
+          <div class="setting-label">Page size</div>
+          <select id="page-size">
+            <option value="a4" selected>A4 (210×297 mm)</option>
+            <option value="letter">Letter (216×279 mm)</option>
+            <option value="a3">A3 (297×420 mm)</option>
+            <option value="a5">A5 (148×210 mm)</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Orientation</div>
+          <select id="orientation">
+            <option value="portrait" selected>Portrait</option>
+            <option value="landscape">Landscape</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Image fit<span class="setting-hint">How image fills the page</span></div>
+          <select id="fit-mode">
+            <option value="fit" selected>Fit (preserve ratio)</option>
+            <option value="fill">Fill page (may crop)</option>
+            <option value="stretch">Stretch to page</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">Margin<span class="setting-hint">White border around image</span></div>
+          <select id="margin-size">
+            <option value="0">None (0 mm)</option>
+            <option value="5">Small (5 mm)</option>
+            <option value="10" selected>Medium (10 mm)</option>
+            <option value="20">Large (20 mm)</option>
+          </select>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <button id="create-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>Create PDF</button>
+        </div>
+
+        <div style="margin-top:1rem;background:var(--bg);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">
+            💡 For crisp text and sharp details, use images at least <strong>1240×1754 px</strong> (equivalent to A4 at 150 DPI) or larger. Upscaling small images will appear blurry in the PDF.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">When to convert images to PDF</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>PDF is the universal format for documents that need to look exactly the same on every device. When you convert a photo or scan to PDF, you package it in a container that preserves dimensions, embeds fonts if any are present, and opens correctly in every operating system and mail client without needing a specific image viewer. This is why most official forms, contracts, and submission portals request PDF rather than raw image files.</p>
+      <p>Common scenarios where you need an image as a PDF: submitting a scanned document to a government portal, attaching a signed form to an email, combining a series of photos (travel receipts, medical records, handwritten notes) into a single file, or preparing a photo portfolio in a printable format. Converting images to PDF also protects the content — PDF files cannot be as easily edited as image files, which matters for documents with signatures or stamps.</p>
+      <p>When combining multiple images into one PDF, each image becomes a separate page in the document. This is far more practical than sending ten separate JPEG files — the recipient gets a single, organized document with consistent page dimensions that prints cleanly. The tool supports dragging images into the order you want before generating the PDF, so you can control the page sequence.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Page size and image resolution — what you need to know</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>A PDF page is defined in millimeters or points, while your images are measured in pixels. The relationship between them depends on how large you want the image to appear on the page. An image embedded in a PDF at A4 size (210×297 mm) at screen resolution (72 DPI equivalent) needs to be at least 595×842 pixels to fill the page without upscaling. For print-quality output at 150 DPI, you need 1240×1754 pixels; at 300 DPI (professional print), you need 2480×3508 pixels.</p>
+      <p>The "Fit" mode (default) scales the image down to fit within the page margins while preserving its aspect ratio. This is the safest option — it never crops content and always shows the full image centered on the page. "Fill page" scales the image to cover the entire page, which may crop the edges of images whose aspect ratio does not match the page. "Stretch" fills the page completely, distorting the image if its proportions differ from the page — generally only suitable for photos that closely match the page aspect ratio.</p>
+    </div>
+    <div style="overflow-x:auto;margin-top:1rem;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="background:var(--bg);">
+            <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--border);">Page size</th>
+            <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--border);">Dimensions</th>
+            <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--border);">Min px (150 DPI)</th>
+            <th style="padding:0.6rem 0.75rem;text-align:left;border-bottom:2px solid var(--border);">Min px (300 DPI)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);font-weight:600;">A4</td><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);">210×297 mm</td><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);">1240×1754 px</td><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);">2480×3508 px</td></tr>
+          <tr><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);font-weight:600;">Letter</td><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);">216×279 mm</td><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);">1275×1650 px</td><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);">2550×3300 px</td></tr>
+          <tr><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);font-weight:600;">A3</td><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);">297×420 mm</td><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);">1754×2480 px</td><td style="padding:0.55rem 0.75rem;border-bottom:1px solid var(--border);">3508×4960 px</td></tr>
+          <tr><td style="padding:0.55rem 0.75rem;font-weight:600;">A5</td><td style="padding:0.55rem 0.75rem;">148×210 mm</td><td style="padding:0.55rem 0.75rem;">874×1240 px</td><td style="padding:0.55rem 0.75rem;">1748×2480 px</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">How to combine multiple images into one PDF — 3 steps</h2>
+    <div style="display:grid;gap:0.75rem;font-size:0.875rem;">
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.4rem;flex-shrink:0;">1️⃣</span>
+        <div><strong>Add all your images at once</strong><br><span style="color:var(--text-muted);">Select multiple images from the file picker or drag them all into the upload zone in one go. All accepted formats (JPG, PNG, WebP) can be mixed freely.</span></div>
+      </div>
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.4rem;flex-shrink:0;">2️⃣</span>
+        <div><strong>Reorder pages by dragging</strong><br><span style="color:var(--text-muted);">Drag the rows in the image list to arrange them in the order you want. Each row shows the page number and image dimensions so you can verify the sequence before generating.</span></div>
+      </div>
+      <div class="card" style="padding:1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+        <span style="font-size:1.4rem;flex-shrink:0;">3️⃣</span>
+        <div><strong>Set page size and click "Create PDF"</strong><br><span style="color:var(--text-muted);">Choose A4 or Letter (the most widely accepted sizes), set the fit mode, and click the button. The PDF downloads immediately — no waiting for a server response.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I convert multiple images into a single PDF?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — add as many images as you need. Each image becomes one page of the final PDF. Use the list's drag handles to set the exact page order before clicking "Create PDF". There is no limit on the number of images, though very large batches (50+ high-resolution photos) may take a moment to process depending on your device.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Are my images uploaded to a server?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">No. The PDF is generated entirely in your browser using the open-source jsPDF library. Your images are read by the browser's FileReader API and processed in memory — nothing is sent over the network. You can disconnect from the internet after the page loads and the converter still works.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Why does my PDF look blurry?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Blurriness in PDF output is caused by source images that are too small for the chosen page size. An A4 PDF at 150 DPI requires source images of at least 1240×1754 pixels. If your source image is smaller (for example, 600×800 pixels), the PDF converter has to upscale it, which produces a blurry result. Use the <a href="/resize" style="color:var(--primary);">Image Resizer</a> to check dimensions, or use higher-resolution source images.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What page size should I use?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Use A4 if your audience is primarily in Europe, Asia, or most of the world. Use Letter (8.5"×11") if your audience is in the United States or Canada. Both are universally accepted by email clients and office printers. A3 is a larger format for posters or detailed diagrams. A5 is half the size of A4, useful for booklet-style documents or smaller flyers.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What image formats are supported?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">JPG, PNG, WebP, and any other format your browser can display (BMP, GIF, AVIF on supported browsers). All images are internally converted to JPEG before embedding in the PDF, which produces compact file sizes. Transparent PNG areas are filled with white — PDF does not support image transparency at the page level.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I set the PDF to landscape orientation?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — select "Landscape" in the Orientation dropdown. All pages in the PDF will use the same orientation. If your images have mixed orientations (some portrait, some landscape), the Landscape setting works best for horizontal images. For mixed batches, portrait is usually the better default since it accommodates both orientations with less wasted white space.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <a href="/pdf-to-image" class="tool-card"><h3 style="font-size:0.9rem;">📄 PDF to Image</h3><p>Extract pages as JPG, PNG, or WebP</p></a>
+    <a href="/compress" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress Images</h3><p>Reduce file size before converting</p></a>
+    <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">📐 Image Resizer</h3><p>Set exact dimensions for your images</p></a>
+    <a href="/jpg-to-png" class="tool-card"><h3 style="font-size:0.9rem;">JPG → PNG</h3><p>Convert before adding to PDF</p></a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/image-to-pdf">Image to PDF</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  const state = { images: [], dragSrcIdx: null };
+
+  const zone     = document.getElementById('upload-zone');
+  const fileInput = document.getElementById('file-input');
+  const listSection = document.getElementById('list-section');
+  const imageList = document.getElementById('image-list');
+  const listCount = document.getElementById('list-count');
+  const createBtn = document.getElementById('create-btn');
+  const clearBtn  = document.getElementById('clear-btn');
+  const statusEl  = document.getElementById('pdf-status');
+  const pageSizeEl = document.getElementById('page-size');
+  const orientEl   = document.getElementById('orientation');
+  const fitModeEl  = document.getElementById('fit-mode');
+  const marginEl   = document.getElementById('margin-size');
+
+  // ── Upload zone ────────────────────────────────────────────────
+  zone.addEventListener('click', () => fileInput.click());
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    handleFiles([...e.dataTransfer.files]);
+  });
+  fileInput.addEventListener('change', e => {
+    handleFiles([...e.target.files]);
+    fileInput.value = '';
+  });
+
+  function handleFiles(files) {
+    const valid = files.filter(f => f.type.startsWith('image/'));
+    if (!valid.length) return;
+
+    const reads = valid.map(file => new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const img = new Image();
+        img.onload = () => {
+          // Render to canvas → JPEG data URL for reliable jsPDF embedding
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+          state.images.push({
+            dataUrl: canvas.toDataURL('image/jpeg', 0.92),
+            width: img.width,
+            height: img.height,
+            name: file.name
+          });
+          resolve();
+        };
+        img.onerror = resolve;
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    }));
+
+    Promise.all(reads).then(renderList);
+  }
+
+  // ── Image list ─────────────────────────────────────────────────
+  function renderList() {
+    if (!state.images.length) {
+      listSection.classList.add('hidden');
+      createBtn.disabled = true;
+      return;
+    }
+    listSection.classList.remove('hidden');
+    createBtn.disabled = false;
+    const n = state.images.length;
+    listCount.textContent = `${n} image${n !== 1 ? 's' : ''} · ${n} page${n !== 1 ? 's' : ''}`;
+
+    imageList.innerHTML = '';
+    state.images.forEach((img, i) => {
+      const item = document.createElement('div');
+      item.className = 'img-item';
+      item.draggable = true;
+      item.dataset.idx = i;
+      item.innerHTML = `
+        <div class="img-item-drag" title="Drag to reorder">⠿</div>
+        <img src="${img.dataUrl}" alt="" class="img-item-thumb">
+        <div class="img-item-info">
+          <span class="img-item-name">${escHtml(img.name)}</span>
+          <span class="img-item-meta">${img.width}×${img.height} px · Page ${i + 1}</span>
+        </div>
+        <button class="img-item-del" data-i="${i}" title="Remove">✕</button>
+      `;
+
+      item.querySelector('.img-item-del').addEventListener('click', e => {
+        state.images.splice(parseInt(e.currentTarget.dataset.i, 10), 1);
+        renderList();
+      });
+
+      item.addEventListener('dragstart', e => {
+        state.dragSrcIdx = parseInt(item.dataset.idx, 10);
+        e.dataTransfer.effectAllowed = 'move';
+        setTimeout(() => item.classList.add('dragging'), 0);
+      });
+      item.addEventListener('dragend', () => {
+        item.classList.remove('dragging');
+        document.querySelectorAll('.img-item').forEach(el => el.classList.remove('drag-target'));
+      });
+      item.addEventListener('dragover', e => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        document.querySelectorAll('.img-item').forEach(el => el.classList.remove('drag-target'));
+        item.classList.add('drag-target');
+      });
+      item.addEventListener('dragleave', () => item.classList.remove('drag-target'));
+      item.addEventListener('drop', e => {
+        e.preventDefault();
+        item.classList.remove('drag-target');
+        const dst = parseInt(item.dataset.idx, 10);
+        if (state.dragSrcIdx !== null && state.dragSrcIdx !== dst) {
+          const [moved] = state.images.splice(state.dragSrcIdx, 1);
+          state.images.splice(dst, 0, moved);
+          renderList();
+        }
+      });
+
+      imageList.appendChild(item);
+    });
+  }
+
+  clearBtn.addEventListener('click', () => {
+    state.images = [];
+    renderList();
+    setStatus('');
+  });
+
+  // ── Create PDF ─────────────────────────────────────────────────
+  createBtn.addEventListener('click', async () => {
+    if (!state.images.length) return;
+    if (!window.jspdf) {
+      setStatus('PDF library not loaded yet — please wait a moment and try again.', true);
+      return;
+    }
+
+    createBtn.disabled = true;
+    const origLabel = createBtn.textContent;
+    createBtn.textContent = 'Creating…';
+    setStatus('Generating PDF…');
+
+    try {
+      const { jsPDF } = window.jspdf;
+      const pageSize = pageSizeEl.value;
+      const orient   = orientEl.value;
+      const fitMode  = fitModeEl.value;
+      const margin   = parseInt(marginEl.value, 10);
+
+      const doc = new jsPDF({ orientation: orient, unit: 'mm', format: pageSize });
+
+      for (let i = 0; i < state.images.length; i++) {
+        if (i > 0) doc.addPage(pageSize, orient);
+
+        const img   = state.images[i];
+        const pageW = doc.internal.pageSize.getWidth();
+        const pageH = doc.internal.pageSize.getHeight();
+        const availW = pageW - margin * 2;
+        const availH = pageH - margin * 2;
+        const imgR   = img.width / img.height;
+
+        let drawW, drawH, x, y;
+
+        if (fitMode === 'fit') {
+          if (imgR > availW / availH) { drawW = availW; drawH = availW / imgR; }
+          else                         { drawH = availH; drawW = availH * imgR; }
+          x = margin + (availW - drawW) / 2;
+          y = margin + (availH - drawH) / 2;
+        } else if (fitMode === 'fill') {
+          if (imgR > pageW / pageH) { drawH = pageH; drawW = pageH * imgR; }
+          else                       { drawW = pageW; drawH = pageW / imgR; }
+          x = (pageW - drawW) / 2;
+          y = (pageH - drawH) / 2;
+        } else {
+          drawW = availW; drawH = availH; x = margin; y = margin;
+        }
+
+        doc.addImage(img.dataUrl, 'JPEG', x, y, drawW, drawH);
+      }
+
+      const n = state.images.length;
+      const fname = n === 1
+        ? state.images[0].name.replace(/\.[^.]+$/, '') + '.pdf'
+        : `images-${n}pages.pdf`;
+      doc.save(fname);
+      setStatus(`✓ PDF downloaded — ${n} page${n !== 1 ? 's' : ''}`);
+    } catch (err) {
+      console.error(err);
+      setStatus('Failed to create PDF. Please try again.', true);
+    }
+
+    createBtn.disabled = false;
+    createBtn.textContent = origLabel;
+  });
+
+  function setStatus(msg, isError = false) {
+    statusEl.textContent = msg;
+    statusEl.style.color = isError ? 'var(--orange, #f97316)' : 'var(--success, #22c55e)';
+  }
+
+  function escHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+</script>
+
+</body>
+</html>
