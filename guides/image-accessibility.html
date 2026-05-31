@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-7946557800571551">
+  <title>Image Accessibility Guide: Alt Text, WCAG, and Accessible Images</title>
+  <meta name="description" content="A practical guide to making images accessible — how to write effective alt text, when to leave alt empty, how to handle complex images, and how to meet WCAG 2.1 requirements.">
+  <meta property="og:title" content="Image Accessibility Guide: Alt Text, WCAG, and Accessible Images">
+  <meta property="og:description" content="Learn how to write effective alt text, handle decorative images, and meet accessibility requirements for images on the web.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://freeimgtools.net/guides/image-accessibility">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/cookie-consent.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Image Accessibility Guide: Alt Text, WCAG, and Making Images Accessible",
+    "description": "A practical guide to making images accessible — how to write effective alt text, when to leave alt empty, how to handle complex images, and how to meet WCAG 2.1 requirements.",
+    "url": "https://freeimgtools.net/guides/image-accessibility",
+    "datePublished": "2026-05-31",
+    "dateModified": "2026-05-31",
+    "author": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Free Image Tools",
+      "url": "https://freeimgtools.net"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeimgtools.net/"},
+      {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://freeimgtools.net/guides"},
+      {"@type": "ListItem", "position": 3, "name": "Image Accessibility", "item": "https://freeimgtools.net/guides/image-accessibility"}
+    ]
+  }
+  </script>
+  <style>
+    .guide-body { font-size: 0.95rem; line-height: 1.85; color: var(--text); }
+    .guide-body h2 { font-size: 1.3rem; font-weight: 700; margin: 2.5rem 0 0.75rem; }
+    .guide-body h3 { font-size: 1.05rem; font-weight: 700; margin: 1.75rem 0 0.5rem; }
+    .guide-body p { margin-bottom: 0.85rem; }
+    .guide-body ul, .guide-body ol { padding-left: 1.25rem; margin-bottom: 0.85rem; display: grid; gap: 0.4rem; }
+    .breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.875rem; }
+    .data-table th { background: var(--bg); padding: 0.6rem 0.75rem; text-align: left; font-weight: 600; border-bottom: 2px solid rgba(0,0,0,0.1); }
+    .data-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.06); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .callout { background: #f0f7ff; border-left: 3px solid var(--primary); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9rem; }
+    .callout-warn { background: #fff8f0; border-left-color: #FF9500; }
+    .callout-success { background: #f0fdf4; border-left-color: #22c55e; }
+    .related-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+    .example-box { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin: 0.75rem 0; font-family: monospace; font-size: 0.85rem; line-height: 1.6; }
+    .label-good { display: inline-block; background: #dcfce7; color: #166534; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 0.3rem; margin-bottom: 0.4rem; }
+    .label-bad { display: inline-block; background: #fee2e2; color: #991b1b; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 0.3rem; margin-bottom: 0.4rem; }
+    .label-note { display: inline-block; background: #fef9c3; color: #713f12; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 0.3rem; margin-bottom: 0.4rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/guides" class="active">Guides</a></li>
+      <li><a href="/ai">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page" style="max-width:800px;">
+
+  <div class="breadcrumb">
+    <a href="/">Home</a> › <a href="/guides">Guides</a> › Image Accessibility
+  </div>
+
+  <h1 class="page-title">Image Accessibility: Alt Text, WCAG, and Making Images Work for Everyone</h1>
+  <p class="page-desc">Published May 2026 · Updated May 31, 2026</p>
+
+  <div class="guide-body">
+
+    <h2>Why image accessibility matters</h2>
+    <p>Approximately 2.2 billion people worldwide have some form of vision impairment, and millions use screen readers — software that converts on-screen content to audio or braille. When a screen reader encounters an image, it reads the alt text aloud. If there is no alt text, it typically announces the file name — "IMG_4821.jpg" — which tells the user nothing. Well-implemented image accessibility means every visitor, regardless of ability, gets the same information from your content.</p>
+    <p>Beyond the direct user impact, there are legal requirements in many jurisdictions. The Americans with Disabilities Act (ADA) has been consistently interpreted to apply to websites. The European Accessibility Act comes into effect in 2025, requiring digital accessibility for many products and services. The Web Content Accessibility Guidelines (WCAG) 2.1, published by the W3C, are the international technical standard for web accessibility and are incorporated into most legal frameworks by reference. WCAG Success Criterion 1.1.1 requires a text alternative for all non-text content.</p>
+    <p>From an SEO standpoint, accessible images also rank better. Search engines cannot see images directly — they index the alt text, file name, title attribute, and surrounding text to understand what an image depicts. Images with descriptive alt text appear in Google Image Search, bringing additional organic traffic. Proper alt text also correlates with better overall page relevance signals.</p>
+
+    <h2>The alt attribute: the foundation of image accessibility</h2>
+    <p>The HTML <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">alt</code> attribute on an <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">&lt;img&gt;</code> element provides a text alternative for the image. It has three possible states, each with a specific meaning:</p>
+
+    <div class="example-box"><span class="label-good">INFORMATIVE ALT</span><br>&lt;img src="chart.png" alt="Bar chart showing monthly sales grew from $12k in January to $28k in June 2026"&gt;</div>
+    <div class="example-box"><span class="label-note">EMPTY ALT (decorative)</span><br>&lt;img src="divider.png" alt=""&gt;</div>
+    <div class="example-box"><span class="label-bad">MISSING ALT (accessibility failure)</span><br>&lt;img src="chart.png"&gt;</div>
+
+    <p>The <strong>missing alt</strong> case is the one to avoid entirely. Without the attribute, screen readers fall back to reading the file name or URL, which is rarely helpful. An empty alt (<code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">alt=""</code>) explicitly signals that an image is decorative and should be skipped. A descriptive alt provides the content and context that a sighted user would get from viewing the image.</p>
+
+    <div class="callout">
+      <strong>The most common mistake:</strong> Leaving out the alt attribute entirely rather than using <code>alt=""</code> for decorative images. Missing alt is an accessibility failure. Empty alt is correct for decorative content.
+    </div>
+
+    <h2>The four types of images and how to handle each</h2>
+
+    <h3>1. Informative images</h3>
+    <p>An informative image conveys content that is not present in the surrounding text. A photograph on a news article, a product photo in a shop, a portrait on an "About" page — all of these need descriptive alt text that conveys the same information a sighted user would get from looking at the image.</p>
+    <p>Good alt text for informative images:</p>
+    <ul>
+      <li>Describes what is visually depicted (subject, action, setting)</li>
+      <li>Is concise — typically one or two sentences</li>
+      <li>Does not begin with "Image of" or "Photo of" — screen readers already announce it is an image</li>
+      <li>Includes relevant context that matters to the page's purpose</li>
+    </ul>
+
+    <div class="example-box">
+      <span class="label-good">GOOD</span><br>
+      alt="A woman in a yellow rain jacket hiking along a coastal cliff trail at sunrise"<br><br>
+      <span class="label-bad">TOO VAGUE</span><br>
+      alt="Person outdoors"<br><br>
+      <span class="label-bad">UNHELPFUL PREFIX</span><br>
+      alt="Photo of a woman hiking"
+    </div>
+
+    <h3>2. Decorative images</h3>
+    <p>A decorative image is one that adds visual appeal but carries no information that affects the user's understanding of the content. Divider lines, background textures, purely aesthetic illustrations, and icons that are duplicated by adjacent text are all decorative. These should use <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">alt=""</code> — an empty alt attribute — so screen readers skip them without wasting the user's time.</p>
+    <p>The judgment call here is whether removing the image would cause a sighted user to lose meaningful information. If the answer is no, the image is decorative. If yes, it is informative and needs descriptive alt text.</p>
+
+    <h3>3. Functional images</h3>
+    <p>A functional image is one that acts as a link or button. When an image is wrapped in an <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">&lt;a&gt;</code> tag or used as a form submit button, its alt text should describe the <em>destination or action</em>, not the visual content of the image. A logo that links to the homepage should have alt text of "Home" or the site name, not a description of the logo's visual design.</p>
+
+    <div class="example-box">
+      <span class="label-good">GOOD — describes the destination</span><br>
+      &lt;a href="/"&gt;&lt;img src="logo.png" alt="Free Image Tools — Home"&gt;&lt;/a&gt;<br><br>
+      <span class="label-bad">WRONG — describes the visual, not the function</span><br>
+      &lt;a href="/"&gt;&lt;img src="logo.png" alt="Blue circular logo with the letter F"&gt;&lt;/a&gt;
+    </div>
+
+    <h3>4. Complex images: charts, infographics, and diagrams</h3>
+    <p>Charts, infographics, maps, and diagrams convey substantial information that a short alt text cannot fully capture. WCAG recommends providing both a brief alt attribute (summarizing the image's purpose) and a longer text description accessible on the page or via a link.</p>
+    <p>For a bar chart, the alt might be "Bar chart: quarterly revenue 2025–2026" while the long description (in a nearby paragraph or a <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">&lt;details&gt;</code> element) provides the actual data in text form. The goal is that a user relying on assistive technology can access the same data a sighted user extracts from the chart.</p>
+
+    <div class="callout">
+      <strong>For data visualizations:</strong> The most robust approach is to include the underlying data as an HTML table in a collapsed <code>&lt;details&gt;</code> element adjacent to the chart. Screen readers can navigate tables natively, giving assistive technology users full access to the data without cluttering the visual layout.
+    </div>
+
+    <h2>Writing alt text: practical guidelines</h2>
+
+    <h3>Keep it concise but complete</h3>
+    <p>Most screen readers truncate alt text at 125–150 characters. Aim to fit essential information within this limit. If the image conveys complex information that requires more than 150 characters to describe adequately, it is a complex image that needs a long description in addition to the alt text.</p>
+
+    <h3>Match the context of the page</h3>
+    <p>The same image may need different alt text on different pages. A photograph of a mixing bowl in a recipe might need alt text describing the technique being demonstrated ("Whisking flour and butter together in a large bowl until sandy"). On a product page selling the bowl, the alt might focus on the product ("5-quart stainless steel mixing bowl with silicone grip base").</p>
+
+    <h3>Include text that appears in the image</h3>
+    <p>If an image contains text — a banner, a chart label, a quote graphic — that text must appear in the alt text. Search engines and screen readers cannot read text that is rendered as pixels inside an image. Text in images is also inaccessible to users who need to resize text or switch fonts for readability. Where possible, render text as actual HTML instead of including it in an image.</p>
+
+    <h3>Do not keyword-stuff alt text</h3>
+    <p>Adding irrelevant keywords to alt text — "buy cheap image converter best free tool fast online" — is a violation of Google's Webmaster Guidelines and a WCAG failure. It creates a poor experience for screen reader users and can result in search ranking penalties. Descriptive, natural alt text that accurately describes the image is both more accessible and more beneficial for SEO.</p>
+
+    <h2>Alt text and image SEO</h2>
+    <p>Google uses alt text as one of the primary signals for understanding image content and indexing images in Google Image Search. Pages with well-described images tend to rank higher in image search results for relevant queries. This matters especially for e-commerce sites, recipe sites, and any content-heavy site where images are a significant part of the value.</p>
+    <p>Beyond alt text, search engines also consider the image file name, the surrounding text, page title, structured data (Schema.org <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">ImageObject</code>), and whether the image is relevant to the page's overall topic. The combination of a descriptive file name (<code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">hiking-trail-sunrise.jpg</code> instead of <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">IMG_4821.jpg</code>), a descriptive alt attribute, and a relevant surrounding paragraph gives images the best chance of appearing in image search results.</p>
+    <p>Google's image guidelines also recommend adding structured data using <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">ImageObject</code> schema for key images, providing width, height, content URL, and a description. For recipe and product pages, structured data can enable rich results in Google Image Search that display additional metadata alongside the image.</p>
+
+    <h2>Color and contrast for image accessibility</h2>
+    <p>Alt text addresses the needs of users with no vision or low vision who rely on screen readers. But other accessibility considerations apply to images for users with color vision deficiencies or cognitive disabilities.</p>
+    <p><strong>Do not use color alone to convey information.</strong> A chart that uses red and green to distinguish data series will be uninterpretable to a significant portion of users (approximately 8% of men have red-green color blindness). Always pair color coding with a secondary indicator — different line patterns, shapes, or labels — so the information remains accessible when color is removed.</p>
+    <p><strong>Maintain sufficient contrast for text in images.</strong> Text that appears on top of an image background must meet WCAG contrast requirements — a minimum ratio of 4.5:1 for normal text and 3:1 for large text (18pt or 14pt bold). Semi-transparent overlays or gradients are commonly used to create sufficient contrast between text and photographic backgrounds.</p>
+
+    <h2>Testing image accessibility</h2>
+    <p>Several free tools can help identify accessibility issues with images on your site:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>What it checks</th>
+          <th>How to use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Google Lighthouse</strong></td>
+          <td>Missing alt text, decorative images with alt, image contrast</td>
+          <td>Chrome DevTools → Lighthouse → Accessibility</td>
+        </tr>
+        <tr>
+          <td><strong>axe DevTools</strong></td>
+          <td>Full WCAG 2.1 image checks, color contrast, ARIA usage</td>
+          <td>Browser extension (Chrome/Firefox)</td>
+        </tr>
+        <tr>
+          <td><strong>WAVE</strong></td>
+          <td>Missing alt, suspicious alt text, empty alt, contrast errors</td>
+          <td>Browser extension or wave.webaim.org</td>
+        </tr>
+        <tr>
+          <td><strong>Screen reader</strong></td>
+          <td>The actual user experience — how alt text sounds when read aloud</td>
+          <td>VoiceOver (macOS/iOS), NVDA (Windows), TalkBack (Android)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Automated tools catch missing alt attributes reliably, but they cannot judge whether alt text is <em>good</em>. A tool can flag <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">alt="image"</code> as technically present but cannot tell you it is meaningless. Manual review — particularly with a screen reader — is the most reliable way to evaluate alt text quality.</p>
+
+    <div class="callout callout-warn">
+      <strong>Automated tools catch roughly 30–40% of accessibility issues.</strong> They are a useful starting point but not a substitute for real user testing or expert manual review. Use automated tools to find the obvious failures, then validate the rest manually.
+    </div>
+
+    <h2>WCAG 2.1 requirements for images — quick reference</h2>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Success Criterion</th>
+          <th>Level</th>
+          <th>Requirement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1.1.1 Non-text Content</strong></td>
+          <td>A (minimum)</td>
+          <td>All informative images have a text alternative. Decorative images have empty alt.</td>
+        </tr>
+        <tr>
+          <td><strong>1.4.1 Use of Color</strong></td>
+          <td>A (minimum)</td>
+          <td>Color is not the only means of conveying information in images.</td>
+        </tr>
+        <tr>
+          <td><strong>1.4.3 Contrast (Minimum)</strong></td>
+          <td>AA (recommended)</td>
+          <td>Text in images has at least 4.5:1 contrast ratio (3:1 for large text).</td>
+        </tr>
+        <tr>
+          <td><strong>1.4.5 Images of Text</strong></td>
+          <td>AA (recommended)</td>
+          <td>Text is used instead of images of text, except for logos and decorative use.</td>
+        </tr>
+        <tr>
+          <td><strong>1.4.9 Images of Text (No Exception)</strong></td>
+          <td>AAA (enhanced)</td>
+          <td>Images of text are only used for pure decoration.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Most legal frameworks require WCAG 2.1 Level AA compliance. Levels A and AA together represent the practical baseline for public-facing websites.</p>
+
+    <h2>Using AI to generate alt text at scale</h2>
+    <p>Writing alt text for large image libraries — thousands of product photos, an archive of article images — is time-consuming when done manually. AI image captioning models can generate first-draft alt text at scale, reducing the per-image effort to reviewing and editing rather than writing from scratch.</p>
+    <p>AI-generated alt text is accurate for common subjects: people, objects, animals, food, vehicles, and natural scenes. It is less reliable for images that require domain context — a specific product model name, a named person, a technical diagram, or an image whose meaning depends on surrounding text. The workflow that works best is: generate alt text automatically for all images, then manually review and edit any that require context the model cannot infer from the image alone.</p>
+    <p>The <a href="/ai" style="color:var(--primary);">Free Image Tools AI Alt Text Generator</a> uses Cloudflare's vision AI to generate alt text directly in your browser. It handles one image at a time, giving you an editable draft to review before copying the result into your CMS or code.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Do I need alt text for every single image?</h3>
+    <p>Every <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">&lt;img&gt;</code> element needs an <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">alt</code> attribute, but that attribute can be empty (<code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">alt=""</code>) for decorative images. What you must never do is omit the attribute entirely from a non-decorative image. The distinction is: informative images need descriptive text, decorative images need empty alt, and no image should be missing the attribute.</p>
+
+    <h3>Should alt text include keywords for SEO?</h3>
+    <p>Alt text should describe the image accurately. If the image is of a product you sell and the product name is a keyword, the product name belongs in the alt text — but because it describes the image, not as keyword stuffing. Write alt text as if you are describing the image to someone who cannot see it, then check whether it naturally contains relevant keywords. It usually will, without any manipulation.</p>
+
+    <h3>What is the maximum length for alt text?</h3>
+    <p>WCAG does not specify a maximum length, but most screen readers announce alt text at the same speaking rate as regular content, so very long alt text makes navigation tedious. Aim to stay under 125 characters for most images. If the image conveys information that genuinely requires more — a complex chart, an infographic — provide the detail in a long description adjacent to the image rather than in the alt attribute.</p>
+
+    <h3>Do background images set in CSS need alt text?</h3>
+    <p>No. CSS background images (<code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">background-image</code>) are invisible to screen readers and cannot have an alt attribute. This is actually the recommended approach for purely decorative images — use CSS backgrounds instead of <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">&lt;img&gt;</code> tags, so you do not need to add or manage an empty alt attribute. For informative images, always use an <code style="background:var(--bg);padding:0.1rem 0.4rem;border-radius:0.3rem;">&lt;img&gt;</code> tag with proper alt text, never a CSS background.</p>
+
+    <h3>How does alt text affect Google Image Search ranking?</h3>
+    <p>Google uses alt text as one of several signals for image indexing. Descriptive, accurate alt text helps Google understand the image content and rank it for relevant searches. Google's documentation explicitly states that "high quality alt text" helps images appear in search results. File names, page topic, and surrounding text also contribute, but alt text has a direct and significant influence on image search visibility.</p>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <div class="related-tools">
+    <a href="/ai" class="tool-card">
+      <div class="tool-icon">✨</div>
+      <div>
+        <div class="tool-name">AI Alt Text Generator</div>
+        <div class="tool-desc">Generate descriptive alt text automatically using AI vision models.</div>
+      </div>
+    </a>
+    <a href="/compress" class="tool-card">
+      <div class="tool-icon">🗜️</div>
+      <div>
+        <div class="tool-name">Image Compressor</div>
+        <div class="tool-desc">Reduce image file size to improve page load times and Core Web Vitals.</div>
+      </div>
+    </a>
+    <a href="/convert" class="tool-card">
+      <div class="tool-icon">🔄</div>
+      <div>
+        <div class="tool-name">Format Converter</div>
+        <div class="tool-desc">Convert images to WebP for better performance on the web.</div>
+      </div>
+    </a>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">More guides</h2>
+    <div style="display:grid;gap:0.5rem;">
+      <a href="/guides/image-seo" style="color:var(--primary);font-size:0.9rem;">Image SEO: File Names, Alt Text, Structured Data, and Google Image Search →</a>
+      <a href="/guides/web-performance-images" style="color:var(--primary);font-size:0.9rem;">Images and Web Performance: Optimizing for Core Web Vitals →</a>
+      <a href="/guides/image-formats" style="color:var(--primary);font-size:0.9rem;">JPG, PNG, WebP, AVIF: Which Format Should You Use? →</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/disclaimer">Disclaimer</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

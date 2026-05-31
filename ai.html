@@ -177,6 +177,73 @@
     </div>
   </section>
 
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Why alt text matters for accessibility and SEO</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>Alt text (the <code style="background:var(--bg);padding:0.1rem 0.3rem;border-radius:0.3rem;">alt</code> attribute on an <code style="background:var(--bg);padding:0.1rem 0.3rem;border-radius:0.3rem;">&lt;img&gt;</code> element) serves two distinct purposes. For accessibility, screen readers rely on alt text to describe images to users who are visually impaired. Without it, a screen reader will typically announce the file name — something like "IMG_3847.jpg" — which communicates nothing. Well-written alt text gives these users the same information a sighted visitor gets from seeing the image.</p>
+      <p>For search engine optimization, Google and other search engines cannot see images the way humans do. They read the alt text, file name, and surrounding content to understand what an image depicts. Images with descriptive, relevant alt text rank better in <strong>Google Image Search</strong> — a significant source of traffic for many content-driven websites. Google also uses alt text as a relevance signal for the page overall, meaning properly labelled images can lift the entire page's organic ranking for related queries.</p>
+      <p>From a legal standpoint, missing alt text can create accessibility liability in many jurisdictions. The Americans with Disabilities Act (ADA) and the Web Content Accessibility Guidelines (WCAG 2.1) both require meaningful text alternatives for non-decorative images on public-facing websites. Automated accessibility auditing tools like Lighthouse and axe flag missing alt attributes as errors that must be resolved.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">How to write effective alt text</h2>
+    <div style="display:grid;gap:0.75rem;font-size:0.875rem;line-height:1.8;color:var(--text);">
+      <p>Good alt text describes the content and function of an image concisely. It should answer the question: "If this image could not be displayed, what information would the user miss?" Aim for one or two sentences that capture the subject, action, and context relevant to the page.</p>
+      <div style="display:grid;gap:0.5rem;">
+        <div class="card" style="padding:0.85rem 1.1rem;">
+          <span style="color:var(--success);font-weight:600;font-size:0.8rem;">GOOD</span>
+          <p style="margin-top:0.25rem;color:var(--text-muted);">"A person in a red jacket hiking on a snow-covered mountain trail with pine trees in the background."</p>
+        </div>
+        <div class="card" style="padding:0.85rem 1.1rem;border-color:var(--error,#ef4444);">
+          <span style="color:#dc2626;font-weight:600;font-size:0.8rem;">TOO VAGUE</span>
+          <p style="margin-top:0.25rem;color:var(--text-muted);">"Photo of person outdoors."</p>
+        </div>
+        <div class="card" style="padding:0.85rem 1.1rem;border-color:var(--error,#ef4444);">
+          <span style="color:#dc2626;font-weight:600;font-size:0.8rem;">KEYWORD STUFFING (avoid)</span>
+          <p style="margin-top:0.25rem;color:var(--text-muted);">"hiking shoes hiking boots best hiking gear mountain hiking winter hiking trail."</p>
+        </div>
+      </div>
+      <p>Always review and refine the AI-generated alt text before publishing. The model describes what it sees in the image but does not know the business context, the name of a product, or specific people — information only you can supply. Use the AI output as a starting draft and edit it to add the relevant context for your page.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Image classification — what it is and when it's useful</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>Image classification predicts the category or categories an image belongs to, along with a confidence score for each prediction. The classifier used here (Microsoft's ResNet-50) is trained on ImageNet's 1,000 categories — objects, animals, vehicles, food, scenes, and more. The output is a ranked list of the most likely categories and how confident the model is in each one.</p>
+      <p>Classification is useful when you need to understand or organize a large library of images quickly. Common use cases include: tagging images in a CMS automatically before editorial review, filtering stock photo libraries by content type, building searchable image databases, and checking that uploaded user images contain appropriate content before publishing. The confidence scores let you set a threshold — for example, only auto-tag if the top prediction exceeds 80% confidence.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Frequently asked questions</h2>
+    <div style="display:grid;gap:1rem;font-size:0.875rem;">
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">How accurate is the AI alt text generator?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">For most common subjects — people, objects, scenes, animals, food, vehicles — the generated alt text is accurate and usable as a starting draft. The model may struggle with highly specific subjects it has not been trained on, abstract art, diagrams with text, or images that require domain expertise to describe. Always review the output before using it.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Is my image sent to a server when I use AI tools?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes — unlike the other tools on this site, AI analysis requires sending the image to Cloudflare's edge AI network for inference. Images are processed and immediately discarded; Cloudflare does not store them. If you are working with sensitive or confidential images, use the non-AI tools on this site, which are fully client-side.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Should I use alt text for every image on my site?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes for informative images. Decorative images (dividers, background textures, icons that are purely visual) should use an empty alt attribute (<code style="background:var(--bg);padding:0.1rem 0.3rem;border-radius:0.3rem;">alt=""</code>) so screen readers skip them. An empty alt is semantically correct for decorative elements; it tells the browser the image has no informational content. Missing the alt attribute entirely causes screen readers to announce the file name, which is worse.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What image formats does the AI tool support?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">The alt text generator and image classifier accept JPG, PNG, and WebP images. The image is converted to a compatible format before being sent to the model if needed. There is no batch mode — one image is analyzed at a time to keep the interface simple and the per-request cost low.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I use the generated alt text directly, or does it need editing?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">The output is designed to be a useful starting draft, not a final copy. For generic photos the generated text often requires minimal editing. For product images, branded content, or images where context matters (a chart, a specific person, a named location), you should edit the output to add the relevant specifics. AI models describe what they see — they do not know your product name, your team member's name, or what message the image is meant to convey in context.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Other tools</h2>
   <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
     <a href="/compress" class="tool-card">
       <h3 style="font-size:0.95rem;">🗜️ Image Compressor</h3>
