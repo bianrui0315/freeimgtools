@@ -23,7 +23,10 @@ Images are never uploaded to any server. AI features use Cloudflare edge inferen
 2. Go to [Cloudflare Pages](https://pages.cloudflare.com) → Create application → Connect Git
 3. Select this repo, leave build settings blank (static site)
 4. Add the AI binding in Settings → Functions → AI Bindings: name = `AI`
-5. Done — Cloudflare will deploy automatically on every push
+5. Optional: add an `ALLOWED_ORIGINS` environment variable for `/api/ai`
+   if you use additional domains. Example:
+   `https://freeimgtools.net,https://www.freeimgtools.net`
+6. Done — Cloudflare will deploy automatically on every push
 
 ## Local development
 
@@ -37,8 +40,13 @@ Requires `wrangler` (Cloudflare CLI) for AI features. AI features won't work loc
 
 ## Monetization
 
-- **Google AdSense**: Uncomment the AdSense snippet in each HTML file, replace `ca-pub-XXXXXXXXXXXXXXXX` and slot IDs
-- Apply for AdSense at https://adsense.google.com once you have traffic
+- **Google AdSense**: the publisher ID is currently `ca-pub-7946557800571551`.
+  Verify it matches your account before applying.
+- Keep ad slots commented until the domain is approved and you have real slot IDs.
+- Use a Google-certified CMP, such as Google Funding Choices, for AdSense traffic
+  in the EEA, UK, and Switzerland.
+- Submit `sitemap.xml` in Google Search Console, request indexing for the main
+  tool and trust pages, then apply for AdSense once those pages are indexed.
 
 ## SEO tips
 
