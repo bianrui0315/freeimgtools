@@ -66,6 +66,10 @@
     .example-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.4rem; }
     .example-good { color: #16a34a; }
     .example-bad { color: #dc2626; }
+    .guide-ai-tool { border: 1.5px solid rgba(0,122,255,0.18); border-radius: 14px; background: linear-gradient(180deg,#f8fbff 0%,#fff 100%); padding: 1.25rem; margin: 1.5rem 0; }
+    .guide-ai-tool .upload-zone { min-height: 180px; padding: 1.5rem; }
+    .guide-ai-tool .upload-zone h3 { font-size: 1rem; }
+    .guide-ai-actions { margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
   </style>
 </head>
 <body>
@@ -150,6 +154,49 @@
 
     <div class="callout callout-tip">
       <strong>AI alt text generation:</strong> Our <a href="/ai" style="color:var(--primary);">AI Tools page</a> can generate alt text automatically from an uploaded image using Cloudflare Workers AI. It is a useful starting point — review and edit the output before using it, but it captures the subject accurately in most cases.
+    </div>
+
+    <div class="guide-ai-tool" aria-label="AI alt text generator">
+      <div style="display:grid;gap:0.45rem;margin-bottom:1rem;">
+        <h3 style="margin:0;font-size:1.05rem;">Try an SEO-friendly alt text draft</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:0.875rem;line-height:1.6;">Drop an image here to generate a concise alt text draft while you read the guide. Review the result before publishing it.</p>
+      </div>
+
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*">
+        <span class="upload-icon">✨</span>
+        <h3>Drop an image here</h3>
+        <p>or click to browse · JPG, PNG, WebP</p>
+      </div>
+
+      <div id="preview-wrap" class="hidden" style="margin-top:1rem;">
+        <div class="card" style="padding:0.75rem;text-align:center;">
+          <img id="img-preview" src="" alt="Selected image preview" style="max-width:100%;max-height:240px;object-fit:contain;border-radius:0.5rem;">
+        </div>
+      </div>
+
+      <div id="ai-actions" class="hidden guide-ai-actions">
+        <button id="alt-btn" class="btn btn-primary" data-label="Generate Alt Text">Generate Alt Text</button>
+        <a href="/ai" class="btn btn-secondary" style="text-decoration:none;">Open full AI tools</a>
+      </div>
+
+      <div id="alt-result" class="hidden" style="margin-top:1rem;">
+        <div class="ai-result">
+          <h4>AI-Generated Alt Text</h4>
+          <p id="alt-text"></p>
+          <div style="margin-top:0.85rem;display:flex;gap:0.5rem;">
+            <button id="copy-alt" class="btn btn-secondary" style="padding:0.35rem 0.85rem;font-size:0.8rem;">Copy</button>
+          </div>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">AI analysis sends the image to Cloudflare Workers AI for inference. Use non-sensitive images only.</p>
+      </div>
+
+      <div id="classify-result" class="hidden" style="margin-top:1rem;">
+        <div class="ai-result">
+          <h4>Image Classification</h4>
+          <div id="classify-tags"></div>
+        </div>
+      </div>
     </div>
 
     <h3>Alt text for different image types</h3>
@@ -497,5 +544,6 @@
   </div>
 </footer>
 
+<script type="module" src="/js/ai.js"></script>
 </body>
 </html>
