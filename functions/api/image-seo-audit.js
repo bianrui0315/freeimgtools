@@ -1,3 +1,11 @@
+import {
+  enforceRateLimits,
+  getCorsHeaders,
+  rejectDisallowedSource,
+  rejectOversizedRequest,
+  rejectWrongContentType,
+} from './_guard.js';
+
 const DEFAULT_ALLOWED_ORIGINS = [
   'https://freeimgtools.net',
   'https://www.freeimgtools.net',
@@ -5,54 +13,43 @@ const DEFAULT_ALLOWED_ORIGINS = [
   'http://127.0.0.1:3000',
 ];
 
-function getAllowedOrigins(env) {
-  if (!env.ALLOWED_ORIGINS) return DEFAULT_ALLOWED_ORIGINS;
-  return env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim()).filter(Boolean);
-}
-
-function getCorsHeaders(request, env) {
-  const origin = request.headers.get('Origin');
-  const allowedOrigins = getAllowedOrigins(env);
-  const allowedOrigin = origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
-  return {
-    'Access-Control-Allow-Origin': allowedOrigin,
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
-}
-
-function isAllowedOrigin(request, env) {
-  const origin = request.headers.get('Origin');
-  return !origin || getAllowedOrigins(env).includes(origin);
-}
-
 export async function onRequestOptions({ request, env }) {
-  return new Response(null, { status: 204, headers: getCorsHeaders(request, env) });
+  return new Response(null, { status: 204, headers: getCorsHeaders(request, env, DEFAULT_ALLOWED_ORIGINS) });
 }
 
 export async function onRequestPost({ request, env }) {
-  const corsHeaders = getCorsHeaders(request, env);
+  const corsHeaders = getCorsHeaders(request, env, DEFAULT_ALLOWED_ORIGINS);
 
   try {
-    if (!isAllowedOrigin(request, env)) {
-      return Response.json({ error: 'Origin not allowed' }, { status: 403, headers: corsHeaders });
-    }
+    const sourceRejection = rejectDisallowedSource(request, env, DEFAULT_ALLOWED_ORIGINS, corsHeaders);
+    if (sourceRejection) return sourceRejection;
+
+    const typeRejection = rejectWrongContentType(request, ['application/json'], corsHeaders);
+    if (typeRejection) return typeRejection;
+
+    const sizeRejection = rejectOversizedRequest(request, 4 * 1024, corsHeaders);
+    if (sizeRejection) return sizeRejection;
+
+    const rateRejection = await enforceRateLimits({
+      request,
+      env,
+      endpoint: 'image-seo-audit',
+      corsHeaders,
+      windows: [
+        { id: 'minute', seconds: 60, limit: 12 },
+        { id: 'day', seconds: 86400, limit: 120 },
+      ],
+    });
+    if (rateRejection) return rateRejection;
 
     const body = await request.json();
     const inputUrl = normalizeUrl(body.url || '');
     const target = new URL(inputUrl);
 
-    if (!['http:', 'https:'].includes(target.protocol)) {
-      return Response.json({ error: 'Only http and https URLs are supported.' }, { status: 400, headers: corsHeaders });
-    }
+    const targetError = getUnsafeAuditUrlReason(target);
+    if (targetError) return Response.json({ error: targetError }, { status: 400, headers: corsHeaders });
 
-    const res = await fetch(target.toString(), {
-      headers: {
-        'User-Agent': 'FreeImgTools-ImageSEOAudit/1.0 (+https://freeimgtools.net/image-seo-audit)',
-      },
-      signal: AbortSignal.timeout(10000),
-      redirect: 'follow',
-    });
+    const { res, finalUrl } = await fetchSafeHtml(target);
 
     const contentType = res.headers.get('content-type') || '';
     if (!res.ok) {
@@ -63,7 +60,7 @@ export async function onRequestPost({ request, env }) {
     }
 
     const html = (await res.text()).slice(0, 1200000);
-    return Response.json(analyzeHtml(html, res.url || target.toString()), { headers: corsHeaders });
+    return Response.json(analyzeHtml(html, finalUrl), { headers: corsHeaders });
   } catch (err) {
     return Response.json(
       { error: err.message || 'Image SEO audit failed.' },
@@ -75,7 +72,68 @@ export async function onRequestPost({ request, env }) {
 function normalizeUrl(value) {
   const trimmed = String(value).trim();
   if (!trimmed) throw new Error('Enter a website URL.');
+  if (trimmed.length > 2048) throw new Error('URL is too long.');
   return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+}
+
+async function fetchSafeHtml(startUrl) {
+  let current = new URL(startUrl);
+
+  for (let redirectCount = 0; redirectCount <= 3; redirectCount += 1) {
+    const reason = getUnsafeAuditUrlReason(current);
+    if (reason) throw new Error(reason);
+
+    const res = await fetch(current.toString(), {
+      headers: {
+        'User-Agent': 'FreeImgTools-ImageSEOAudit/1.0 (+https://freeimgtools.net/image-seo-audit)',
+      },
+      signal: AbortSignal.timeout(10000),
+      redirect: 'manual',
+    });
+
+    if (res.status >= 300 && res.status < 400) {
+      const location = res.headers.get('location');
+      if (!location) return { res, finalUrl: current.toString() };
+      current = new URL(location, current);
+      continue;
+    }
+
+    return { res, finalUrl: current.toString() };
+  }
+
+  throw new Error('Too many redirects while fetching the page.');
+}
+
+function getUnsafeAuditUrlReason(url) {
+  if (!['http:', 'https:'].includes(url.protocol)) {
+    return 'Only http and https URLs are supported.';
+  }
+
+  const hostname = url.hostname.toLowerCase();
+  if (!hostname || hostname === 'localhost' || hostname.endsWith('.local')) {
+    return 'Local URLs are not supported.';
+  }
+
+  if (isPrivateHostname(hostname)) {
+    return 'Private network URLs are not supported.';
+  }
+
+  return '';
+}
+
+function isPrivateHostname(hostname) {
+  if (hostname === '0.0.0.0') return true;
+  if (hostname === '::1' || hostname.startsWith('[')) return true;
+
+  const parts = hostname.split('.').map(part => Number.parseInt(part, 10));
+  if (parts.length !== 4 || parts.some(part => !Number.isInteger(part))) return false;
+
+  const [a, b] = parts;
+  return a === 10
+    || a === 127
+    || (a === 169 && b === 254)
+    || (a === 172 && b >= 16 && b <= 31)
+    || (a === 192 && b === 168);
 }
 
 function analyzeHtml(html, pageUrl) {

@@ -1,6 +1,15 @@
 // Cloudflare Pages Function — text-to-image generation for website image workflows.
 // Requires AI binding configured in wrangler.toml: [ai] binding = "AI"
 
+import {
+  enforceRateLimits,
+  getBlockedPromptReason,
+  getCorsHeaders,
+  rejectDisallowedSource,
+  rejectOversizedRequest,
+  rejectWrongContentType,
+} from './_guard.js';
+
 const DEFAULT_TEXT_TO_IMAGE_MODEL = '@cf/black-forest-labs/flux-1-schnell';
 
 const DEFAULT_ALLOWED_ORIGINS = [
@@ -26,39 +35,34 @@ const STYLES = {
   product: 'studio product photography, soft shadows, clean backdrop',
 };
 
-function getAllowedOrigins(env) {
-  if (!env.ALLOWED_ORIGINS) return DEFAULT_ALLOWED_ORIGINS;
-  return env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim()).filter(Boolean);
-}
-
-function getCorsHeaders(request, env) {
-  const origin = request.headers.get('Origin');
-  const allowedOrigins = getAllowedOrigins(env);
-  const allowedOrigin = origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
-
-  return {
-    'Access-Control-Allow-Origin': allowedOrigin,
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
-}
-
-function isAllowedOrigin(request, env) {
-  const origin = request.headers.get('Origin');
-  return !origin || getAllowedOrigins(env).includes(origin);
-}
-
 export async function onRequestOptions({ request, env }) {
-  return new Response(null, { status: 204, headers: getCorsHeaders(request, env) });
+  return new Response(null, { status: 204, headers: getCorsHeaders(request, env, DEFAULT_ALLOWED_ORIGINS) });
 }
 
 export async function onRequestPost({ request, env }) {
-  const corsHeaders = getCorsHeaders(request, env);
+  const corsHeaders = getCorsHeaders(request, env, DEFAULT_ALLOWED_ORIGINS);
 
   try {
-    if (!isAllowedOrigin(request, env)) {
-      return Response.json({ error: 'Origin not allowed' }, { status: 403, headers: corsHeaders });
-    }
+    const sourceRejection = rejectDisallowedSource(request, env, DEFAULT_ALLOWED_ORIGINS, corsHeaders);
+    if (sourceRejection) return sourceRejection;
+
+    const typeRejection = rejectWrongContentType(request, ['application/json'], corsHeaders);
+    if (typeRejection) return typeRejection;
+
+    const sizeRejection = rejectOversizedRequest(request, 10 * 1024, corsHeaders);
+    if (sizeRejection) return sizeRejection;
+
+    const rateRejection = await enforceRateLimits({
+      request,
+      env,
+      endpoint: 'text-to-image',
+      corsHeaders,
+      windows: [
+        { id: 'minute', seconds: 60, limit: 4 },
+        { id: 'day', seconds: 86400, limit: 35 },
+      ],
+    });
+    if (rateRejection) return rateRejection;
 
     if (!env.AI) {
       return Response.json(
@@ -79,6 +83,11 @@ export async function onRequestPost({ request, env }) {
     }
     if (rawPrompt.length > 700) {
       return Response.json({ error: 'Prompt is too long. Keep it under 700 characters.' }, { status: 400, headers: corsHeaders });
+    }
+
+    const blockedReason = getBlockedPromptReason(rawPrompt);
+    if (blockedReason) {
+      return Response.json({ error: blockedReason }, { status: 400, headers: corsHeaders });
     }
 
     const prompt = buildPrompt(rawPrompt, useCase, style);

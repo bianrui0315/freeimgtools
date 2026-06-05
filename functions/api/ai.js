@@ -1,6 +1,14 @@
 // Cloudflare Pages Function — handles AI image analysis
 // Requires AI binding configured in wrangler.toml: [ai] binding = "AI"
 
+import {
+  enforceRateLimits,
+  getCorsHeaders,
+  rejectDisallowedSource,
+  rejectOversizedRequest,
+  rejectWrongContentType,
+} from './_guard.js';
+
 const DEFAULT_VISION_TEXT_MODEL = '@cf/llava-hf/llava-1.5-7b-hf';
 
 const DEFAULT_ALLOWED_ORIGINS = [
@@ -10,42 +18,34 @@ const DEFAULT_ALLOWED_ORIGINS = [
   'http://127.0.0.1:3000',
 ];
 
-function getAllowedOrigins(env) {
-  if (!env.ALLOWED_ORIGINS) return DEFAULT_ALLOWED_ORIGINS;
-  return env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim()).filter(Boolean);
-}
-
-function getCorsHeaders(request, env) {
-  const origin = request.headers.get('Origin');
-  const allowedOrigins = getAllowedOrigins(env);
-  const allowedOrigin = origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
-
-  return {
-    'Access-Control-Allow-Origin': allowedOrigin,
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
-}
-
-function isAllowedOrigin(request, env) {
-  const origin = request.headers.get('Origin');
-  return !origin || getAllowedOrigins(env).includes(origin);
-}
-
 export async function onRequestOptions({ request, env }) {
-  return new Response(null, { status: 204, headers: getCorsHeaders(request, env) });
+  return new Response(null, { status: 204, headers: getCorsHeaders(request, env, DEFAULT_ALLOWED_ORIGINS) });
 }
 
 export async function onRequestPost({ request, env }) {
-  const corsHeaders = getCorsHeaders(request, env);
+  const corsHeaders = getCorsHeaders(request, env, DEFAULT_ALLOWED_ORIGINS);
 
   try {
-    if (!isAllowedOrigin(request, env)) {
-      return Response.json(
-        { error: 'Origin not allowed' },
-        { status: 403, headers: corsHeaders }
-      );
-    }
+    const sourceRejection = rejectDisallowedSource(request, env, DEFAULT_ALLOWED_ORIGINS, corsHeaders);
+    if (sourceRejection) return sourceRejection;
+
+    const typeRejection = rejectWrongContentType(request, ['multipart/form-data'], corsHeaders);
+    if (typeRejection) return typeRejection;
+
+    const sizeRejection = rejectOversizedRequest(request, 6 * 1024 * 1024, corsHeaders);
+    if (sizeRejection) return sizeRejection;
+
+    const rateRejection = await enforceRateLimits({
+      request,
+      env,
+      endpoint: 'ai-image-analysis',
+      corsHeaders,
+      windows: [
+        { id: 'minute', seconds: 60, limit: 8 },
+        { id: 'day', seconds: 86400, limit: 80 },
+      ],
+    });
+    if (rateRejection) return rateRejection;
 
     if (!env.AI) {
       return Response.json(

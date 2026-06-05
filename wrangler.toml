@@ -6,3 +6,10 @@ pages_build_output_dir = "."
 # This is free to use on Cloudflare Pages
 [ai]
 binding = "AI"
+
+# Optional: create a KV namespace named AI_RATE_LIMIT_KV for stronger shared
+# rate limiting across Cloudflare isolates. Without it, the app still uses an
+# in-memory per-isolate fallback.
+# [[kv_namespaces]]
+# binding = "AI_RATE_LIMIT_KV"
+# id = "replace-with-kv-namespace-id"
