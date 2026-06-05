@@ -4,6 +4,7 @@ import {
   rejectDisallowedSource,
   rejectOversizedRequest,
   rejectWrongContentType,
+  verifyTurnstileToken,
 } from './_guard.js';
 
 const DEFAULT_ALLOWED_ORIGINS = [
@@ -48,6 +49,14 @@ export async function onRequestPost({ request, env }) {
 
     const targetError = getUnsafeAuditUrlReason(target);
     if (targetError) return Response.json({ error: targetError }, { status: 400, headers: corsHeaders });
+
+    const turnstileRejection = await verifyTurnstileToken({
+      request,
+      env,
+      token: body.turnstileToken,
+      corsHeaders,
+    });
+    if (turnstileRejection) return turnstileRejection;
 
     const { res, finalUrl } = await fetchSafeHtml(target);
 

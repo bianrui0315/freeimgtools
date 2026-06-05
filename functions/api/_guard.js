@@ -89,6 +89,46 @@ export async function enforceRateLimits({ request, env, endpoint, windows, corsH
   return null;
 }
 
+export async function verifyTurnstileToken({ request, env, token, corsHeaders }) {
+  if (!env.TURNSTILE_SECRET_KEY) return null;
+
+  const cleanToken = String(token || '').trim();
+  if (!cleanToken) {
+    return Response.json(
+      { error: 'Please complete the human verification check first.' },
+      { status: 403, headers: corsHeaders }
+    );
+  }
+
+  const formData = new FormData();
+  formData.append('secret', env.TURNSTILE_SECRET_KEY);
+  formData.append('response', cleanToken);
+
+  const remoteIp = request.headers.get('CF-Connecting-IP');
+  if (remoteIp) formData.append('remoteip', remoteIp);
+
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: formData,
+      signal: AbortSignal.timeout(8000),
+    });
+    const result = await res.json().catch(() => ({}));
+
+    if (res.ok && result.success === true) return null;
+
+    return Response.json(
+      { error: 'Human verification failed. Please refresh the check and try again.' },
+      { status: 403, headers: corsHeaders }
+    );
+  } catch {
+    return Response.json(
+      { error: 'Human verification is temporarily unavailable. Please try again.' },
+      { status: 503, headers: corsHeaders }
+    );
+  }
+}
+
 export function getBlockedPromptReason(prompt) {
   const text = String(prompt || '').toLowerCase().replace(/\s+/g, ' ');
   const rules = [

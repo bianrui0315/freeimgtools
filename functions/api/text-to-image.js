@@ -8,6 +8,7 @@ import {
   rejectDisallowedSource,
   rejectOversizedRequest,
   rejectWrongContentType,
+  verifyTurnstileToken,
 } from './_guard.js';
 
 const DEFAULT_TEXT_TO_IMAGE_MODEL = '@cf/black-forest-labs/flux-1-schnell';
@@ -89,6 +90,14 @@ export async function onRequestPost({ request, env }) {
     if (blockedReason) {
       return Response.json({ error: blockedReason }, { status: 400, headers: corsHeaders });
     }
+
+    const turnstileRejection = await verifyTurnstileToken({
+      request,
+      env,
+      token: body.turnstileToken,
+      corsHeaders,
+    });
+    if (turnstileRejection) return turnstileRejection;
 
     const prompt = buildPrompt(rawPrompt, useCase, style);
     const result = await env.AI.run(env.TEXT_TO_IMAGE_MODEL || DEFAULT_TEXT_TO_IMAGE_MODEL, {

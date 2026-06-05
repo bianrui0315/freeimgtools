@@ -1303,10 +1303,49 @@ footer {
   font-size: 0.86rem;
   overflow-wrap: anywhere;
 }
+.human-check {
+  display: grid;
+  gap: 0.55rem;
+  align-items: start;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  max-width: 330px;
+}
+.human-check.hidden {
+  display: none;
+}
+.human-check-label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.human-check p {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.human-check-widget {
+  min-height: 65px;
+}
+.human-check-error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+.human-check-inline {
+  flex: 1 1 320px;
+}
 @media (prefers-color-scheme: dark) {
   .ai-output-card {
     background: var(--bg-elevated);
     border-color: var(--border);
+  }
+  .human-check {
+    background: var(--bg);
   }
 }
 .ai-generator-section {

@@ -1,4 +1,5 @@
 import { showToast, initDragDrop } from './shared.js';
+import { createTurnstileGuard } from './turnstile.js';
 
 const ACTIONS = {
   'seo-pack': { title: 'AI Image SEO Pack', button: 'Generate SEO Pack' },
@@ -12,6 +13,7 @@ const ACTIONS = {
 
 const state = { file: null, action: 'seo-pack', copyText: '' };
 const imageGenState = { useCase: 'social', prompt: '' };
+const humanGuards = { analysis: null, image: null };
 
 const els = {
   zone: document.getElementById('upload-zone'),
@@ -26,6 +28,7 @@ const els = {
   outputTitle: document.getElementById('output-title'),
   outputBody: document.getElementById('output-body'),
   copyOutput: document.getElementById('copy-output'),
+  analysisHumanCheck: document.getElementById('ai-analysis-human-check'),
   imagePrompt: document.getElementById('t2i-prompt'),
   imageStyle: document.getElementById('t2i-style'),
   imageSteps: document.getElementById('t2i-steps'),
@@ -37,9 +40,12 @@ const els = {
   generatedPrompt: document.getElementById('generated-prompt'),
   downloadGeneratedImage: document.getElementById('download-generated-image'),
   copyImagePrompt: document.getElementById('copy-image-prompt'),
+  imageHumanCheck: document.getElementById('ai-image-human-check'),
 };
 
 function init() {
+  humanGuards.analysis = createTurnstileGuard({ container: els.analysisHumanCheck, showToast });
+  humanGuards.image = createTurnstileGuard({ container: els.imageHumanCheck, showToast });
   initDragDrop(els.zone, files => setFile(files[0]));
   els.fileInput?.addEventListener('change', e => {
     if (e.target.files[0]) setFile(e.target.files[0]);
@@ -98,15 +104,18 @@ async function runSelectedAction() {
     showToast(message);
     renderSingle(ACTIONS[state.action].title, message);
   } finally {
+    humanGuards.analysis.reset();
     setLoading(false);
   }
 }
 
 async function requestAi(action) {
+  const turnstileToken = await humanGuards.analysis.getToken();
   const formData = new FormData();
   formData.append('image', state.file);
   formData.append('action', action);
   formData.append('context', els.context?.value || '');
+  if (turnstileToken) formData.append('turnstileToken', turnstileToken);
 
   const res = await fetch('/api/ai', { method: 'POST', body: formData });
   const text = await res.text();
@@ -200,6 +209,7 @@ async function generateImage() {
   setImageLoading(true);
 
   try {
+    const turnstileToken = await humanGuards.image.getToken();
     const res = await fetch('/api/text-to-image', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -208,6 +218,7 @@ async function generateImage() {
         useCase: imageGenState.useCase,
         style: els.imageStyle?.value || 'editorial',
         steps: els.imageSteps?.value || '4',
+        turnstileToken,
       }),
     });
     const data = await res.json().catch(() => ({}));
@@ -226,6 +237,7 @@ async function generateImage() {
     els.generatedPlaceholder.classList.remove('hidden');
     els.generatedWrap.classList.add('hidden');
   } finally {
+    humanGuards.image.reset();
     setImageLoading(false);
   }
 }

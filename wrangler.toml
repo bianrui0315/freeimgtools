@@ -13,3 +13,8 @@ binding = "AI"
 # [[kv_namespaces]]
 # binding = "AI_RATE_LIMIT_KV"
 # id = "replace-with-kv-namespace-id"
+
+# Optional: add these Cloudflare Pages environment variables to require
+# Turnstile human verification before AI and scanner API calls.
+# TURNSTILE_SITE_KEY = "public site key from Cloudflare Turnstile"
+# TURNSTILE_SECRET_KEY = "secret key from Cloudflare Turnstile"
