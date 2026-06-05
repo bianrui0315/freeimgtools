@@ -56,7 +56,7 @@
     <span style="font-size:1.5rem;flex-shrink:0;">ℹ️</span>
     <div>
       <h4 style="font-weight:700;font-size:0.9rem;color:#92400e;margin-bottom:0.2rem;">AI features require a brief server request</h4>
-      <p style="font-size:0.82rem;color:#b45309;">Unlike our other tools, AI analysis sends your image to Cloudflare's edge AI network for inference. Images are processed and immediately discarded — Cloudflare does not store them. All other tools remain 100% client-side.</p>
+      <p style="font-size:0.82rem;color:#b45309;">Unlike our browser-only tools, AI features use Cloudflare's edge AI network. Image analysis sends the selected image for inference; text-to-image sends your prompt and returns a generated image. Files and prompts are processed for the request and are not used by our client-side tools.</p>
     </div>
   </div>
 
@@ -176,6 +176,71 @@
 
   </div>
 
+  <section class="section ai-generator-section">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">Text to image</span>
+        <h2>Generate images for websites, SEO, and social posts</h2>
+      </div>
+    </div>
+
+    <div class="ai-generator-grid">
+      <div class="ai-generator-panel">
+        <label for="t2i-prompt">Image prompt</label>
+        <textarea id="t2i-prompt" rows="4" placeholder="Example: a clean product hero image for a privacy-friendly online image tool, blue and yellow accents, modern web app style"></textarea>
+
+        <label>Use case</label>
+        <div class="ai-usecase-grid" aria-label="Image generation use cases">
+          <button class="ai-usecase-card active" data-usecase="social"><strong>Social Image</strong><span>Posts and share graphics</span></button>
+          <button class="ai-usecase-card" data-usecase="blog"><strong>Blog Hero</strong><span>Editorial article visuals</span></button>
+          <button class="ai-usecase-card" data-usecase="product"><strong>Product Image</strong><span>Ecommerce-style scenes</span></button>
+          <button class="ai-usecase-card" data-usecase="og"><strong>Open Graph</strong><span>Website preview concepts</span></button>
+          <button class="ai-usecase-card" data-usecase="thumbnail"><strong>Thumbnail</strong><span>Bold video backgrounds</span></button>
+        </div>
+
+        <div class="ai-generator-options">
+          <div>
+            <label for="t2i-style">Style</label>
+            <select id="t2i-style">
+              <option value="editorial" selected>Editorial</option>
+              <option value="realistic">Realistic</option>
+              <option value="minimal">Minimal</option>
+              <option value="vibrant">Vibrant</option>
+              <option value="product">Studio product</option>
+            </select>
+          </div>
+          <div>
+            <label for="t2i-steps">Quality steps</label>
+            <select id="t2i-steps">
+              <option value="4" selected>Fast</option>
+              <option value="6">Balanced</option>
+              <option value="8">Higher detail</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="generate-image-btn" class="btn btn-primary btn-lg" data-label="Generate Image">Generate Image</button>
+        <p class="ai-generator-note">Generated images use Cloudflare Workers AI. For exact platform dimensions, generate the image first, then use the resizer or Open Graph presets.</p>
+      </div>
+
+      <div class="ai-generated-preview">
+        <div id="generated-placeholder">
+          <span>AI</span>
+          <strong>Generated image preview</strong>
+          <p>Pick a workflow, write a prompt, and create a website-ready image concept.</p>
+        </div>
+        <div id="generated-image-wrap" class="hidden">
+          <img id="generated-image" src="" alt="AI generated image preview">
+          <div class="ai-generated-actions">
+            <a id="download-generated-image" class="btn btn-secondary" download="freeimgtools-ai-image.jpg" href="#">Download</a>
+            <button id="copy-image-prompt" class="btn btn-secondary">Copy Prompt</button>
+          </div>
+          <p id="generated-prompt"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Use cases section -->
   <section class="section" style="max-width:720px;">
     <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">When to use AI alt text</h2>
@@ -252,7 +317,7 @@
       </div>
       <div>
         <p style="font-weight:600;margin-bottom:0.25rem;">Is my image sent to a server when I use AI tools?</p>
-        <p style="color:var(--text-muted);line-height:1.7;">Yes — unlike the other tools on this site, AI analysis requires sending the image to Cloudflare's edge AI network for inference. Images are processed and immediately discarded; Cloudflare does not store them. If you are working with sensitive or confidential images, use the non-AI tools on this site, which are fully client-side.</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes for image analysis — unlike the other tools on this site, AI alt text and classification require sending the selected image to Cloudflare's edge AI network for inference. Text-to-image sends only your prompt and returns a generated image. If you are working with sensitive or confidential material, use the non-AI tools on this site, which are fully client-side.</p>
       </div>
       <div>
         <p style="font-weight:600;margin-bottom:0.25rem;">Should I use alt text for every image on my site?</p>
@@ -312,6 +377,6 @@
   </div>
 </footer>
 
-<script type="module" src="/js/ai.js"></script>
+<script type="module" src="/js/ai.js?v=20260605-t2i"></script>
 </body>
 </html>
