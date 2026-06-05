@@ -27,7 +27,6 @@ const els = {
   outputTitle: document.getElementById('output-title'),
   outputBody: document.getElementById('output-body'),
   copyOutput: document.getElementById('copy-output'),
-  usageNotice: document.getElementById('ai-usage-notice'),
 };
 
 function init() {
@@ -49,9 +48,6 @@ async function initSecurityState() {
   aiEnabled = config.ai?.enabled === true;
   if (aiEnabled) return;
 
-  if (els.usageNotice) {
-    els.usageNotice.classList.remove('hidden');
-  }
   if (els.generateBtn) {
     els.generateBtn.disabled = true;
     els.generateBtn.textContent = 'AI Disabled';

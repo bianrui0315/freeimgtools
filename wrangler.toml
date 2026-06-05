@@ -7,6 +7,9 @@ pages_build_output_dir = "."
 [ai]
 binding = "AI"
 
+[vars]
+AI_FEATURES_ENABLED = "true"
+
 # Optional: create a KV namespace named AI_RATE_LIMIT_KV for stronger shared
 # rate limiting across Cloudflare isolates. Without it, the app still uses an
 # in-memory per-isolate fallback.
@@ -14,6 +17,4 @@ binding = "AI"
 # binding = "AI_RATE_LIMIT_KV"
 # id = "replace-with-kv-namespace-id"
 
-# Optional: add this Cloudflare Pages environment variable to enable the sample
-# AI image analysis function. Leave it unset to avoid Workers AI usage.
-# AI_FEATURES_ENABLED = "true"
+# AI image analysis is enabled by default through [vars] above.

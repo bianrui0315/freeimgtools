@@ -1303,38 +1303,10 @@ footer {
   font-size: 0.86rem;
   overflow-wrap: anywhere;
 }
-.ai-usage-notice {
-  display: grid;
-  gap: 0.25rem;
-  background: #eff6ff;
-  border: 1.5px solid #bfdbfe;
-  border-radius: var(--radius-lg);
-  color: #1e40af;
-  font-size: 0.86rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  padding: 1rem 1.25rem;
-}
-.ai-usage-notice.hidden {
-  display: none;
-}
-.ai-usage-notice code {
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 5px;
-  padding: 0.08rem 0.3rem;
-}
 @media (prefers-color-scheme: dark) {
   .ai-output-card {
     background: var(--bg-elevated);
     border-color: var(--border);
-  }
-  .ai-usage-notice {
-    background: rgba(30, 64, 175, 0.18);
-    border-color: rgba(96, 165, 250, 0.35);
-    color: #bfdbfe;
-  }
-  .ai-usage-notice code {
-    background: rgba(15, 23, 42, 0.8);
   }
 }
 
