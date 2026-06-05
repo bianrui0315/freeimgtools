@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-7946557800571551">
-  <title>Free AI Image Tools — Alt Text Generator & Image Classification</title>
-  <meta name="description" content="Generate SEO-friendly alt text for images using AI. Automatically classify and tag images. Powered by Cloudflare Workers AI. Free to use.">
-  <meta name="keywords" content="free AI alt text generator, image alt text, SEO image description, image classification, image tagging, AI image analysis">
+  <title>Free AI Image SEO Tools — Alt Text, Captions, Filenames & Tags</title>
+  <meta name="description" content="Generate AI alt text, product image descriptions, captions, SEO filenames, image tags, and a full image SEO pack. Powered by Cloudflare Workers AI.">
+  <meta name="keywords" content="free AI alt text generator, image alt text, SEO image description, image caption generator, image filename generator, image tags generator, product image alt text">
   <link rel="canonical" href="https://freeimgtools.net/ai">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -17,9 +17,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Free AI Alt Text Generator — Free Image Tools",
+    "name": "Free AI Image SEO Tools — Free Image Tools",
     "url": "https://freeimgtools.net/ai",
-    "description": "Generate SEO-friendly alt text and image tags automatically using Cloudflare AI. Free, no account required.",
+    "description": "Generate SEO-friendly alt text, product image descriptions, captions, filenames, tags, and image SEO packs automatically using Cloudflare AI. Free, no account required.",
     "publisher": {
       "@type": "Organization",
       "name": "Free Image Tools",
@@ -48,8 +48,8 @@
 
 <div class="page">
 
-  <h1 class="page-title">AI Image Tools</h1>
-  <p class="page-desc">Powered by Cloudflare Workers AI — generate alt text and classify images automatically.</p>
+  <h1 class="page-title">AI Image SEO Tools</h1>
+  <p class="page-desc">Upload one image and generate alt text, product descriptions, captions, SEO filenames, keyword tags, and a full image SEO pack. Powered by Cloudflare Workers AI.</p>
 
   <!-- Note about AI privacy -->
   <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
@@ -84,38 +84,56 @@
         </div>
       </div>
 
-      <!-- AI action buttons -->
-      <div id="ai-actions" class="hidden" style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
-        <button id="alt-btn" class="btn btn-primary" data-label="✨ Generate Alt Text">
-          ✨ Generate Alt Text
-        </button>
-        <button id="classify-btn" class="btn btn-secondary" data-label="🏷️ Classify Image">
-          🏷️ Classify Image
-        </button>
+      <div id="ai-actions" class="ai-control-panel">
+        <label for="context-input">Optional context</label>
+        <textarea id="context-input" rows="3" placeholder="Product name, page topic, target keyword, location, or brand context..."></textarea>
+        <p>Context helps the AI write better SEO text without guessing details that are not visible.</p>
+
+        <div class="ai-mode-grid" aria-label="AI image generation modes">
+          <button class="ai-mode-card active" data-action="seo-pack" data-label="Generate SEO Pack">
+            <strong>SEO Pack</strong>
+            <span>Alt text, caption, filename, title, tags</span>
+          </button>
+          <button class="ai-mode-card" data-action="alttext" data-label="Generate Alt Text">
+            <strong>Alt Text</strong>
+            <span>Concise accessible image description</span>
+          </button>
+          <button class="ai-mode-card" data-action="product-alt" data-label="Generate Product Alt Text">
+            <strong>Product Alt</strong>
+            <span>Ecommerce-friendly product wording</span>
+          </button>
+          <button class="ai-mode-card" data-action="caption" data-label="Generate Caption">
+            <strong>Caption</strong>
+            <span>Short blog or social image caption</span>
+          </button>
+          <button class="ai-mode-card" data-action="filename" data-label="Generate SEO Filename">
+            <strong>Filename</strong>
+            <span>Lowercase hyphenated file name</span>
+          </button>
+          <button class="ai-mode-card" data-action="tags" data-label="Generate Image Tags">
+            <strong>Tags</strong>
+            <span>Keyword-style image labels</span>
+          </button>
+          <button class="ai-mode-card" data-action="classify" data-label="Classify Image">
+            <strong>Classify</strong>
+            <span>Object/category confidence scores</span>
+          </button>
+        </div>
+
+        <button id="generate-btn" class="btn btn-primary btn-lg" data-label="Generate SEO Pack">Generate SEO Pack</button>
       </div>
 
-      <!-- Alt text result -->
-      <div id="alt-result" class="hidden" style="margin-top:1rem;">
+      <div id="ai-output" class="hidden" style="margin-top:1rem;">
         <div class="ai-result">
-          <h4>AI-Generated Alt Text</h4>
-          <p id="alt-text"></p>
-          <div style="margin-top:0.85rem;display:flex;gap:0.5rem;">
-            <button id="copy-alt" class="btn btn-secondary" style="padding:0.35rem 0.85rem;font-size:0.8rem;">
-              📋 Copy
-            </button>
+          <h4 id="output-title">AI Result</h4>
+          <div id="output-body"></div>
+          <div style="margin-top:0.85rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <button id="copy-output" class="btn btn-secondary" style="padding:0.35rem 0.85rem;font-size:0.8rem;">Copy Result</button>
           </div>
         </div>
         <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">
-          Review and edit the alt text as needed before using it. AI output may not be perfect.
+          Review and edit AI output before publishing. Add product names, brand terms, or page-specific context when needed.
         </p>
-      </div>
-
-      <!-- Classification result -->
-      <div id="classify-result" class="hidden" style="margin-top:1rem;">
-        <div class="ai-result">
-          <h4>Image Classification</h4>
-          <div id="classify-tags"></div>
-        </div>
       </div>
     </div>
 
@@ -126,12 +144,17 @@
 
         <div style="display:grid;gap:1.25rem;">
           <div>
-            <strong style="font-size:0.9rem;display:block;margin-bottom:0.3rem;">✨ Alt Text Generator</strong>
-            <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">Uses Cloudflare's <code style="background:var(--bg);padding:0.1rem 0.3rem;border-radius:0.3rem;">@cf/unum/uform-gen2-qwen-500m</code> vision model to generate a concise, SEO-friendly alt text description for your image.</p>
+            <strong style="font-size:0.9rem;display:block;margin-bottom:0.3rem;">AI Image SEO Pack</strong>
+            <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">Generate alt text, product alt text, captions, SEO filenames, titles, tags, and classification signals from one uploaded image.</p>
           </div>
 
           <div>
-            <strong style="font-size:0.9rem;display:block;margin-bottom:0.3rem;">🏷️ Image Classifier</strong>
+            <strong style="font-size:0.9rem;display:block;margin-bottom:0.3rem;">Context-aware output</strong>
+            <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">Add a product name, page topic, or target keyword so the AI can make the result more useful for ecommerce, blogs, and image SEO.</p>
+          </div>
+
+          <div>
+            <strong style="font-size:0.9rem;display:block;margin-bottom:0.3rem;">Image classification</strong>
             <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.6;">Uses <code style="background:var(--bg);padding:0.1rem 0.3rem;border-radius:0.3rem;">@cf/microsoft/resnet-50</code> to identify objects and categories in the image with confidence scores.</p>
           </div>
 
