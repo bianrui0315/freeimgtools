@@ -8,6 +8,12 @@ const state = {
   processing: false,
 };
 
+const pageConfig = {
+  targetBytes: Number(document.body?.dataset.compressTargetKb || 0) * 1024,
+  defaultFormat: document.body?.dataset.defaultFormat,
+  defaultQuality: document.body?.dataset.defaultQuality,
+};
+
 const els = {
   zone: document.getElementById('upload-zone'),
   fileInput: document.getElementById('file-input'),
@@ -28,6 +34,7 @@ const els = {
 };
 
 function init() {
+  applyPageDefaults();
   initDragDrop(els.zone, addFiles);
   els.fileInput.addEventListener('change', (e) => addFiles([...e.target.files]));
 
@@ -38,6 +45,27 @@ function init() {
   els.processBtn.addEventListener('click', processAll);
   els.clearBtn?.addEventListener('click', clearAll);
   els.downloadAllBtn?.addEventListener('click', downloadAll);
+}
+
+function applyPageDefaults() {
+  if (pageConfig.defaultFormat && els.formatSelect) {
+    els.formatSelect.value = pageConfig.defaultFormat;
+  }
+  if (pageConfig.defaultQuality && els.qualitySlider) {
+    els.qualitySlider.value = pageConfig.defaultQuality;
+    els.qualityVal.textContent = pageConfig.defaultQuality;
+  }
+  if (pageConfig.targetBytes && els.processBtn) {
+    els.processBtn.textContent = `Compress to ${formatBytes(pageConfig.targetBytes)}`;
+    const panel = document.querySelector('.settings-panel');
+    panel?.insertAdjacentHTML('beforeend', `
+      <div style="margin-top:1rem;background:var(--primary-light);border-radius:var(--radius);padding:1rem;">
+        <p style="font-size:0.78rem;color:var(--primary);line-height:1.6;">
+          <strong>Target mode:</strong> This page automatically tests quality settings and keeps the highest-quality result under ${formatBytes(pageConfig.targetBytes)} when possible.
+        </p>
+      </div>
+    `);
+  }
 }
 
 function addFiles(files) {
@@ -94,20 +122,20 @@ async function processAll() {
 
   for (let i = 0; i < state.files.length; i++) {
     const file = state.files[i];
-    const result = await compressFile(file, quality, mimeType || file.type, strip);
+    const result = await compressFile(file, quality, mimeType || file.type, strip, pageConfig.targetBytes);
     state.results.push(result);
     renderResult(result, i);
   }
 
   updateBulkBar();
   els.processBtn.disabled = false;
-  els.processBtn.innerHTML = '✓ Process Images';
+  els.processBtn.innerHTML = pageConfig.targetBytes ? `✓ Compressed to ${formatBytes(pageConfig.targetBytes)}` : '✓ Process Images';
   state.processing = false;
 
   if (state.files.length === 1) renderCompare(state.files[0], state.results[0]);
 }
 
-async function compressFile(file, quality, targetMime, stripExifData) {
+async function compressFile(file, quality, targetMime, stripExifData, targetBytes = 0) {
   const img = await fileToImage(file);
   const canvas = document.createElement('canvas');
   canvas.width = img.naturalWidth;
@@ -121,12 +149,53 @@ async function compressFile(file, quality, targetMime, stripExifData) {
   }
   ctx.drawImage(img, 0, 0);
 
-  const blob = await new Promise(r => canvas.toBlob(r, targetMime, quality));
+  const { blob, qualityUsed, hitTarget } = targetBytes
+    ? await compressToTarget(canvas, targetMime, targetBytes, quality)
+    : { blob: await canvasToBlob(canvas, targetMime, quality), qualityUsed: quality, hitTarget: null };
   const ext = getExtension(targetMime);
   const outputName = stripExtension(file.name) + '.' + ext;
   const thumb = await blobToDataURL(blob);
 
-  return { file, blob, outputName, originalSize: file.size, compressedSize: blob.size, thumb, ext };
+  return { file, blob, outputName, originalSize: file.size, compressedSize: blob.size, thumb, ext, qualityUsed, hitTarget, targetBytes };
+}
+
+function canvasToBlob(canvas, targetMime, quality) {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(blob => {
+      if (blob) resolve(blob);
+      else reject(new Error(`${targetMime} output is not supported by this browser`));
+    }, targetMime, quality);
+  });
+}
+
+async function compressToTarget(canvas, targetMime, targetBytes, maxQuality) {
+  let low = 0.1;
+  let high = Math.max(0.1, Math.min(1, maxQuality));
+  let best = null;
+  let smallest = null;
+
+  for (let i = 0; i < 9; i++) {
+    const quality = (low + high) / 2;
+    const blob = await canvasToBlob(canvas, targetMime, quality);
+
+    if (!smallest || blob.size < smallest.blob.size) {
+      smallest = { blob, quality };
+    }
+
+    if (blob.size <= targetBytes) {
+      best = { blob, quality };
+      low = quality + 0.01;
+    } else {
+      high = quality - 0.01;
+    }
+  }
+
+  const picked = best || smallest;
+  return {
+    blob: picked.blob,
+    qualityUsed: picked.quality,
+    hitTarget: picked.blob.size <= targetBytes,
+  };
 }
 
 function renderResult(result, index) {
@@ -147,6 +216,7 @@ function renderResult(result, index) {
           ${!increased ? `(−${saved}%)` : `(+${Math.abs(saved)}%)`}
         </span>
       </div>
+      ${result.targetBytes ? `<div style="font-size:0.75rem;color:${result.hitTarget ? 'var(--success)' : '#dc2626'};margin-top:0.25rem;">${result.hitTarget ? `Under ${formatBytes(result.targetBytes)}` : `Smallest result is still above ${formatBytes(result.targetBytes)}`} · quality ${Math.round(result.qualityUsed * 100)}</div>` : ''}
     </div>
     <button class="btn btn-secondary" style="flex-shrink:0;padding:0.45rem 0.85rem;font-size:0.8rem;"
       onclick="window._downloadOne(${index})">↓ Download</button>
@@ -209,7 +279,7 @@ function clearAll() {
   els.compareSection?.classList.add('hidden');
   els.bulkBar?.classList.add('hidden');
   els.processBtn.disabled = true;
-  els.processBtn.innerHTML = 'Compress Images';
+  els.processBtn.innerHTML = pageConfig.targetBytes ? `Compress to ${formatBytes(pageConfig.targetBytes)}` : 'Compress Images';
   els.fileInput.value = '';
 }
 

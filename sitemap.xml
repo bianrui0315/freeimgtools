@@ -22,6 +22,14 @@
 
   <!-- Compress specialty -->
   <url><loc>https://freeimgtools.net/compress-image-under-200kb</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freeimgtools.net/compress-image-to-20kb</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freeimgtools.net/compress-image-to-50kb</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freeimgtools.net/compress-image-to-100kb</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freeimgtools.net/compress-image-to-500kb</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://freeimgtools.net/compress-photo-for-email</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- AI / SEO tools -->
+  <url><loc>https://freeimgtools.net/image-seo-audit</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Resize specialty -->
   <url><loc>https://freeimgtools.net/resize-photo-for-us-visa</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>

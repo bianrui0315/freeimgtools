@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-7946557800571551">
+  <title>Compress Photo for Email - Free Online Image Compressor</title>
+  <meta name="description" content="Compress photos for email attachments and newsletters. Create smaller JPEG files in your browser with no upload required.">
+  <link rel="canonical" href="https://freeimgtools.net/compress-photo-for-email">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/cookie-consent.js"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Compress Photo for Email","url":"https://freeimgtools.net/compress-photo-for-email","description":"Compress photos for email attachments with private browser-based processing.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why not use WebP for email?","acceptedAnswer":{"@type":"Answer","text":"Many email clients handle JPEG more reliably than WebP. This page defaults to JPEG for compatibility."}},{"@type":"Question","name":"What size should email photos be?","acceptedAnswer":{"@type":"Answer","text":"Under 500KB per photo is a practical target for attachments. Inline email images are often best at 800 to 1200px wide."}}]}
+  </script>
+</head>
+<body data-compress-target-kb="500" data-default-format="jpg" data-default-quality="82">
+<nav class="nav"><div class="nav-inner"><a href="/" class="logo">Free Image Tools</a><ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/compress" class="active">Compress</a></li><li><a href="/convert">Convert</a></li><li><a href="/resize">Resize</a></li><li><a href="/pdf-to-image">PDF to Image</a></li><li><a href="/image-to-pdf">Image to PDF</a></li><li><a href="/guides">Guides</a></li><li><a href="/ai">AI Tools</a></li></ul></div></nav>
+<div class="page">
+  <h1 class="page-title">Compress Photo for Email</h1>
+  <p class="page-desc">Create smaller email-friendly JPEG photos. This page targets 500KB by default because JPEG is broadly supported by email clients and office software.</p>
+  <div class="privacy-banner"><span class="icon">PRIVATE</span><div><h4>Your photos stay local</h4><p>Compression happens in your browser. No upload, no account, no server storage.</p></div></div>
+  <div class="two-col">
+    <div><div class="upload-zone" id="upload-zone"><input type="file" id="file-input" accept="image/*" multiple><span class="upload-icon">EMAIL</span><h3>Drop photos here</h3><p>or click to browse. JPEG output is selected for email compatibility.</p></div><div id="file-queue" class="hidden" style="margin-top:1rem;"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;"><span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span><button id="clear-btn" class="btn btn-secondary" style="padding:0.35rem 0.75rem;font-size:0.8rem;">Clear all</button></div><div id="queue-list" class="results-grid"></div></div><div id="results-section" class="hidden" style="margin-top:1.5rem;"><h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Results</h2><div id="bulk-bar" class="bulk-bar hidden" style="margin-bottom:1rem;"><span id="bulk-count"></span><button id="download-all" class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem;">Download All</button></div><div id="results-grid" class="results-grid"></div></div></div>
+    <div><div class="settings-panel" style="position:sticky;top:80px;"><h3>Settings</h3><div class="setting-row"><div class="setting-label">Output Format<span class="setting-hint">JPEG safest for email</span></div><select id="format"><option value="original">Keep original</option><option value="jpg" selected>JPEG</option><option value="png">PNG</option><option value="webp">WebP</option><option value="avif">AVIF</option></select></div><div class="setting-row"><div class="setting-label">Quality Ceiling<span class="setting-hint">Automatic target search</span></div><div class="slider-wrap"><input type="range" id="quality" min="10" max="100" value="82"><span class="slider-val" id="quality-val">82</span></div></div><div class="setting-row"><div class="setting-label">Strip EXIF data<span class="setting-hint">Remove GPS and camera info</span></div><label class="toggle"><input type="checkbox" id="strip-exif" checked><span class="toggle-slider"></span></label></div><button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;" disabled>Compress for Email</button></div></div>
+  </div>
+  <section class="section" style="max-width:720px;"><h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Best settings for email photos</h2><p style="color:var(--text-muted);line-height:1.8;">Use JPEG for broad compatibility, strip EXIF metadata, and keep each photo under about 500KB when sending several images. For inline newsletter images, resize to the display width before compressing.</p></section>
+  <section class="section" style="max-width:720px;"><h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">FAQ</h2><div style="display:grid;gap:1rem;font-size:0.875rem;"><div><p style="font-weight:600;">Why not use WebP for email?</p><p style="color:var(--text-muted);line-height:1.7;">Many email clients handle JPEG more reliably than WebP. This page defaults to JPEG for compatibility.</p></div><div><p style="font-weight:600;">What size should email photos be?</p><p style="color:var(--text-muted);line-height:1.7;">Under 500KB per photo is a practical target for attachments. Inline email images are often best at 800-1200px wide.</p></div></div></section>
+  <div class="divider"></div><h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2><div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));"><a href="/compress-image-to-500kb" class="tool-card"><h3 style="font-size:0.9rem;">Compress to 500KB</h3><p>General 500KB target</p></a><a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">Image Resizer</h3><p>Resize before attaching</p></a><a href="/guides/reduce-image-file-size" class="tool-card"><h3 style="font-size:0.9rem;">File Size Guide</h3><p>Reduce images effectively</p></a></div>
+</div>
+<footer><div class="footer-inner"><span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span><ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/compress">Compress</a></li><li><a href="/convert">Convert</a></li><li><a href="/resize">Resize</a></li><li><a href="/pdf-to-image">PDF to Image</a></li><li><a href="/image-to-pdf">Image to PDF</a></li><li><a href="/guides">Guides</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul></div></footer>
+<script type="module" src="/js/compress.js"></script>
+</body>
+</html>

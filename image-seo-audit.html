@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-7946557800571551">
+  <title>Image SEO Audit - Check Alt Text, Filenames, and Image Issues</title>
+  <meta name="description" content="Run a free image SEO audit for a web page. Check missing alt text, empty alt attributes, weak image filenames, dimensions, and image formats.">
+  <link rel="canonical" href="https://freeimgtools.net/image-seo-audit">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/cookie-consent.js"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Image SEO Audit","url":"https://freeimgtools.net/image-seo-audit","description":"Check image SEO issues on a web page, including missing alt text, weak filenames, image dimensions, and legacy formats.","applicationCategory":"SEOApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the Image SEO Audit check?","acceptedAnswer":{"@type":"Answer","text":"It checks image tags in the returned HTML for missing alt attributes, empty alt text, missing width and height, weak filenames, and legacy image formats."}},{"@type":"Question","name":"Does the scanner measure real Core Web Vitals?","acceptedAnswer":{"@type":"Answer","text":"No. This Lite scanner does not run JavaScript or measure real LCP. It provides a fast first-pass image SEO check from the HTML response."}}]}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Free Image Tools</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/compress">Compress</a></li>
+      <li><a href="/convert">Convert</a></li>
+      <li><a href="/resize">Resize</a></li>
+      <li><a href="/pdf-to-image">PDF to Image</a></li>
+      <li><a href="/image-to-pdf">Image to PDF</a></li>
+      <li><a href="/guides">Guides</a></li>
+      <li><a href="/ai" class="active">AI Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page" style="max-width:960px;">
+  <h1 class="page-title">Image SEO Audit</h1>
+  <p class="page-desc">Check a web page for missing image alt text, weak filenames, missing dimensions, and legacy image formats. This Lite audit reads the page HTML and gives practical fixes.</p>
+
+  <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
+    <h4 style="font-weight:700;font-size:0.9rem;color:#92400e;margin-bottom:0.2rem;">Lite scanner scope</h4>
+    <p style="font-size:0.82rem;color:#b45309;line-height:1.7;">This version analyzes image tags in the returned HTML. It does not run JavaScript, crawl the full site, or measure real LCP. Use it for fast first-pass image SEO checks.</p>
+  </div>
+
+  <form id="audit-form" class="card" style="padding:1.25rem;display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
+    <input id="audit-url" type="url" placeholder="https://example.com/page" style="flex:1;min-width:260px;padding:0.75rem 0.9rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;">
+    <button id="audit-btn" class="btn btn-primary" type="submit">Audit Images</button>
+  </form>
+
+  <div id="audit-result" class="hidden" style="margin-top:1.5rem;">
+    <div id="audit-page-meta" class="card" style="padding:1rem;display:grid;gap:0.35rem;font-size:0.85rem;color:var(--text-muted);"></div>
+
+    <div id="audit-summary" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.75rem;margin-top:1rem;"></div>
+
+    <section class="section" style="margin-top:1.5rem;">
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Recommended fixes</h2>
+      <ul id="audit-issues" style="padding-left:1.25rem;display:grid;gap:0.5rem;color:var(--text-muted);line-height:1.7;"></ul>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1rem;">
+        <a href="/ai" class="btn btn-primary" style="text-decoration:none;">Generate Alt Text</a>
+        <a href="/compress" class="btn btn-secondary" style="text-decoration:none;">Compress Images</a>
+        <a href="/guides/image-seo" class="btn btn-secondary" style="text-decoration:none;">Read Image SEO Guide</a>
+      </div>
+    </section>
+
+    <section class="section" style="margin-top:1.5rem;">
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Images found</h2>
+      <div style="overflow:auto;border:1px solid var(--border);border-radius:8px;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+          <thead style="background:var(--bg-elevated);text-align:left;">
+            <tr><th style="padding:0.75rem;">File</th><th style="padding:0.75rem;">Alt</th><th style="padding:0.75rem;">Dimensions</th><th style="padding:0.75rem;">Filename</th><th style="padding:0.75rem;">Format</th></tr>
+          </thead>
+          <tbody id="audit-images"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">What this image SEO audit checks</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p><strong>Alt text:</strong> Missing alt attributes are accessibility issues and weak image SEO signals. Empty alt text is valid only for decorative images.</p>
+      <p><strong>Dimensions:</strong> Images without width and height can contribute to layout shift while the page loads.</p>
+      <p><strong>Filenames and formats:</strong> Descriptive filenames help search engines understand context. WebP and AVIF can improve performance compared with large JPG or PNG files.</p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span>
+    <ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/compress">Compress</a></li><li><a href="/convert">Convert</a></li><li><a href="/resize">Resize</a></li><li><a href="/pdf-to-image">PDF to Image</a></li><li><a href="/image-to-pdf">Image to PDF</a></li><li><a href="/guides">Guides</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul>
+  </div>
+</footer>
+<script type="module" src="/js/image-seo-audit.js"></script>
+</body>
+</html>
