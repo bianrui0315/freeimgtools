@@ -1289,6 +1289,59 @@ textarea:focus {
 table { border-radius: var(--radius); overflow: hidden; }
 th { background: var(--bg) !important; }
 
+/* Guide pages define some light callout panels locally. Keep them readable in dark mode. */
+@media (prefers-color-scheme: dark) {
+  .guide-body .callout {
+    background: rgba(0, 122, 255, 0.16) !important;
+    border-left-color: var(--primary) !important;
+    color: var(--text-secondary) !important;
+  }
+  .guide-body .callout-warn {
+    background: rgba(255, 149, 0, 0.16) !important;
+    border-left-color: var(--orange) !important;
+    color: var(--text-secondary) !important;
+  }
+  .guide-body .callout-tip,
+  .guide-body .callout-success {
+    background: rgba(52, 199, 89, 0.16) !important;
+    border-left-color: var(--green) !important;
+    color: var(--text-secondary) !important;
+  }
+  .guide-body .example-box,
+  .guide-body .guide-ai-tool,
+  .guide-body .checklist li,
+  .guide-body .cwv-item,
+  .guide-body details,
+  .guide-body a[style*="background:var(--bg-elevated)"] {
+    background: var(--bg-elevated) !important;
+    border-color: var(--border) !important;
+    color: var(--text-secondary) !important;
+  }
+  .guide-body .guide-ai-tool {
+    box-shadow: var(--shadow) !important;
+  }
+  .guide-body code {
+    background: rgba(255, 255, 255, 0.10) !important;
+    color: var(--text) !important;
+  }
+  .guide-body pre code {
+    background: transparent !important;
+    color: inherit !important;
+  }
+  .guide-body summary,
+  .guide-body strong,
+  .guide-body .example-label,
+  .guide-body .tool-name,
+  .guide-body a[style*="color:var(--text)"] {
+    color: var(--text) !important;
+  }
+  .guide-body .tool-desc,
+  .guide-body p[style*="color:var(--text-muted)"],
+  .guide-body div[style*="color:var(--text-muted)"] {
+    color: var(--text-secondary) !important;
+  }
+}
+
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
 
