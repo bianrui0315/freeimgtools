@@ -78,8 +78,9 @@ async function runSelectedAction() {
       renderSingle(ACTIONS[state.action].title, data.result || 'No result returned.');
     }
   } catch (err) {
-    showToast('AI service unavailable. Please deploy to Cloudflare to use AI features.');
-    renderSingle(ACTIONS[state.action].title, '[Deploy to Cloudflare to enable AI features]');
+    const message = cleanErrorMessage(err);
+    showToast(message);
+    renderSingle(ACTIONS[state.action].title, message);
   } finally {
     setLoading(false);
   }
@@ -210,6 +211,15 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+function cleanErrorMessage(err) {
+  const raw = String(err?.message || err || 'AI service unavailable.');
+  try {
+    const parsed = JSON.parse(raw);
+    if (parsed?.error) return parsed.error;
+  } catch {}
+  return raw.replace(/^AI processing failed:\s*/i, '').slice(0, 220);
 }
 
 document.addEventListener('DOMContentLoaded', init);

@@ -1,6 +1,8 @@
 // Cloudflare Pages Function — handles AI image analysis
 // Requires AI binding configured in wrangler.toml: [ai] binding = "AI"
 
+const DEFAULT_VISION_TEXT_MODEL = '@cf/llava-hf/llava-1.5-7b-hf';
+
 const DEFAULT_ALLOWED_ORIGINS = [
   'https://freeimgtools.net',
   'https://www.freeimgtools.net',
@@ -86,7 +88,7 @@ export async function onRequestPost({ request, env }) {
     };
 
     if (Object.prototype.hasOwnProperty.call(prompts, action)) {
-      result = await env.AI.run('@cf/unum/uform-gen2-qwen-500m', {
+      result = await env.AI.run(env.VISION_TEXT_MODEL || DEFAULT_VISION_TEXT_MODEL, {
         image: imageArray,
         prompt: prompts[action],
         max_tokens: action === 'seo-pack' ? 420 : 140,
