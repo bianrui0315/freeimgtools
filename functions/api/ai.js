@@ -48,6 +48,13 @@ export async function onRequestPost({ request, env }) {
     });
     if (rateRejection) return rateRejection;
 
+    if (env.AI_FEATURES_ENABLED !== 'true') {
+      return Response.json(
+        { error: 'AI features are currently disabled to prevent unexpected usage. Set AI_FEATURES_ENABLED=true in Cloudflare Pages to enable them.' },
+        { status: 503, headers: corsHeaders }
+      );
+    }
+
     if (!env.AI) {
       return Response.json(
         { error: 'AI binding not configured. Add [ai] binding = "AI" to wrangler.toml.' },

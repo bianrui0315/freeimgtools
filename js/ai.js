@@ -1,5 +1,5 @@
 import { showToast, initDragDrop } from './shared.js';
-import { createTurnstileGuard } from './turnstile.js';
+import { createTurnstileGuard, getSecurityConfig } from './turnstile.js';
 
 const ACTIONS = {
   'seo-pack': { title: 'AI Image SEO Pack', button: 'Generate SEO Pack' },
@@ -14,6 +14,7 @@ const ACTIONS = {
 const state = { file: null, action: 'seo-pack', copyText: '' };
 const imageGenState = { useCase: 'social', prompt: '' };
 const humanGuards = { analysis: null, image: null };
+let aiEnabled = true;
 
 const els = {
   zone: document.getElementById('upload-zone'),
@@ -41,11 +42,13 @@ const els = {
   downloadGeneratedImage: document.getElementById('download-generated-image'),
   copyImagePrompt: document.getElementById('copy-image-prompt'),
   imageHumanCheck: document.getElementById('ai-image-human-check'),
+  usageNotice: document.getElementById('ai-usage-notice'),
 };
 
 function init() {
   humanGuards.analysis = createTurnstileGuard({ container: els.analysisHumanCheck, showToast });
   humanGuards.image = createTurnstileGuard({ container: els.imageHumanCheck, showToast });
+  initSecurityState();
   initDragDrop(els.zone, files => setFile(files[0]));
   els.fileInput?.addEventListener('change', e => {
     if (e.target.files[0]) setFile(e.target.files[0]);
@@ -60,6 +63,24 @@ function init() {
   els.copyImagePrompt?.addEventListener('click', copyGeneratedPrompt);
   selectAction(state.action);
   selectImageUseCase(imageGenState.useCase);
+}
+
+async function initSecurityState() {
+  const config = await getSecurityConfig();
+  aiEnabled = config.ai?.enabled === true;
+  if (aiEnabled) return;
+
+  if (els.usageNotice) {
+    els.usageNotice.classList.remove('hidden');
+  }
+  if (els.generateBtn) {
+    els.generateBtn.disabled = true;
+    els.generateBtn.textContent = 'AI Disabled';
+  }
+  if (els.generateImageBtn) {
+    els.generateImageBtn.disabled = true;
+    els.generateImageBtn.textContent = 'AI Disabled';
+  }
 }
 
 async function setFile(file) {
@@ -84,6 +105,10 @@ function selectAction(action) {
 }
 
 async function runSelectedAction() {
+  if (!aiEnabled) {
+    showToast('AI is disabled to prevent unexpected Cloudflare usage.');
+    return;
+  }
   if (!state.file) {
     showToast('Please choose an image first');
     return;
@@ -201,6 +226,10 @@ function selectImageUseCase(useCase) {
 }
 
 async function generateImage() {
+  if (!aiEnabled) {
+    showToast('AI image generation is disabled to prevent unexpected Cloudflare usage.');
+    return;
+  }
   const prompt = normalizeText(els.imagePrompt?.value);
   if (!prompt) {
     showToast('Please write an image prompt first');

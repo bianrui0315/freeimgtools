@@ -1,6 +1,18 @@
 let configPromise;
 let scriptPromise;
 
+export async function getSecurityConfig() {
+  if (!configPromise) {
+    configPromise = fetch('/api/security-config')
+      .then(async res => {
+        const data = await res.json().catch(() => ({}));
+        return res.ok ? data : {};
+      })
+      .catch(() => ({}));
+  }
+  return configPromise;
+}
+
 export function createTurnstileGuard({ container, showToast = () => {} }) {
   const state = {
     enabled: false,
@@ -66,18 +78,6 @@ export function createTurnstileGuard({ container, showToast = () => {} }) {
   }
 
   return { getToken, reset };
-}
-
-async function getSecurityConfig() {
-  if (!configPromise) {
-    configPromise = fetch('/api/security-config')
-      .then(async res => {
-        const data = await res.json().catch(() => ({}));
-        return res.ok ? data : {};
-      })
-      .catch(() => ({}));
-  }
-  return configPromise;
 }
 
 async function loadTurnstileScript() {

@@ -24,6 +24,9 @@ export async function onRequestGet({ request, env }) {
 
   return Response.json(
     {
+      ai: {
+        enabled: env.AI_FEATURES_ENABLED === 'true',
+      },
       turnstile: {
         enabled: Boolean(siteKey && secretConfigured),
         siteKey: secretConfigured ? siteKey : '',
