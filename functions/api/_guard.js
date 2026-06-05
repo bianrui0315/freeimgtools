@@ -13,7 +13,7 @@ export function getCorsHeaders(request, env, defaults) {
   return {
     'Access-Control-Allow-Origin': allowedOrigin,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, CF-Turnstile-Response',
+    'Access-Control-Allow-Headers': 'Content-Type',
   };
 }
 
@@ -87,74 +87,6 @@ export async function enforceRateLimits({ request, env, endpoint, windows, corsH
     }
   }
   return null;
-}
-
-export async function verifyTurnstileToken({ request, env, token, corsHeaders }) {
-  if (!env.TURNSTILE_SECRET_KEY) return null;
-
-  const cleanToken = String(token || '').trim();
-  if (!cleanToken) {
-    return Response.json(
-      { error: 'Please complete the human verification check first.' },
-      { status: 403, headers: corsHeaders }
-    );
-  }
-
-  const formData = new FormData();
-  formData.append('secret', env.TURNSTILE_SECRET_KEY);
-  formData.append('response', cleanToken);
-
-  const remoteIp = request.headers.get('CF-Connecting-IP');
-  if (remoteIp) formData.append('remoteip', remoteIp);
-
-  try {
-    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      body: formData,
-      signal: AbortSignal.timeout(8000),
-    });
-    const result = await res.json().catch(() => ({}));
-
-    if (res.ok && result.success === true) return null;
-
-    return Response.json(
-      { error: 'Human verification failed. Please refresh the check and try again.' },
-      { status: 403, headers: corsHeaders }
-    );
-  } catch {
-    return Response.json(
-      { error: 'Human verification is temporarily unavailable. Please try again.' },
-      { status: 503, headers: corsHeaders }
-    );
-  }
-}
-
-export function getBlockedPromptReason(prompt) {
-  const text = String(prompt || '').toLowerCase().replace(/\s+/g, ' ');
-  const rules = [
-    {
-      pattern: /\b(child|children|kid|kids|minor|underage|teen|teenager)\b.*\b(nude|naked|sexual|erotic|porn|lingerie)\b/,
-      message: 'Prompts involving minors and sexual content are not allowed.',
-    },
-    {
-      pattern: /\b(nude|naked|explicit sex|porn|pornographic|erotic|fetish|nsfw)\b/,
-      message: 'Explicit sexual image prompts are not allowed.',
-    },
-    {
-      pattern: /\b(fake|counterfeit|forged|forgery)\b.*\b(passport|visa|driver'?s license|id card|credit card|bank statement)\b/,
-      message: 'Prompts for fake IDs, payment cards, or official documents are not allowed.',
-    },
-    {
-      pattern: /\b(impersonate|deepfake)\b.*\b(real person|celebrity|politician|official)\b/,
-      message: 'Prompts for impersonating real people are not allowed.',
-    },
-    {
-      pattern: /\b(gore|graphic violence|blood-soaked|dismembered|decapitated)\b/,
-      message: 'Graphic violence prompts are not allowed.',
-    },
-  ];
-
-  return rules.find(rule => rule.pattern.test(text))?.message || '';
 }
 
 function getClientKey(request) {

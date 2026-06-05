@@ -1,5 +1,4 @@
 import { showToast } from './shared.js';
-import { createTurnstileGuard } from './turnstile.js';
 
 const form = document.getElementById('audit-form');
 const input = document.getElementById('audit-url');
@@ -9,10 +8,6 @@ const summaryGrid = document.getElementById('audit-summary');
 const issueList = document.getElementById('audit-issues');
 const imageTable = document.getElementById('audit-images');
 const pageMeta = document.getElementById('audit-page-meta');
-const humanCheck = createTurnstileGuard({
-  container: document.getElementById('audit-human-check'),
-  showToast,
-});
 
 form?.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -24,11 +19,10 @@ form?.addEventListener('submit', async (event) => {
 
   setLoading(true);
   try {
-    const turnstileToken = await humanCheck.getToken();
     const res = await fetch('/api/image-seo-audit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url, turnstileToken }),
+      body: JSON.stringify({ url }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Audit failed');
@@ -36,7 +30,6 @@ form?.addEventListener('submit', async (event) => {
   } catch (err) {
     showToast(err.message || 'Audit failed');
   } finally {
-    humanCheck.reset();
     setLoading(false);
   }
 });

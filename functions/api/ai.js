@@ -7,7 +7,6 @@ import {
   rejectDisallowedSource,
   rejectOversizedRequest,
   rejectWrongContentType,
-  verifyTurnstileToken,
 } from './_guard.js';
 
 const DEFAULT_VISION_TEXT_MODEL = '@cf/llava-hf/llava-1.5-7b-hf';
@@ -76,14 +75,6 @@ export async function onRequestPost({ request, env }) {
     if (file.size > MAX_BYTES) {
       return Response.json({ error: 'Image too large. Maximum 5MB for AI analysis.' }, { status: 413, headers: corsHeaders });
     }
-
-    const turnstileRejection = await verifyTurnstileToken({
-      request,
-      env,
-      token: formData.get('turnstileToken'),
-      corsHeaders,
-    });
-    if (turnstileRejection) return turnstileRejection;
 
     const arrayBuffer = await file.arrayBuffer();
     const imageArray = [...new Uint8Array(arrayBuffer)];

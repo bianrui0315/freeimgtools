@@ -1,5 +1,5 @@
 import { showToast, initDragDrop } from './shared.js';
-import { createTurnstileGuard, getSecurityConfig } from './turnstile.js';
+import { getSecurityConfig } from './security.js';
 
 const ACTIONS = {
   'seo-pack': { title: 'AI Image SEO Pack', button: 'Generate SEO Pack' },
@@ -12,8 +12,6 @@ const ACTIONS = {
 };
 
 const state = { file: null, action: 'seo-pack', copyText: '' };
-const imageGenState = { useCase: 'social', prompt: '' };
-const humanGuards = { analysis: null, image: null };
 let aiEnabled = true;
 
 const els = {
@@ -29,25 +27,10 @@ const els = {
   outputTitle: document.getElementById('output-title'),
   outputBody: document.getElementById('output-body'),
   copyOutput: document.getElementById('copy-output'),
-  analysisHumanCheck: document.getElementById('ai-analysis-human-check'),
-  imagePrompt: document.getElementById('t2i-prompt'),
-  imageStyle: document.getElementById('t2i-style'),
-  imageSteps: document.getElementById('t2i-steps'),
-  imageUseCases: [...document.querySelectorAll('.ai-usecase-card')],
-  generateImageBtn: document.getElementById('generate-image-btn'),
-  generatedPlaceholder: document.getElementById('generated-placeholder'),
-  generatedWrap: document.getElementById('generated-image-wrap'),
-  generatedImage: document.getElementById('generated-image'),
-  generatedPrompt: document.getElementById('generated-prompt'),
-  downloadGeneratedImage: document.getElementById('download-generated-image'),
-  copyImagePrompt: document.getElementById('copy-image-prompt'),
-  imageHumanCheck: document.getElementById('ai-image-human-check'),
   usageNotice: document.getElementById('ai-usage-notice'),
 };
 
 function init() {
-  humanGuards.analysis = createTurnstileGuard({ container: els.analysisHumanCheck, showToast });
-  humanGuards.image = createTurnstileGuard({ container: els.imageHumanCheck, showToast });
   initSecurityState();
   initDragDrop(els.zone, files => setFile(files[0]));
   els.fileInput?.addEventListener('change', e => {
@@ -58,11 +41,7 @@ function init() {
   });
   els.generateBtn?.addEventListener('click', runSelectedAction);
   els.copyOutput?.addEventListener('click', copyCurrentOutput);
-  els.imageUseCases.forEach(card => card.addEventListener('click', () => selectImageUseCase(card.dataset.usecase)));
-  els.generateImageBtn?.addEventListener('click', generateImage);
-  els.copyImagePrompt?.addEventListener('click', copyGeneratedPrompt);
   selectAction(state.action);
-  selectImageUseCase(imageGenState.useCase);
 }
 
 async function initSecurityState() {
@@ -76,10 +55,6 @@ async function initSecurityState() {
   if (els.generateBtn) {
     els.generateBtn.disabled = true;
     els.generateBtn.textContent = 'AI Disabled';
-  }
-  if (els.generateImageBtn) {
-    els.generateImageBtn.disabled = true;
-    els.generateImageBtn.textContent = 'AI Disabled';
   }
 }
 
@@ -129,18 +104,15 @@ async function runSelectedAction() {
     showToast(message);
     renderSingle(ACTIONS[state.action].title, message);
   } finally {
-    humanGuards.analysis.reset();
     setLoading(false);
   }
 }
 
 async function requestAi(action) {
-  const turnstileToken = await humanGuards.analysis.getToken();
   const formData = new FormData();
   formData.append('image', state.file);
   formData.append('action', action);
   formData.append('context', els.context?.value || '');
-  if (turnstileToken) formData.append('turnstileToken', turnstileToken);
 
   const res = await fetch('/api/ai', { method: 'POST', body: formData });
   const text = await res.text();
@@ -220,77 +192,12 @@ async function copyCurrentOutput() {
   showToast('AI result copied to clipboard');
 }
 
-function selectImageUseCase(useCase) {
-  imageGenState.useCase = useCase || 'social';
-  els.imageUseCases.forEach(card => card.classList.toggle('active', card.dataset.usecase === imageGenState.useCase));
-}
-
-async function generateImage() {
-  if (!aiEnabled) {
-    showToast('AI image generation is disabled to prevent unexpected Cloudflare usage.');
-    return;
-  }
-  const prompt = normalizeText(els.imagePrompt?.value);
-  if (!prompt) {
-    showToast('Please write an image prompt first');
-    return;
-  }
-  setImageLoading(true);
-
-  try {
-    const turnstileToken = await humanGuards.image.getToken();
-    const res = await fetch('/api/text-to-image', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        prompt,
-        useCase: imageGenState.useCase,
-        style: els.imageStyle?.value || 'editorial',
-        steps: els.imageSteps?.value || '4',
-        turnstileToken,
-      }),
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || 'Image generation failed');
-    if (!data.image) throw new Error('Image generation returned no image');
-
-    els.generatedImage.src = data.image;
-    els.downloadGeneratedImage.href = data.image;
-    els.generatedPrompt.textContent = data.prompt || prompt;
-    imageGenState.prompt = data.prompt || prompt;
-    els.generatedPlaceholder.classList.add('hidden');
-    els.generatedWrap.classList.remove('hidden');
-  } catch (err) {
-    const message = cleanErrorMessage(err);
-    showToast(message);
-    els.generatedPlaceholder.classList.remove('hidden');
-    els.generatedWrap.classList.add('hidden');
-  } finally {
-    humanGuards.image.reset();
-    setImageLoading(false);
-  }
-}
-
-async function copyGeneratedPrompt() {
-  if (!imageGenState.prompt) return;
-  await navigator.clipboard.writeText(imageGenState.prompt);
-  showToast('Image prompt copied to clipboard');
-}
-
 function setLoading(loading) {
   if (!els.generateBtn) return;
   els.generateBtn.disabled = loading;
   els.generateBtn.innerHTML = loading
     ? '<span class="spin">⟳</span> Analyzing...'
     : (els.generateBtn.dataset.label || ACTIONS[state.action].button);
-}
-
-function setImageLoading(loading) {
-  if (!els.generateImageBtn) return;
-  els.generateImageBtn.disabled = loading;
-  els.generateImageBtn.innerHTML = loading
-    ? '<span class="spin">⟳</span> Generating...'
-    : (els.generateImageBtn.dataset.label || 'Generate Image');
 }
 
 function normalizeSeoPack(result) {
