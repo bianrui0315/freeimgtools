@@ -117,10 +117,24 @@ body {
   justify-content: space-between;
 }
 .logo {
-  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.08rem;
   font-weight: 700;
   text-decoration: none;
   letter-spacing: -0.02em;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.logo img {
+  width: 30px;
+  height: 30px;
+  display: block;
+  object-fit: contain;
+  border-radius: 7px;
+}
+.logo span {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
