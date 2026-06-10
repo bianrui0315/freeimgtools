@@ -48,10 +48,11 @@
 
   <!-- Guides -->
   <url><loc>https://freeimgtools.net/guides</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://freeimgtools.net/guides/image-compression</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://freeimgtools.net/guides/image-formats</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://freeimgtools.net/guides/image-compression</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://freeimgtools.net/guides/lossless-image-compression</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://freeimgtools.net/guides/image-formats</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://freeimgtools.net/guides/web-performance-images</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://freeimgtools.net/guides/image-seo</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://freeimgtools.net/guides/image-seo</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://freeimgtools.net/guides/pdf-to-image</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://freeimgtools.net/guides/reduce-image-file-size</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://freeimgtools.net/guides/image-accessibility</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -59,7 +60,7 @@
   <url><loc>https://freeimgtools.net/guides/social-media-image-sizes</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://freeimgtools.net/guides/product-image-seo</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://freeimgtools.net/guides/open-graph-images</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://freeimgtools.net/guides/image-file-names</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://freeimgtools.net/guides/image-file-names</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Trust / legal -->
   <url><loc>https://freeimgtools.net/about</loc><lastmod>2026-05-31</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
