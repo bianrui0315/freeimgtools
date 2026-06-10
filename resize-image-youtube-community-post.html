@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-7946557800571551">
-  <title>Resize Image for YouTube Community Post — Free Online</title>
-  <meta name="description" content="Resize images to YouTube Community Post requirements (1280×720px, 16:9). Also covers YouTube thumbnails, channel art, and profile pictures. Free, no upload required.">
-  <meta name="keywords" content="resize image for youtube community post, youtube community post image size, youtube image size, youtube thumbnail size, resize for youtube free">
+  <title>YouTube Community Post Image Size &amp; Resizer – Free Online Tool</title>
+  <meta name="description" content="Resize images for YouTube Community posts online. Learn the recommended image size and create square, vertical, or custom images for free.">
+  <meta name="keywords" content="youtube community post image size, youtube community post resizer, resize image for youtube community post, community post image size, free online tool">
   <link rel="canonical" href="https://freeimgtools.net/resize-image-youtube-community-post">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -17,12 +17,68 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "YouTube Community Post Image Resizer",
+    "name": "YouTube Community Post Image Size & Resizer",
     "url": "https://freeimgtools.net/resize-image-youtube-community-post",
-    "description": "Resize images to YouTube Community Post and thumbnail requirements for free. No upload required.",
+    "description": "Resize images for YouTube Community posts online. Create square, vertical, landscape, or custom image sizes for free.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What size should a YouTube Community post image be?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 1600 x 1600 pixel square image is a safe recommended size for YouTube Community posts because it displays consistently. You can also use landscape or vertical images when the composition fits the post."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I post vertical images on YouTube Community?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. YouTube Community posts can include vertical images, but square images are often safer for consistent feed display. If you use a vertical image, keep important text and faces away from the edges."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What image format should I use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JPG is a good choice for photos. PNG is useful for graphics, screenshots, or images with text. If your source image is WebP or AVIF, convert it to JPG or PNG before uploading if YouTube rejects the format."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I resize images without losing quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Resizing down from a large image usually preserves good quality. Enlarging a small image can make it look blurry, so start with a high-resolution image whenever possible."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this YouTube Community post resizer free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The YouTube Community post image resizer is free to use and runs in your browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to install anything?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The tool works online in your browser. You do not need to install software or create an account."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -46,8 +102,8 @@
 
 <div class="page">
 
-  <h1 class="page-title">Resize Image for YouTube Community Post</h1>
-  <p class="page-desc">Pre-configured for YouTube Community Post images (1280×720px). Also includes presets for thumbnails, channel art, and profile pictures. Free, private, instant.</p>
+  <h1 class="page-title">YouTube Community Post Image Size &amp; Resizer</h1>
+  <p class="page-desc">The recommended YouTube Community post image size is <strong>1600 × 1600 pixels</strong> for square images. You can also use vertical or landscape images, but square images are a safe choice for consistent display. Upload your image below and resize it for YouTube Community posts online.</p>
 
   <div class="privacy-banner">
     <span class="icon">🔒</span>
@@ -58,7 +114,7 @@
   </div>
 
   <div style="background:#fff7ed;border:1.5px solid #fdba74;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.875rem;line-height:1.7;">
-    <p><strong>📺 YouTube Community Post requirements:</strong> Minimum <strong>1280×720px</strong> recommended · 16:9 aspect ratio · JPG or PNG · max 1MB per image. Up to 5 images per post.</p>
+    <p><strong>📺 YouTube Community post presets:</strong> Square <strong>1600×1600px</strong> · Square <strong>1080×1080px</strong> · Landscape <strong>1280×720px</strong> · Vertical <strong>1080×1350px</strong> · JPG or PNG recommended.</p>
   </div>
 
   <div class="two-col">
@@ -94,17 +150,20 @@
 
     <div>
       <div class="settings-panel" style="position:sticky;top:80px;">
-        <h3>YouTube Size Presets</h3>
+        <h3>YouTube Community Presets</h3>
 
         <div class="setting-row">
           <div class="setting-label">Preset</div>
-          <select id="preset" style="max-width:200px;">
-            <option value="custom">Community Post (1280×720)</option>
-            <optgroup label="YouTube sizes">
-              <option value="web-hd">HD 1280×720</option>
-              <option value="web-full">Full HD 1920×1080</option>
+          <select id="preset" style="max-width:150px;">
+            <option value="yt-community-square" selected>1600×1600</option>
+            <optgroup label="Community post sizes">
+              <option value="ig-square">Square 1080×1080</option>
+              <option value="web-hd">Wide 1280×720</option>
+              <option value="ig-portrait">Tall 1080×1350</option>
             </optgroup>
             <optgroup label="Other">
+              <option value="yt-thumbnail">YT 1280×720</option>
+              <option value="yt-banner">YT 2560×1440</option>
               <option value="twitter">Twitter/X 1200×675</option>
               <option value="og">Open Graph 1200×630</option>
             </optgroup>
@@ -113,13 +172,13 @@
 
         <div class="setting-row">
           <div class="setting-label">Width (px)</div>
-          <input type="number" id="width" value="1280" min="1" max="10000"
+          <input type="number" id="width" value="1600" min="1" max="10000"
             style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;outline:none;">
         </div>
 
         <div class="setting-row">
           <div class="setting-label">Height (px)</div>
-          <input type="number" id="height" value="720" min="1" max="10000"
+          <input type="number" id="height" value="1600" min="1" max="10000"
             style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;outline:none;">
         </div>
 
@@ -143,10 +202,11 @@
         <div style="margin-top:0.75rem;display:grid;gap:0.5rem;">
           <p style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">Quick size buttons:</p>
           <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-            <button onclick="setSize(1280,720)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">Community 1280×720</button>
-            <button onclick="setSize(1920,1080)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">Thumbnail 1920×1080</button>
-            <button onclick="setSize(800,800)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">Profile 800×800</button>
-            <button onclick="setSize(2560,1440)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">Channel Art 2560×1440</button>
+            <button onclick="setSize(1600,1600)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">1600×1600</button>
+            <button onclick="setSize(1080,1080)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">1080×1080</button>
+            <button onclick="setSize(1280,720)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">1280×720</button>
+            <button onclick="setSize(1080,1350)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">1080×1350</button>
+            <button onclick="setSize(0,0)" class="btn btn-secondary" style="padding:0.3rem 0.7rem;font-size:0.78rem;">Custom size</button>
           </div>
         </div>
 
@@ -161,64 +221,94 @@
   </div>
 
   <section class="section" style="max-width:720px;">
-    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Complete YouTube image size guide</h2>
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">What is the best image size for a YouTube Community post?</h2>
+    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
+      <p>A <strong>1600 × 1600 pixel square image</strong> is a strong default for YouTube Community posts because it gives YouTube enough resolution and keeps the composition predictable in feeds. A smaller <strong>1080 × 1080</strong> square image also works well when you want a lighter file.</p>
+      <p>Landscape images such as <strong>1280 × 720</strong> are useful when you are reusing a thumbnail-style design. Vertical images such as <strong>1080 × 1350</strong> can work for portrait content, but keep faces, logos, and text away from the edges in case the preview is cropped differently on mobile.</p>
+      <p>For most creators, square images are the safest choice. They are easy to compose, readable on mobile, and consistent when the post appears next to text, polls, and video updates.</p>
+    </div>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">How to resize an image for a YouTube Community post</h2>
+    <ol style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.5rem;padding-left:1.25rem;">
+      <li>Upload your image.</li>
+      <li>Choose a YouTube Community post size.</li>
+      <li>Download the resized image.</li>
+    </ol>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">YouTube Community post image size tips</h2>
+    <ul style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.5rem;padding-left:1.25rem;">
+      <li>Use high-resolution images so the resized result stays sharp.</li>
+      <li>Keep text, faces, and logos away from the edges.</li>
+      <li>Use JPG for photos and PNG for screenshots, graphics, or images with text.</li>
+      <li>Preview the image before posting so crop-sensitive content is not cut off.</li>
+      <li>Square images are often safest for consistent Community post display.</li>
+    </ul>
+    <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;margin-top:1rem;">For faster uploads, read our <a href="/guides/image-compression" style="color:var(--primary);">image compression guide</a> or use the <a href="/guides/reduce-image-file-size" style="color:var(--primary);">reduce image file size guide</a>. If you publish images on a website, the <a href="/guides/image-seo" style="color:var(--primary);">image SEO guide</a> can help with filenames and alt text.</p>
+  </section>
+
+  <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">YouTube image size reference</h2>
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
         <thead>
           <tr style="background:var(--bg);">
-            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Asset</th>
-            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Recommended Size</th>
-            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Notes</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Use case</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Size</th>
+            <th style="padding:0.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);">Best for</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Community Post Image</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">1280 × 720 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">16:9, max 1MB</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Video Thumbnail</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">1280 × 720 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">16:9, max 2MB</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Channel Art / Banner</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">2560 × 1440 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">Safe zone: 1546×423</td></tr>
-          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Profile Picture</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">800 × 800 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">Displayed as circle</td></tr>
-          <tr><td style="padding:0.6rem 1rem;">Watermark / Branding</td><td style="padding:0.6rem 1rem;">150 × 150 px</td><td style="padding:0.6rem 1rem);">PNG with transparency</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Community Post Square</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">1600 × 1600 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">Safest all-around choice</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Community Post Square</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">1080 × 1080 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">Smaller square exports</td></tr>
+          <tr><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);font-weight:600;">Community Post Landscape</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">1280 × 720 px</td><td style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);">Thumbnail-style images</td></tr>
+          <tr><td style="padding:0.6rem 1rem;font-weight:600;">Community Post Vertical</td><td style="padding:0.6rem 1rem;">1080 × 1350 px</td><td style="padding:0.6rem 1rem;">Portrait images and mobile-first graphics</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
   <section class="section" style="max-width:720px;">
-    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Why image size matters for YouTube Community Posts</h2>
-    <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
-      <p>YouTube Community Posts appear in subscribers' feeds alongside text, polls, and video updates. Images that are too small appear pixelated or get cropped awkwardly; images that are too large are unnecessarily heavy and slow to load on mobile.</p>
-      <p>The recommended minimum for community post images is <strong>1280×720 pixels</strong> (16:9 aspect ratio). This matches the standard HD resolution used for YouTube thumbnails, ensuring your image looks sharp on all screen sizes including 4K displays.</p>
-      <p>If your image is a portrait or square, YouTube will crop or letterbox it automatically. For best results, compose your images in 16:9 before uploading. Use this tool's "Contain" mode to add letterboxing, or "Cover" mode to crop the center to fit 16:9.</p>
-    </div>
-  </section>
-
-  <section class="section" style="max-width:720px;">
-    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Frequently Asked Questions</h2>
     <div style="display:grid;gap:1rem;font-size:0.875rem;">
       <div>
-        <p style="font-weight:600;margin-bottom:0.25rem;">What is the best image size for a YouTube Community Post?</p>
-        <p style="color:var(--text-muted);line-height:1.7;">1280×720 pixels (HD, 16:9 aspect ratio) is the recommended minimum. For sharper display on high-res screens, you can go up to 1920×1080 — the file size will be larger but the quality will be higher.</p>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What size should a YouTube Community post image be?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Use 1600×1600 pixels for a high-resolution square image. You can also use 1080×1080 for a smaller square image, 1280×720 for landscape, or 1080×1350 for vertical posts.</p>
       </div>
       <div>
-        <p style="font-weight:600;margin-bottom:0.25rem;">How many images can I add to one Community Post?</p>
-        <p style="color:var(--text-muted);line-height:1.7;">YouTube allows up to 5 images in a single Community Post. Each image can be up to 1MB. Use batch resize here to process all 5 images at once.</p>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I post vertical images on YouTube Community?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes. Vertical images can work, especially for mobile viewing. Keep important content away from the edges and preview the post before publishing.</p>
       </div>
       <div>
-        <p style="font-weight:600;margin-bottom:0.25rem;">What file format should I use for YouTube images?</p>
-        <p style="color:var(--text-muted);line-height:1.7;">JPG for photos (smaller file size), PNG for graphics with text or transparency. YouTube does not accept WebP or AVIF for uploads — convert to JPG or PNG first.</p>
+        <p style="font-weight:600;margin-bottom:0.25rem;">What image format should I use?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Use JPG for photos and PNG for graphics, screenshots, or text-heavy images. If your source image is WebP or AVIF, use the <a href="/convert" style="color:var(--primary);">format converter</a> first if needed.</p>
       </div>
       <div>
-        <p style="font-weight:600;margin-bottom:0.25rem;">Are my images private?</p>
-        <p style="color:var(--text-muted);line-height:1.7;">Yes. Resizing happens entirely in your browser using the Canvas API. No data is sent to any server.</p>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Can I resize images without losing quality?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Resizing a large image down usually looks sharp. Enlarging a small image can make it blurry, so start with the highest-quality source image you have.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Is this YouTube Community post resizer free?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Yes. It is free and runs in your browser.</p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:0.25rem;">Do I need to install anything?</p>
+        <p style="color:var(--text-muted);line-height:1.7;">No. You can resize images online without installing software or signing in.</p>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
-  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related tools</h2>
+  <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Related image tools</h2>
   <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
-    <a href="/compress-image-under-200kb" class="tool-card"><h3 style="font-size:0.9rem;">🗜️ Compress Images</h3><p>Reduce file size below 1MB</p></a>
-    <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">📐 Image Resizer</h3><p>Full social media preset library</p></a>
-    <a href="/convert" class="tool-card"><h3 style="font-size:0.9rem;">🔄 Format Converter</h3><p>Convert WebP/AVIF to JPG/PNG</p></a>
+    <a href="/youtube-thumbnail-resizer" class="tool-card"><h3 style="font-size:0.9rem;">YouTube Thumbnail Resizer</h3><p>Resize images to 1280×720 for thumbnails</p></a>
+    <a href="/youtube-banner-resizer" class="tool-card"><h3 style="font-size:0.9rem;">YouTube Banner Resizer</h3><p>Create 2560×1440 channel banners</p></a>
+    <a href="/compress" class="tool-card"><h3 style="font-size:0.9rem;">Image Compressor</h3><p>Reduce file size before uploading</p></a>
+    <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">Resize Image</h3><p>Resize to any custom dimensions</p></a>
+    <a href="/guides/reduce-image-file-size" class="tool-card"><h3 style="font-size:0.9rem;">Reduce Image File Size</h3><p>Learn compression and size targets</p></a>
   </div>
 
 </div>
@@ -246,8 +336,8 @@
 <script type="module" src="/js/resize.js"></script>
 <script>
 function setSize(w, h) {
-  document.getElementById('width').value = w;
-  document.getElementById('height').value = h;
+  document.getElementById('width').value = w || '';
+  document.getElementById('height').value = h || '';
 }
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "dbf403e7494a4be294e8302517bed563"}'></script><!-- End Cloudflare Web Analytics -->

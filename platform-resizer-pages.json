@@ -1,0 +1,56 @@
+{
+  "template": "platform-resizer",
+  "domain": "https://freeimgtools.net",
+  "pageRequirements": {
+    "toolAboveFold": true,
+    "canonical": true,
+    "oneH1": true,
+    "faqSchema": true,
+    "relatedToolsSection": true,
+    "staticSeoCopy": true
+  },
+  "pages": [
+    {
+      "slug": "resize-image-youtube-community-post",
+      "title": "YouTube Community Post Image Size & Resizer - Free Online Tool",
+      "h1": "YouTube Community Post Image Size & Resizer",
+      "defaultSize": "1600x1600",
+      "related": ["youtube-thumbnail-resizer", "youtube-banner-resizer", "compress", "resize", "guides/reduce-image-file-size"]
+    },
+    {
+      "slug": "youtube-thumbnail-resizer",
+      "title": "YouTube Thumbnail Size & Resizer - Free Online Tool",
+      "h1": "YouTube Thumbnail Size & Resizer",
+      "defaultSize": "1280x720",
+      "related": ["resize-image-youtube-community-post", "youtube-banner-resizer", "compress", "guides/image-seo"]
+    },
+    {
+      "slug": "youtube-banner-resizer",
+      "title": "YouTube Banner Size & Resizer - Free Online Tool",
+      "h1": "YouTube Banner Size & Resizer",
+      "defaultSize": "2560x1440",
+      "related": ["youtube-thumbnail-resizer", "resize-image-youtube-community-post", "compress", "guides/social-media-image-sizes"]
+    },
+    {
+      "slug": "instagram-profile-picture-resizer",
+      "title": "Instagram Profile Picture Resizer - Free Online Tool",
+      "h1": "Instagram Profile Picture Resizer",
+      "defaultSize": "320x320",
+      "related": ["tiktok-profile-picture-resizer", "discord-emoji-resizer", "resize", "guides/social-media-image-sizes"]
+    },
+    {
+      "slug": "discord-emoji-resizer",
+      "title": "Discord Emoji Size & Resizer - Free Online Tool",
+      "h1": "Discord Emoji Size & Resizer",
+      "defaultSize": "128x128",
+      "related": ["discord-emoji-size", "instagram-profile-picture-resizer", "compress", "convert"]
+    },
+    {
+      "slug": "tiktok-profile-picture-resizer",
+      "title": "TikTok Profile Picture Resizer - Free Online Tool",
+      "h1": "TikTok Profile Picture Resizer",
+      "defaultSize": "200x200",
+      "related": ["instagram-profile-picture-resizer", "discord-emoji-resizer", "compress", "guides/social-media-image-sizes"]
+    }
+  ]
+}
