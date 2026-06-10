@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-7946557800571551">
+  <title>Free GIF Maker - Create Animated GIFs from Images Online</title>
+  <meta name="description" content="Create animated GIFs from JPG, PNG, WebP, and other images online. Free browser-based GIF maker with no upload, no login, adjustable delay, and instant download.">
+  <link rel="canonical" href="https://freeimgtools.net/gif-maker">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/cookie-consent.js"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Free GIF Maker","url":"https://freeimgtools.net/gif-maker","description":"Create animated GIFs from multiple images in your browser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I make a GIF without uploading images?","acceptedAnswer":{"@type":"Answer","text":"Yes. The GIF is created in your browser, so your images stay on your device."}},{"@type":"Question","name":"How many images can I add to a GIF?","acceptedAnswer":{"@type":"Answer","text":"You can add multiple images. Very large frames or long animations may be slower on older devices."}}]}
+  </script>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="/" class="logo" aria-label="FreeImgTools home"><img src="/assets/freeimgtools-icon-512.png" alt="" aria-hidden="true"><span>FreeImgTools</span></a><ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/compress">Compress</a></li><li><a href="/convert">Convert</a></li><li><a href="/resize">Resize</a></li><li><a href="/pdf-to-image">PDF to Image</a></li><li><a href="/image-to-pdf">Image to PDF</a></li><li><a href="/guides">Guides</a></li><li><a href="/ai">AI Tools</a></li></ul></div></nav>
+
+<div class="page">
+  <h1 class="page-title">Free GIF Maker</h1>
+  <p class="page-desc">Turn multiple images into an animated GIF. Set frame delay, output size, and fit mode, then download the GIF directly.</p>
+
+  <div class="privacy-banner"><span class="icon">PRIVATE</span><div><h4>No upload, no account</h4><p>Your frames are assembled in your browser. You do not need Adobe, a login, or an upload queue.</p></div></div>
+
+  <div class="two-col">
+    <div>
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" multiple>
+        <span class="upload-icon">GIF</span>
+        <h3>Drop images to make a GIF</h3>
+        <p>or click to browse. Add at least two frames.</p>
+        <div class="formats"><span class="format-tag">JPG</span><span class="format-tag">PNG</span><span class="format-tag">WebP</span><span class="format-tag">GIF</span><span class="format-tag">BMP</span></div>
+      </div>
+
+      <div id="file-queue" class="hidden" style="margin-top:1rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;"><span style="font-weight:600;font-size:0.9rem;" id="queue-count"></span><button id="clear-btn" class="btn btn-secondary" style="padding:0.35rem 0.75rem;font-size:0.8rem;">Clear all</button></div>
+        <div id="queue-list" class="results-grid"></div>
+      </div>
+
+      <div id="result-section" class="hidden" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Animated GIF result</h2>
+        <div class="card" style="padding:1rem;display:grid;gap:1rem;">
+          <img id="result-preview" src="" alt="Animated GIF preview" style="max-width:100%;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg);">
+          <div style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+            <span id="result-meta" style="font-size:0.85rem;color:var(--text-muted);"></span>
+            <button id="download-btn" class="btn btn-primary">Download GIF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="settings-panel" style="position:sticky;top:80px;">
+        <h3>GIF Settings</h3>
+        <div class="setting-row"><div class="setting-label">Frame Delay<span class="setting-hint">Milliseconds per frame</span></div><input type="number" id="delay" value="500" min="40" max="10000" style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;"></div>
+        <div class="setting-row"><div class="setting-label">Width (px)</div><input type="number" id="width" value="640" min="16" max="2400" style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;"></div>
+        <div class="setting-row"><div class="setting-label">Height (px)</div><input type="number" id="height" value="360" min="16" max="2400" style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;font-size:0.9rem;width:120px;"></div>
+        <div class="setting-row"><div class="setting-label">Fit Mode<span class="setting-hint">How frames fill the canvas</span></div><select id="fit-mode"><option value="contain">Contain</option><option value="cover" selected>Cover</option><option value="exact">Stretch</option></select></div>
+        <div class="setting-row"><div class="setting-label">Encoder Quality<span class="setting-hint">Lower is sharper but slower</span></div><div class="slider-wrap"><input type="range" id="quality" min="1" max="30" value="10"><span class="slider-val" id="quality-val">10</span></div></div>
+        <button id="process-btn" class="btn btn-primary btn-lg" style="width:100%;margin-top:1rem;" disabled>Create GIF</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:720px;"><h2 class="section-title">How to make a GIF from images</h2><ol style="display:grid;gap:0.6rem;font-size:0.9rem;line-height:1.7;color:var(--text);padding-left:1.5rem;"><li>Add two or more images in the order you want them to appear.</li><li>Choose the GIF size, frame delay, and whether to crop, contain, or stretch frames.</li><li>Click Create GIF and download the finished animated GIF.</li></ol></section>
+  <section class="section" style="max-width:720px;"><h2 class="section-title">Related tools</h2><div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));"><a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">Resize Images</h3><p>Set frame size before making a GIF</p></a><a href="/compress" class="tool-card"><h3 style="font-size:0.9rem;">Compress Images</h3><p>Reduce image size first</p></a><a href="/convert" class="tool-card"><h3 style="font-size:0.9rem;">Convert Images</h3><p>Convert PNG, JPG, WebP, AVIF</p></a><a href="/guides/image-formats" class="tool-card"><h3 style="font-size:0.9rem;">Format Guide</h3><p>Choose the right image format</p></a></div></section>
+</div>
+
+<footer><div class="footer-inner"><span class="footer-copy">© 2026 Free Image Tools · Free image tools for everyone</span><ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/compress">Compress</a></li><li><a href="/convert">Convert</a></li><li><a href="/resize">Resize</a></li><li><a href="/pdf-to-image">PDF to Image</a></li><li><a href="/image-to-pdf">Image to PDF</a></li><li><a href="/guides">Guides</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul></div></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+<script type="module" src="/js/gif-maker.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "dbf403e7494a4be294e8302517bed563"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

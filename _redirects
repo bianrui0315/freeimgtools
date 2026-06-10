@@ -9,6 +9,9 @@
 /compress-image-to-20kb.html /compress-image-to-20kb 301
 /compress-image-to-500kb.html /compress-image-to-500kb 301
 /compress-image-to-50kb.html /compress-image-to-50kb 301
+/compress-image-in-bulk.html /compress-image-in-bulk 301
+/compress-jpg-to-20kb.html /compress-jpg-to-20kb 301
+/jpg-below-20kb.html /compress-jpg-to-20kb 301
 /compress-image-under-200kb.html /compress-image-under-200kb 301
 /compress-photo-for-email.html /compress-photo-for-email 301
 /compress.html /compress 301
@@ -20,6 +23,9 @@
 /discord-emoji-size.html /discord-emoji-size 301
 /discord-emoji-resizer.html /discord-emoji-resizer 301
 /extract-color-palette.html /extract-color-palette 301
+/gif-maker.html /gif-maker 301
+/image-to-gif.html /gif-maker 301
+/create-gif.html /gif-maker 301
 /instagram-profile-picture-resizer.html /instagram-profile-picture-resizer 301
 /image-seo-audit.html /image-seo-audit 301
 /image-to-pdf.html /image-to-pdf 301
@@ -30,6 +36,7 @@
 /png-to-webp.html /png-to-webp 301
 /privacy.html /privacy 301
 /resize-image-youtube-community-post.html /resize-image-youtube-community-post 301
+/resize-image-pixels-online.html /resize-image-pixels-online 301
 /resize-photo-for-us-visa.html /resize-photo-for-us-visa 301
 /resize.html /resize 301
 /tiktok-profile-picture-resizer.html /tiktok-profile-picture-resizer 301
