@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-7946557800571551">
-  <title>Image SEO Guide: Image Naming, Alt Text, and Google Image Search</title>
-  <meta name="description" content="Learn image SEO best practices: how to name images for SEO, write alt text, choose file names, add structured data, and improve Google Image Search visibility.">
-  <meta property="og:title" content="Image SEO: Image Naming, Alt Text, and Google Image Search">
+  <title>Image SEO Guide: Alt Text, Speed, Schema &amp; Google Images</title>
+  <meta name="description" content="Improve image SEO with useful alt text, smaller files, responsive images, structured data, image sitemaps, and better Google Image Search visibility.">
+  <meta property="og:title" content="Image SEO Guide: Alt Text, Speed, Schema and Google Images">
   <meta property="og:description" content="Learn how to optimize images for search engines — SEO image names, alt text, structured data, sitemaps, and Google Image Search ranking factors.">
   <meta property="og:type" content="article">
   <link rel="canonical" href="https://freeimgtools.net/guides/image-seo">
@@ -19,11 +19,11 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Image SEO: Image Naming, Alt Text, and Google Image Search",
-    "description": "A practical guide to image SEO — image naming conventions, file names, alt text, structured data, image sitemaps, and how to rank in Google Image Search.",
+    "headline": "Image SEO Guide: Alt Text, Speed, Schema and Google Images",
+    "description": "A practical guide to image SEO covering alt text, image speed, responsive delivery, structured data, image sitemaps, and Google Image Search.",
     "url": "https://freeimgtools.net/guides/image-seo",
     "datePublished": "2026-05-29",
-    "dateModified": "2026-06-10",
+    "dateModified": "2026-06-19",
     "author": {
       "@type": "Organization",
       "name": "Free Image Tools",
@@ -104,8 +104,8 @@
     .callout-warn { background: #fff8f0; border-left-color: #FF9500; }
     .callout-tip { background: #f0fff4; border-left-color: #34C759; }
     .related-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
-    .example-box { background: var(--bg); border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.875rem; }
-    .example-box code { font-family: ui-monospace, monospace; font-size: 0.82rem; background: rgba(0,0,0,0.05); padding: 0.15rem 0.35rem; border-radius: 4px; }
+    .example-box { background: var(--bg); border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.875rem; max-width: 100%; overflow-x: auto; }
+    .example-box code { font-family: ui-monospace, monospace; font-size: 0.82rem; background: rgba(0,0,0,0.05); padding: 0.15rem 0.35rem; border-radius: 4px; overflow-wrap: anywhere; word-break: break-word; }
     .example-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.4rem; }
     .example-good { color: #16a34a; }
     .example-bad { color: #dc2626; }
@@ -139,7 +139,7 @@
     <a href="/">Home</a> › <a href="/guides">Guides</a> › Image SEO
   </div>
 
-  <h1 class="page-title">Image SEO: How to Name Images, Alt Text, and Google Image Search</h1>
+  <h1 class="page-title">Image SEO: Alt Text, Speed, Schema &amp; Google Images</h1>
   <p class="page-desc">Published May 2026 · Updated June 10, 2026</p>
   <div class="callout">
     <p style="margin:0;line-height:1.75;"><strong>Quick answer:</strong> For image SEO, name files with short, descriptive, lowercase words separated by hyphens, write accurate alt text, resize and compress images before publishing, and keep images discoverable in the HTML or sitemap. Example: <code>white-running-shoes-side-view.webp</code> is better than <code>IMG_4821.jpg</code>.</p>
@@ -150,12 +150,12 @@
     <h2>Why image SEO matters</h2>
     <p>Search engines cannot see images the way humans do. They read the text signals <em>around</em> an image — the file name, alt attribute, surrounding paragraph text, structured data, and page context — to understand what the image depicts and whether it is relevant to a given search query.</p>
     <p>Getting this right matters for two distinct reasons. First, images with good SEO signals rank in <strong>Google Image Search</strong>, which drives a meaningful share of referral traffic for sites with visual content. Second, search engines use image relevance as one input when assessing overall page quality — a page where images are properly labeled and relevant to the content signals to crawlers that the page was carefully prepared.</p>
-    <p>The good news is that image SEO is mostly a checklist of straightforward practices: file naming conventions, writing accurate alt text, picking the right format and file size, and in some cases adding structured data. None of it requires advanced technical knowledge.</p>
+    <p>The good news is that image SEO is mostly a checklist of straightforward practices: writing accurate alt text, picking the right format and file size, serving responsive images, and adding structured data or image sitemap entries when useful. None of it requires advanced technical knowledge.</p>
 
     <h2>How to name images for SEO</h2>
     <p>The file name is one of the first signals a search engine uses to understand an image. Crawlers read the URL path — and a path like <code>/images/IMG_4821.jpg</code> tells them nothing, while <code>/images/apple-watch-ultra-black-titanium.jpg</code> tells them quite a lot.</p>
     <p>A good SEO image name answers the same question a human would ask before opening the file: what is this image actually showing? The best file names are descriptive, short, lowercase, and separated with hyphens.</p>
-    <p>For a deeper checklist and filename examples, see the focused <a href="/guides/image-file-names" style="color:var(--primary);">image naming for SEO guide</a>.</p>
+    <div style="background:var(--bg-elevated);border:1px solid var(--border);border-left:3px solid var(--primary);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1rem 0 1.5rem;"><p style="margin:0;"><strong>Looking specifically for image filenames?</strong> Read <a href="/guides/image-file-names" style="color:var(--primary);font-weight:600;">How to Name Images for SEO</a> for the focused naming convention, hyphen rules, and examples.</p></div>
 
     <h3>Naming conventions that work</h3>
     <ul>
