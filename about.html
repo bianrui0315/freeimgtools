@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-7946557800571551">
-  <title>About Free Image Tools — Browser-Based Image Processing, No Uploads</title>
-  <meta name="description" content="Free Image Tools is a browser-based image toolset for compressing, converting, and resizing images. Your files never leave your device — no server, no account, no tracking.">
+  <title>About Free Image Tools: Developer, Testing &amp; Privacy</title>
+  <meta name="description" content="Learn who builds Free Image Tools, how its browser-based image tools are tested, how guides are reviewed, and how local processing protects your files.">
   <meta property="og:title" content="About Free Image Tools">
-  <meta property="og:description" content="Free Image Tools processes images entirely in your browser. No uploads, no accounts, no tracking.">
+  <meta property="og:description" content="Meet the developer behind Free Image Tools and learn how the browser-based tools and guides are tested and maintained.">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://freeimgtools.net/about">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
@@ -26,6 +26,11 @@
       "@type": "Organization",
       "name": "Free Image Tools",
       "url": "https://freeimgtools.net"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Rui Bian",
+      "url": "https://bianrui.net"
     }
   }
   </script>
@@ -98,7 +103,7 @@
       </div>
 
       <h3 style="font-size:1rem;font-weight:700;margin-top:1.75rem;margin-bottom:0.75rem;">Specialty tools</h3>
-      <p>Beyond the main tools, there are 11 specialty tools for specific tasks:</p>
+      <p>Beyond the main tools, there are focused utilities for specific tasks:</p>
       <ul style="margin-top:0.75rem;padding-left:1.25rem;display:grid;gap:0.35rem;">
         <li><a href="/webp-to-jpg" style="color:var(--primary);">WebP to JPG</a> — convert WebP files to standard JPG format</li>
         <li><a href="/avif-to-jpg" style="color:var(--primary);">AVIF to JPG</a> — convert modern AVIF files for broader compatibility</li>
@@ -164,9 +169,27 @@
 
     <section>
       <h2 class="section-title">Who built this</h2>
-      <p>Free Image Tools is a small independent project. It was built by a developer who got tired of uploading images to cloud services to do routine tasks, and wanted something fast and private that ran entirely in the browser.</p>
-      <p style="margin-top:0.75rem;">The site is hosted on Cloudflare Pages and is free to use. It is supported by Google AdSense ads, which appear on the page but do not affect how the tools work.</p>
+      <p>Free Image Tools is built and maintained by <a href="https://bianrui.net" style="color:var(--primary);">Rui Bian</a>, an independent developer who got tired of uploading images to cloud services for routine tasks. The project began with one practical goal: make common image work fast, private, and available without installing software or creating an account.</p>
+      <p style="margin-top:0.75rem;">The site is hosted on Cloudflare Pages and is free to use. It may use clearly separated advertising to help cover hosting and maintenance, but ads never change the output of a tool or receive the images processed by the browser-only tools.</p>
       <p style="margin-top:0.75rem;">If you find a bug or have a feature request, the best way to reach us is through <a href="https://github.com/bianrui0315/imageflow/issues" style="color:var(--primary);">GitHub Issues</a>. See the <a href="/contact" style="color:var(--primary);">Contact page</a> for more details.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">How the tools are tested</h2>
+      <p>Every release is checked in current desktop and mobile browser layouts before it is published. For processing tools, the test is not limited to whether a button responds: the downloaded file must open, use the selected format, and report the expected dimensions or target size.</p>
+      <ul style="margin-top:0.75rem;padding-left:1.25rem;display:grid;gap:0.5rem;">
+        <li><strong>Input and output checks:</strong> sample JPG, PNG, WebP, AVIF, GIF, and PDF files are used where the browser supports them.</li>
+        <li><strong>Result checks:</strong> dimensions, MIME type, file size, filenames, transparency, and multi-file ZIP downloads are inspected.</li>
+        <li><strong>Privacy checks:</strong> browser-only tools are reviewed for unexpected image upload requests; AI features are treated separately because inference requires a server request.</li>
+        <li><strong>Page checks:</strong> internal links, canonical URLs, structured data, mobile overflow, dark mode, and browser console errors are tested.</li>
+      </ul>
+      <p style="margin-top:0.75rem;">Browser image encoders are not identical, so two browsers can produce slightly different file sizes at the same quality setting. Target-size compression therefore reports the actual result instead of promising an exact byte count that every browser cannot guarantee.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Guide and correction policy</h2>
+      <p>Guides are written for a task a user can complete, not merely to create another search page. Platform specifications are checked against first-party documentation when available, examples are written for this site, and materially updated guides receive a new review date. When a platform changes its requirements, the related tool preset and guide should be updated together.</p>
+      <p style="margin-top:0.75rem;">Corrections are welcome through the <a href="/contact" style="color:var(--primary);">Contact page</a> or <a href="https://github.com/bianrui0315/imageflow/issues" style="color:var(--primary);">GitHub Issues</a>. Please include the affected URL and, for a specification change, a first-party source. <strong>Last reviewed: June 23, 2026.</strong></p>
     </section>
 
     <section>

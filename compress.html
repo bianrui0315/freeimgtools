@@ -148,6 +148,30 @@
 
         <div class="setting-row">
           <div class="setting-label">
+            Target file size
+            <span class="setting-hint">Optional maximum per image</span>
+          </div>
+          <select id="target-size">
+            <option value="0">No target</option>
+            <option value="20">20 KB</option>
+            <option value="50">50 KB</option>
+            <option value="100">100 KB</option>
+            <option value="200">200 KB</option>
+            <option value="500">500 KB</option>
+            <option value="custom">Custom</option>
+          </select>
+        </div>
+
+        <div class="setting-row hidden" id="custom-target-row">
+          <div class="setting-label">
+            Custom target (KB)
+            <span class="setting-hint">Between 5 KB and 10 MB</span>
+          </div>
+          <input type="number" id="custom-target" min="5" max="10000" value="100" inputmode="numeric" style="padding:0.45rem 0.6rem;border:1.5px solid var(--border);border-radius:0.5rem;width:120px;">
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-label">
             Strip EXIF data
             <span class="setting-hint">Remove GPS, camera info</span>
           </div>
@@ -169,6 +193,9 @@
               💡 <strong>Tip:</strong> WebP typically reduces file size by 25–35% vs JPEG. AVIF by 40–50%. Both are supported by all modern browsers.
             </p>
           </div>
+        </div>
+        <div id="target-note" class="hidden" style="margin-top:1rem;background:var(--primary-light);border-radius:var(--radius);padding:1rem;">
+          <p style="font-size:0.78rem;color:var(--primary);line-height:1.6;"></p>
         </div>
       </div>
 
@@ -196,29 +223,25 @@
   <div class="divider"></div>
   <h2 class="section-title" style="font-size:1.1rem;">Compress to a target size</h2>
   <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-bottom:1.5rem;">
-    <a href="/compress-image-to-20kb" class="tool-card">
+    <a href="/compress?target=20" class="tool-card">
       <h3 style="font-size:0.95rem;">20KB Target</h3>
       <p>For very strict upload limits</p>
     </a>
-    <a href="/compress-image-to-50kb" class="tool-card">
+    <a href="/compress?target=50" class="tool-card">
       <h3 style="font-size:0.95rem;">50KB Target</h3>
       <p>For forms and small ID photos</p>
     </a>
-    <a href="/compress-image-to-100kb" class="tool-card">
+    <a href="/compress?target=100" class="tool-card">
       <h3 style="font-size:0.95rem;">100KB Target</h3>
       <p>For portals and applications</p>
     </a>
-    <a href="/compress-image-to-500kb" class="tool-card">
+    <a href="/compress?target=500" class="tool-card">
       <h3 style="font-size:0.95rem;">500KB Target</h3>
       <p>For websites and larger photos</p>
     </a>
     <a href="/compress-photo-for-email" class="tool-card">
       <h3 style="font-size:0.95rem;">Email Photos</h3>
       <p>JPEG output for email compatibility</p>
-    </a>
-    <a href="/compress-image-in-bulk" class="tool-card">
-      <h3 style="font-size:0.95rem;">Bulk Compression</h3>
-      <p>Compress many images and download ZIP</p>
     </a>
     <a href="/compress-jpg-to-20kb" class="tool-card">
       <h3 style="font-size:0.95rem;">JPG to 20KB</h3>

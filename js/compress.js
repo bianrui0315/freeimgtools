@@ -31,6 +31,10 @@ const els = {
   fileQueue: document.getElementById('file-queue'),
   queueCount: document.getElementById('queue-count'),
   compareSection: document.getElementById('compare-section'),
+  targetSizeSelect: document.getElementById('target-size'),
+  customTargetRow: document.getElementById('custom-target-row'),
+  customTargetInput: document.getElementById('custom-target'),
+  targetNote: document.getElementById('target-note'),
 };
 
 function init() {
@@ -45,9 +49,15 @@ function init() {
   els.processBtn.addEventListener('click', processAll);
   els.clearBtn?.addEventListener('click', clearAll);
   els.downloadAllBtn?.addEventListener('click', downloadAll);
+  els.targetSizeSelect?.addEventListener('change', updateTargetFromControls);
+  els.customTargetInput?.addEventListener('input', updateTargetFromControls);
 }
 
 function applyPageDefaults() {
+  const queryTarget = Number(new URLSearchParams(window.location.search).get('target'));
+  if (!pageConfig.targetBytes && Number.isFinite(queryTarget) && queryTarget >= 5 && queryTarget <= 10000) {
+    pageConfig.targetBytes = Math.round(queryTarget) * 1024;
+  }
   if (pageConfig.defaultFormat && els.formatSelect) {
     els.formatSelect.value = pageConfig.defaultFormat;
   }
@@ -55,13 +65,45 @@ function applyPageDefaults() {
     els.qualitySlider.value = pageConfig.defaultQuality;
     els.qualityVal.textContent = pageConfig.defaultQuality;
   }
-  if (pageConfig.targetBytes && els.processBtn) {
-    els.processBtn.textContent = `Compress to ${formatBytes(pageConfig.targetBytes)}`;
+  if (els.targetSizeSelect && pageConfig.targetBytes) {
+    const targetKb = Math.round(pageConfig.targetBytes / 1024);
+    const matchingOption = [...els.targetSizeSelect.options].some(option => option.value === String(targetKb));
+    els.targetSizeSelect.value = matchingOption ? String(targetKb) : 'custom';
+    if (!matchingOption && els.customTargetInput) els.customTargetInput.value = String(targetKb);
+  }
+  renderTargetMode();
+}
+
+function updateTargetFromControls() {
+  if (!els.targetSizeSelect) return;
+  const isCustom = els.targetSizeSelect.value === 'custom';
+  const targetKb = isCustom ? Number(els.customTargetInput?.value) : Number(els.targetSizeSelect.value);
+  pageConfig.targetBytes = Number.isFinite(targetKb) && targetKb >= 5
+    ? Math.min(10000, Math.round(targetKb)) * 1024
+    : 0;
+  renderTargetMode();
+}
+
+function renderTargetMode() {
+  const isCustom = els.targetSizeSelect?.value === 'custom';
+  els.customTargetRow?.classList.toggle('hidden', !isCustom);
+  if (els.processBtn) {
+    els.processBtn.textContent = pageConfig.targetBytes
+      ? `Compress to ${formatBytes(pageConfig.targetBytes)}`
+      : 'Compress Images';
+  }
+  if (els.targetNote) {
+    els.targetNote.classList.toggle('hidden', !pageConfig.targetBytes);
+    const note = els.targetNote.querySelector('p');
+    if (note && pageConfig.targetBytes) {
+      note.innerHTML = `<strong>Target mode:</strong> The tool tests multiple quality levels and keeps the highest-quality result under ${formatBytes(pageConfig.targetBytes)} when possible. Very large images may also need smaller pixel dimensions.`;
+    }
+  } else if (pageConfig.targetBytes) {
     const panel = document.querySelector('.settings-panel');
     panel?.insertAdjacentHTML('beforeend', `
       <div style="margin-top:1rem;background:var(--primary-light);border-radius:var(--radius);padding:1rem;">
         <p style="font-size:0.78rem;color:var(--primary);line-height:1.6;">
-          <strong>Target mode:</strong> This page automatically tests quality settings and keeps the highest-quality result under ${formatBytes(pageConfig.targetBytes)} when possible.
+          <strong>Target mode:</strong> This tool tests quality settings and keeps the highest-quality result under ${formatBytes(pageConfig.targetBytes)} when possible.
         </p>
       </div>
     `);

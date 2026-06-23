@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/cookie-consent.js"></script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"Open Graph Image Guide: Size, Safe Area, and Compression","description":"Create better Open Graph images for link previews with the 1200x630 canvas, safe areas, text sizing, compression, and preview testing.","url":"https://freeimgtools.net/guides/open-graph-images","datePublished":"2026-06-05","dateModified":"2026-06-05","author":{"@type":"Organization","name":"Free Image Tools","url":"https://freeimgtools.net"},"publisher":{"@type":"Organization","name":"Free Image Tools","url":"https://freeimgtools.net"}}
+  {"@context":"https://schema.org","@type":"Article","headline":"Open Graph Image Guide: Size, Safe Area, and Compression","description":"Create better Open Graph images for link previews with the 1200x630 canvas, safe areas, text sizing, compression, and preview testing.","url":"https://freeimgtools.net/guides/open-graph-images","datePublished":"2026-06-05","dateModified":"2026-06-23","author":{"@type":"Person","name":"Rui Bian","url":"https://bianrui.net"},"publisher":{"@type":"Organization","name":"Free Image Tools","url":"https://freeimgtools.net"}}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://freeimgtools.net/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://freeimgtools.net/guides"},{"@type":"ListItem","position":3,"name":"Open Graph Images","item":"https://freeimgtools.net/guides/open-graph-images"}]}
@@ -36,7 +36,7 @@
 <div class="page" style="max-width:800px;">
   <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/guides">Guides</a> &rsaquo; Open Graph Images</div>
   <h1 class="page-title">Open Graph Image Guide: Size, Safe Area, and Compression</h1>
-  <p class="page-desc">Published June 2026 · Make link previews look clean across social platforms and chat apps.</p>
+  <p class="page-desc">Published June 5, 2026 · Updated June 23, 2026 · Make link previews look clean across social platforms and chat apps.</p>
   <div class="guide-body">
     <h2>What an Open Graph image does</h2>
     <p>An Open Graph image is the preview image that appears when a web page is shared in apps like Facebook, LinkedIn, Slack, Discord, and messaging tools. A weak preview image makes a page feel unfinished. A clean preview image helps readers recognize the topic before they click.</p>
@@ -56,10 +56,35 @@
 
     <h2>Add the right meta tags</h2>
     <p>Your page should include at least these tags in the head:</p>
-    <pre style="background:#1a1a2e;color:#e2e8f0;padding:1rem;border-radius:12px;overflow:auto;"><code>&lt;meta property="og:title" content="Page title"&gt;
+    <pre style="background:#1a1a2e;color:#e2e8f0;padding:1rem;border-radius:8px;overflow:auto;"><code>&lt;meta property="og:title" content="Page title"&gt;
 &lt;meta property="og:description" content="Short page summary"&gt;
 &lt;meta property="og:image" content="https://example.com/og-image.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:alt" content="Concise image description"&gt;
 &lt;meta property="og:type" content="website"&gt;</code></pre>
+
+    <h2>Use a crawlable absolute image URL</h2>
+    <p>The <code>og:image</code> value should be a complete HTTPS URL, not a relative path such as <code>/images/share.jpg</code>. The image must be available without a login, cookie prompt, or blocked bot request. Return the correct image content type and avoid redirect chains; preview crawlers often have shorter timeouts than a normal browser.</p>
+    <p>Give every page its own relevant preview when possible. Reusing one generic logo image across articles makes shared links difficult to distinguish and loses the chance to explain what each page contains.</p>
+
+    <h2>Test the published URL, not only the image</h2>
+    <ol>
+      <li>Publish the page and open its canonical URL in a private browser window.</li>
+      <li>Open the absolute <code>og:image</code> URL directly and confirm that it returns the intended image.</li>
+      <li>Use the sharing debugger or preview inspector provided by the platform you care about.</li>
+      <li>After replacing an image, request a fresh scrape because platforms may cache the old preview.</li>
+      <li>Check at least one compact mobile preview; large desktop previews can hide unreadable text.</li>
+    </ol>
+
+    <h2>Troubleshoot a missing or stale preview</h2>
+    <ul>
+      <li><strong>No image:</strong> inspect the rendered page source for a missing, duplicated, or malformed <code>og:image</code> tag.</li>
+      <li><strong>Old image:</strong> clear the platform cache or publish the replacement under a versioned filename.</li>
+      <li><strong>Wrong crop:</strong> return to a 1.91:1 canvas and move essential content toward the center.</li>
+      <li><strong>Blurry preview:</strong> verify the source is actually 1200 x 630 rather than a small image enlarged by CSS.</li>
+      <li><strong>Slow preview:</strong> resize first, then compress; do not serve a multi-megabyte camera original as social metadata.</li>
+    </ul>
 
     <div class="callout"><strong>Fast workflow:</strong> Resize to 1200 x 630 with <a href="/resize" style="color:var(--primary);">Image Resizer</a>, compress with <a href="/compress" style="color:var(--primary);">Image Compressor</a>, and audit image SEO with <a href="/image-seo-audit" style="color:var(--primary);">Image SEO Audit</a>.</div>
 
@@ -68,6 +93,7 @@
       <li><a href="/guides/social-media-image-sizes" style="color:var(--primary);">Social media image sizes</a></li>
       <li><a href="/guides/image-seo" style="color:var(--primary);">Image SEO guide</a></li>
       <li><a href="/guides/web-performance-images" style="color:var(--primary);">Image performance guide</a></li>
+      <li><a href="/guides/image-accessibility" style="color:var(--primary);">Image accessibility and alt text</a></li>
     </ul>
   </div>
 </div>

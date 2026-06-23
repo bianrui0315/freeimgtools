@@ -25,6 +25,8 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What size should a Discord emoji be?","acceptedAnswer":{"@type":"Answer","text":"Discord says emoji uploads can be up to 128 x 128 pixels and are resized to 32 x 32 pixels when displayed. The file must be under 256 KB."}},{"@type":"Question","name":"Which file types does Discord accept for emoji?","acceptedAnswer":{"@type":"Answer","text":"Discord's support documentation lists JPEG, PNG, GIF, and WebP for custom emoji uploads."}},{"@type":"Question","name":"Are images uploaded to this resizer?","acceptedAnswer":{"@type":"Answer","text":"No. Static image resizing is performed locally in the browser."}}]}</script>
 </head>
 <body>
 
@@ -57,8 +59,8 @@
     </div>
   </div>
 
-  <div style="background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.875rem;line-height:1.7;">
-    <p><strong>🎮 Discord image size guide:</strong> Custom Emoji → <strong>128×128px</strong> (max 256KB) · Server Icon → <strong>512×512px</strong> · Profile Picture → <strong>128×128px</strong> · Server Banner → 960×540px · Sticker → <strong>320×320px</strong></p>
+  <div style="background:#f5f3ff;color:#1f2937;border:1.5px solid #c4b5fd;border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.875rem;line-height:1.7;">
+    <p><strong>Discord emoji quick answer:</strong> upload up to <strong>128 x 128px</strong> and keep the file under <strong>256KB</strong>. Discord displays custom emoji at 32 x 32px, so simple shapes and strong contrast work best.</p>
   </div>
 
   <div class="two-col">
@@ -167,6 +169,12 @@
   </div>
 
   <section class="section" style="max-width:720px;">
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Current Discord emoji requirements</h2>
+    <p style="color:var(--text-muted);line-height:1.8;">Discord's official upload guide says custom emojis can be up to 128 x 128 pixels, are resized to 32 x 32 pixels when displayed, and must be under 256KB. Supported upload formats include JPEG, PNG, GIF, and WebP. See <a href="https://support.discord.com/hc/en-us/articles/360041139231-Adding-Emojis" rel="noopener" style="color:var(--primary);">Discord's Adding Emojis guide</a>. Last checked June 23, 2026.</p>
+    <p style="color:var(--text-muted);line-height:1.8;">For a static emoji with transparency, start with PNG or WebP. For a photo without transparency, JPEG is often smaller. This tool resizes static images; it does not preserve GIF animation.</p>
+  </section>
+
+  <section class="section" style="max-width:720px;">
     <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Complete Discord image size reference</h2>
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
@@ -211,7 +219,7 @@
     <div style="display:grid;gap:1rem;font-size:0.875rem;">
       <div>
         <p style="font-weight:600;margin-bottom:0.25rem;">What size should a Discord emoji be?</p>
-        <p style="color:var(--text-muted);line-height:1.7;">Discord recommends 128×128 pixels for custom emojis, with a maximum file size of 256KB. PNG format is recommended because it supports transparency — which lets your emoji have a transparent background that works on any chat background color.</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Discord accepts uploads up to 128 x 128 pixels and resizes them to 32 x 32 pixels for display. Keep the design simple enough to remain recognizable at that smaller size and keep the upload below 256KB.</p>
       </div>
       <div>
         <p style="font-weight:600;margin-bottom:0.25rem;">Why does Discord say my emoji is too large?</p>
@@ -219,7 +227,7 @@
       </div>
       <div>
         <p style="font-weight:600;margin-bottom:0.25rem;">Does Discord support animated emojis?</p>
-        <p style="color:var(--text-muted);line-height:1.7;">Yes — Discord supports animated GIF emojis (requires Discord Nitro to use in other servers). This tool resizes static images; for animated GIFs, upload the GIF directly to Discord — it preserves animation automatically.</p>
+        <p style="color:var(--text-muted);line-height:1.7;">Discord accepts GIF uploads for animated emojis. This browser resizer handles the first frame as a static image, so use a dedicated animation editor when the motion needs to be preserved.</p>
       </div>
       <div>
         <p style="font-weight:600;margin-bottom:0.25rem;">Are my images private?</p>
