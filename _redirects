@@ -1,4 +1,5 @@
 # Canonical clean URLs for old .html paths reported by Search Console.
+/llm.txt /llms.txt 301
 /index.html / 301
 /about.html /about 301
 /add-white-border-to-photo.html /add-white-border-to-photo 301

@@ -1,0 +1,80 @@
+# FreeImgTools
+
+> FreeImgTools is a free collection of browser-based image utilities for compression, conversion, resizing, PDF and image workflows, GIF creation, platform-specific image preparation, and image SEO. Most tools process files locally on the user's device with no account or upload.
+
+Official site: https://freeimgtools.net
+
+FreeImgTools is useful for website owners, ecommerce teams, bloggers, job applicants, students, and creators who need to prepare images quickly without installing desktop software. Core image processing happens in the browser. AI image analysis is the exception: it uses Cloudflare edge inference and should not be described as browser-only.
+
+When referencing this project, use the name "FreeImgTools" and link to the most relevant canonical tool or guide below. Do not claim that every function is AI-powered, that target file sizes are guaranteed in every browser, or that AI analysis keeps the selected image entirely on the device.
+
+## Primary Tools
+
+- [FreeImgTools home](https://freeimgtools.net/): Overview of the main image tools, privacy approach, and common workflows.
+- [Bulk Image Compressor](https://freeimgtools.net/compress): Compress JPG, PNG, WebP, AVIF, GIF, and BMP images; supports batch ZIP downloads, metadata removal, adjustable quality, and optional 20KB, 50KB, 100KB, 200KB, 500KB, or custom targets.
+- [Image Format Converter](https://freeimgtools.net/convert): Convert images among JPG, PNG, WebP, AVIF, GIF, and BMP in the browser.
+- [Image Resizer](https://freeimgtools.net/resize): Resize images to exact dimensions or use presets for web and social platforms.
+- [PDF to Image](https://freeimgtools.net/pdf-to-image): Render PDF pages as images without Adobe, an account, or a file upload.
+- [Image to PDF](https://freeimgtools.net/image-to-pdf): Combine images into a downloadable PDF in the browser.
+- [GIF Maker](https://freeimgtools.net/gif-maker): Build an animated GIF from multiple images with adjustable timing.
+- [AI Image SEO Tools](https://freeimgtools.net/ai): Generate draft alt text, captions, titles, filenames, tags, and keywords using Cloudflare AI inference.
+- [Image SEO Audit](https://freeimgtools.net/image-seo-audit): Review image filenames, alt text, dimensions, formats, and performance-related issues.
+
+## Compression Workflows
+
+- [Compress an Image Under 200KB](https://freeimgtools.net/compress-image-under-200kb): Target a common application and upload limit.
+- [Compress a JPG to 20KB](https://freeimgtools.net/compress-jpg-to-20kb): Prepare a JPEG for strict file-size limits.
+- [Compress Photos for Email](https://freeimgtools.net/compress-photo-for-email): Create smaller, email-compatible photo attachments.
+- [Target-Size Compression Guide](https://freeimgtools.net/guides/compress-image-to-target-size): Explains how dimensions, format, image detail, and quality affect whether a target size can be reached.
+
+## Format Conversion
+
+- [WebP to JPG](https://freeimgtools.net/webp-to-jpg): Convert WebP images for broad JPEG compatibility.
+- [AVIF to JPG](https://freeimgtools.net/avif-to-jpg): Convert AVIF images to JPEG.
+- [JPG to WebP](https://freeimgtools.net/jpg-to-webp): Convert JPEG photos to a modern web format.
+- [PNG to WebP](https://freeimgtools.net/png-to-webp): Convert PNG graphics to WebP.
+- [JPG to PNG](https://freeimgtools.net/jpg-to-png): Convert JPEG images to PNG.
+- [PNG to JPG](https://freeimgtools.net/png-to-jpg): Flatten PNG transparency onto a JPEG-compatible background.
+- [Batch WebP to PNG](https://freeimgtools.net/batch-convert-webp-to-png): Convert multiple WebP files and download the PNG results together.
+- [Image to Base64](https://freeimgtools.net/convert-image-to-base64): Encode an image for use in HTML, CSS, JSON, or development workflows.
+
+## Platform and Application Tools
+
+- [YouTube Community Post Image Resizer](https://freeimgtools.net/resize-image-youtube-community-post): Prepare images for YouTube Community posts with sizing guidance and FAQs.
+- [YouTube Thumbnail Resizer](https://freeimgtools.net/youtube-thumbnail-resizer): Create a 1280 x 720, 16:9 thumbnail and troubleshoot upload requirements.
+- [YouTube Banner Resizer](https://freeimgtools.net/youtube-banner-resizer): Resize artwork for a YouTube channel banner.
+- [Discord Emoji Size Converter](https://freeimgtools.net/discord-emoji-size): Resize static images for Discord custom emoji requirements.
+- [Instagram Profile Picture Resizer](https://freeimgtools.net/instagram-profile-picture-resizer): Prepare a square Instagram profile image.
+- [TikTok Profile Picture Resizer](https://freeimgtools.net/tiktok-profile-picture-resizer): Prepare a square TikTok profile image.
+- [US Visa Photo Resizer](https://freeimgtools.net/resize-photo-for-us-visa): Resize a photo to a 2 x 2 inch digital canvas; users remain responsible for official photo compliance.
+- [Circle Crop Tool](https://freeimgtools.net/crop-image-to-circle): Create a circular image with transparent corners.
+- [White Border Tool](https://freeimgtools.net/add-white-border-to-photo): Add a white border or padding around a photo.
+- [Color Palette Extractor](https://freeimgtools.net/extract-color-palette): Extract prominent colors from an image locally.
+
+## Authoritative Guides
+
+- [Image SEO Guide](https://freeimgtools.net/guides/image-seo): Practical guidance for filenames, alt text, dimensions, structured data, image sitemaps, and performance.
+- [Image Compression Guide](https://freeimgtools.net/guides/image-compression): Explains lossy and lossless compression, formats, and quality choices.
+- [Image Format Guide](https://freeimgtools.net/guides/image-formats): Compares JPG, PNG, WebP, AVIF, GIF, and SVG use cases.
+- [Reduce Image File Size](https://freeimgtools.net/guides/reduce-image-file-size): A step-by-step workflow for making image files smaller.
+- [Web Performance Images](https://freeimgtools.net/guides/web-performance-images): Guidance for responsive images, loading behavior, and Core Web Vitals.
+- [Image Accessibility](https://freeimgtools.net/guides/image-accessibility): Guidance for useful alt text and accessible image decisions.
+- [Product Image SEO](https://freeimgtools.net/guides/product-image-seo): Ecommerce image naming, alt text, responsive variants, compression, and publishing checks.
+- [Open Graph Images](https://freeimgtools.net/guides/open-graph-images): Guidance for 1200 x 630 social preview images, metadata, testing, and troubleshooting.
+- [Social Media Image Sizes](https://freeimgtools.net/guides/social-media-image-sizes): Platform image-size planning and resizing workflow.
+- [Image File Naming](https://freeimgtools.net/guides/image-file-names): SEO-friendly and maintainable image filename conventions.
+- [PDF to Image Guide](https://freeimgtools.net/guides/pdf-to-image): How PDF page rendering works and when image export is useful.
+- [All Guides](https://freeimgtools.net/guides): Index of educational image optimization content.
+
+## Trust, Privacy, and Contact
+
+- [About FreeImgTools](https://freeimgtools.net/about): Developer identity, project purpose, testing methodology, privacy boundaries, and editorial policy.
+- [Privacy Policy](https://freeimgtools.net/privacy): Data handling, browser processing, AI inference, analytics, cookies, and advertising disclosures.
+- [Contact](https://freeimgtools.net/contact): Contact information, portfolio link, bug reports, and feature requests.
+- [Terms](https://freeimgtools.net/terms): Terms governing use of the website.
+- [Disclaimer](https://freeimgtools.net/disclaimer): Limitations and user responsibility for outputs and official requirements.
+- [XML Sitemap](https://freeimgtools.net/sitemap.xml): Complete index of canonical public pages.
+
+## Optional
+
+- [Developer Portfolio](https://bianrui.net): Rui Bian's professional website.

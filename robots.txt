@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://freeimgtools.net/sitemap.xml
+# Curated AI/LLM site guide: https://freeimgtools.net/llms.txt
