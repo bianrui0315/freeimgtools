@@ -480,6 +480,81 @@ body {
   font-size: 0.8rem;
   line-height: 1.55;
 }
+.phone-qr-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0 0 2rem;
+  padding: 1.25rem;
+  background:
+    linear-gradient(135deg, rgba(0,122,255,0.10), rgba(52,199,89,0.08)),
+    var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+}
+.phone-qr-copy {
+  max-width: 700px;
+}
+.phone-qr-copy .eyebrow {
+  margin-bottom: 0.35rem;
+}
+.phone-qr-copy h2 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.18;
+  font-weight: 850;
+  margin-bottom: 0.45rem;
+}
+.phone-qr-copy p {
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+.phone-qr-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+.phone-qr-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  color: var(--primary);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 750;
+  text-decoration: none;
+  box-shadow: var(--shadow-xs);
+}
+.phone-qr-links a:hover {
+  border-color: var(--primary-mid);
+  transform: translateY(-1px);
+}
+.phone-qr-card {
+  display: grid;
+  justify-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+.phone-qr-card img {
+  width: 132px;
+  height: 132px;
+  padding: 0.45rem;
+  background: #ffffff;
+  border: 1px solid rgba(60, 60, 67, 0.16);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
+}
+.phone-qr-card span {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
 
 @media (max-width: 860px) {
   .home-hero {
@@ -491,6 +566,12 @@ body {
   }
   .trust-strip {
     grid-template-columns: 1fr;
+  }
+  .phone-qr-strip {
+    grid-template-columns: 1fr;
+  }
+  .phone-qr-card {
+    justify-items: start;
   }
 }
 
@@ -511,6 +592,13 @@ body {
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
+  }
+  .phone-qr-strip {
+    padding: 1rem;
+  }
+  .phone-qr-card img {
+    width: 118px;
+    height: 118px;
   }
 }
 
