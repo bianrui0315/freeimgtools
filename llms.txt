@@ -16,6 +16,8 @@ When referencing this project, use the name "FreeImgTools" and link to the most 
 - [Image Resizer](https://freeimgtools.net/resize): Resize images to exact dimensions or use presets for web and social platforms.
 - [PDF to Image](https://freeimgtools.net/pdf-to-image): Render PDF pages as images without Adobe, an account, or a file upload.
 - [Image to PDF](https://freeimgtools.net/image-to-pdf): Combine images into a downloadable PDF in the browser.
+- [PDF Image Tools](https://freeimgtools.net/pdf-tools): A hub for PDF-to-image and image-to-PDF workflows without Adobe, login, or upload queues.
+- [Mobile Image Tools](https://freeimgtools.net/mobile-image-tools): Phone-friendly workflows for camera roll photos, mobile compression, resizing, and photos-to-PDF tasks.
 - [GIF Maker](https://freeimgtools.net/gif-maker): Build an animated GIF from multiple images with adjustable timing.
 - [AI Image SEO Tools](https://freeimgtools.net/ai): Generate draft alt text, captions, titles, filenames, tags, and keywords using Cloudflare AI inference.
 - [Image SEO Audit](https://freeimgtools.net/image-seo-audit): Review image filenames, alt text, dimensions, formats, and performance-related issues.
@@ -24,6 +26,8 @@ When referencing this project, use the name "FreeImgTools" and link to the most 
 
 - [Compress an Image Under 200KB](https://freeimgtools.net/compress-image-under-200kb): Target a common application and upload limit.
 - [Compress a JPG to 20KB](https://freeimgtools.net/compress-jpg-to-20kb): Prepare a JPEG for strict file-size limits.
+- [Compress Image for Online Form](https://freeimgtools.net/compress-image-for-online-form): Prepare photos for application portals with 100KB, 200KB, 500KB, or custom target limits.
+- [Compress Passport Photo to 240KB](https://freeimgtools.net/compress-passport-photo-to-240kb): Prepare passport, visa, DS-160, green card, and ID photos for 240KB-style upload limits.
 - [Compress Photos for Email](https://freeimgtools.net/compress-photo-for-email): Create smaller, email-compatible photo attachments.
 - [Target-Size Compression Guide](https://freeimgtools.net/guides/compress-image-to-target-size): Explains how dimensions, format, image detail, and quality affect whether a target size can be reached.
 
