@@ -5,6 +5,12 @@
 /add-white-border-to-photo.html /add-white-border-to-photo 301
 /ai.html /ai 301
 /avif-to-jpg.html /avif-to-jpg 301
+/avif-to-jpeg /avif-to-jpg 301
+/avif-to-jpeg.html /avif-to-jpg 301
+/convert-avif-to-jpg /avif-to-jpg 301
+/convert-avif-to-jpg.html /avif-to-jpg 301
+/convert-avif-to-jpeg /avif-to-jpg 301
+/convert-avif-to-jpeg.html /avif-to-jpg 301
 /batch-convert-webp-to-png.html /batch-convert-webp-to-png 301
 /compress-image-to-100kb /compress?target=100 301
 /compress-image-to-100kb.html /compress?target=100 301
@@ -58,6 +64,12 @@
 /png-to-webp.html /png-to-webp 301
 /privacy.html /privacy 301
 /resize-image-youtube-community-post.html /resize-image-youtube-community-post 301
+/youtube-community-post-size /resize-image-youtube-community-post 301
+/youtube-community-post-size.html /resize-image-youtube-community-post 301
+/youtube-community-post-image-size /resize-image-youtube-community-post 301
+/youtube-community-post-image-size.html /resize-image-youtube-community-post 301
+/community-post-size /resize-image-youtube-community-post 301
+/community-post-size.html /resize-image-youtube-community-post 301
 /resize-image-pixels-online /resize 301
 /resize-image-pixels-online.html /resize 301
 /resize-photo-for-us-visa.html /resize-photo-for-us-visa 301
@@ -72,6 +84,10 @@
 /guides/image-accessibility.html /guides/image-accessibility 301
 /guides/image-compression.html /guides/image-compression 301
 /guides/image-file-names.html /guides/image-file-names 301
+/guides/how-to-name-images-for-seo /guides/image-file-names 301
+/guides/how-to-name-images-for-seo.html /guides/image-file-names 301
+/guides/naming-images-for-seo /guides/image-file-names 301
+/guides/naming-images-for-seo.html /guides/image-file-names 301
 /guides/image-formats.html /guides/image-formats 301
 /guides/image-seo.html /guides/image-seo 301
 /guides/lossless-image-compression.html /guides/lossless-image-compression 301
