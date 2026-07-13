@@ -4,7 +4,8 @@
   "description": "Free online image compression, conversion and resize tools — client-side and privacy-first",
   "scripts": {
     "dev": "wrangler pages dev . --port 3000",
-    "deploy": "wrangler pages deploy ."
+    "deploy": "wrangler pages deploy .",
+    "check": "node scripts/validate-site.mjs"
   },
   "devDependencies": {
     "wrangler": "^3.0.0"

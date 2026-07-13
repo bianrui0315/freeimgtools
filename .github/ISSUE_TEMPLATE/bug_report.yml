@@ -1,0 +1,61 @@
+name: Bug report
+description: Report a reproducible problem with a FreeImgTools page or tool.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please do not attach private images or documents.
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+      description: Which page or tool has the problem?
+      placeholder: https://freeimgtools.net/compress
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What did you do before the issue happened?
+      placeholder: |
+        1. Open ...
+        2. Select ...
+        3. Click ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead?
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and operating system
+      placeholder: Chrome 126 on macOS 15
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: File type and approximate size
+      description: Do not attach private files. A short description is enough.
+      placeholder: 4 MB JPG from iPhone, 1200x800 PNG screenshot
+  - type: textarea
+    id: console
+    attributes:
+      label: Console errors
+      description: Paste any browser console errors if available.
+      render: text

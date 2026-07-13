@@ -1,84 +1,43 @@
-# Changelog — AdSense Readiness Upgrade
-**Date:** May 27, 2026
+# Changelog
 
-## Summary
-Full AdSense readiness upgrade. Goal: transform the site from a thin utility
-collection into a complete, content-backed, policy-compliant image tools website.
+All notable changes to FreeImgTools are documented here.
 
----
+## [Unreleased]
 
-## New pages added
+- Added open-source contribution docs, security policy, GitHub issue templates, pull request template, and GitHub Actions validation.
+- Added clearer public GitHub links from the website to improve project transparency and maintenance signals.
 
-### Trust & legal (required for AdSense approval)
-- **`/about`** — Explains what the site is, why it was built, privacy-first design,
-  and what tools are available. No fabricated claims.
-- **`/contact`** — GitHub issues link for bug reports and feature requests; guidance
-  on what to include in a bug report; honest response-time disclosure.
-- **`/terms`** — Terms of Service in plain English. 10 sections covering acceptable
-  use, intellectual property, disclaimers, third-party services, and contact.
-- **`/disclaimer`** — Covers tool limitations, AI feature caveats, AdSense advertising
-  disclosure, and no-professional-advice statement.
-- **`/404`** — Custom 404 page with `noindex` and links back to popular tools.
+## [2026-07-13]
 
-### Guides section (original long-form content)
-- **`/guides`** — Hub page with 4 guide cards and 5 quick-answer FAQs.
-- **`/guides/image-compression`** — ~2,100 words. Lossy vs. lossless,
-  quality settings guide, format comparison, file size targets by use case, 5 FAQs.
-- **`/guides/image-formats`** — ~2,000 words. JPG, PNG, WebP, AVIF, GIF, BMP
-  compared in detail with decision table and browser compatibility notes. 5 FAQs.
-- **`/guides/web-performance-images`** — ~2,300 words. Core Web Vitals impact,
-  srcset/sizes, lazy loading, LCP preload, 8-step audit checklist. 5 FAQs.
+### Added
 
----
+- Added MIT license and refreshed the README for the public open-source repository.
+- Added `llms.txt` to summarize FreeImgTools for AI crawlers and assistants.
+- Added homepage QR code so desktop visitors can quickly open the site on a phone.
+- Added SEO cold-start landing pages for PDF tools, mobile image tools, online form compression, and passport-photo compression.
+- Added Search Console-driven improvements for YouTube Community Post size, image filename SEO, and AVIF to JPG/JPEG intent.
 
-## Existing pages improved
+### Changed
 
-### compress.html
-- Replaced 3-paragraph stub with 5 full sections: how compression works,
-  quality settings reference table (90+/75-85/60-74/<60), format guide,
-  step-by-step instructions, and 5-question FAQ.
-- Added related guides links.
+- Renamed the package metadata to `freeimgtools`.
+- Updated repository links to the public `bianrui0315/freeimgtools` repository.
+- Improved internal links and sitemap/redirect coverage for high-intent search queries.
 
-### convert.html
-- Added 4 new sections: step-by-step instructions, common conversion use cases,
-  limitations (HEIC/TIFF input, GIF animation), and 5-question FAQ.
-- Added related guides links.
+## [2026-05-27]
 
-### resize.html
-- Added 4 new sections: step-by-step instructions, resize modes explained
-  (fit/cover/stretch), best practices (always resize down, 2× for HiDPI),
-  and 5-question FAQ.
-- Added related guides links.
+### Added
 
-### privacy.html
-- Expanded from 7 short sections to 11 full sections.
-- Added Google AdSense disclosure with opt-out links (adssettings.google.com,
-  aboutads.info, networkadvertising.org).
-- Added GDPR/CCPA section.
-- Added Cloudflare Pages hosting disclosure.
-- Added detailed cookie section distinguishing first-party (none) from
-  third-party (AdSense, Cloudflare).
+- Added trust and legal pages: `/about`, `/contact`, `/terms`, `/disclaimer`, and a custom `/404`.
+- Added original guides for image compression, image formats, web performance images, and guide hub navigation.
+- Added Google AdSense disclosure, GDPR/CCPA notes, Cloudflare hosting disclosure, and cookie details to the privacy policy.
 
----
+### Changed
 
-## Global site changes
+- Expanded `/compress`, `/convert`, and `/resize` from short utility pages into fuller tool pages with instructions, FAQs, and related guides.
+- Added the Guides link to global navigation.
+- Replaced the older tool-only footer with a full footer containing key tool, guide, trust, and legal links.
+- Expanded sitemap coverage from 21 to 29 URLs.
 
-### Navigation
-- Added **Guides** link to the nav bar on all 21 existing pages.
+### Unchanged
 
-### Footer
-- Replaced tool-only footer with full legal footer on all 21 existing pages.
-- Footer now includes: Home, Compress, Convert, Resize, Guides, About, Contact,
-  Privacy Policy, Terms, Disclaimer.
-
-### Sitemap
-- Updated from 21 to 29 URLs.
-- Added all new guides, trust pages, and updated lastmod to 2026-05-27.
-
----
-
-## What was NOT changed
-- Core tool functionality (compress.js, convert.js, resize.js, ai.js) — untouched.
-- CSS design system — untouched.
-- All existing long-tail SEO pages — nav/footer updated, content unchanged.
-- AdSense publisher ID — already present on all pages.
+- Core browser-side tool functionality was not changed in this upgrade.

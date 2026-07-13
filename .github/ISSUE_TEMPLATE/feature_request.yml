@@ -1,0 +1,39 @@
+name: Feature request
+description: Suggest a new tool, preset, guide, or workflow.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What task are you trying to complete?
+      description: Explain the real workflow or upload requirement.
+      placeholder: I need to resize product images to 1200x1200 and keep a white background.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Suggested solution
+      description: What should FreeImgTools add or change?
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Compression
+        - Conversion
+        - Resize or crop
+        - PDF
+        - GIF
+        - Image SEO
+        - AI
+        - Guide or documentation
+        - Other
+  - type: textarea
+    id: context
+    attributes:
+      label: Extra context
+      description: Include platform requirements, dimensions, file-size limits, or examples.

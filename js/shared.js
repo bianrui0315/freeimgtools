@@ -82,7 +82,7 @@ export async function downloadZip(items) {
     const zip = new JSZip();
     items.forEach(({ blob, filename }) => zip.file(filename, blob));
     const zipBlob = await zip.generateAsync({ type: 'blob' });
-    await downloadBlob(zipBlob, 'imageflow-export.zip');
+    await downloadBlob(zipBlob, 'freeimgtools-export.zip');
   } else {
     for (const { blob, filename } of items) {
       await downloadBlob(blob, filename);

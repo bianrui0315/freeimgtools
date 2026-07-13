@@ -102,28 +102,17 @@ When adding a page, prefer useful, specific workflows over thin keyword variatio
 
 ## Contributing
 
-Contributions are welcome. Good first contributions include:
-
-- Fixing bugs in browser-side image tools
-- Improving accessibility and keyboard usability
-- Adding focused tests or reproducible QA steps
-- Improving documentation and guide accuracy
-- Adding carefully scoped, privacy-friendly tool workflows
-- Improving mobile layout and performance
-
-Before opening a pull request:
-
-1. Keep changes focused.
-2. Avoid adding server-side uploads for core private workflows.
-3. Preserve canonical URLs and internal links.
-4. Test desktop and mobile layouts where UI changes are involved.
-5. Run basic validation for changed JavaScript, HTML, redirects, and sitemap entries.
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, project principles, QA expectations, and pull request guidance.
 
 ## Security
 
-Please do not open public issues for security-sensitive reports. Contact the maintainer privately through the contact information on https://freeimgtools.net/contact.
+Please do not open public issues for security-sensitive reports. See [SECURITY.md](SECURITY.md) for private reporting instructions.
 
 Do not commit API keys, Cloudflare tokens, OpenAI keys, private analytics credentials, or other secrets to this repository.
+
+## Changelog
+
+Notable project changes are tracked in [CHANGELOG.md](CHANGELOG.md).
 
 ## Maintainer
 
