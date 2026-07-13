@@ -1,6 +1,8 @@
 (function () {
   const RESULT_SELECTORS = ['#results-section', '#result-section', '#ai-output', '#audit-result'];
+  const START_SELECTORS = ['#upload-zone', '#drop-zone'];
   const PANEL_CLASS = 'tool-share-panel';
+  const STARTER_CLASS = 'tool-share-starter';
 
   function canonicalUrl() {
     return document.querySelector('link[rel="canonical"]')?.href || window.location.href.split('#')[0];
@@ -42,13 +44,14 @@
     }
   }
 
-  function createPanel() {
+  function createPanel(options = {}) {
+    const compact = options.compact === true;
     const panel = document.createElement('div');
-    panel.className = PANEL_CLASS;
+    panel.className = compact ? `${PANEL_CLASS} ${STARTER_CLASS}` : PANEL_CLASS;
     panel.innerHTML = `
       <div class="tool-share-copy">
-        <strong>Finished?</strong>
-        <span>Share this free tool or open it later on your phone.</span>
+        <strong>${compact ? 'Share this tool' : 'Finished?'}</strong>
+        <span>${compact ? 'Copy, share, bookmark, or open FreeImgTools on your phone.' : 'Share this free tool or open it later on your phone.'}</span>
       </div>
       <div class="tool-share-actions">
         <button type="button" data-share-action="share">Share this tool</button>
@@ -108,7 +111,18 @@
     node.appendChild(createPanel());
   }
 
+  function attachStarterPanel(node) {
+    if (!node || node.dataset.shareStarterAttached === 'true') return;
+    node.dataset.shareStarterAttached = 'true';
+    node.insertAdjacentElement('afterend', createPanel({ compact: true }));
+  }
+
   function scan() {
+    START_SELECTORS
+      .map((selector) => document.querySelector(selector))
+      .filter(Boolean)
+      .forEach(attachStarterPanel);
+
     RESULT_SELECTORS
       .map((selector) => document.querySelector(selector))
       .filter(isVisible)
