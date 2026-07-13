@@ -106,6 +106,10 @@ When adding a page, prefer useful, specific workflows over thin keyword variatio
 
 Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, project principles, QA expectations, and pull request guidance.
 
+Good first issues are listed here:
+
+https://github.com/bianrui0315/freeimgtools/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22
+
 ## Security
 
 Please do not open public issues for security-sensitive reports. See [SECURITY.md](SECURITY.md) for private reporting instructions.
@@ -123,6 +127,12 @@ Maintained by Rui Bian.
 - Website: https://freeimgtools.net
 - Portfolio: https://bianrui.net
 - GitHub: https://github.com/bianrui0315
+
+## Contributors
+
+Thanks to the people helping improve FreeImgTools:
+
+- [@abu-pixel](https://github.com/abu-pixel) — added cross-links between PDF and image compression pages in [#4](https://github.com/bianrui0315/freeimgtools/pull/4).
 
 ## License
 

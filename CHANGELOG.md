@@ -8,6 +8,7 @@ All notable changes to FreeImgTools are documented here.
 - Added clearer public GitHub links from the website to improve project transparency and maintenance signals.
 - Added post-result sharing prompts for tool pages with share, copy link, mobile QR, and bookmark actions.
 - Added a prominent homepage "Open source on GitHub" link and README preview image.
+- Recognized the first external contributor and added a direct good-first-issue link to the README.
 
 ## [2026-07-13]
 
