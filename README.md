@@ -4,6 +4,8 @@ FreeImgTools is a privacy-first collection of browser-based image utilities for 
 
 Live site: https://freeimgtools.net
 
+![FreeImgTools website preview](assets/freeimgtools-og.png)
+
 ## Why This Project Exists
 
 Many image tools require uploading private files to a server, creating an account, waiting in a queue, or installing desktop software for a small one-time task. FreeImgTools focuses on quick, practical image workflows that run directly in the browser whenever possible.

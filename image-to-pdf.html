@@ -13,6 +13,7 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/cookie-consent.js"></script>
+  <script src="/js/share-tools.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -527,6 +528,7 @@
         : `images-${n}pages.pdf`;
       doc.save(fname);
       setStatus(`✓ PDF downloaded — ${n} page${n !== 1 ? 's' : ''}`);
+      window.FreeImgToolsShare?.show(listSection);
     } catch (err) {
       console.error(err);
       setStatus('Failed to create PDF. Please try again.', true);
