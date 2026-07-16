@@ -10,6 +10,10 @@ All notable changes to FreeImgTools are documented here.
 - Added a prominent homepage "Open source on GitHub" link and README preview image.
 - Recognized the first external contributor and added a direct good-first-issue link to the README.
 - Added a sitewide Buy Me a Coffee support section with QR code.
+- Strengthened homepage brand SEO for FreeImgTools, including brand FAQ content and structured data.
+- Added an all-tools directory at `/tools` and linked it from sitewide navigation and footer.
+- Added high-intent landing pages for 50KB compression, 100KB compression, Open Graph images, LinkedIn banners, Instagram Stories, and passport photo resizing.
+- Updated sitemap and redirects so new landing pages are independently indexable.
 
 ## [2026-07-13]
 

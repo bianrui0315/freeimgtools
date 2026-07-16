@@ -94,11 +94,14 @@ Note that a plain static server does not emulate Cloudflare Pages clean URLs, re
 
 FreeImgTools uses focused landing pages and guides for real user tasks:
 
+- Browse every image utility from the `/tools` directory
 - Compress image to a target size
 - Resize images for a specific platform
 - Convert modern formats for compatibility
 - Create or export PDFs without desktop software
 - Improve image SEO with better filenames, alt text, and file size
+
+Recent SEO expansion focuses on high-intent pages such as compress image to 50KB, compress image to 100KB, Open Graph image resizing, LinkedIn banner resizing, Instagram Story resizing, and passport photo preparation.
 
 When adding a page, prefer useful, specific workflows over thin keyword variations. Each page should have a clear user task, canonical URL, meta description, internal links, and practical guidance.
 

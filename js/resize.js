@@ -18,6 +18,8 @@ const PRESETS = {
   'twitter': { w: 1200, h: 675, label: 'Twitter/X Card' },
   'og': { w: 1200, h: 630, label: 'Open Graph / Facebook' },
   'linkedin': { w: 1200, h: 627, label: 'LinkedIn Post' },
+  'linkedin-banner': { w: 1584, h: 396, label: 'LinkedIn Banner (1584×396)' },
+  'passport-square': { w: 600, h: 600, label: 'Passport Photo (600×600)' },
 };
 
 const state = { files: [], results: [] };
