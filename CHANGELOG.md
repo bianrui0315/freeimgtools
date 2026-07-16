@@ -9,6 +9,7 @@ All notable changes to FreeImgTools are documented here.
 - Added post-result sharing prompts for tool pages with share, copy link, mobile QR, and bookmark actions.
 - Added a prominent homepage "Open source on GitHub" link and README preview image.
 - Recognized the first external contributor and added a direct good-first-issue link to the README.
+- Added a sitewide Buy Me a Coffee support section with QR code.
 
 ## [2026-07-13]
 

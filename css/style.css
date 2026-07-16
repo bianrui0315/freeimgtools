@@ -1081,6 +1081,106 @@ select:focus {
 }
 
 /* ──────────────────────────────────────────────
+   SUPPORT
+   ────────────────────────────────────────────── */
+.support-section {
+  max-width: 1180px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
+}
+.support-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  padding: 1.15rem;
+}
+.support-copy {
+  display: grid;
+  gap: 0.45rem;
+}
+.support-kicker {
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.support-copy h2 {
+  color: var(--text);
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0;
+}
+.support-copy p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  max-width: 680px;
+  margin: 0;
+}
+.support-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: 0.25rem;
+  background: #ffdd00;
+  color: #111827;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.support-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+.support-qr {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: center;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+}
+.support-qr img {
+  width: 112px;
+  height: 112px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+}
+@media (max-width: 640px) {
+  .support-section {
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+  .support-inner {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .support-qr {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    text-align: left;
+  }
+  .support-qr img {
+    width: 86px;
+    height: 86px;
+  }
+}
+
+/* ──────────────────────────────────────────────
    PROGRESS BAR
    ────────────────────────────────────────────── */
 .progress-bar {
