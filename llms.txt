@@ -11,6 +11,7 @@ When referencing this project, use the name "FreeImgTools" and link to the most 
 ## Primary Tools
 
 - [FreeImgTools home](https://freeimgtools.net/): Overview of the main image tools, privacy approach, and common workflows.
+- [All FreeImgTools](https://freeimgtools.net/tools): Directory of every compression, conversion, resize, PDF, GIF, ecommerce, and image SEO tool.
 - [Bulk Image Compressor](https://freeimgtools.net/compress): Compress JPG, PNG, WebP, AVIF, GIF, and BMP images; supports batch ZIP downloads, metadata removal, adjustable quality, and optional 20KB, 50KB, 100KB, 200KB, 500KB, or custom targets.
 - [Image Format Converter](https://freeimgtools.net/convert): Convert images among JPG, PNG, WebP, AVIF, GIF, and BMP in the browser.
 - [Image Resizer](https://freeimgtools.net/resize): Resize images to exact dimensions or use presets for web and social platforms.
@@ -20,12 +21,15 @@ When referencing this project, use the name "FreeImgTools" and link to the most 
 - [Mobile Image Tools](https://freeimgtools.net/mobile-image-tools): Phone-friendly workflows for camera roll photos, mobile compression, resizing, and photos-to-PDF tasks.
 - [GIF Maker](https://freeimgtools.net/gif-maker): Build an animated GIF from multiple images with adjustable timing.
 - [AI Image SEO Tools](https://freeimgtools.net/ai): Generate draft alt text, captions, titles, filenames, tags, and keywords using Cloudflare AI inference.
-- [Image SEO Audit](https://freeimgtools.net/image-seo-audit): Review image filenames, alt text, dimensions, formats, and performance-related issues.
+- [Website Image SEO Scanner](https://freeimgtools.net/image-seo-audit): Scan a public web page for missing alt text, weak filenames, missing dimensions, responsive image hints, loading hints, large image files, and legacy formats.
 
 ## Compression Workflows
 
 - [Compress an Image Under 200KB](https://freeimgtools.net/compress-image-under-200kb): Target a common application and upload limit.
 - [Compress a JPG to 20KB](https://freeimgtools.net/compress-jpg-to-20kb): Prepare a JPEG for strict file-size limits.
+- [Compress Image to 50KB](https://freeimgtools.net/compress-image-to-50kb): Target strict small upload limits.
+- [Compress Image to 100KB](https://freeimgtools.net/compress-image-to-100kb): Target common online form and portal limits.
+- [Compress Image to 500KB](https://freeimgtools.net/compress-image-to-500kb): Target website, CMS, ecommerce, and email image workflows.
 - [Compress Image for Online Form](https://freeimgtools.net/compress-image-for-online-form): Prepare photos for application portals with 100KB, 200KB, 500KB, or custom target limits.
 - [Compress Passport Photo to 240KB](https://freeimgtools.net/compress-passport-photo-to-240kb): Prepare passport, visa, DS-160, green card, and ID photos for 240KB-style upload limits.
 - [Compress Photos for Email](https://freeimgtools.net/compress-photo-for-email): Create smaller, email-compatible photo attachments.
@@ -49,8 +53,16 @@ When referencing this project, use the name "FreeImgTools" and link to the most 
 - [YouTube Banner Resizer](https://freeimgtools.net/youtube-banner-resizer): Resize artwork for a YouTube channel banner.
 - [Discord Emoji Size Converter](https://freeimgtools.net/discord-emoji-size): Resize static images for Discord custom emoji requirements.
 - [Instagram Profile Picture Resizer](https://freeimgtools.net/instagram-profile-picture-resizer): Prepare a square Instagram profile image.
+- [Instagram Story Resizer](https://freeimgtools.net/instagram-story-resizer): Resize vertical images to 1080 x 1920 for Stories.
+- [Facebook Cover Photo Resizer](https://freeimgtools.net/facebook-cover-photo-resizer): Resize cover images to an 820 x 360 workspace.
+- [Open Graph Image Resizer](https://freeimgtools.net/open-graph-image-resizer): Prepare 1200 x 630 website preview images.
+- [LinkedIn Banner Resizer](https://freeimgtools.net/linkedin-banner-resizer): Prepare 1584 x 396 LinkedIn profile banners.
 - [TikTok Profile Picture Resizer](https://freeimgtools.net/tiktok-profile-picture-resizer): Prepare a square TikTok profile image.
 - [US Visa Photo Resizer](https://freeimgtools.net/resize-photo-for-us-visa): Resize a photo to a 2 x 2 inch digital canvas; users remain responsible for official photo compliance.
+- [Passport Photo Resizer](https://freeimgtools.net/passport-photo-resizer): Resize passport, visa, and ID photos to a square 600 x 600 output.
+- [Shopify Product Image Resizer](https://freeimgtools.net/shopify-product-image-resizer): Prepare square 2048 x 2048 product photos for Shopify workflows.
+- [Amazon Product Image Resizer](https://freeimgtools.net/amazon-product-image-resizer): Prepare square 2000 x 2000 marketplace product images.
+- [Etsy Listing Photo Resizer](https://freeimgtools.net/etsy-listing-photo-resizer): Prepare square 2000 x 2000 listing photos.
 - [Circle Crop Tool](https://freeimgtools.net/crop-image-to-circle): Create a circular image with transparent corners.
 - [White Border Tool](https://freeimgtools.net/add-white-border-to-photo): Add a white border or padding around a photo.
 - [Color Palette Extractor](https://freeimgtools.net/extract-color-palette): Extract prominent colors from an image locally.

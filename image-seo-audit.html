@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-7946557800571551">
-  <title>Image SEO Audit - Check Alt Text and SEO Image File Names</title>
-  <meta name="description" content="Run a free image SEO audit for a web page. Check missing alt text, empty alt attributes, weak SEO image file names, dimensions, and image formats.">
+  <title>Website Image SEO Scanner - Audit Alt Text, File Size &amp; Filenames</title>
+  <meta name="description" content="Scan a web page for image SEO issues. Check missing alt text, weak filenames, missing dimensions, large images, responsive image hints, and formats.">
   <link rel="canonical" href="https://freeimgtools.net/image-seo-audit">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -15,10 +15,10 @@
   <script src="/js/share-tools.js" defer></script>
   <script src="/js/support.js" defer></script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Image SEO Audit","url":"https://freeimgtools.net/image-seo-audit","description":"Check image SEO issues on a web page, including missing alt text, weak SEO image file names, image dimensions, and legacy formats.","applicationCategory":"SEOApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Website Image SEO Scanner","url":"https://freeimgtools.net/image-seo-audit","description":"Scan image SEO issues on a web page, including missing alt text, weak SEO image file names, missing dimensions, large image files, responsive image hints, and legacy formats.","applicationCategory":"SEOApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the Image SEO Audit check?","acceptedAnswer":{"@type":"Answer","text":"It checks image tags in the returned HTML for missing alt attributes, empty alt text, missing width and height, weak SEO image file names, and legacy image formats."}},{"@type":"Question","name":"How should I name images for SEO?","acceptedAnswer":{"@type":"Answer","text":"Use short, descriptive, lowercase file names with hyphens between words. Match the filename to the visible image and avoid camera defaults or keyword stuffing."}},{"@type":"Question","name":"Does the scanner measure real Core Web Vitals?","acceptedAnswer":{"@type":"Answer","text":"No. This Lite scanner does not run JavaScript or measure real LCP. It provides a fast first-pass image SEO check from the HTML response."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the Website Image SEO Scanner check?","acceptedAnswer":{"@type":"Answer","text":"It checks image tags in the returned HTML for missing alt attributes, empty alt text, missing width and height, weak SEO image file names, responsive image hints, loading hints, legacy image formats, and large image files when the server exposes file size headers."}},{"@type":"Question","name":"How should I name images for SEO?","acceptedAnswer":{"@type":"Answer","text":"Use short, descriptive, lowercase file names with hyphens between words. Match the filename to the visible image and avoid camera defaults or keyword stuffing."}},{"@type":"Question","name":"Does the scanner measure real Core Web Vitals?","acceptedAnswer":{"@type":"Answer","text":"No. This scanner does not run JavaScript or measure real LCP. It provides a fast first-pass image SEO and image hygiene check from the HTML response."}}]}
   </script>
 </head>
 <body>
@@ -27,6 +27,7 @@
     <a href="/" class="logo" aria-label="FreeImgTools home"><img src="/assets/freeimgtools-icon-512.png" alt="" aria-hidden="true"><span>FreeImgTools</span></a>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
+      <li><a href="/tools">Tools</a></li>
       <li><a href="/compress">Compress</a></li>
       <li><a href="/convert">Convert</a></li>
       <li><a href="/resize">Resize</a></li>
@@ -39,17 +40,17 @@
 </nav>
 
 <div class="page" style="max-width:960px;">
-  <h1 class="page-title">Image SEO Audit</h1>
-  <p class="page-desc">Check a web page for missing image alt text, weak SEO image file names, missing dimensions, and legacy image formats. This Lite audit reads the page HTML and gives practical fixes.</p>
+  <h1 class="page-title">Website Image SEO Scanner</h1>
+  <p class="page-desc">Enter a website URL and FreeImgTools will scan the page for image SEO problems: missing alt text, weak filenames, missing dimensions, oversized image files, responsive image hints, loading hints, and legacy formats.</p>
 
-  <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
-    <h4 style="font-weight:700;font-size:0.9rem;color:#92400e;margin-bottom:0.2rem;">Lite scanner scope</h4>
-    <p style="font-size:0.82rem;color:#b45309;line-height:1.7;">This version analyzes image tags in the returned HTML. It does not run JavaScript, crawl the full site, or measure real LCP. Use it for fast first-pass image SEO checks.</p>
+  <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
+    <h4 style="font-weight:700;font-size:0.9rem;color:#1d4ed8;margin-bottom:0.2rem;">Fast URL-based image audit</h4>
+    <p style="font-size:0.82rem;color:#1e40af;line-height:1.7;">The scanner fetches the public HTML for one page, checks image tags, and lightly probes a limited number of public image headers for file size. It does not crawl private networks, run JavaScript, upload your files, or measure real Core Web Vitals.</p>
   </div>
 
   <form id="audit-form" class="card" style="padding:1.25rem;display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
     <input id="audit-url" type="url" placeholder="https://example.com/page" style="flex:1;min-width:260px;padding:0.75rem 0.9rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;">
-    <button id="audit-btn" class="btn btn-primary" type="submit">Audit Images</button>
+    <button id="audit-btn" class="btn btn-primary" type="submit">Scan Website Images</button>
   </form>
 
   <div id="audit-result" class="hidden" style="margin-top:1.5rem;">
@@ -60,9 +61,10 @@
     <section class="section" style="margin-top:1.5rem;">
       <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;">Recommended fixes</h2>
       <ul id="audit-issues" style="padding-left:1.25rem;display:grid;gap:0.5rem;color:var(--text-muted);line-height:1.7;"></ul>
+      <div id="audit-recommendations" class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0.75rem;margin-top:1rem;"></div>
       <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1rem;">
         <a href="/ai" class="btn btn-primary" style="text-decoration:none;">Generate Alt Text</a>
-        <a href="/compress" class="btn btn-secondary" style="text-decoration:none;">Compress Images</a>
+        <a href="/compress-image-to-500kb" class="btn btn-secondary" style="text-decoration:none;">Compress Large Images</a>
         <a href="/guides/image-seo" class="btn btn-secondary" style="text-decoration:none;">Read Image SEO Guide</a>
       </div>
     </section>
@@ -72,7 +74,7 @@
       <div style="overflow:auto;border:1px solid var(--border);border-radius:8px;">
         <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
           <thead style="background:var(--bg-elevated);text-align:left;">
-            <tr><th style="padding:0.75rem;">File</th><th style="padding:0.75rem;">Alt</th><th style="padding:0.75rem;">Dimensions</th><th style="padding:0.75rem;">Filename</th><th style="padding:0.75rem;">Format</th></tr>
+            <tr><th style="padding:0.75rem;">File</th><th style="padding:0.75rem;">Alt</th><th style="padding:0.75rem;">Dimensions</th><th style="padding:0.75rem;">Filename</th><th style="padding:0.75rem;">Format</th><th style="padding:0.75rem;">Size</th><th style="padding:0.75rem;">Srcset</th><th style="padding:0.75rem;">Loading</th></tr>
           </thead>
           <tbody id="audit-images"></tbody>
         </table>
@@ -81,11 +83,12 @@
   </div>
 
   <section class="section" style="max-width:720px;">
-    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">What this image SEO audit checks</h2>
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">What this website image scanner checks</h2>
     <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;display:grid;gap:0.75rem;">
       <p><strong>Alt text:</strong> Missing alt attributes are accessibility issues and weak image SEO signals. Empty alt text is valid only for decorative images.</p>
       <p><strong>Dimensions:</strong> Images without width and height can contribute to layout shift while the page loads.</p>
-      <p><strong>Filenames and formats:</strong> Descriptive SEO image file names help search engines understand context. WebP and AVIF can improve performance compared with large JPG or PNG files.</p>
+      <p><strong>Size, filenames, and formats:</strong> Descriptive SEO image file names help search engines understand context. Smaller WebP and AVIF files can improve performance compared with oversized JPG or PNG files.</p>
+      <p><strong>Responsive delivery:</strong> Missing <code>srcset</code>, missing loading hints, and large image headers are surfaced as practical next steps for website owners.</p>
     </div>
   </section>
 
@@ -94,8 +97,8 @@
     <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));">
       <a href="/ai" class="tool-card"><h3 style="font-size:0.9rem;">AI Alt Text Generator</h3><p>Generate draft alt text for missing image descriptions.</p></a>
       <a href="/guides/image-seo" class="tool-card"><h3 style="font-size:0.9rem;">Image SEO Guide</h3><p>Learn how to name images for SEO, write alt text, and add structured data.</p></a>
-      <a href="/compress-image-to-100kb" class="tool-card"><h3 style="font-size:0.9rem;">Compress to 100KB</h3><p>Reduce oversized images for faster pages.</p></a>
-      <a href="/compress?target=500" class="tool-card"><h3 style="font-size:0.9rem;">Compress to 500KB</h3><p>Set a practical max size for content images.</p></a>
+      <a href="/compress-image-to-100kb" class="tool-card"><h3 style="font-size:0.9rem;">Compress to 100KB</h3><p>Reduce strict upload images for faster pages.</p></a>
+      <a href="/compress-image-to-500kb" class="tool-card"><h3 style="font-size:0.9rem;">Compress to 500KB</h3><p>Set a practical max size for content images.</p></a>
       <a href="/compress-photo-for-email" class="tool-card"><h3 style="font-size:0.9rem;">Compress for Email</h3><p>Create smaller JPEGs for newsletters and sharing.</p></a>
       <a href="/resize" class="tool-card"><h3 style="font-size:0.9rem;">Image Resizer</h3><p>Add the right dimensions before publishing images.</p></a>
       <a href="/convert" class="tool-card"><h3 style="font-size:0.9rem;">Format Converter</h3><p>Convert JPG or PNG to WebP for web delivery.</p></a>

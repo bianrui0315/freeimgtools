@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">FreeImgTools workflow demo</title>
+  <desc id="desc">A four step workflow showing upload, optimize, download, and scan website images.</desc>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="70" y="70" width="1060" height="490" rx="24" fill="#ffffff" stroke="#dbe3ef"/>
+  <text x="110" y="135" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" fill="#0f172a">FreeImgTools workflow</text>
+  <text x="110" y="176" font-family="Inter, Arial, sans-serif" font-size="20" fill="#64748b">Private browser tools for images, PDFs, ecommerce, and image SEO</text>
+
+  <g transform="translate(110 230)">
+    <rect width="225" height="220" rx="18" fill="#eff6ff" stroke="#bfdbfe"/>
+    <circle cx="112" cy="72" r="34" fill="#007aff"/>
+    <text x="112" y="83" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#ffffff">1</text>
+    <text x="112" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a">Drop images</text>
+    <text x="112" y="162" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">JPG, PNG, WebP, AVIF</text>
+    <text x="112" y="186" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">No upload for core tools</text>
+  </g>
+
+  <g transform="translate(365 230)">
+    <rect width="225" height="220" rx="18" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <circle cx="112" cy="72" r="34" fill="#22c55e"/>
+    <text x="112" y="83" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#ffffff">2</text>
+    <text x="112" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a">Optimize</text>
+    <text x="112" y="162" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">Compress, convert, resize</text>
+    <text x="112" y="186" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">Target 50KB to 500KB</text>
+  </g>
+
+  <g transform="translate(620 230)">
+    <rect width="225" height="220" rx="18" fill="#fff7ed" stroke="#fed7aa"/>
+    <circle cx="112" cy="72" r="34" fill="#f97316"/>
+    <text x="112" y="83" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#ffffff">3</text>
+    <text x="112" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a">Download</text>
+    <text x="112" y="162" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">Save results instantly</text>
+    <text x="112" y="186" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">Get recommended next tools</text>
+  </g>
+
+  <g transform="translate(875 230)">
+    <rect width="225" height="220" rx="18" fill="#f5f3ff" stroke="#ddd6fe"/>
+    <circle cx="112" cy="72" r="34" fill="#7c3aed"/>
+    <text x="112" y="83" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#ffffff">4</text>
+    <text x="112" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#0f172a">Scan site</text>
+    <text x="112" y="162" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">Audit alt text, filenames</text>
+    <text x="112" y="186" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#475569">and large image files</text>
+  </g>
+
+  <text x="600" y="520" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#0f172a">freeimgtools.net</text>
+</svg>

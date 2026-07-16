@@ -20,6 +20,10 @@ const PRESETS = {
   'linkedin': { w: 1200, h: 627, label: 'LinkedIn Post' },
   'linkedin-banner': { w: 1584, h: 396, label: 'LinkedIn Banner (1584×396)' },
   'passport-square': { w: 600, h: 600, label: 'Passport Photo (600×600)' },
+  'facebook-cover': { w: 820, h: 360, label: 'Facebook Cover (820×360)' },
+  'shopify-product': { w: 2048, h: 2048, label: 'Shopify Product (2048×2048)' },
+  'amazon-product': { w: 2000, h: 2000, label: 'Amazon Product (2000×2000)' },
+  'etsy-listing': { w: 2000, h: 2000, label: 'Etsy Listing (2000×2000)' },
 };
 
 const state = { files: [], results: [] };

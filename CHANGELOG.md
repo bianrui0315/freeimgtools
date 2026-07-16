@@ -14,6 +14,10 @@ All notable changes to FreeImgTools are documented here.
 - Added an all-tools directory at `/tools` and linked it from sitewide navigation and footer.
 - Added high-intent landing pages for 50KB compression, 100KB compression, Open Graph images, LinkedIn banners, Instagram Stories, and passport photo resizing.
 - Updated sitemap and redirects so new landing pages are independently indexable.
+- Upgraded the Image SEO Audit into a Website Image SEO Scanner with large-file checks, responsive image hints, loading hints, and clearer recommended fixes.
+- Added high-intent landing pages for 500KB compression, Facebook covers, Shopify product images, Amazon product images, and Etsy listing photos.
+- Added smarter post-result next-step recommendations so users can move from resize to compression, SEO audit, PDF workflows, or product image guidance.
+- Added a workflow demo asset to the README and refreshed `llms.txt` with the newest tools and topical clusters.
 
 ## [2026-07-13]
 

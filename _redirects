@@ -15,8 +15,7 @@
 /compress-image-to-100kb.html /compress-image-to-100kb 301
 /compress-image-to-20kb /compress?target=20 301
 /compress-image-to-20kb.html /compress?target=20 301
-/compress-image-to-500kb /compress?target=500 301
-/compress-image-to-500kb.html /compress?target=500 301
+/compress-image-to-500kb.html /compress-image-to-500kb 301
 /compress-image-to-50kb.html /compress-image-to-50kb 301
 /compress-image-in-bulk /compress 301
 /compress-image-in-bulk.html /compress 301
@@ -44,12 +43,16 @@
 /gif-maker.html /gif-maker 301
 /image-to-gif.html /gif-maker 301
 /create-gif.html /gif-maker 301
+/facebook-cover-photo-resizer.html /facebook-cover-photo-resizer 301
 /open-graph-image-resizer.html /open-graph-image-resizer 301
 /instagram-profile-picture-resizer.html /instagram-profile-picture-resizer 301
 /instagram-story-resizer.html /instagram-story-resizer 301
 /image-seo-audit.html /image-seo-audit 301
 /image-to-pdf.html /image-to-pdf 301
 /linkedin-banner-resizer.html /linkedin-banner-resizer 301
+/shopify-product-image-resizer.html /shopify-product-image-resizer 301
+/amazon-product-image-resizer.html /amazon-product-image-resizer 301
+/etsy-listing-photo-resizer.html /etsy-listing-photo-resizer 301
 /make-pdf-from-photos /image-to-pdf 301
 /make-pdf-from-photos.html /image-to-pdf 301
 /photos-to-pdf /image-to-pdf 301

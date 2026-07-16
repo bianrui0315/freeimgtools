@@ -51,6 +51,34 @@
       "h1": "TikTok Profile Picture Resizer",
       "defaultSize": "200x200",
       "related": ["instagram-profile-picture-resizer", "discord-emoji-resizer", "compress", "guides/social-media-image-sizes"]
+    },
+    {
+      "slug": "facebook-cover-photo-resizer",
+      "title": "Facebook Cover Photo Resizer - 820x360 Free Tool",
+      "h1": "Facebook Cover Photo Resizer",
+      "defaultSize": "820x360",
+      "related": ["open-graph-image-resizer", "instagram-story-resizer", "linkedin-banner-resizer", "compress-image-to-500kb"]
+    },
+    {
+      "slug": "shopify-product-image-resizer",
+      "title": "Shopify Product Image Resizer - 2048x2048 Free Tool",
+      "h1": "Shopify Product Image Resizer",
+      "defaultSize": "2048x2048",
+      "related": ["compress-image-to-500kb", "ai", "guides/product-image-seo", "image-seo-audit"]
+    },
+    {
+      "slug": "amazon-product-image-resizer",
+      "title": "Amazon Product Image Resizer - 2000x2000 Main Image Tool",
+      "h1": "Amazon Product Image Resizer",
+      "defaultSize": "2000x2000",
+      "related": ["compress-image-to-500kb", "shopify-product-image-resizer", "etsy-listing-photo-resizer", "guides/product-image-seo"]
+    },
+    {
+      "slug": "etsy-listing-photo-resizer",
+      "title": "Etsy Listing Photo Resizer - 2000x2000 Free Tool",
+      "h1": "Etsy Listing Photo Resizer",
+      "defaultSize": "2000x2000",
+      "related": ["compress-image-to-500kb", "shopify-product-image-resizer", "ai", "guides/product-image-seo"]
     }
   ]
 }

@@ -46,6 +46,7 @@
 
   function createPanel(options = {}) {
     const compact = options.compact === true;
+    const nextLinks = compact ? [] : recommendationsForPath(location.pathname);
     const panel = document.createElement('div');
     panel.className = compact ? `${PANEL_CLASS} ${STARTER_CLASS}` : PANEL_CLASS;
     panel.innerHTML = `
@@ -59,6 +60,12 @@
         <button type="button" data-share-action="phone">Use this on phone</button>
         <button type="button" data-share-action="bookmark">Bookmark this tool</button>
       </div>
+      ${nextLinks.length ? `
+        <div class="tool-share-next">
+          <strong>Recommended next</strong>
+          <div>${nextLinks.map(link => `<a href="${link.href}">${link.label}</a>`).join('')}</div>
+        </div>
+      ` : ''}
       <div class="tool-share-phone hidden">
         <img src="/assets/freeimgtools-qr.svg" alt="QR code for FreeImgTools">
         <p>Scan to open FreeImgTools on your phone. For this exact tool page, use Copy link and send it to your phone.</p>
@@ -98,6 +105,50 @@
     });
 
     return panel;
+  }
+
+  function recommendationsForPath(pathname) {
+    const path = pathname.replace(/\.html$/, '');
+    if (path.includes('compress')) {
+      return [
+        { href: '/resize', label: 'Resize before compressing' },
+        { href: '/image-seo-audit', label: 'Scan website images' },
+        { href: '/guides/compress-image-to-target-size', label: 'Target size guide' },
+      ];
+    }
+    if (path.includes('shopify') || path.includes('amazon') || path.includes('etsy') || path.includes('product')) {
+      return [
+        { href: '/compress-image-to-500kb', label: 'Compress product images' },
+        { href: '/ai', label: 'Generate product alt text' },
+        { href: '/guides/product-image-seo', label: 'Product image SEO guide' },
+      ];
+    }
+    if (path.includes('resize') || path.includes('banner') || path.includes('cover') || path.includes('story')) {
+      return [
+        { href: '/compress-image-to-500kb', label: 'Compress resized image' },
+        { href: '/open-graph-image-resizer', label: 'Make social preview' },
+        { href: '/guides/social-media-image-sizes', label: 'Social size guide' },
+      ];
+    }
+    if (path.includes('pdf')) {
+      return [
+        { href: '/compress-image-to-500kb', label: 'Compress extracted images' },
+        { href: '/image-to-pdf', label: 'Make a PDF from photos' },
+        { href: '/pdf-tools', label: 'All PDF image tools' },
+      ];
+    }
+    if (path.includes('ai') || path.includes('image-seo-audit')) {
+      return [
+        { href: '/guides/image-seo', label: 'Image SEO guide' },
+        { href: '/compress-image-to-500kb', label: 'Compress large images' },
+        { href: '/tools', label: 'Browse all tools' },
+      ];
+    }
+    return [
+      { href: '/tools', label: 'Browse all tools' },
+      { href: '/image-seo-audit', label: 'Scan website images' },
+      { href: '/compress-image-to-500kb', label: 'Compress to 500KB' },
+    ];
   }
 
   function isVisible(node) {

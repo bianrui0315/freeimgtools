@@ -6,6 +6,8 @@ Live site: https://freeimgtools.net
 
 ![FreeImgTools website preview](assets/freeimgtools-og.png)
 
+![FreeImgTools workflow demo](assets/freeimgtools-workflow-demo.svg)
+
 ## Why This Project Exists
 
 Many image tools require uploading private files to a server, creating an account, waiting in a queue, or installing desktop software for a small one-time task. FreeImgTools focuses on quick, practical image workflows that run directly in the browser whenever possible.
@@ -19,8 +21,16 @@ Core tools such as compression, conversion, resizing, cropping, GIF creation, an
 - Image resizing with exact pixel dimensions and presets for YouTube, Discord, Instagram, TikTok, Open Graph, US visa photos, and more.
 - PDF tools for converting PDF pages to images and combining photos into a PDF without Adobe, login, or upload queues.
 - GIF maker for creating animated GIFs from multiple images.
+- Website Image SEO Scanner for URL-based checks of alt text, weak filenames, missing dimensions, large image files, responsive image hints, and legacy formats.
 - Image SEO tools and guides for alt text, filenames, compression, web performance, Open Graph images, and ecommerce/product images.
 - AI-assisted image SEO utilities using Cloudflare Workers AI for optional alt text, caption, title, tag, and filename suggestions.
+
+## Mini Demo
+
+1. Drop an image into a browser-only tool such as `/compress-image-to-500kb`.
+2. Choose the target size, format, or platform preset.
+3. Download the result and use the recommended next-tool links.
+4. For published pages, run `/image-seo-audit` to find missing alt text, oversized images, weak filenames, and missing dimensions.
 
 ## Privacy Model
 
@@ -101,7 +111,9 @@ FreeImgTools uses focused landing pages and guides for real user tasks:
 - Create or export PDFs without desktop software
 - Improve image SEO with better filenames, alt text, and file size
 
-Recent SEO expansion focuses on high-intent pages such as compress image to 50KB, compress image to 100KB, Open Graph image resizing, LinkedIn banner resizing, Instagram Story resizing, and passport photo preparation.
+Recent SEO expansion focuses on high-intent pages such as compress image to 50KB, compress image to 100KB, compress image to 500KB, Open Graph image resizing, Facebook cover resizing, LinkedIn banner resizing, Instagram Story resizing, passport photo preparation, and ecommerce product image workflows for Shopify, Amazon, and Etsy.
+
+Current topical clusters include target-size compression, platform/social resizers, ecommerce product image workflows, PDF/image conversion, and website image SEO scanning.
 
 When adding a page, prefer useful, specific workflows over thin keyword variations. Each page should have a clear user task, canonical URL, meta description, internal links, and practical guidance.
 
