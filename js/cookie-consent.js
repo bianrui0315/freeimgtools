@@ -15,12 +15,12 @@
 
   /* ── Load AdSense ──────────────────────────────────────────────────────── */
   function loadAdSense() {
-    if (document.querySelector('script[data-adsense]')) return; // already loaded
+    if (document.getElementById('freeimgtools-adsense-script')) return; // already loaded
     var s = document.createElement('script');
+    s.id = 'freeimgtools-adsense-script';
     s.async = true;
     s.crossOrigin = 'anonymous';
     s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + CLIENT;
-    s.setAttribute('data-adsense', '1');
     document.head.appendChild(s);
   }
 

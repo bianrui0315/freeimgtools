@@ -18,6 +18,8 @@ All notable changes to FreeImgTools are documented here.
 - Added high-intent landing pages for 500KB compression, Facebook covers, Shopify product images, Amazon product images, and Etsy listing photos.
 - Added smarter post-result next-step recommendations so users can move from resize to compression, SEO audit, PDF workflows, or product image guidance.
 - Added a workflow demo asset to the README and refreshed `llms.txt` with the newest tools and topical clusters.
+- Moved Buy Me a Coffee support into the site header with a hidden-on-load QR popover, added a categorized Tools dropdown, and refreshed header/card motion effects.
+- Cache-busted shared header and cookie scripts and removed an unsupported AdSense script attribute.
 
 ## [2026-07-13]
 
