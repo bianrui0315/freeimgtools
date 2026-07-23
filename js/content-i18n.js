@@ -103,6 +103,7 @@
   add('WebP to JPG Converter', 'WebP 转 JPG 转换器', 'Convertidor WebP a JPG', 'WebP から JPG 変換', 'Conversor WebP ad JPG', 'Convertisseur WebP vers JPG', 'WebP zu JPG Konverter');
   add('YouTube Banner Size & Resizer', 'YouTube 横幅尺寸与调整器', 'Tamaño y redimensionador de banner YouTube', 'YouTube バナーサイズとリサイズ', 'Mensura et mutator vexilli YouTube', 'Taille et redimensionneur de bannière YouTube', 'YouTube Banner-Größe und Resizer');
   add('YouTube Thumbnail Size & Resizer', 'YouTube 缩略图尺寸与调整器', 'Tamaño y redimensionador de miniatura YouTube', 'YouTube サムネイルサイズとリサイズ', 'Mensura et mutator thumbnail YouTube', 'Taille et redimensionneur de miniature YouTube', 'YouTube Thumbnail-Größe und Resizer');
+  add('Common situations where you need a PDF as an image:', '常见的 PDF 转图片使用场景：', 'Situaciones comunes donde necesitas un PDF como imagen:', 'PDF を画像として使うよくある場面：', 'Casus communes ubi PDF ut imago opus est:', 'Situations courantes où un PDF doit devenir une image :', 'Typische Situationen, in denen du ein PDF als Bild brauchst:');
 
   // Guide titles and major guide headings.
   add('How to Compress an Image to a Target File Size', '如何把图片压缩到指定文件大小', 'Cómo comprimir una imagen a un tamaño objetivo', '画像を目標ファイルサイズに圧縮する方法', 'Quomodo imaginem ad magnitudinem destinatam comprimere', 'Comment compresser une image à une taille cible', 'So komprimierst du ein Bild auf eine Zielgröße');
@@ -394,6 +395,185 @@
       'FreeImgTools ist eine Open-Source-Website auf freeimgtools.net für Komprimierung, Konvertierung, Resize, PDF, GIF und Bild-SEO. Die Haupttools sind kostenlos, ohne Konto und privacy-first.')
   ];
 
+  const GUIDE_INTROS = {
+    '/guides/compress-image-to-target-size.html': {
+      zh: [
+        '很多压缩器只让你选择质量数值，但真实上传问题通常是硬性文件大小限制：100KB 表单、500KB 邮件、签证或申请系统的最大体积。目标不是盲目降低质量，而是在限制内尽量保留清晰度。',
+        '推荐流程是：先调整像素尺寸，必要时转换格式，然后再调质量直到低于目标大小。只降低质量却保留 4000px 大图，常常会得到又糊又仍然偏大的文件。',
+        '如果图片始终压不下去，通常是尺寸太大、细节太复杂，或目标大小对这张图过于严格。草地、头发、织物、文字和噪点背景都会比纯色背景更难压缩。'
+      ],
+      es: [
+        'Muchos compresores solo piden elegir una calidad, pero los problemas reales suelen ser límites estrictos: formularios de 100KB, correos de 500KB o portales de visa con tamaño máximo. La meta es entrar en el límite conservando la mayor claridad posible.',
+        'El flujo recomendado es: redimensionar primero, convertir si ayuda y ajustar calidad al final. Si solo bajas calidad en una imagen de 4000px, puedes terminar con un archivo borroso que aún pesa demasiado.',
+        'Si una imagen no baja al objetivo, normalmente las dimensiones son grandes, hay demasiado detalle o el límite es demasiado estricto para la calidad esperada.'
+      ],
+      ja: [
+        '多くの圧縮ツールは品質値だけを選ばせますが、実際の問題は 100KB のフォーム、500KB のメール、ビザ申請などの厳しい上限です。目的は上限内でできるだけ見た目の品質を残すことです。',
+        'おすすめは、先にピクセル寸法を下げ、必要なら形式を変え、最後に品質を調整する流れです。4000px の画像を品質だけ下げても、ぼやけてまだ大きいことがあります。',
+        '目標サイズに入らない場合は、寸法が大きい、細部が多い、または目標が厳しすぎることが原因です。草、髪、布、文字、ノイズ背景は圧縮しにくいです。'
+      ],
+      la: [
+        'Multi compressores solum qualitatem petunt, sed difficultates verae saepe de limite duro sunt: forma 100KB, epistula 500KB, aut porta visa. Propositum est limitem attingere dum claritas quam maxima servatur.',
+        'Ratio commendata est: primum mensuras minue, deinde formam muta si prodest, postremo qualitatem compone. Imago 4000px sola qualitate reducta saepe turbida manet et adhuc magna est.',
+        'Si imago ad limitem non descendit, plerumque mensurae nimis magnae sunt, detailia nimis multa sunt, aut finis nimis strictus est.'
+      ],
+      fr: [
+        'Beaucoup de compresseurs demandent seulement une qualité, mais le vrai problème est souvent une limite stricte : formulaire à 100KB, e-mail à 500KB ou portail de visa. L’objectif est de respecter la limite tout en gardant le plus de netteté possible.',
+        'Le bon flux est : redimensionner d’abord, convertir si utile, puis ajuster la qualité. Baisser seulement la qualité d’une image de 4000px donne souvent un fichier flou qui reste trop lourd.',
+        'Si l’image ne descend pas sous la cible, les dimensions sont souvent trop grandes, le détail trop complexe ou la limite trop stricte pour la qualité attendue.'
+      ],
+      de: [
+        'Viele Kompressoren fragen nur nach Qualität, aber echte Upload-Probleme sind oft harte Grenzen: 100KB-Formulare, 500KB-E-Mails oder Visa-Portale. Ziel ist, das Limit einzuhalten und möglichst viel sichtbare Qualität zu behalten.',
+        'Der richtige Ablauf ist: zuerst skalieren, bei Bedarf Format wechseln, dann Qualität anpassen. Nur die Qualität eines 4000px-Bildes zu senken führt oft zu einer unscharfen Datei, die noch zu groß ist.',
+        'Wenn ein Bild das Ziel nicht erreicht, sind meist die Abmessungen zu groß, die Details zu komplex oder das Limit für die gewünschte Qualität zu streng.'
+      ]
+    },
+    '/guides/image-accessibility.html': {
+      zh: [
+        '全球有大量用户存在不同程度的视力障碍，许多人依赖屏幕阅读器。图片没有合适的 alt 文本时，读屏软件可能只读出 IMG_4821.jpg 这样的文件名，用户得不到任何有效信息。',
+        '图片无障碍不仅影响用户体验，也和法律合规有关。WCAG 要求非文本内容提供文本替代，许多国家和地区的数字无障碍规则也参考这些标准。',
+        '从 SEO 角度看，清晰的 alt 文本、文件名和上下文也能帮助搜索引擎理解图片内容，让图片更容易出现在相关搜索中。'
+      ],
+      es: [
+        'Muchas personas tienen discapacidad visual y usan lectores de pantalla. Si una imagen no tiene alt text útil, el lector puede anunciar solo un nombre como IMG_4821.jpg, que no comunica nada.',
+        'La accesibilidad de imágenes también importa para cumplimiento legal. WCAG exige alternativas de texto para contenido no textual y muchas normas digitales se basan en ese estándar.',
+        'Para SEO, un alt text claro, buenos nombres de archivo y contexto ayudan a los buscadores a entender la imagen y mostrarla en búsquedas relevantes.'
+      ],
+      ja: [
+        '視覚に困難のあるユーザーは多く、スクリーンリーダーを使う人もいます。画像に適切な alt テキストがないと、IMG_4821.jpg のようなファイル名だけが読み上げられることがあります。',
+        '画像アクセシビリティは体験だけでなく法的要件にも関係します。WCAG は非テキストコンテンツに代替テキストを求め、多くの規則がこれを参照します。',
+        'SEO でも、正確な alt テキスト、ファイル名、周辺文脈は検索エンジンが画像を理解する助けになります。'
+      ],
+      la: [
+        'Multi homines difficultates visus habent et lectores screen adhibent. Si imago textum alt utilem non habet, lector fortasse solum nomen sicut IMG_4821.jpg legit.',
+        'Accessibilitas imaginum etiam ad regulas legales pertinet. WCAG alternativa textus pro rebus non textualibus requirit, et multae regulae digitales hoc sequuntur.',
+        'Pro SEO, textus alt accuratus, nomina clara et contextus adiuvant machinas quaerendi imaginem intellegere.'
+      ],
+      fr: [
+        'De nombreuses personnes ont une déficience visuelle et utilisent des lecteurs d’écran. Sans texte alt utile, un lecteur peut annoncer seulement un nom comme IMG_4821.jpg, ce qui n’aide pas.',
+        'L’accessibilité des images touche aussi la conformité. WCAG demande des alternatives textuelles au contenu non textuel et beaucoup de règles numériques s’appuient sur ce standard.',
+        'Pour le SEO, un texte alt précis, de bons noms de fichiers et le contexte aident les moteurs à comprendre l’image.'
+      ],
+      de: [
+        'Viele Menschen haben Sehbeeinträchtigungen und nutzen Screenreader. Ohne nützlichen Alt-Text liest ein Screenreader oft nur Dateinamen wie IMG_4821.jpg vor.',
+        'Bild-Barrierefreiheit betrifft auch Compliance. WCAG verlangt Textalternativen für nicht-textuelle Inhalte, und viele digitale Regeln orientieren sich daran.',
+        'Für SEO helfen genauer Alt-Text, klare Dateinamen und Kontext Suchmaschinen, das Bild zu verstehen.'
+      ]
+    },
+    '/guides/image-compression.html': {
+      zh: [
+        '数字图片由像素组成，每个像素保存颜色信息，通常是红、绿、蓝 RGB 数值。未压缩图片会直接保存所有像素数据，所以 1920×1080 图片在压缩前就可能有 6MB 以上原始数据。',
+        '图片压缩会寻找并移除像素数据中的冗余。照片中相邻像素往往很相似，比如蓝天区域有大量接近的颜色，压缩算法会用更少的数据表示这些相似内容。',
+        '压缩主要分为两类：有损压缩和无损压缩。有损会永久丢弃部分信息来换取更小体积，无损则保持像素完全一致。'
+      ],
+      es: [
+        'Una imagen digital está formada por píxeles, y cada píxel guarda color, normalmente valores RGB. Sin compresión, una imagen 1920×1080 puede superar 6MB de datos sin procesar.',
+        'La compresión busca y elimina redundancia. En una foto, muchos píxeles vecinos son parecidos; por ejemplo, un cielo azul contiene miles de tonos similares que pueden representarse con menos datos.',
+        'Hay dos enfoques principales: compresión con pérdida y sin pérdida. La primera descarta información de forma permanente; la segunda mantiene los píxeles idénticos.'
+      ],
+      ja: [
+        'デジタル画像はピクセルでできており、各ピクセルは通常 RGB の色情報を持ちます。未圧縮では 1920×1080 画像だけでも 6MB 以上の生データになることがあります。',
+        '画像圧縮はピクセルデータの冗長性を見つけて減らします。写真では隣り合うピクセルが似ていることが多く、青空のような領域は少ないデータで表せます。',
+        '圧縮には主に非可逆と可逆があります。非可逆は情報を永久に捨てて小さくし、可逆はピクセルを完全に保ちます。'
+      ],
+      la: [
+        'Imago digitalis ex pixelis constat, et quisque pixel colorem, plerumque valores RGB, servat. Imago 1920×1080 sine compressione plus quam 6MB datorum crudorum habere potest.',
+        'Compressio redundantiam in pixelis invenit et minuit. In photographia, pixeli vicini saepe similes sunt; caelum caeruleum milia colorum paene eorundem continet.',
+        'Duae viae principales sunt: compressio amissiva et sine amissione. Prima data perpetuo deicit; secunda pixeles integros servat.'
+      ],
+      fr: [
+        'Une image numérique est composée de pixels, et chaque pixel stocke une couleur, souvent en valeurs RGB. Sans compression, une image 1920×1080 peut dépasser 6MB de données brutes.',
+        'La compression trouve et réduit les redondances. Dans une photo, des pixels voisins sont souvent similaires ; un ciel bleu contient beaucoup de teintes proches qui peuvent être codées avec moins de données.',
+        'Il existe deux approches : avec perte et sans perte. La première supprime définitivement des informations ; la seconde conserve les pixels identiques.'
+      ],
+      de: [
+        'Ein digitales Bild besteht aus Pixeln, und jedes Pixel speichert Farbe, meist als RGB-Werte. Unkomprimiert kann ein 1920×1080-Bild mehr als 6MB Rohdaten enthalten.',
+        'Bildkomprimierung findet und reduziert Redundanz. In Fotos ähneln sich benachbarte Pixel oft; ein blauer Himmel enthält viele fast gleiche Farbtöne, die mit weniger Daten beschrieben werden können.',
+        'Es gibt zwei Hauptarten: verlustbehaftet und verlustfrei. Verlustbehaftet entfernt Informationen dauerhaft; verlustfrei erhält die Pixel exakt.'
+      ]
+    },
+    '/guides/image-file-names.html': {
+      zh: ['快速答案：SEO 图片文件名应简短、描述准确、使用小写单词并用连字符分隔。例如 blue-linen-shirt-front.webp 比 IMG_3021.jpg 更能说明图片内容。', '文件名是最简单的图片 SEO 信号之一。搜索引擎会读取图片 URL，清晰的文件名能在 alt 文本和页面上下文之外提供额外线索。', '文件名首先要让真人看得懂。不要堆关键词，也不要保留相机默认名称。'],
+      es: ['Respuesta rápida: usa nombres cortos, descriptivos, en minúsculas y separados por guiones. blue-linen-shirt-front.webp comunica más que IMG_3021.jpg.', 'El nombre del archivo es una señal SEO simple. Los buscadores leen la URL de la imagen y obtienen contexto incluso antes del alt text.', 'El nombre debe tener sentido para una persona. Evita nombres de cámara y relleno de palabras clave.'],
+      ja: ['要点：画像 SEO では、短く説明的で小文字、単語をハイフンで区切ったファイル名を使います。blue-linen-shirt-front.webp は IMG_3021.jpg より有用です。', 'ファイル名は最も簡単な画像 SEO シグナルの一つです。検索エンジンは画像 URL を読み、alt テキスト以外の文脈も得ます。', 'まず人間に意味が通る名前にします。カメラの既定名やキーワード詰め込みは避けます。'],
+      la: ['Responsum breve: nominibus brevibus, descriptivis, minusculis et lineolis separatis utere. blue-linen-shirt-front.webp plus dicit quam IMG_3021.jpg.', 'Nomen fasciculi simplex signum SEO est. Machinae quaerendi URL imaginis legunt et contextum accipiunt.', 'Nomen primum homini intellegendum sit. Nomina camerae et verba clavis cumulata vita.'],
+      fr: ['Réponse rapide : utilisez des noms courts, descriptifs, en minuscules et séparés par des tirets. blue-linen-shirt-front.webp explique mieux que IMG_3021.jpg.', 'Le nom de fichier est un signal SEO simple. Les moteurs lisent l’URL de l’image et obtiennent du contexte avant même le texte alt.', 'Le nom doit d’abord être clair pour une personne. Évitez les noms d’appareil photo et le bourrage de mots-clés.'],
+      de: ['Kurzantwort: Nutze kurze, beschreibende, kleingeschriebene Dateinamen mit Bindestrichen. blue-linen-shirt-front.webp sagt mehr aus als IMG_3021.jpg.', 'Der Dateiname ist ein einfaches Bild-SEO-Signal. Suchmaschinen lesen die Bild-URL und gewinnen Kontext noch vor dem Alt-Text.', 'Der Name sollte zuerst für Menschen verständlich sein. Vermeide Kamera-Standardnamen und Keyword-Stuffing.']
+    },
+    '/guides/image-formats.html': {
+      zh: ['选错图片格式会直接影响体积、质量、透明度、动画和兼容性。Logo 存成 JPEG 会有边缘噪点，照片存成 PNG 会比需要的大很多。', '没有一种格式适合所有图片。每种格式都是为不同限制设计的，本指南帮助你根据用途快速选择。', 'JPEG 是最广泛支持的照片格式；PNG 适合透明、截图和锐利图形；WebP/AVIF 更适合现代网页优化。'],
+      es: ['Elegir mal el formato afecta tamaño, calidad, transparencia, animación y compatibilidad. Un logo en JPEG tendrá artefactos; una foto en PNG pesará mucho más de lo necesario.', 'No existe un formato perfecto para todo. Cada formato resuelve restricciones distintas; esta guía te ayuda a elegir según el uso.', 'JPEG es universal para fotos; PNG sirve para transparencia y gráficos nítidos; WebP/AVIF son mejores para optimización web moderna.'],
+      ja: ['形式選びを間違えると、サイズ、品質、透過、アニメーション、互換性に影響します。ロゴを JPEG にするとノイズが出やすく、写真を PNG にすると大きくなりすぎます。', 'すべてに最適な形式はありません。各形式は違う制約のために作られています。このガイドでは用途別に選びます。', 'JPEG は写真向けで互換性が高く、PNG は透過やシャープな図形向け、WebP/AVIF は現代 Web の軽量化に向いています。'],
+      la: ['Forma prava magnitudinem, qualitatem, transparentiam, animationem et compatibilitatem afficit. Logo ut JPEG artefacta habet; photo ut PNG nimis magna fit.', 'Nulla forma omnibus imaginibus optima est. Unaquaeque forma pro condicionibus diversis facta est; hic dux electionem simplicem facit.', 'JPEG photis maxime compatitur; PNG transparentiae et graphicis acutis prodest; WebP/AVIF web moderno apta sunt.'],
+      fr: ['Un mauvais format affecte poids, qualité, transparence, animation et compatibilité. Un logo en JPEG aura des artefacts ; une photo en PNG sera beaucoup trop lourde.', 'Aucun format n’est idéal pour toutes les images. Chaque format répond à des contraintes différentes ; ce guide aide à choisir selon l’usage.', 'JPEG reste très compatible pour les photos ; PNG convient à la transparence et aux graphismes nets ; WebP/AVIF optimisent mieux le web moderne.'],
+      de: ['Das falsche Format beeinflusst Größe, Qualität, Transparenz, Animation und Kompatibilität. Ein Logo als JPEG bekommt Artefakte; ein Foto als PNG wird viel zu groß.', 'Es gibt kein perfektes Format für alles. Jedes Format löst andere Einschränkungen; dieser Guide hilft bei der Wahl nach Einsatzzweck.', 'JPEG ist universell für Fotos; PNG passt zu Transparenz und scharfen Grafiken; WebP/AVIF eignen sich für moderne Weboptimierung.']
+    },
+    '/guides/image-seo.html': {
+      zh: ['快速答案：图片 SEO 要使用简短、描述准确、带连字符的小写文件名，写准确的 alt 文本，发布前调整尺寸并压缩，并确保图片能在 HTML 或 sitemap 中被发现。', '搜索引擎不像人一样“看见”图片，它们依赖文件名、alt 属性、周围文字、结构化数据和页面上下文来理解图片。', '做好图片 SEO 能帮助图片出现在 Google 图片搜索，也能增强页面整体相关性和质量信号。'],
+      es: ['Respuesta rápida: para SEO de imágenes, usa nombres cortos y descriptivos con guiones, escribe alt text preciso, redimensiona y comprime antes de publicar, y asegúrate de que la imagen sea rastreable.', 'Los buscadores no ven imágenes como humanos. Leen nombre de archivo, alt, texto cercano, datos estructurados y contexto de página.', 'Hacerlo bien ayuda a aparecer en Google Imágenes y refuerza las señales de relevancia y calidad de la página.'],
+      ja: ['要点：画像 SEO では、短く説明的なハイフン区切りのファイル名、正確な alt テキスト、公開前のリサイズと圧縮、HTML または sitemap で発見可能にすることが重要です。', '検索エンジンは人間のように画像を見ません。ファイル名、alt 属性、周辺テキスト、構造化データ、ページ文脈を読みます。', 'これにより Google 画像検索で見つかりやすくなり、ページ全体の関連性と品質シグナルも強くなります。'],
+      la: ['Responsum breve: pro SEO imaginum utere nominibus brevibus descriptivis, textu alt accurato, mensuris rectis et compressione ante publicationem, atque fac imagines in HTML aut sitemap reperiri.', 'Machinae quaerendi imagines sicut homines non vident. Legunt nomen fasciculi, alt, textum vicinum, data structa et contextum paginae.', 'Hoc imagines in Google Images adiuvat et signa qualitatis paginae roborat.'],
+      fr: ['Réponse rapide : pour le SEO image, utilisez des noms courts et descriptifs avec tirets, un texte alt précis, redimensionnez et compressez avant publication, et rendez les images découvrables.', 'Les moteurs ne voient pas les images comme les humains. Ils lisent le nom de fichier, l’attribut alt, le texte proche, les données structurées et le contexte.', 'Cela aide à apparaître dans Google Images et renforce les signaux de pertinence et de qualité de la page.'],
+      de: ['Kurzantwort: Für Bild-SEO nutze kurze, beschreibende Dateinamen mit Bindestrichen, genauen Alt-Text, Resize und Komprimierung vor Veröffentlichung sowie auffindbare Bilder in HTML oder Sitemap.', 'Suchmaschinen sehen Bilder nicht wie Menschen. Sie lesen Dateiname, Alt-Attribut, umgebenden Text, strukturierte Daten und Seitenkontext.', 'Das hilft bei Google Bilder und stärkt die Relevanz- und Qualitätssignale der Seite.']
+    },
+    '/guides/lossless-image-compression.html': {
+      zh: ['快速答案：无损压缩会减小文件体积但不改变像素，适合截图、图标、Logo、图表、透明图和需要再次编辑的图片。普通照片通常用有损 WebP 或 JPEG 更小。', '无损压缩通过更高效地保存重复或可预测的像素模式来减小体积，不会丢弃视觉信息。重新打开时像素与原图完全一致。', '当图片准确性很重要时，无损压缩尤其有价值，例如小文字截图、清晰边缘、图表、医学或科学图像。'],
+      es: ['Respuesta rápida: la compresión sin pérdida reduce tamaño sin cambiar píxeles. Úsala para capturas, iconos, logos, diagramas, transparencia e imágenes que editarás de nuevo.', 'Funciona almacenando patrones repetidos o predecibles de forma más eficiente, sin descartar información visual. Al abrirla, los píxeles coinciden con el original.', 'Es valiosa cuando la precisión importa: texto pequeño, bordes nítidos, gráficos, imágenes médicas o científicas.'],
+      ja: ['要点：可逆圧縮はピクセルを変えずにファイルを小さくします。スクリーンショット、アイコン、ロゴ、図、透過画像、再編集する画像に向いています。', '繰り返しや予測しやすいピクセルパターンを効率よく保存し、視覚情報を捨てません。開き直してもピクセルは元と一致します。', '小さな文字、シャープな縁、グラフ、医療・科学画像など正確性が重要な場合に有効です。'],
+      la: ['Responsum breve: compressio sine amissione fasciculum minuit sine pixelis mutatis. Utere pro capturis, iconibus, logis, diagrammatibus, transparentia et imaginibus iterum edendis.', 'Patterna repetita aut praedictibilia efficacius servat nec informationem visualem deicit. Post apertionem pixeli cum originali congruunt.', 'Valet ubi accuratio magni momenti est: textus minutus, margines acuti, chartae, imagines medicae aut scientificae.'],
+      fr: ['Réponse rapide : la compression sans perte réduit le poids sans changer les pixels. Utilisez-la pour captures, icônes, logos, schémas, transparence et images à modifier plus tard.', 'Elle stocke plus efficacement les motifs répétés ou prévisibles sans supprimer d’information visuelle. Les pixels restent identiques à l’original.', 'Elle est utile quand la précision compte : petit texte, bords nets, graphiques, images médicales ou scientifiques.'],
+      de: ['Kurzantwort: Verlustfreie Komprimierung verkleinert Dateien ohne Pixel zu verändern. Nutze sie für Screenshots, Icons, Logos, Diagramme, Transparenz und Bilder zur späteren Bearbeitung.', 'Sie speichert wiederholte oder vorhersagbare Pixelmuster effizienter, ohne visuelle Information zu entfernen. Beim Öffnen bleiben die Pixel identisch.', 'Sie ist wichtig, wenn Genauigkeit zählt: kleiner Text, scharfe Kanten, Charts, medizinische oder wissenschaftliche Bilder.']
+    },
+    '/guides/open-graph-images.html': {
+      zh: ['Open Graph 图片是在 Facebook、LinkedIn、Slack、Discord 和聊天工具分享网页时显示的预览图。好的预览图能让页面看起来更可信，也能提高点击意愿。', '最实用的默认尺寸是 1200 x 630 像素，比例为 1.91:1，适合文章、产品页和落地页的大卡片预览。', '不同平台会以不同方式裁剪预览图。把标题、Logo、产品和人脸放在中心安全区域，边缘留出空间。'],
+      es: ['Una imagen Open Graph es la vista previa que aparece al compartir una página en Facebook, LinkedIn, Slack, Discord y apps de mensajería. Una buena vista previa aumenta confianza y clics.', 'El tamaño práctico por defecto es 1200 x 630 píxeles, proporción 1.91:1, ideal para tarjetas grandes de artículos, productos y landing pages.', 'Cada plataforma recorta de forma distinta. Mantén título, logo, producto y rostros en el área segura central.'],
+      ja: ['Open Graph 画像は、Facebook、LinkedIn、Slack、Discord、メッセージアプリでページを共有したときに出るプレビュー画像です。良いプレビューは信頼感とクリックを高めます。', '実用的な標準サイズは 1200 x 630 ピクセル、比率 1.91:1 です。記事、商品ページ、ランディングページの大きなカードに向いています。', 'プラットフォームごとに切り抜き方が違います。タイトル、ロゴ、商品、顔は中央の安全領域に置きます。'],
+      la: ['Imago Open Graph est praevisio quae apparet cum pagina in Facebook, LinkedIn, Slack, Discord aut nuntiis communicatur. Praevisio munda fiduciam et clicks auget.', 'Mensura practica est 1200 x 630 pixeli, ratio 1.91:1, apta chartis magnis pro articulis, productis et paginis venditionis.', 'Suggesta varie secant. Titulum, logo, productum et facies in area centrali tuta tene.'],
+      fr: ['Une image Open Graph est l’aperçu affiché quand une page est partagée sur Facebook, LinkedIn, Slack, Discord ou messagerie. Un bon aperçu inspire confiance et améliore le clic.', 'La taille pratique par défaut est 1200 x 630 pixels, ratio 1.91:1, adaptée aux grandes cartes d’articles, produits et landing pages.', 'Les plateformes recadrent différemment. Gardez titre, logo, produit et visage dans la zone sûre centrale.'],
+      de: ['Ein Open-Graph-Bild ist die Vorschau beim Teilen einer Seite in Facebook, LinkedIn, Slack, Discord oder Messengern. Eine gute Vorschau wirkt vertrauenswürdiger und erhöht Klicks.', 'Die praktische Standardgröße ist 1200 x 630 Pixel mit 1,91:1-Seitenverhältnis, passend für große Karten von Artikeln, Produkten und Landingpages.', 'Plattformen schneiden unterschiedlich zu. Titel, Logo, Produkt und Gesichter gehören in den zentralen sicheren Bereich.']
+    },
+    '/guides/pdf-to-image.html': {
+      zh: ['PDF 是分发文档的标准格式，但很多平台和流程并不接受 PDF。把 PDF 页面转成图片后，可以得到几乎 überall 都能使用的 JPG、PNG 或 WebP 文件。', 'DPI 是 PDF 转图片时最重要的设置，它决定输出分辨率，也就是每英寸文档会生成多少像素。', 'DPI 越高，图片越清晰，文件也越大。网页和邮件通常 150 DPI 足够，打印或细文字可以使用 300 DPI。'],
+      es: ['PDF es el formato estándar para documentos, pero muchos flujos no aceptan archivos PDF. Convertir una página a imagen produce un JPG, PNG o WebP compatible casi en todas partes.', 'DPI es el ajuste clave al convertir PDF a imagen: controla la resolución de salida, es decir, cuántos píxeles se generan por pulgada.', 'Más DPI significa más nitidez y mayor tamaño. Para web o email, 150 DPI suele bastar; para impresión o texto fino, usa 300 DPI.'],
+      ja: ['PDF は文書配布の標準形式ですが、PDF を受け付けない平台や作業もあります。ページを画像に変換すると、JPG、PNG、WebP として広く使えます。', 'DPI は PDF を画像に変換する際の重要設定です。出力解像度、つまり 1 インチあたり何ピクセルにするかを決めます。', 'DPI が高いほど鮮明でファイルも大きくなります。Web やメールは 150 DPI、印刷や細かい文字は 300 DPI が目安です。'],
+      la: ['PDF forma communis documentis est, sed multa suggesta PDF non accipiunt. Pagina PDF in imaginem versa fit JPG, PNG aut WebP late compatibilis.', 'DPI optio maxima est in conversione PDF ad imaginem: resolutionem exitus regit, quot pixeli per unciam fiant.', 'DPI altius imaginem acutiorem et fasciculum maiorem facit. Pro web aut epistulis 150 DPI saepe satis est; pro typis 300 DPI utere.'],
+      fr: ['PDF est le format standard des documents, mais beaucoup de plateformes n’acceptent pas les PDF. Convertir une page en image donne un JPG, PNG ou WebP compatible presque partout.', 'Le DPI est le réglage clé : il contrôle la résolution de sortie, donc le nombre de pixels générés par pouce de document.', 'Plus le DPI est élevé, plus l’image est nette et lourde. Pour web ou e-mail, 150 DPI suffit souvent ; pour impression ou texte fin, utilisez 300 DPI.'],
+      de: ['PDF ist Standard für Dokumente, aber viele Plattformen akzeptieren keine PDF-Dateien. Eine PDF-Seite als Bild wird zu JPG, PNG oder WebP und funktioniert fast überall.', 'DPI ist die wichtigste Einstellung bei PDF zu Bild: Sie steuert die Ausgabeauflösung, also Pixel pro Zoll Dokumentgröße.', 'Höhere DPI bedeutet schärferes Bild und größere Datei. Für Web oder E-Mail reichen oft 150 DPI; für Druck oder feinen Text 300 DPI.']
+    },
+    '/guides/product-image-seo.html': {
+      zh: ['产品图片不只是让商品好看，它们会影响搜索可见性、页面速度、无障碍和转化率。慢速图库会损害体验，弱文件名和缺失 alt 文本也会让搜索引擎更难理解商品。', '不要上传 IMG_2048.jpg 或 photo-1.png 这样的文件名。使用包含产品名称、颜色、角度或可见变体的一致命名模式。', '产品 alt 文本应描述可见产品、变体和角度，避免每张图库图片都复制同一句话。'],
+      es: ['Las fotos de producto afectan visibilidad, velocidad, accesibilidad y conversión. Una galería lenta empeora la experiencia, y nombres débiles o alt text ausente dificultan que los buscadores entiendan el producto.', 'No subas archivos como IMG_2048.jpg o photo-1.png. Usa un patrón consistente con nombre de producto, color, ángulo o variante visible.', 'El alt text debe describir producto, variante y ángulo visibles. Evita repetir exactamente el mismo texto en toda la galería.'],
+      ja: ['商品写真は見た目だけでなく、検索可視性、速度、アクセシビリティ、CVR に影響します。遅いギャラリーや弱いファイル名、alt 欠落は検索エンジンの理解を妨げます。', 'IMG_2048.jpg や photo-1.png のような名前は避け、商品名、色、角度、見えるバリエーションを含む一貫した命名にします。', '商品 alt テキストは見える商品、バリエーション、角度を説明し、全画像で同じ文を繰り返さないようにします。'],
+      la: ['Imagines producti non solum pulchritudinem afferunt; visibilitatem quaestionis, celeritatem, accessibilitatem et conversionem afficiunt. Nomina debilia et alt deest intelligentiam machinarum minuunt.', 'Noli fasciculos IMG_2048.jpg aut photo-1.png onerare. Utere forma constanti cum nomine producti, colore, angulo aut variante visibili.', 'Textus alt producti describat productum, variantem et angulum visibilem; eandem sententiam in omnibus imaginibus ne repete.'],
+      fr: ['Les photos produit influencent visibilité, vitesse, accessibilité et conversion. Une galerie lente nuit à l’expérience ; des noms faibles et l’absence de texte alt compliquent la compréhension par les moteurs.', 'N’envoyez pas IMG_2048.jpg ou photo-1.png. Utilisez un modèle cohérent avec nom du produit, couleur, angle ou variante visible.', 'Le texte alt produit doit décrire le produit visible, la variante et l’angle. Évitez de répéter la même phrase sur toute la galerie.'],
+      de: ['Produktfotos beeinflussen Suche, Geschwindigkeit, Barrierefreiheit und Conversion. Eine langsame Galerie schadet der Erfahrung; schwache Dateinamen und fehlender Alt-Text erschweren Suchmaschinen das Verständnis.', 'Lade keine Namen wie IMG_2048.jpg oder photo-1.png hoch. Nutze ein konsistentes Muster mit Produktname, Farbe, Winkel oder sichtbarer Variante.', 'Produkt-Alt-Text sollte sichtbares Produkt, Variante und Winkel beschreiben. Wiederhole nicht denselben Satz für jedes Galeriebild.']
+    },
+    '/guides/reduce-image-file-size.html': {
+      zh: ['大图片会导致页面加载慢、Core Web Vitals 变差、邮件上传失败和表单拒绝。每多一 KB 都会增加用户等待时间，搜索引擎也会衡量速度。', '好消息是，大多数图片都能明显变小，通常可减少 60-80%，且肉眼几乎看不出质量损失。关键是按正确顺序使用尺寸、格式和质量设置。', '最有效的一步通常是把图片调整到实际显示尺寸。把 4000px 图片放进 800px 栏位会传输远超需要的数据。'],
+      es: ['Las imágenes grandes ralentizan páginas, empeoran Core Web Vitals, fallan en emails y son rechazadas por formularios. Cada KB extra aumenta la espera del usuario.', 'La buena noticia: casi siempre puedes reducir mucho el tamaño, a menudo 60-80%, sin pérdida visible. La clave es aplicar dimensiones, formato y calidad en el orden correcto.', 'El paso más efectivo es servir la imagen al tamaño real de visualización. Una foto de 4000px en una columna de 800px envía demasiados datos.'],
+      ja: ['大きな画像はページを遅くし、Core Web Vitals を悪化させ、メールやフォーム送信を失敗させます。余分な KB はユーザーの待ち時間を増やします。', '多くの画像は、見た目をほぼ保ったまま 60-80% 小さくできます。重要なのは寸法、形式、品質を正しい順序で調整することです。', '最も効果的なのは実際の表示サイズに合わせることです。800px の欄に 4000px 写真を配信すると、不要なデータを送ります。'],
+      la: ['Imagines magnae paginas tardant, Core Web Vitals peiorant, epistulas et formas impedire possunt. Quisque KB extra moram usoris auget.', 'Bonum nuntium: plurimae imagines multum minui possunt, saepe 60-80%, sine damno visibili. Clavis est mensuras, formam et qualitatem ordine recto uti.', 'Gradus potentissimus est imaginem ad mensuram realem ostensionis servire. Photo 4000px in spatio 800px data nimia mittit.'],
+      fr: ['Les grandes images ralentissent les pages, dégradent Core Web Vitals, bloquent des e-mails et sont refusées par des formulaires. Chaque KB ajoute de l’attente.', 'Bonne nouvelle : la plupart des images peuvent être réduites fortement, souvent 60-80%, sans perte visible. Il faut régler dimensions, format et qualité dans le bon ordre.', 'L’étape la plus efficace est de servir l’image à sa taille réelle d’affichage. Une photo 4000px dans une colonne 800px envoie trop de données.'],
+      de: ['Große Bilder verlangsamen Seiten, verschlechtern Core Web Vitals, blockieren E-Mails und werden von Formularen abgelehnt. Jedes zusätzliche KB erhöht Wartezeit.', 'Die gute Nachricht: Die meisten Bilder lassen sich stark verkleinern, oft 60-80%, ohne sichtbaren Qualitätsverlust. Entscheidend ist die richtige Reihenfolge von Größe, Format und Qualität.', 'Der wichtigste Schritt ist die tatsächliche Anzeigegröße. Ein 4000px-Foto in einer 800px-Spalte sendet viel zu viele Daten.']
+    },
+    '/guides/social-media-image-sizes.html': {
+      zh: ['社交平台会在桌面、移动端、信息流、头像和预览中以不同方式裁剪图片。最安全的流程是按推荐画布制作，把重要文字和人脸远离边缘，再压缩最终导出。', '同一张上传图可能出现在多个容器中。个人横幅在手机上会裁剪，链接预览也可能变成宽卡片或小缩略图，所以中心安全区域比边缘更重要。', '社交上传中，JPEG 对照片最稳妥，PNG 适合清晰图形和透明素材，WebP 适合网站但部分上传表单仍偏好 JPEG 或 PNG。'],
+      es: ['Las plataformas sociales recortan distinto en escritorio, móvil, feeds, perfiles y vistas previas. Diseña en el tamaño recomendado, mantén texto y rostros lejos de bordes y comprime al final.', 'La misma imagen puede mostrarse en varios contenedores. Un banner se recorta en móvil y una vista previa puede ser tarjeta ancha o miniatura; la zona segura central importa más que los bordes.', 'Para redes, JPEG es seguro para fotos, PNG para gráficos nítidos y transparencia, y WebP va muy bien en sitios web aunque algunos formularios prefieren JPEG o PNG.'],
+      ja: ['SNS はデスクトップ、モバイル、フィード、プロフィール、プレビューで画像を異なる形に切り抜きます。推奨キャンバスで作り、重要な文字や顔は端から離し、最後に圧縮します。', '同じ画像が複数の枠で表示されます。バナーはモバイルで切れ、リンクプレビューは広いカードや小サムネイルになるため、中央安全領域が重要です。', 'SNS では写真は JPEG が安全、シャープな図形や透過は PNG、WebP は Web サイトに優秀ですが一部フォームは JPEG/PNG を好みます。'],
+      la: ['Suggesta socialia imagines varie secant in desktop, mobili, feed, profile et praevisione. In mensura commendata crea, textum et facies a marginibus remove, deinde exportum comprime.', 'Eadem imago in pluribus capsis ostendi potest. Vexillum in mobili secatur et praevisio nexus lata aut parva fit; area centralis tuta maximi momenti est.', 'Pro socialibus, JPEG photis tutum est, PNG graphicis acutis et transparentiae, WebP sitibus optimus sed non omnes formae eum accipiunt.'],
+      fr: ['Les plateformes sociales recadrent différemment selon desktop, mobile, flux, profils et aperçus. Travaillez au format recommandé, gardez texte et visages loin des bords, puis compressez l’export.', 'Une même image peut apparaître dans plusieurs conteneurs. Une bannière est recadrée sur mobile et un aperçu peut devenir grande carte ou miniature ; la zone sûre centrale compte beaucoup.', 'Pour les réseaux, JPEG est sûr pour les photos, PNG pour graphismes nets et transparence, WebP est excellent pour les sites mais certains formulaires préfèrent JPEG/PNG.'],
+      de: ['Social-Plattformen schneiden Bilder auf Desktop, Mobile, Feeds, Profilen und Vorschauen unterschiedlich zu. Gestalte in der empfohlenen Größe, halte Text und Gesichter weg vom Rand und komprimiere am Ende.', 'Dasselbe Bild erscheint in mehreren Containern. Banner werden mobil beschnitten, Linkvorschauen werden breite Karten oder kleine Thumbnails; der zentrale sichere Bereich ist wichtiger als Ränder.', 'Für Social Uploads ist JPEG sicher für Fotos, PNG für scharfe Grafiken und Transparenz, WebP gut fürs Web, aber manche Formulare bevorzugen JPEG/PNG.']
+    },
+    '/guides/web-performance-images.html': {
+      zh: ['图片通常占网页总字节量的很大部分。包含大首图或图库的页面，图片可能占到 70-80%。移动网络下载 1.5MB JPEG 会明显慢于同等质量的 200KB WebP。', '图片会通过两种方式影响性能：增加页面总重量，以及影响 LCP 和 CLS 等 Google 与浏览器衡量的体验指标。', '图片优化投入回报很高。调整尺寸、转换 WebP、添加 loading="lazy" 往往比很多其他优化更快改善性能分数。'],
+      es: ['Las imágenes suelen representar gran parte del peso de una página. Con héroes grandes o galerías, pueden llegar al 70-80%. Un JPEG de 1.5MB en móvil tarda mucho más que un WebP de 200KB similar.', 'Afectan rendimiento de dos formas: aumentan el peso total y cambian métricas como LCP y CLS que Google y navegadores miden.', 'Optimizar imágenes tiene alto retorno: redimensionar, usar WebP y añadir loading="lazy" suele mejorar puntuaciones más rápido que muchas otras tareas.'],
+      ja: ['画像はページ総容量の大きな割合を占めます。大きなヒーロー画像やギャラリーでは 70-80% になることもあります。1.5MB JPEG は同等品質の 200KB WebP よりモバイルで遅くなります。', '画像は総ページ重量を増やし、LCP や CLS など Google とブラウザが測る指標にも影響します。', '画像最適化は効果が高いです。適切な寸法、WebP 変換、loading="lazy" は多くの最適化より速くスコアを改善します。'],
+      la: ['Imagines magnam partem ponderis paginae saepe faciunt. In paginis cum hero magno aut galeria, 70-80% attingere possunt. JPEG 1.5MB in mobili multo tardius est quam WebP 200KB similis.', 'Imagines effectum dupliciter afficiunt: pondus paginae augent et metrica sicut LCP et CLS mutant.', 'Optimizatio imaginum fructum magnum habet: mensura recta, WebP et loading="lazy" saepe celeriter puncta meliorant.'],
+      fr: ['Les images représentent souvent une grande part du poids d’une page. Avec un grand hero ou une galerie, elles peuvent atteindre 70-80%. Un JPEG de 1.5MB est bien plus lent qu’un WebP de 200KB comparable sur mobile.', 'Elles affectent la performance en augmentant le poids total et en influençant LCP, CLS et d’autres métriques mesurées par Google et les navigateurs.', 'L’optimisation image a un fort rendement : bonnes dimensions, WebP et loading="lazy" améliorent souvent les scores plus vite que beaucoup d’autres actions.'],
+      de: ['Bilder machen oft einen großen Teil des Seitengewichts aus. Bei großen Hero-Bildern oder Galerien können es 70-80% sein. Ein 1,5MB-JPEG lädt mobil deutlich langsamer als ein vergleichbares 200KB-WebP.', 'Bilder beeinflussen Performance durch Gesamtgewicht und durch Metriken wie LCP und CLS, die Google und Browser messen.', 'Bildoptimierung bringt viel: richtige Größen, WebP und loading="lazy" verbessern Scores oft schneller als viele andere Maßnahmen.']
+    }
+  };
+
   function getLang() {
     const params = new URLSearchParams(location.search);
     const code = params.get('lang') || localStorage.getItem(LANG_KEY) || document.documentElement.lang || 'en';
@@ -481,6 +661,29 @@
     });
   }
 
+  function translateGuideIntro(lang) {
+    const translations = GUIDE_INTROS[location.pathname]?.[lang];
+    const paragraphs = Array.from(document.querySelectorAll('.guide-body p, article p'))
+      .filter(element => {
+        if (shouldSkip(element)) return false;
+        const text = normalize(element.textContent);
+        return text.length > 80 && !/^Published /.test(text) && !/^Updated /.test(text);
+      });
+
+    paragraphs.forEach((element, index) => {
+      if (!element.dataset.contentI18nOriginalGuide) {
+        element.dataset.contentI18nOriginalGuide = element.textContent.trim();
+      }
+      if (!translations || !translations[index]) {
+        if (!SUPPORTED.has(lang)) {
+          element.textContent = element.dataset.contentI18nOriginalGuide;
+        }
+        return;
+      }
+      element.textContent = translations[index];
+    });
+  }
+
   function translateElement(element, lang) {
     if (shouldSkip(element)) return;
     if (element.children.length > 0) return;
@@ -495,6 +698,7 @@
     document.querySelectorAll('h1, h2, h3, h4, summary, p, li, button, a, span, strong, small').forEach(element => {
       translateElement(element, lang);
     });
+    translateGuideIntro(lang);
     translateDetailsFaqAnswers(lang);
     translatePairedFaqAnswers(lang);
   }

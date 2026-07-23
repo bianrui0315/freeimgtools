@@ -464,11 +464,17 @@
         ${LANGUAGES.map(([code, label]) => `<option value="${code}"${code === currentLang ? ' selected' : ''}>${escapeHtml(label)}</option>`).join('')}
       </select>
     `;
-    wrapper.querySelector('select')?.addEventListener('change', event => {
+    const select = wrapper.querySelector('select');
+    const handleLanguageSelect = event => {
       currentLang = event.target.value;
       localStorage.setItem(LANG_KEY, currentLang);
+      const url = new URL(location.href);
+      url.searchParams.set('lang', currentLang);
+      history.replaceState({}, '', url);
       applyLanguage();
-    });
+    };
+    select?.addEventListener('change', handleLanguageSelect);
+    select?.addEventListener('input', handleLanguageSelect);
     return wrapper;
   }
 
