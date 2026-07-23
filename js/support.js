@@ -568,6 +568,7 @@
     enhanceHeader();
     translateExactText();
     translateCookieBanner();
+    document.dispatchEvent(new CustomEvent('freeimgtools:language-change', { detail: { lang: currentLang } }));
   }
 
   document.addEventListener('DOMContentLoaded', applyLanguage);

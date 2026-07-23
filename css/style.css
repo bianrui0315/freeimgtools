@@ -2143,6 +2143,17 @@ th { background: var(--bg) !important; }
   }
 }
 
+.i18n-faq-answer {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  padding: 0.25rem 1.25rem 1rem;
+}
+
+.card > .i18n-faq-answer {
+  padding: 0.85rem 0 0;
+}
+
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
 
