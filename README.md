@@ -24,6 +24,7 @@ Core tools such as compression, conversion, resizing, cropping, GIF creation, an
 - Website Image SEO Scanner for URL-based checks of alt text, weak filenames, missing dimensions, large image files, responsive image hints, and legacy formats.
 - Image SEO tools and guides for alt text, filenames, compression, web performance, Open Graph images, and ecommerce/product images.
 - AI-assisted image SEO utilities using Cloudflare Workers AI for optional alt text, caption, title, tag, and filename suggestions.
+- Multilingual shared UI for English, Chinese, Spanish, Japanese, Latin, French, and German across navigation, tool discovery, support, and cookie consent.
 
 ## Mini Demo
 

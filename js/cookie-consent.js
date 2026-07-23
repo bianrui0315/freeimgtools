@@ -10,8 +10,79 @@
   'use strict';
 
   var KEY = 'cookie_consent';          // localStorage key
+  var LANG_KEY = 'freeimgtools_lang';
   var CLIENT = 'ca-pub-7946557800571551';
   var consent = localStorage.getItem(KEY);
+  var lang = getLang();
+  var copy = getCopy(lang);
+
+  function getLang() {
+    var params = new URLSearchParams(location.search);
+    var code = params.get('lang') || localStorage.getItem(LANG_KEY) || (navigator.language || '').slice(0, 2) || 'en';
+    return getCopy(code) ? code : 'en';
+  }
+
+  function getCopy(code) {
+    var copies = {
+      en: {
+        label: 'Cookie consent',
+        title: 'This site uses cookies',
+        text: 'We use cookies to serve ads and analyse traffic. Ads help keep all tools free. You can accept, decline, or read our ',
+        privacy: 'Privacy Policy',
+        decline: 'Decline',
+        accept: 'Accept All'
+      },
+      zh: {
+        label: 'Cookie 同意',
+        title: '本站使用 Cookie',
+        text: '我们使用 Cookie 来展示广告并分析流量。广告帮助免费工具持续运行。你可以接受、拒绝，或阅读我们的',
+        privacy: '隐私政策',
+        decline: '拒绝',
+        accept: '全部接受'
+      },
+      es: {
+        label: 'Consentimiento de cookies',
+        title: 'Este sitio usa cookies',
+        text: 'Usamos cookies para mostrar anuncios y analizar tráfico. Los anuncios ayudan a mantener gratis las herramientas. Puedes aceptar, rechazar o leer nuestra ',
+        privacy: 'Política de privacidad',
+        decline: 'Rechazar',
+        accept: 'Aceptar todo'
+      },
+      ja: {
+        label: 'Cookie 同意',
+        title: 'このサイトは Cookie を使用します',
+        text: '広告表示とアクセス解析のために Cookie を使用します。広告は無料ツールの運営を支えます。承諾、拒否、または',
+        privacy: 'プライバシーポリシー',
+        decline: '拒否',
+        accept: 'すべて承諾'
+      },
+      la: {
+        label: 'Consensus crustulorum',
+        title: 'Hic situs crustula utitur',
+        text: 'Crustula ad nuntios et mensuram frequentiae utimur. Nuntii instrumenta gratuita servant. Potes accipere, recusare, aut legere ',
+        privacy: 'Regula privata',
+        decline: 'Recusa',
+        accept: 'Omnia accipe'
+      },
+      fr: {
+        label: 'Consentement aux cookies',
+        title: 'Ce site utilise des cookies',
+        text: 'Nous utilisons des cookies pour les annonces et l’analyse du trafic. Les annonces aident à garder les outils gratuits. Vous pouvez accepter, refuser ou lire notre ',
+        privacy: 'Politique de confidentialité',
+        decline: 'Refuser',
+        accept: 'Tout accepter'
+      },
+      de: {
+        label: 'Cookie-Einwilligung',
+        title: 'Diese Website verwendet Cookies',
+        text: 'Wir verwenden Cookies für Anzeigen und Traffic-Analyse. Anzeigen helfen, alle Tools kostenlos zu halten. Du kannst akzeptieren, ablehnen oder unsere ',
+        privacy: 'Datenschutzerklärung',
+        decline: 'Ablehnen',
+        accept: 'Alle akzeptieren'
+      }
+    };
+    return copies[code];
+  }
 
   /* ── Load AdSense ──────────────────────────────────────────────────────── */
   function loadAdSense() {
@@ -55,18 +126,17 @@
     var banner = document.createElement('div');
     banner.id = 'cc-banner';
     banner.setAttribute('role', 'dialog');
-    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.setAttribute('aria-label', copy.label);
     banner.innerHTML = [
       '<div id="cc-inner">',
       '  <div id="cc-text">',
-      '    <strong>This site uses cookies</strong>',
-      '    <p>We use cookies to serve ads and analyse traffic.',
-      '    Ads help keep all tools free. You can accept, decline,',
-      '    or read our <a href="/privacy" id="cc-privacy-link">Privacy Policy</a>.</p>',
+      '    <strong>' + copy.title + '</strong>',
+      '    <p>' + copy.text,
+      '    <a href="/privacy" id="cc-privacy-link">' + copy.privacy + '</a>.</p>',
       '  </div>',
       '  <div id="cc-btns">',
-      '    <button id="cc-decline">Decline</button>',
-      '    <button id="cc-accept">Accept All</button>',
+      '    <button id="cc-decline">' + copy.decline + '</button>',
+      '    <button id="cc-accept">' + copy.accept + '</button>',
       '  </div>',
       '</div>'
     ].join('');

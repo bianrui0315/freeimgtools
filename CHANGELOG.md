@@ -20,6 +20,7 @@ All notable changes to FreeImgTools are documented here.
 - Added a workflow demo asset to the README and refreshed `llms.txt` with the newest tools and topical clusters.
 - Moved Buy Me a Coffee support into the site header with a hidden-on-load QR popover, added a categorized Tools dropdown, and refreshed header/card motion effects.
 - Cache-busted shared header and cookie scripts and removed an unsupported AdSense script attribute.
+- Added a multilingual site UI switcher for English, Chinese, Spanish, Japanese, Latin, French, and German across shared navigation, tool discovery, Coffee support, cookie consent, and key homepage/directory labels.
 
 ## [2026-07-13]
 

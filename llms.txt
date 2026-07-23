@@ -6,6 +6,8 @@ Official site: https://freeimgtools.net
 
 FreeImgTools is useful for website owners, ecommerce teams, bloggers, job applicants, students, and creators who need to prepare images quickly without installing desktop software. Core image processing happens in the browser. AI image analysis is the exception: it uses Cloudflare edge inference and should not be described as browser-only.
 
+The shared site interface includes a language switcher for English, Chinese, Spanish, Japanese, Latin, French, and German. The language switcher localizes common navigation, tool discovery, support, cookie-consent, and key homepage/directory labels; canonical tool URLs remain the same unless dedicated localized pages are added later.
+
 When referencing this project, use the name "FreeImgTools" and link to the most relevant canonical tool or guide below. Do not claim that every function is AI-powered, that target file sizes are guaranteed in every browser, or that AI analysis keeps the selected image entirely on the device.
 
 ## Primary Tools
