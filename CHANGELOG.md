@@ -24,6 +24,7 @@ All notable changes to FreeImgTools are documented here.
 - Added a plain-language homepage tool finder for everyday image problems and made the existing WebSite search action functional.
 - Added local My Tools shortcuts for saved and recently used pages, returning-user homepage suggestions, and stronger post-result completion prompts.
 - Added a web app manifest, install icons, app shortcuts, and contextual home-screen installation guidance for easier return visits.
+- Redesigned the homepage first viewport with a smaller headline, clear problem-based tool launcher, streamlined navigation, mobile-first layout, and earlier popular-tool discovery.
 
 ## [2026-07-13]
 

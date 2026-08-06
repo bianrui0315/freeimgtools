@@ -21,12 +21,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/style.css?v=20260805-growth">
+  <link rel="stylesheet" href="/css/style.css?v=20260805-home-v2">
   <script src="/js/cookie-consent.js?v=20260805-audience"></script>
   <script src="/js/share-tools.js?v=20260805-growth" defer></script>
   <script src="/js/support.js?v=20260805-audience" defer></script>
   <script src="/js/content-i18n.js?v=20260723-content-i18n" defer></script>
-  <script src="/js/home-growth.js?v=20260805-growth" defer></script>
+  <script src="/js/home-growth.js?v=20260805-home-v2" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,21 +46,16 @@
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is FreeImgTools?","acceptedAnswer":{"@type":"Answer","text":"FreeImgTools is a free img tools website for compressing, resizing, converting, creating PDFs from images, exporting PDF pages, and improving image SEO."}},{"@type":"Question","name":"Is FreeImgTools free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes. The core image tools are free and run in your browser without signup."}},{"@type":"Question","name":"Is FreeImgTools the same as imgtool.net or imgtools.net?","acceptedAnswer":{"@type":"Answer","text":"No. FreeImgTools is the website at freeimgtools.net and is not affiliated with imgtool.net, imgtools.net, or freeimgtools.com."}}]}
   </script>
 </head>
-<body>
+<body class="home-page">
 
 <nav class="nav">
   <div class="nav-inner">
     <a href="/" class="logo" aria-label="FreeImgTools home"><img src="/assets/freeimgtools-icon-512.png" alt="" aria-hidden="true"><span>FreeImgTools</span></a>
     <ul class="nav-links">
       <li><a href="/" class="active">Home</a></li>
-      <li><a href="/tools">Tools</a></li>
-      <li><a href="/compress">Compress</a></li>
-      <li><a href="/convert">Convert</a></li>
-      <li><a href="/resize">Resize</a></li>
-      <li><a href="/pdf-to-image">PDF to Image</a></li>
-      <li><a href="/image-to-pdf">Image to PDF</a></li>
+      <li><a href="#problem-finder" data-home-copy="navFind">Find a tool</a></li>
+      <li><a href="#popular-tools" data-home-copy="navPopular">Popular fixes</a></li>
       <li><a href="/guides">Guides</a></li>
-      <li><a href="/ai">AI Tools</a></li>
     </ul>
   </div>
 </nav>
@@ -68,59 +63,56 @@
 <div class="page">
 
   <!-- Hero -->
-  <section class="home-hero">
+  <section class="home-hero" aria-labelledby="home-hero-title">
     <div class="home-hero-copy">
-      <div class="eyebrow">Free image tools for normal people in a hurry</div>
-      <h1>Make any image behave. Free, fast, weirdly satisfying.</h1>
-      <p>Fix a giant phone photo, cute profile picture, anime avatar, homework PDF, passport photo, marketplace listing, or social post without learning image software. Pick a shortcut, drop the file, grab the result.</p>
+      <span class="hero-spark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M13 2 4.5 13h6L9.8 22 19.5 10h-6L13 2Z"/></svg>
+      </span>
+      <h1 id="home-hero-title"><span data-home-copy="heroTitle">Fix that image.</span><span data-home-copy="heroTitleSecond">Get on with your day.</span></h1>
+      <p data-home-copy="heroIntro">Compress, resize, convert, or turn photos into a PDF. Pick what you need and finish the job in seconds.</p>
       <div class="hero-actions">
-        <a href="/compress" class="btn btn-primary btn-lg">Fix My Photo</a>
-        <a href="/instagram-profile-picture-resizer" class="btn btn-secondary btn-lg">Make a Cute Avatar</a>
-        <a href="/image-to-pdf" class="btn btn-secondary btn-lg">Turn Photos into PDF</a>
+        <a href="#problem-finder" class="btn btn-primary btn-lg hero-primary-action">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M13 2 4.5 13h6L9.8 22 19.5 10h-6L13 2Z"/></svg>
+          <span data-home-copy="heroPrimary">Choose my fix</span>
+        </a>
+        <a href="/tools" class="hero-browse-link">
+          <span data-home-copy="heroSecondary">Browse all 50+ tools</span>
+          <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
+        </a>
       </div>
-      <div class="hero-proof">
-        <span><strong>Free</strong> no signup drama</span>
-        <span><strong>Phone</strong> friendly</span>
-        <span><strong>50+</strong> tiny lifesavers</span>
-      </div>
+      <ul class="hero-proof" aria-label="FreeImgTools benefits">
+        <li><svg aria-hidden="true" viewBox="0 0 20 20"><path d="m5 10 3 3 7-7"/></svg><span data-home-copy="heroFree">Free to use</span></li>
+        <li><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM4.5 17a5.5 5.5 0 0 1 11 0"/></svg><span data-home-copy="heroAccount">No account</span></li>
+        <li><svg aria-hidden="true" viewBox="0 0 20 20"><rect x="6" y="2.5" width="8" height="15" rx="2"/><path d="M9 14.5h2"/></svg><span data-home-copy="heroPhone">Works on phone</span></li>
+      </ul>
     </div>
 
-    <div class="hero-workbench" aria-label="Image optimization workflow preview">
-      <div class="workbench-top">
-        <span class="window-dot red"></span>
-        <span class="window-dot yellow"></span>
-        <span class="window-dot green"></span>
-        <span class="workbench-title">freeimgtools.net</span>
+    <div class="hero-task-launcher" aria-labelledby="hero-task-title">
+      <div class="hero-task-heading">
+        <h2 id="hero-task-title" data-home-copy="taskTitle">What do you need?</h2>
+        <span data-home-copy="taskHint">Pick the closest problem</span>
       </div>
-      <div class="workbench-body">
-        <div class="drop-preview">
-          <div class="file-stack">
-            <span></span><span></span><span></span>
-          </div>
-          <strong>Drop the image problem here</strong>
-          <p>JPG, PNG, WebP, AVIF, GIF, PDF</p>
-        </div>
-        <div class="workflow-list">
-          <a href="/instagram-profile-picture-resizer">
-            <span class="workflow-icon">PFP</span>
-            <div><strong>Cute avatar ready</strong><small>Profile pics, anime icons, square crops</small></div>
-          </a>
-          <a href="/image-to-pdf">
-            <span class="workflow-icon">PDF</span>
-            <div><strong>Homework and forms saved</strong><small>Photos to one clean PDF</small></div>
-          </a>
-          <a href="/mobile-image-tools">
-            <span class="workflow-icon">MOB</span>
-            <div><strong>Fix family phone photos</strong><small>Big camera roll pictures made usable</small></div>
-          </a>
-        </div>
-      </div>
-      <div class="workbench-result">
-        <div>
-          <span class="result-label">Now acceptable everywhere</span>
-          <strong>photo-fixed-final-for-real.jpg</strong>
-        </div>
-        <span class="result-pill">take it</span>
+      <div class="hero-task-list">
+        <a class="hero-task hero-task-blue" href="/compress">
+          <span class="hero-task-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21M17 14v7M14 18l3 3 3-3"/></svg></span>
+          <span class="hero-task-copy"><strong data-home-copy="taskCompress">My file is too big</strong><small data-home-copy="taskCompressHint">Make it ready to upload</small></span>
+          <svg class="hero-task-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="m7 4 6 6-6 6"/></svg>
+        </a>
+        <a class="hero-task hero-task-yellow" href="/image-to-pdf">
+          <span class="hero-task-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6zM14 2v5h5"/><path d="M8.5 16h7M8.5 12h4"/></svg></span>
+          <span class="hero-task-copy"><strong data-home-copy="taskPdf">I need a PDF</strong><small data-home-copy="taskPdfHint">Turn several photos into one file</small></span>
+          <svg class="hero-task-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="m7 4 6 6-6 6"/></svg>
+        </a>
+        <a class="hero-task hero-task-green" href="/resize">
+          <span class="hero-task-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3M8 16 16 8M8 8h8v8"/></svg></span>
+          <span class="hero-task-copy"><strong data-home-copy="taskResize">It’s the wrong size</strong><small data-home-copy="taskResizeHint">Fit profiles, posts, forms, and more</small></span>
+          <svg class="hero-task-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="m7 4 6 6-6 6"/></svg>
+        </a>
+        <a class="hero-task hero-task-pink" href="/convert">
+          <span class="hero-task-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 7h11l-3-3M17 17H6l3 3M18 7l-3 3M6 17l3-3"/></svg></span>
+          <span class="hero-task-copy"><strong data-home-copy="taskConvert">Change the format</strong><small data-home-copy="taskConvertHint">WebP to JPG, PNG, AVIF, and more</small></span>
+          <svg class="hero-task-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="m7 4 6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -128,71 +120,6 @@
   <section class="problem-finder" id="problem-finder" aria-labelledby="problem-finder-title"></section>
 
   <section class="home-memory" id="home-memory" aria-labelledby="home-memory-title" hidden></section>
-
-  <section class="phone-qr-strip" aria-labelledby="phone-qr-title">
-    <div class="phone-qr-copy">
-      <span class="eyebrow">Phone photo emergency?</span>
-      <h2 id="phone-qr-title">Scan it. Fix it on your phone.</h2>
-      <p>Camera roll photo too huge? PDF needed right now? Scan the code and use the same free tools on your phone before the upload page ruins your day.</p>
-      <div class="phone-qr-links" aria-label="Popular mobile image tools">
-        <a href="/compress">Compress photos</a>
-        <a href="/resize">Resize images</a>
-        <a href="/image-to-pdf">Make PDF</a>
-      </div>
-    </div>
-    <div class="phone-qr-card">
-      <img src="/assets/freeimgtools-qr.svg" alt="QR code linking to https://freeimgtools.net">
-      <span>freeimgtools.net</span>
-    </div>
-  </section>
-
-  <section class="people-paths" aria-labelledby="people-paths-title">
-    <div class="section-heading">
-      <div>
-        <span class="eyebrow">Start with your real-life problem</span>
-        <h2 id="people-paths-title">Not technical? Perfect. Click the situation.</h2>
-      </div>
-      <a href="/tools" class="section-link">See every shortcut →</a>
-    </div>
-    <div class="people-path-grid">
-      <a href="/instagram-profile-picture-resizer" class="people-card people-card-pink">
-        <span class="people-icon">♡</span>
-        <h3>Cute profile picture</h3>
-        <p>Make a selfie, anime avatar, pet photo, or group picture fit your profile circle.</p>
-        <strong>Make my avatar →</strong>
-      </a>
-      <a href="/image-to-pdf" class="people-card people-card-yellow">
-        <span class="people-icon">A+</span>
-        <h3>School or homework PDF</h3>
-        <p>Turn phone photos of homework, notes, receipts, or forms into one neat PDF.</p>
-        <strong>Build the PDF →</strong>
-      </a>
-      <a href="/mobile-image-tools" class="people-card people-card-blue">
-        <span class="people-icon">SOS</span>
-        <h3>Help family from your phone</h3>
-        <p>Compress huge camera-roll photos and resize pictures without explaining pixels.</p>
-        <strong>Open phone tools →</strong>
-      </a>
-      <a href="/compress-image-for-online-form" class="people-card people-card-green">
-        <span class="people-icon">OK</span>
-        <h3>Annoying upload form</h3>
-        <p>When a site says “file too large,” crush the image to 100KB, 200KB, or 500KB.</p>
-        <strong>Beat the limit →</strong>
-      </a>
-      <a href="/passport-photo-resizer" class="people-card people-card-red">
-        <span class="people-icon">ID</span>
-        <h3>Passport, visa, ID photo</h3>
-        <p>Resize and compress application photos when the portal is extremely picky.</p>
-        <strong>Fix ID photo →</strong>
-      </a>
-      <a href="/instagram-story-resizer" class="people-card people-card-purple">
-        <span class="people-icon">POST</span>
-        <h3>Social post glow-up</h3>
-        <p>Resize for stories, thumbnails, banners, posts, covers, and share previews.</p>
-        <strong>Make it fit →</strong>
-      </a>
-    </div>
-  </section>
 
   <!-- Ad slot — top -->
   <!--
@@ -204,7 +131,7 @@
   -->
 
   <!-- Tools grid -->
-  <section class="home-section">
+  <section class="home-section" id="popular-tools">
     <div class="section-heading">
       <div>
         <span class="eyebrow">Popular rescue buttons</span>
@@ -272,6 +199,71 @@
     </a>
 
   </div>
+  </section>
+
+  <section class="people-paths" aria-labelledby="people-paths-title">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">Start with your real-life problem</span>
+        <h2 id="people-paths-title">Not technical? Perfect. Click the situation.</h2>
+      </div>
+      <a href="/tools" class="section-link">See every shortcut →</a>
+    </div>
+    <div class="people-path-grid">
+      <a href="/instagram-profile-picture-resizer" class="people-card people-card-pink">
+        <span class="people-icon">♡</span>
+        <h3>Cute profile picture</h3>
+        <p>Make a selfie, anime avatar, pet photo, or group picture fit your profile circle.</p>
+        <strong>Make my avatar →</strong>
+      </a>
+      <a href="/image-to-pdf" class="people-card people-card-yellow">
+        <span class="people-icon">A+</span>
+        <h3>School or homework PDF</h3>
+        <p>Turn phone photos of homework, notes, receipts, or forms into one neat PDF.</p>
+        <strong>Build the PDF →</strong>
+      </a>
+      <a href="/mobile-image-tools" class="people-card people-card-blue">
+        <span class="people-icon">SOS</span>
+        <h3>Help family from your phone</h3>
+        <p>Compress huge camera-roll photos and resize pictures without explaining pixels.</p>
+        <strong>Open phone tools →</strong>
+      </a>
+      <a href="/compress-image-for-online-form" class="people-card people-card-green">
+        <span class="people-icon">OK</span>
+        <h3>Annoying upload form</h3>
+        <p>When a site says “file too large,” crush the image to 100KB, 200KB, or 500KB.</p>
+        <strong>Beat the limit →</strong>
+      </a>
+      <a href="/passport-photo-resizer" class="people-card people-card-red">
+        <span class="people-icon">ID</span>
+        <h3>Passport, visa, ID photo</h3>
+        <p>Resize and compress application photos when the portal is extremely picky.</p>
+        <strong>Fix ID photo →</strong>
+      </a>
+      <a href="/instagram-story-resizer" class="people-card people-card-purple">
+        <span class="people-icon">POST</span>
+        <h3>Social post glow-up</h3>
+        <p>Resize for stories, thumbnails, banners, posts, covers, and share previews.</p>
+        <strong>Make it fit →</strong>
+      </a>
+    </div>
+  </section>
+
+  <section class="phone-qr-strip" aria-labelledby="phone-qr-title">
+    <div class="phone-qr-copy">
+      <span class="eyebrow">Phone photo emergency?</span>
+      <h2 id="phone-qr-title">Scan it. Fix it on your phone.</h2>
+      <p>Camera roll photo too huge? PDF needed right now? Scan the code and use the same free tools on your phone before the upload page ruins your day.</p>
+      <div class="phone-qr-links" aria-label="Popular mobile image tools">
+        <a href="/compress">Compress photos</a>
+        <a href="/resize">Resize images</a>
+        <a href="/image-to-pdf">Make PDF</a>
+      </div>
+    </div>
+    <div class="phone-qr-card">
+      <img src="/assets/freeimgtools-qr.svg" alt="QR code linking to https://freeimgtools.net">
+      <span>freeimgtools.net</span>
+    </div>
   </section>
 
   <!-- Privacy trust section -->

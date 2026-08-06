@@ -16,8 +16,18 @@
 
   const COPY = {
     en: {
-      title: 'Tell us what went wrong. We will pick the tool.',
-      intro: 'No image vocabulary required. Type the problem in normal words.',
+      navFind: 'Find a tool', navPopular: 'Popular fixes',
+      heroTitle: 'Fix that image.', heroTitleSecond: 'Get on with your day.',
+      heroIntro: 'Compress, resize, convert, or turn photos into a PDF. Pick what you need and finish the job in seconds.',
+      heroPrimary: 'Choose my fix', heroSecondary: 'Browse all 50+ tools',
+      heroFree: 'Free to use', heroAccount: 'No account', heroPhone: 'Works on phone',
+      taskTitle: 'What do you need?', taskHint: 'Pick the closest problem',
+      taskCompress: 'My file is too big', taskCompressHint: 'Make it ready to upload',
+      taskPdf: 'I need a PDF', taskPdfHint: 'Turn several photos into one file',
+      taskResize: 'It’s the wrong size', taskResizeHint: 'Fit profiles, posts, forms, and more',
+      taskConvert: 'Change the format', taskConvertHint: 'WebP to JPG, PNG, AVIF, and more',
+      title: 'Tell us what went wrong.',
+      intro: 'Use normal words. We will point you to the right tool.',
       placeholder: 'Try: my photo is too big for a form',
       search: 'Find my fix', popular: 'Popular fixes', noMatch: 'No exact match yet. Try “photo,” “PDF,” “avatar,” “form,” or “social.”',
       all: 'See all 50+ tools', welcome: 'Welcome back. Your useful stuff is still here.',
@@ -41,7 +51,17 @@
       },
     },
     zh: {
-      title: '告诉我们哪里不对，工具由我们来选。', intro: '不需要懂图片术语，用平常话说出问题就行。', placeholder: '试试：我的照片太大，表单传不上去',
+      navFind: '查找工具', navPopular: '热门解决办法',
+      heroTitle: '修好这张图。', heroTitleSecond: '然后继续你的事。',
+      heroIntro: '压缩、改尺寸、转格式，或把照片变成 PDF。选出需要的，几秒搞定。',
+      heroPrimary: '选择我的问题', heroSecondary: '浏览全部 50+ 工具',
+      heroFree: '免费使用', heroAccount: '无需账号', heroPhone: '手机可用',
+      taskTitle: '你要做什么？', taskHint: '选择最接近的问题',
+      taskCompress: '文件太大', taskCompressHint: '变小后顺利上传',
+      taskPdf: '我需要 PDF', taskPdfHint: '多张照片合成一个文件',
+      taskResize: '尺寸不对', taskResizeHint: '适配头像、帖子、表单等',
+      taskConvert: '更换格式', taskConvertHint: 'WebP 转 JPG、PNG、AVIF 等',
+      title: '告诉我们哪里不对。', intro: '用平常话描述，我们会带你去正确的工具。', placeholder: '试试：我的照片太大，表单传不上去',
       search: '帮我找工具', popular: '热门解决办法', noMatch: '暂时没有完全匹配。试试“照片”“PDF”“头像”“表单”或“社交图片”。', all: '查看全部 50+ 工具',
       welcome: '欢迎回来。你常用的工具还在这里。', welcomeText: '不用重新找，直接继续使用保存或最近打开的工具。', saved: '已保存', recent: '最近使用',
       completed: count => `你已经在这台设备完成 ${count} 次图片处理。`, install: '放到主屏幕，一点就开', installTitle: '把 FreeImgTools 添加到主屏幕',
@@ -56,7 +76,17 @@
       },
     },
     es: {
-      title: 'Cuéntanos el problema. Elegimos la herramienta.', intro: 'No necesitas vocabulario técnico. Escríbelo con palabras normales.', placeholder: 'Prueba: mi foto es demasiado grande para un formulario',
+      navFind: 'Buscar herramienta', navPopular: 'Soluciones populares',
+      heroTitle: 'Arregla esa imagen.', heroTitleSecond: 'Sigue con tu día.',
+      heroIntro: 'Comprime, redimensiona, convierte o pasa fotos a PDF. Elige lo que necesitas y termina en segundos.',
+      heroPrimary: 'Elegir mi solución', heroSecondary: 'Ver las 50+ herramientas',
+      heroFree: 'Uso gratuito', heroAccount: 'Sin cuenta', heroPhone: 'Funciona en móvil',
+      taskTitle: '¿Qué necesitas?', taskHint: 'Elige el problema más parecido',
+      taskCompress: 'Mi archivo es muy grande', taskCompressHint: 'Déjalo listo para subir',
+      taskPdf: 'Necesito un PDF', taskPdfHint: 'Une varias fotos en un archivo',
+      taskResize: 'El tamaño no sirve', taskResizeHint: 'Para perfiles, posts y formularios',
+      taskConvert: 'Cambiar el formato', taskConvertHint: 'WebP a JPG, PNG, AVIF y más',
+      title: 'Cuéntanos qué salió mal.', intro: 'Usa palabras normales. Te llevamos a la herramienta correcta.', placeholder: 'Prueba: mi foto es demasiado grande para un formulario',
       search: 'Encontrar solución', popular: 'Soluciones populares', noMatch: 'Sin coincidencia exacta. Prueba “foto”, “PDF”, “perfil”, “formulario” o “social”.', all: 'Ver las 50+ herramientas',
       welcome: 'Qué bueno verte. Tus herramientas siguen aquí.', welcomeText: 'Vuelve a una herramienta guardada o reciente sin buscar otra vez.', saved: 'Guardada', recent: 'Uso reciente',
       completed: count => `Has terminado ${count} tareas de imagen en este dispositivo.`, install: 'Tenerla a un toque', installTitle: 'Añadir FreeImgTools a la pantalla de inicio',
@@ -71,7 +101,17 @@
       },
     },
     ja: {
-      title: '困りごとを入力。合うツールを選びます。', intro: '画像の専門用語は不要です。普通の言葉で入力してください。', placeholder: '例：写真が大きすぎてフォームに送れない',
+      navFind: 'ツールを探す', navPopular: '人気の解決方法',
+      heroTitle: 'その画像を直そう。', heroTitleSecond: 'すぐ次の用事へ。',
+      heroIntro: '圧縮、サイズ変更、形式変換、写真のPDF化。必要な作業を選んで数秒で完了。',
+      heroPrimary: '困りごとを選ぶ', heroSecondary: '50+ の全ツールを見る',
+      heroFree: '無料で使える', heroAccount: 'アカウント不要', heroPhone: 'スマホ対応',
+      taskTitle: '何をしたいですか？', taskHint: '近い困りごとを選択',
+      taskCompress: 'ファイルが大きすぎる', taskCompressHint: 'アップロードできるサイズへ',
+      taskPdf: 'PDFが必要', taskPdfHint: '複数の写真を1つのファイルに',
+      taskResize: 'サイズが合わない', taskResizeHint: 'プロフィール、投稿、フォームに対応',
+      taskConvert: '形式を変えたい', taskConvertHint: 'WebPをJPG、PNG、AVIFなどへ',
+      title: '何がうまくいかないか教えてください。', intro: '普段の言葉で大丈夫。合うツールへ案内します。', placeholder: '例：写真が大きすぎてフォームに送れない',
       search: '解決ツールを探す', popular: '人気の解決方法', noMatch: '完全一致がありません。「写真」「PDF」「アイコン」「フォーム」「SNS」を試してください。', all: '50+ の全ツールを見る',
       welcome: 'おかえりなさい。いつものツールはここです。', welcomeText: '保存済み・最近使ったツールをすぐ再開できます。', saved: '保存済み', recent: '最近使用',
       completed: count => `この端末で ${count} 回の画像作業を完了しました。`, install: 'ホーム画面からすぐ開く', installTitle: 'FreeImgTools をホーム画面に追加',
@@ -86,7 +126,17 @@
       },
     },
     la: {
-      title: 'Dic quid erraverit. Instrumentum eligemus.', intro: 'Verba technica non requiruntur. Problema simpliciter scribe.', placeholder: 'Exemplum: imago mea nimis magna est',
+      navFind: 'Instrumentum reperi', navPopular: 'Remedia popularia',
+      heroTitle: 'Imaginem corrige.', heroTitleSecond: 'Deinde perge.',
+      heroIntro: 'Comprime, redimensiona, converte, aut imagines in PDF verte. Elige quod opus est et celeriter perfice.',
+      heroPrimary: 'Remedium elige', heroSecondary: 'Omnia 50+ instrumenta',
+      heroFree: 'Gratis', heroAccount: 'Sine ratione', heroPhone: 'Telephonio aptum',
+      taskTitle: 'Quid opus est?', taskHint: 'Problema simillimum elige',
+      taskCompress: 'Fasciculus nimis magnus est', taskCompressHint: 'Ad onerandum para',
+      taskPdf: 'PDF mihi opus est', taskPdfHint: 'Plures imagines in unum coniunge',
+      taskResize: 'Mensura non convenit', taskResizeHint: 'Ad profilia, nuntios, formas et alia',
+      taskConvert: 'Formam muta', taskConvertHint: 'WebP in JPG, PNG, AVIF et alia',
+      title: 'Dic quid erraverit.', intro: 'Verbis simplicibus utere. Ad instrumentum rectum ducemus.', placeholder: 'Exemplum: imago mea nimis magna est',
       search: 'Remedium reperi', popular: 'Remedia popularia', noMatch: 'Nondum repertum. Tenta “photo”, “PDF”, “avatar”, “forma”, aut “social”.', all: 'Omnia 50+ instrumenta',
       welcome: 'Salve iterum. Instrumenta tua hic manent.', welcomeText: 'Instrumentum servatum aut recens statim aperi.', saved: 'Servatum', recent: 'Nuper adhibitum',
       completed: count => `${count} opera imaginum in hoc instrumento perfecisti.`, install: 'Uno tactu aperi', installTitle: 'FreeImgTools in screen principali adde',
@@ -101,7 +151,17 @@
       },
     },
     fr: {
-      title: 'Dites-nous le problème. Nous choisissons l’outil.', intro: 'Aucun jargon nécessaire. Décrivez simplement ce qui bloque.', placeholder: 'Essayez : ma photo est trop grande pour le formulaire',
+      navFind: 'Trouver un outil', navPopular: 'Solutions populaires',
+      heroTitle: 'Réglez cette image.', heroTitleSecond: 'Passez à la suite.',
+      heroIntro: 'Compressez, redimensionnez, convertissez ou créez un PDF avec vos photos. Choisissez et terminez en quelques secondes.',
+      heroPrimary: 'Choisir ma solution', heroSecondary: 'Voir les 50+ outils',
+      heroFree: 'Utilisation gratuite', heroAccount: 'Sans compte', heroPhone: 'Fonctionne sur mobile',
+      taskTitle: 'De quoi avez-vous besoin ?', taskHint: 'Choisissez le problème le plus proche',
+      taskCompress: 'Mon fichier est trop lourd', taskCompressHint: 'Préparez-le pour l’envoi',
+      taskPdf: 'J’ai besoin d’un PDF', taskPdfHint: 'Regroupez plusieurs photos',
+      taskResize: 'La taille ne convient pas', taskResizeHint: 'Pour profils, posts et formulaires',
+      taskConvert: 'Changer le format', taskConvertHint: 'WebP vers JPG, PNG, AVIF et plus',
+      title: 'Dites-nous ce qui bloque.', intro: 'Parlez normalement. Nous vous guidons vers le bon outil.', placeholder: 'Essayez : ma photo est trop grande pour le formulaire',
       search: 'Trouver la solution', popular: 'Solutions populaires', noMatch: 'Pas de résultat exact. Essayez « photo », « PDF », « profil », « formulaire » ou « social ».', all: 'Voir les 50+ outils',
       welcome: 'Bon retour. Vos outils utiles sont toujours là.', welcomeText: 'Reprenez un outil enregistré ou récent sans chercher à nouveau.', saved: 'Enregistré', recent: 'Utilisé récemment',
       completed: count => `Vous avez terminé ${count} tâches image sur cet appareil.`, install: 'À un geste de vous', installTitle: 'Ajouter FreeImgTools à l’écran d’accueil',
@@ -116,7 +176,17 @@
       },
     },
     de: {
-      title: 'Sag uns, was nicht klappt. Wir wählen das Tool.', intro: 'Keine Fachbegriffe nötig. Beschreibe das Problem ganz normal.', placeholder: 'Beispiel: Mein Foto ist zu groß für das Formular',
+      navFind: 'Tool finden', navPopular: 'Beliebte Lösungen',
+      heroTitle: 'Bring das Bild in Ordnung.', heroTitleSecond: 'Mach mit deinem Tag weiter.',
+      heroIntro: 'Komprimieren, skalieren, konvertieren oder Fotos in eine PDF verwandeln. Wähle die Aufgabe und sei in Sekunden fertig.',
+      heroPrimary: 'Meine Lösung wählen', heroSecondary: 'Alle 50+ Tools ansehen',
+      heroFree: 'Kostenlos nutzbar', heroAccount: 'Kein Konto', heroPhone: 'Funktioniert mobil',
+      taskTitle: 'Was brauchst du?', taskHint: 'Wähle das ähnlichste Problem',
+      taskCompress: 'Meine Datei ist zu groß', taskCompressHint: 'Für den Upload verkleinern',
+      taskPdf: 'Ich brauche eine PDF', taskPdfHint: 'Mehrere Fotos in eine Datei',
+      taskResize: 'Die Größe stimmt nicht', taskResizeHint: 'Für Profile, Posts und Formulare',
+      taskConvert: 'Format ändern', taskConvertHint: 'WebP in JPG, PNG, AVIF und mehr',
+      title: 'Sag uns, was nicht klappt.', intro: 'Beschreibe es ganz normal. Wir zeigen dir das passende Tool.', placeholder: 'Beispiel: Mein Foto ist zu groß für das Formular',
       search: 'Lösung finden', popular: 'Beliebte Lösungen', noMatch: 'Kein genauer Treffer. Versuche „Foto“, „PDF“, „Profil“, „Formular“ oder „Social“.', all: 'Alle 50+ Tools',
       welcome: 'Willkommen zurück. Deine Tools sind noch da.', welcomeText: 'Öffne gespeicherte oder zuletzt verwendete Tools direkt.', saved: 'Gespeichert', recent: 'Zuletzt verwendet',
       completed: count => `Du hast ${count} Bildaufgaben auf diesem Gerät erledigt.`, install: 'Mit einem Tipp öffnen', installTitle: 'FreeImgTools zum Startbildschirm hinzufügen',
@@ -205,6 +275,14 @@
       ? results.map(resultMarkup).join('')
       : `<div class="finder-empty">${escapeHtml(copy().noMatch)} <a href="/tools">${escapeHtml(copy().all)}</a></div>`;
     statusNode.textContent = query ? `${results.length}` : copy().popular;
+  }
+
+  function renderHero() {
+    const c = copy();
+    document.querySelectorAll('[data-home-copy]').forEach(node => {
+      const value = c[node.dataset.homeCopy];
+      if (typeof value === 'string') node.textContent = value;
+    });
   }
 
   function renderFinder() {
@@ -332,6 +410,7 @@
   function renderAll() {
     const currentInput = document.getElementById('problem-query');
     if (currentInput) activeQuery = currentInput.value;
+    renderHero();
     renderFinder();
     renderMemory();
     renderInstallAction();
