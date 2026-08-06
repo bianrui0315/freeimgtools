@@ -42,9 +42,18 @@ function hasLocalTarget(href) {
   return candidates.some(existsSync);
 }
 
+function isDirectoryIndexPath(href) {
+  const clean = href.split("#")[0].split("?")[0];
+  if (!clean.startsWith("/") || clean === "/" || clean.endsWith("/")) return false;
+
+  const normalized = clean.replace(/^\/+/, "");
+  return existsSync(path.join(root, normalized, "index.html"));
+}
+
 const files = walk(root);
 const htmlFiles = files.filter((file) => file.endsWith(".html"));
 const jsFiles = files.filter((file) => file.endsWith(".js"));
+const canonicalUrls = new Map();
 
 JSON.parse(readFileSync(path.join(root, "package.json"), "utf8"));
 
@@ -69,6 +78,35 @@ for (const file of htmlFiles) {
   if (canonicalCount !== 1) fail(name, `expected exactly one canonical, found ${canonicalCount}`);
   if (manifestCount !== 1) fail(name, `expected exactly one web app manifest, found ${manifestCount}`);
 
+  const canonicalTag = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*>/i)?.[0] || "";
+  const canonicalUrl = canonicalTag.match(/\shref=["']([^"']+)["']/i)?.[1] || "";
+  const route = name === "index.html"
+    ? "/"
+    : name.endsWith(`${path.sep}index.html`)
+      ? `/${path.dirname(name).split(path.sep).join("/")}/`
+      : `/${name.slice(0, -".html".length).split(path.sep).join("/")}`;
+  const expectedCanonical = `https://freeimgtools.net${route}`;
+
+  if (canonicalUrl !== expectedCanonical) {
+    fail(name, `canonical must match its final public URL (${expectedCanonical}), found ${canonicalUrl || "none"}`);
+  }
+  if (name !== "404.html") {
+    if (canonicalUrls.has(canonicalUrl)) fail(name, `duplicate canonical also used by ${canonicalUrls.get(canonicalUrl)}`);
+    canonicalUrls.set(canonicalUrl, name);
+  }
+  if (name !== "404.html" && /<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)) {
+    fail(name, "indexable page contains a noindex robots directive");
+  }
+
+  const jsonLdBlocks = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const block of jsonLdBlocks) {
+    try {
+      JSON.parse(block[1]);
+    } catch (error) {
+      fail(name, `invalid JSON-LD: ${error.message}`);
+    }
+  }
+
   const hrefs = [...linkableHtml.matchAll(/\shref=["']([^"']+)["']/gi)].map((match) => match[1]);
   for (const href of hrefs) {
     if (
@@ -81,6 +119,7 @@ for (const file of htmlFiles) {
       continue;
     }
     if (href.startsWith("/") && !hasLocalTarget(href)) fail(name, `broken internal href: ${href}`);
+    if (isDirectoryIndexPath(href)) fail(name, `directory href must use its final trailing-slash URL: ${href}`);
   }
 }
 
@@ -106,9 +145,18 @@ if (existsSync(sitemapPath)) {
   const sitemap = readFileSync(sitemapPath, "utf8");
   if (!sitemap.includes("<urlset")) fail("sitemap.xml", "missing urlset");
   const locs = [...sitemap.matchAll(/<loc>https:\/\/freeimgtools\.net([^<]*)<\/loc>/g)].map((match) => match[1]);
+  const sitemapUrls = new Set();
   if (locs.length === 0) fail("sitemap.xml", "no freeimgtools.net URLs found");
   for (const loc of locs) {
+    const url = `https://freeimgtools.net${loc}`;
+    if (sitemapUrls.has(url)) fail("sitemap.xml", `duplicate URL: ${url}`);
+    sitemapUrls.add(url);
     if (!hasLocalTarget(loc)) fail("sitemap.xml", `missing page for sitemap URL: ${loc}`);
+    if (isDirectoryIndexPath(loc)) fail("sitemap.xml", `directory URL must use its final trailing-slash URL: ${loc}`);
+    if (!canonicalUrls.has(url)) fail("sitemap.xml", `URL does not match an indexable page canonical: ${url}`);
+  }
+  for (const [url, file] of canonicalUrls) {
+    if (!sitemapUrls.has(url)) fail(file, `canonical URL is missing from sitemap.xml: ${url}`);
   }
 }
 
@@ -122,6 +170,7 @@ if (existsSync(redirectsPath)) {
     const parts = line.split(/\s+/);
     if (parts.length < 2) fail("_redirects", `invalid redirect line: ${line}`);
     if (parts[1]?.startsWith("/") && !hasLocalTarget(parts[1])) fail("_redirects", `missing redirect target: ${parts[1]}`);
+    if (isDirectoryIndexPath(parts[1] || "")) fail("_redirects", `redirect target must use its final trailing-slash URL: ${parts[1]}`);
   }
 }
 
