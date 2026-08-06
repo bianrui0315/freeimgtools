@@ -61,11 +61,13 @@ for (const file of htmlFiles) {
   const name = rel(file);
   const h1Count = (html.match(/<h1[\s>]/gi) || []).length;
   const canonicalCount = (html.match(/rel=["']canonical["']/gi) || []).length;
+  const manifestCount = (html.match(/rel=["']manifest["']/gi) || []).length;
 
   if (!/<title>[^<]{10,}<\/title>/i.test(html)) fail(name, "missing useful title");
   if (!/<meta\s+name=["']description["'][^>]+content=["'][^"']{40,}["']/i.test(html)) fail(name, "missing useful meta description");
   if (h1Count !== 1) fail(name, `expected exactly one h1, found ${h1Count}`);
   if (canonicalCount !== 1) fail(name, `expected exactly one canonical, found ${canonicalCount}`);
+  if (manifestCount !== 1) fail(name, `expected exactly one web app manifest, found ${manifestCount}`);
 
   const hrefs = [...linkableHtml.matchAll(/\shref=["']([^"']+)["']/gi)].map((match) => match[1]);
   for (const href of hrefs) {
@@ -80,6 +82,23 @@ for (const file of htmlFiles) {
     }
     if (href.startsWith("/") && !hasLocalTarget(href)) fail(name, `broken internal href: ${href}`);
   }
+}
+
+const manifestPath = path.join(root, "site.webmanifest");
+if (existsSync(manifestPath)) {
+  try {
+    const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+    if (!manifest.name || !manifest.short_name) fail("site.webmanifest", "missing app name");
+    if (manifest.start_url !== "/") fail("site.webmanifest", "start_url must be /");
+    if (!Array.isArray(manifest.icons) || manifest.icons.length === 0) fail("site.webmanifest", "missing icons");
+    for (const icon of manifest.icons || []) {
+      if (!icon.src || !hasLocalTarget(icon.src)) fail("site.webmanifest", `missing icon: ${icon.src || "unknown"}`);
+    }
+  } catch (error) {
+    fail("site.webmanifest", `invalid JSON: ${error.message}`);
+  }
+} else {
+  fail("site.webmanifest", "missing file");
 }
 
 const sitemapPath = path.join(root, "sitemap.xml");
@@ -112,4 +131,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Validated ${htmlFiles.length} HTML files, ${jsFiles.length} JS files, sitemap, and redirects.`);
+console.log(`Validated ${htmlFiles.length} HTML files, ${jsFiles.length} JS files, manifest, sitemap, and redirects.`);

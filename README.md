@@ -25,6 +25,8 @@ Core tools such as compression, conversion, resizing, cropping, GIF creation, an
 - Image SEO tools and guides for alt text, filenames, compression, web performance, Open Graph images, and ecommerce/product images.
 - AI-assisted image SEO utilities using Cloudflare Workers AI for optional alt text, caption, title, tag, and filename suggestions.
 - Multilingual shared UI for English, Chinese, Spanish, Japanese, Latin, French, and German across navigation, tool discovery, support, and cookie consent.
+- Plain-language homepage search that turns everyday problems such as “photo too big” or “make a PDF” into direct tool recommendations.
+- Local My Tools shortcuts for saved and recently used workflows, plus installable web app metadata for easier return visits.
 
 ## Mini Demo
 

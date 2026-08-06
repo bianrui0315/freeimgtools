@@ -21,6 +21,9 @@ All notable changes to FreeImgTools are documented here.
 - Moved Buy Me a Coffee support into the site header with a hidden-on-load QR popover, added a categorized Tools dropdown, and refreshed header/card motion effects.
 - Cache-busted shared header and cookie scripts and removed an unsupported AdSense script attribute.
 - Added a multilingual site UI switcher for English, Chinese, Spanish, Japanese, Latin, French, and German across shared navigation, tool discovery, Coffee support, cookie consent, and key homepage/directory labels.
+- Added a plain-language homepage tool finder for everyday image problems and made the existing WebSite search action functional.
+- Added local My Tools shortcuts for saved and recently used pages, returning-user homepage suggestions, and stronger post-result completion prompts.
+- Added a web app manifest, install icons, app shortcuts, and contextual home-screen installation guidance for easier return visits.
 
 ## [2026-07-13]
 
