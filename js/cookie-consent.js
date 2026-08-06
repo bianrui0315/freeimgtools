@@ -27,7 +27,7 @@
       en: {
         label: 'Cookie consent',
         title: 'This site uses cookies',
-        text: 'We use cookies to serve ads and analyse traffic. Ads help keep all tools free. You can accept, decline, or read our ',
+        text: 'Cookies help ads and traffic stats keep these free tools running. Accept, decline, or read our ',
         privacy: 'Privacy Policy',
         decline: 'Decline',
         accept: 'Accept All'
@@ -35,7 +35,7 @@
       zh: {
         label: 'Cookie 同意',
         title: '本站使用 Cookie',
-        text: '我们使用 Cookie 来展示广告并分析流量。广告帮助免费工具持续运行。你可以接受、拒绝，或阅读我们的',
+        text: 'Cookie 用于广告和流量统计，帮助免费工具持续运行。你可以接受、拒绝，或阅读我们的',
         privacy: '隐私政策',
         decline: '拒绝',
         accept: '全部接受'
@@ -43,7 +43,7 @@
       es: {
         label: 'Consentimiento de cookies',
         title: 'Este sitio usa cookies',
-        text: 'Usamos cookies para mostrar anuncios y analizar tráfico. Los anuncios ayudan a mantener gratis las herramientas. Puedes aceptar, rechazar o leer nuestra ',
+        text: 'Las cookies ayudan con anuncios y estadísticas para mantener gratis las herramientas. Puedes aceptar, rechazar o leer nuestra ',
         privacy: 'Política de privacidad',
         decline: 'Rechazar',
         accept: 'Aceptar todo'
@@ -51,7 +51,7 @@
       ja: {
         label: 'Cookie 同意',
         title: 'このサイトは Cookie を使用します',
-        text: '広告表示とアクセス解析のために Cookie を使用します。広告は無料ツールの運営を支えます。承諾、拒否、または',
+        text: 'Cookie は広告とアクセス解析に使われ、無料ツールの運営を支えます。承諾、拒否、または',
         privacy: 'プライバシーポリシー',
         decline: '拒否',
         accept: 'すべて承諾'
@@ -59,7 +59,7 @@
       la: {
         label: 'Consensus crustulorum',
         title: 'Hic situs crustula utitur',
-        text: 'Crustula ad nuntios et mensuram frequentiae utimur. Nuntii instrumenta gratuita servant. Potes accipere, recusare, aut legere ',
+        text: 'Crustula nuntiis et mensurae prosunt, ut instrumenta gratuita maneant. Potes accipere, recusare, aut legere ',
         privacy: 'Regula privata',
         decline: 'Recusa',
         accept: 'Omnia accipe'
@@ -67,7 +67,7 @@
       fr: {
         label: 'Consentement aux cookies',
         title: 'Ce site utilise des cookies',
-        text: 'Nous utilisons des cookies pour les annonces et l’analyse du trafic. Les annonces aident à garder les outils gratuits. Vous pouvez accepter, refuser ou lire notre ',
+        text: 'Les cookies aident les annonces et statistiques à garder ces outils gratuits. Vous pouvez accepter, refuser ou lire notre ',
         privacy: 'Politique de confidentialité',
         decline: 'Refuser',
         accept: 'Tout accepter'
@@ -75,7 +75,7 @@
       de: {
         label: 'Cookie-Einwilligung',
         title: 'Diese Website verwendet Cookies',
-        text: 'Wir verwenden Cookies für Anzeigen und Traffic-Analyse. Anzeigen helfen, alle Tools kostenlos zu halten. Du kannst akzeptieren, ablehnen oder unsere ',
+        text: 'Cookies helfen Anzeigen und Statistiken, diese Tools kostenlos zu halten. Du kannst akzeptieren, ablehnen oder unsere ',
         privacy: 'Datenschutzerklärung',
         decline: 'Ablehnen',
         accept: 'Alle akzeptieren'
@@ -198,8 +198,12 @@
       '  to{opacity:1;transform:translateY(0);}',
       '}',
       '@media(max-width:540px){',
-      '  #cc-inner{flex-direction:column;gap:1rem;}',
-      '  #cc-btns{width:100%;justify-content:flex-end;}',
+      '  #cc-banner{padding:0 .75rem .75rem;}',
+      '  #cc-inner{flex-direction:column;align-items:stretch;gap:.7rem;padding:.85rem 1rem;border-radius:14px;}',
+      '  #cc-text strong{font-size:.88rem;margin-bottom:.18rem;}',
+      '  #cc-text p{font-size:.74rem;line-height:1.45;}',
+      '  #cc-btns{width:100%;justify-content:flex-end;gap:.45rem;}',
+      '  #cc-decline,#cc-accept{padding:.48rem .9rem;font-size:.8rem;}',
       '}'
     ].join('');
 

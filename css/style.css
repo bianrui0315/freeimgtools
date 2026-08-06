@@ -886,6 +886,102 @@ body {
   font-size: 0.78rem;
   font-weight: 700;
 }
+.people-paths {
+  margin: 2.25rem 0 2.5rem;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 45, 85, 0.13), transparent 30%),
+    radial-gradient(circle at 88% 10%, rgba(88, 86, 214, 0.13), transparent 28%),
+    linear-gradient(135deg, rgba(255, 214, 10, 0.12), rgba(0, 122, 255, 0.08)),
+    var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+}
+.people-path-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+.people-card {
+  position: relative;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.15rem;
+  overflow: hidden;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--white);
+  border: 1px solid rgba(60, 60, 67, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s var(--ease-out), border-color 0.18s;
+}
+.people-card::after {
+  content: '';
+  position: absolute;
+  right: -34px;
+  bottom: -44px;
+  width: 126px;
+  height: 126px;
+  border-radius: 999px;
+  background: var(--people-glow, rgba(0, 122, 255, 0.14));
+  opacity: 0.9;
+}
+.people-card:hover {
+  transform: translateY(-4px) rotate(-0.35deg);
+  border-color: var(--primary-mid);
+  box-shadow: var(--shadow-md);
+}
+.people-icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  height: 38px;
+  padding: 0 0.65rem;
+  margin-bottom: 0.9rem;
+  background: #111827;
+  color: #ffffff;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.14);
+}
+.people-card h3,
+.people-card p,
+.people-card strong {
+  position: relative;
+  z-index: 1;
+}
+.people-card h3 {
+  font-size: 1rem;
+  font-weight: 850;
+  line-height: 1.2;
+  margin-bottom: 0.45rem;
+}
+.people-card p {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.people-card strong {
+  margin-top: auto;
+  color: var(--primary);
+  font-size: 0.86rem;
+}
+.people-card-pink { --people-glow: rgba(255, 45, 85, 0.17); }
+.people-card-yellow { --people-glow: rgba(255, 214, 10, 0.24); }
+.people-card-blue { --people-glow: rgba(0, 122, 255, 0.17); }
+.people-card-green { --people-glow: rgba(52, 199, 89, 0.18); }
+.people-card-red { --people-glow: rgba(255, 59, 48, 0.16); }
+.people-card-purple { --people-glow: rgba(88, 86, 214, 0.17); }
 
 @media (max-width: 860px) {
   .home-hero {
@@ -906,6 +1002,9 @@ body {
   }
   .phone-qr-card {
     justify-items: start;
+  }
+  .people-path-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -933,6 +1032,15 @@ body {
   .phone-qr-card img {
     width: 118px;
     height: 118px;
+  }
+  .people-paths {
+    padding: 1rem;
+  }
+  .people-path-grid {
+    grid-template-columns: 1fr;
+  }
+  .people-card {
+    min-height: 164px;
   }
 }
 
